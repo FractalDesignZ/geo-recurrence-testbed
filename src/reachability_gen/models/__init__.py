@@ -64,3 +64,28 @@ try:
     ]
 except ImportError:  # pragma: no cover - torch optional
     pass
+
+
+try:
+    from reachability_gen.models.sheaf_infer_core import (
+        DEFAULT_ABSENT_BIAS,
+        DEFAULT_EDGE_RECON_WEIGHT,
+        DEFAULT_GATE_THETA,
+        SheafDiffusionPhi,
+        SheafInferCore,
+        build_sheaf_batch,
+        ste_hard_gate,
+    )
+
+    __all__ += [
+        "DEFAULT_ABSENT_BIAS",
+        "DEFAULT_EDGE_RECON_WEIGHT",
+        "DEFAULT_GATE_THETA",
+        "SheafDiffusionPhi",
+        "SheafInferCore",
+        "build_sheaf_batch",
+        "ste_hard_gate",
+    ]
+except ImportError:  # pragma: no cover - torch optional
+    pass
+

@@ -346,6 +346,23 @@ prereg STOP/OPEN-candidate framing; hard-neg collapse still primary).
 No retraining. Band is fail-closed: do not silently widen past 70.
 
 
+
+## Cycle: SHEAF_INFERENCE (MEASURE)
+
+Follow-on to STALK_LOCALIZATION. Infers `A_hat` from **edge tokens** (hard gate
+θ=0.5; STE available; default gate-detach into diffusion). Local stalk init
+(`s=1`, else `0`); shared bias-free Φ; discrete `T ∈ {6,8,12,16}`. **No hard
+adjacency oracle at eval.** Gold edges may be used for **aux reconstruction
+loss in training only**. Param parity ±5% of FF ~121218. `science_open=false`.
+Baseline residue: stalk seal `b144dac`.
+
+```bash
+python -m reachability_gen.overfit_sheaf --balanced --out artifacts/sheaf_infer_overfit.json
+python -m reachability_gen.run_sheaf_infer_gate1  # artifacts/sheaf_infer_matched_ood.json
+```
+
+Prereg (report honestly): hard-neg ≥0.95 AND K16≥0.75 at T=16 on covariate-matched OOD.
+
 ## Cycle: STALK_LOCALIZATION (MEASURE)
 
 Follow-on to FRACTAL_CORE_GENESIS. Kills global `(s,t)` broadcast `+c` and soft
