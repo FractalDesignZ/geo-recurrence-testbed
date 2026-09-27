@@ -293,6 +293,30 @@ python -m reachability_gen.run_id_2k_rematch_bound30
 Writes `artifacts/id_2k_rematch_bound30.json`.
 
 
+## OOD hops dataset + Gate 2 stress (MEASURE)
+
+Held-out hop-OOD set (`data/ood_hops.jsonl`): positives with
+`hop_distance ∈ {8,12,16}` (ADR-001 `OOD_HOP_VALUES`), hard negatives
+(`deg(s)≥1`, `deg(t)≥1`, unreachable), 50/50 class balance, `is_ood=True`
+on positives. Encodings filtered to fit bound30 `max_len=257`.
+**`science_open=false` always.**
+
+```bash
+# generate OOD hops JSONL + report (jsonl gitignored like id_2k)
+python -m reachability_gen.gen_ood_hops
+python -m reachability_gen.gen_ood_hops --verify-only data/ood_hops.jsonl
+
+# Gate 2: inference-only stress on bound30 best ckpts
+# Fixed L=2 / T=6 for all arms; dynamic T∈{8,12,16} for Geo/Loop
+python -m reachability_gen.run_ood_gate2
+# or: reachability-ood-gate2
+```
+
+Writes `artifacts/ood_hops_generation_report.json` and
+`artifacts/id_2k_rematch_bound30_gate2_ood.json` (tables + prereg
+`interpretation_stop`; never stamps OPEN). No retraining.
+
+
 ## Tests
 
 
