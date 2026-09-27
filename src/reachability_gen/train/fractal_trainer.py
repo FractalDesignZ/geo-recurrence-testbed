@@ -1,6 +1,7 @@
 """AdamW + CE trainer for FractalCore (MEASURE plumbing).
 
 Matches bound30 recurrent defaults where sensible: lr=1.5e-3, grad_clip=2.5.
+Stalk-localization: discrete fixed-T unroll only (soft ACT stripped).
 No science OPEN claims.
 """
 
@@ -28,13 +29,14 @@ class FractalTrainer:
         weight_decay: float = 0.01,
         grad_clip: float = 2.5,
         device: Optional[torch.device] = None,
-        adaptive_halt: bool = True,
+        adaptive_halt: bool = False,  # ignored; soft ACT stripped
     ) -> None:
         self.model = model
         self.device = device or torch.device("cpu")
         self.model.to(self.device)
         self.grad_clip = float(grad_clip)
-        self.adaptive_halt = bool(adaptive_halt)
+        self.adaptive_halt = False
+        del adaptive_halt
         self.opt = AdamW(
             self.model.parameters(), lr=lr, weight_decay=weight_decay
         )
@@ -71,7 +73,7 @@ class FractalTrainer:
             t_idx,
             return_halt=True,
             T=T,
-            adaptive_halt=self.adaptive_halt,
+            adaptive_halt=False,
         )
         self.last_halt_info = halt or {}
         loss = self.loss_fn(logits, labels)
@@ -101,7 +103,8 @@ class FractalTrainer:
         T: Optional[int] = None,
         adaptive_halt: Optional[bool] = None,
     ) -> tuple[float, float] | tuple[float, float, list[float], dict[str, Any]]:
-        """Eval CE + accuracy; optionally drift + halt diagnostics."""
+        """Eval CE + accuracy; optionally drift + cycle diagnostics."""
+        del adaptive_halt
         self.model.eval()
         node_ids = node_ids.to(self.device)
         node_mask = node_mask.to(self.device)
@@ -109,7 +112,6 @@ class FractalTrainer:
         s_idx = s_idx.to(self.device)
         t_idx = t_idx.to(self.device)
         labels = labels.to(self.device)
-        ah = self.adaptive_halt if adaptive_halt is None else bool(adaptive_halt)
         logits, traj, halt = self.model(
             node_ids,
             node_mask,
@@ -119,7 +121,7 @@ class FractalTrainer:
             return_trajectory=return_drift,
             return_halt=True,
             T=T,
-            adaptive_halt=ah,
+            adaptive_halt=False,
         )
         self.last_halt_info = halt or {}
         loss = self.loss_fn(logits, labels)

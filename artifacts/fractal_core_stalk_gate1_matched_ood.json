@@ -1,0 +1,723 @@
+{
+  "architecture": {
+    "broadcast_c": false,
+    "discrete_T_values": [
+      6,
+      8,
+      12,
+      16
+    ],
+    "intermediates": 0,
+    "local_potential": true,
+    "probe_slot": "t",
+    "soft_ACT": false,
+    "stalk_slot": "s"
+  },
+  "cycle": "CYCLE_STALK_LOCALIZATION",
+  "dataset_id": "data/id_2k.jsonl",
+  "elapsed_sec": 81.28440594673157,
+  "gate0_overfit": {
+    "T": 6,
+    "arm": "fractal_core",
+    "balanced": true,
+    "broadcast_c": false,
+    "cycle": "CYCLE_STALK_LOCALIZATION",
+    "disconnect_leak": {
+      "T_values": [
+        6,
+        8,
+        12,
+        16
+      ],
+      "atol": 0.001,
+      "by_T": {
+        "12": {
+          "max_l2": 0.0,
+          "mean_l2": 0.0,
+          "n": 16,
+          "ok": true
+        },
+        "16": {
+          "max_l2": 0.0,
+          "mean_l2": 0.0,
+          "n": 16,
+          "ok": true
+        },
+        "6": {
+          "max_l2": 0.0,
+          "mean_l2": 0.0,
+          "n": 16,
+          "ok": true
+        },
+        "8": {
+          "max_l2": 0.0,
+          "mean_l2": 0.0,
+          "n": 16,
+          "ok": true
+        }
+      },
+      "n_neg": 16,
+      "note": "Stalk-ablation L2 at target for disconnected pairs; expect max_l2 <= 0.001 across T (local potential, no c broadcast).",
+      "ok": true,
+      "science_open": false
+    },
+    "disconnect_leak_atol": 0.001,
+    "final_acc": 1.0,
+    "final_loss": 0.0009279780788347125,
+    "gate": "gate0",
+    "halt_diagnostics": {
+      "T": 6.0,
+      "adaptive_halt": false,
+      "mean_halt_step": 6.0,
+      "mean_ponder": 6.0
+    },
+    "label_counts": {
+      "y0": 16,
+      "y1": 16
+    },
+    "local_potential": true,
+    "loss_threshold": 0.001,
+    "n_examples": 32,
+    "ok": true,
+    "param_count": 117506,
+    "param_parity": {
+      "ff_baseline_params": 121218,
+      "fractal_over_ff_ratio": 0.9693774851919682,
+      "fractal_param_count": 117506,
+      "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+      "science_open": false,
+      "tolerance": 0.05,
+      "window": [
+        115157,
+        127279
+      ],
+      "within_5pct": true
+    },
+    "passed_at": 24,
+    "per_class": {
+      "y0_acc": 1.0,
+      "y0_correct": 16.0,
+      "y0_n": 16.0,
+      "y1_acc": 1.0,
+      "y1_correct": 16.0,
+      "y1_n": 16.0
+    },
+    "reject_reasons": {
+      "both_deg0": 1,
+      "deg_s0": 2,
+      "deg_t0": 3,
+      "ok": 66,
+      "skipped_not_y0": 72
+    },
+    "science_open": false,
+    "steps": 100
+  },
+  "hparams_matched_to_bound30_recurrent": {
+    "T_train": 6,
+    "d": 64,
+    "epochs": 30,
+    "grad_clip": 2.5,
+    "lr": 0.0015,
+    "mlp_expansion": 10,
+    "note": "LR/clip/epochs/mlp match bound30 recurrent Geo/Loop settings; FractalCore stalk-local: adjacency mask + local stalk/probe; no c broadcast; no soft ACT."
+  },
+  "mandelbrot_analogy": "Mandelbrot-style boundary re-injection is an aspirational analogy for local stalk/probe potentials; scientific claims require metrics artifacts only.",
+  "mode": "MEASURE",
+  "ood_dataset": "data/covariate_matched_ood.jsonl",
+  "ood_eval": {
+    "dynamic": {
+      "dynamic_T12_unroll": {
+        "T": 12,
+        "adaptive_halt": false,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 1.0,
+            "correct": 240,
+            "loss_mean": 0.005526771518149568,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.015273106354288756,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 1.652542446553707,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.009358691918896512,
+            "n": 80
+          }
+        },
+        "discrete_T": true,
+        "hard_neg_acc": 1.0,
+        "hard_neg_n": 240,
+        "mean_halt_step": 12.0,
+        "mean_ponder": 12.0,
+        "n": 480,
+        "overall_acc": 0.8333333333333334,
+        "overall_loss": 0.28229242656355685,
+        "pos_by_hop": {
+          "12": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.015273106354288756,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 1.652542446553707,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.009358691918896512,
+            "n": 80
+          }
+        }
+      },
+      "dynamic_T16_unroll": {
+        "T": 16,
+        "adaptive_halt": false,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 1.0,
+            "correct": 240,
+            "loss_mean": 0.004911962339732175,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.008007636410184205,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.925,
+            "correct": 74,
+            "loss_mean": 0.4312247162219137,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 0.9375,
+            "correct": 75,
+            "loss_mean": 0.27082656195852906,
+            "n": 80
+          }
+        },
+        "discrete_T": true,
+        "hard_neg_acc": 1.0,
+        "hard_neg_n": 240,
+        "mean_halt_step": 16.0,
+        "mean_ponder": 16.0,
+        "n": 480,
+        "overall_acc": 0.9770833333333333,
+        "overall_loss": 0.12079913360163724,
+        "pos_by_hop": {
+          "12": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.008007636410184205,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.925,
+            "correct": 74,
+            "loss_mean": 0.4312247162219137,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 0.9375,
+            "correct": 75,
+            "loss_mean": 0.27082656195852906,
+            "n": 80
+          }
+        }
+      },
+      "dynamic_T8_unroll": {
+        "T": 8,
+        "adaptive_halt": false,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 1.0,
+            "correct": 240,
+            "loss_mean": 0.007140455205808393,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 0.05,
+            "correct": 4,
+            "loss_mean": 4.943815159803489,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 2.3657818734645844,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.010176485346164554,
+            "n": 80
+          }
+        },
+        "discrete_T": true,
+        "hard_neg_acc": 1.0,
+        "hard_neg_n": 240,
+        "mean_halt_step": 8.0,
+        "mean_ponder": 8.0,
+        "n": 480,
+        "overall_acc": 0.675,
+        "overall_loss": 1.2235324807052772,
+        "pos_by_hop": {
+          "12": {
+            "acc_mean": 0.05,
+            "correct": 4,
+            "loss_mean": 4.943815159803489,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 2.3657818734645844,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.010176485346164554,
+            "n": 80
+          }
+        }
+      }
+    },
+    "fixed": {
+      "fixed_T6_unroll": {
+        "T": 6,
+        "adaptive_halt": false,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 1.0,
+            "correct": 240,
+            "loss_mean": 0.0062822754659767575,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 0.0125,
+            "correct": 1,
+            "loss_mean": 5.321687492786441,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 2.8907047688961027,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 4.695063945651055,
+            "n": 80
+          }
+        },
+        "discrete_T": true,
+        "hard_neg_acc": 1.0,
+        "hard_neg_n": 240,
+        "mean_halt_step": 6.0,
+        "mean_ponder": 6.0,
+        "n": 480,
+        "overall_acc": 0.5020833333333333,
+        "overall_loss": 2.1543838389552548,
+        "pos_by_hop": {
+          "12": {
+            "acc_mean": 0.0125,
+            "correct": 1,
+            "loss_mean": 5.321687492786441,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 2.8907047688961027,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 4.695063945651055,
+            "n": 80
+          }
+        }
+      }
+    },
+    "mask_leakage": {
+      "algebraic_hard_neg_target": 1.0,
+      "algebraically_perfect": true,
+      "explanation": "Stalk-local potentials (stalk@s, probe@t, intermediates=0) + adjacency mask + discrete T. Unreachable (s,t) cannot receive source-seeded signal along edges. Hard-neg acc=1.0 is consistent with that algebra.",
+      "meets_prereg_hard_neg": true,
+      "observed_hard_neg_acc": 1.0,
+      "prereg_hard_neg_target": 0.98,
+      "science_open": false
+    },
+    "recover_K_via_unroll": {
+      "12": {
+        "T_unroll": 12,
+        "hard_neg_acc": 1.0,
+        "hop_acc": 1.0,
+        "hop_n": 80,
+        "overall_acc": 0.8333333333333334
+      },
+      "16": {
+        "T_unroll": 16,
+        "hard_neg_acc": 1.0,
+        "hop_acc": 0.925,
+        "hop_n": 80,
+        "overall_acc": 0.9770833333333333
+      },
+      "8": {
+        "T_unroll": 8,
+        "hard_neg_acc": 1.0,
+        "hop_acc": 1.0,
+        "hop_n": 80,
+        "overall_acc": 0.675
+      }
+    }
+  },
+  "prereg": {
+    "K16_at_T16_ge": 0.8,
+    "K16_ok": true,
+    "fail_closed": false,
+    "hard_neg_at_T16_ge": 0.98,
+    "hard_neg_ok": true,
+    "note": "Report honestly if miss. science_open=false regardless.",
+    "observed_K16_T16": 0.925,
+    "observed_hard_neg_T16": 1.0,
+    "pass": true
+  },
+  "run_id": "fractal-stalk-gate1-ce91d0d032",
+  "science_open": false,
+  "train": {
+    "T": 6,
+    "adaptive_halt": false,
+    "arm": "fractal-stalk-T6-d64-mlp10",
+    "best_epoch": 29,
+    "best_val_acc": 0.985,
+    "broadcast_c": false,
+    "checkpoint_path": "artifacts/fractal_core_stalk_gate1_best.pt",
+    "d": 64,
+    "epochs": 30,
+    "epochs_run": 30,
+    "grad_clip": 2.5,
+    "grad_clip_sat_rate": 0.017333333333333333,
+    "local_potential": true,
+    "lr": 0.0015,
+    "max_nodes": 64,
+    "mlp_expansion": 10,
+    "param_count": 117506,
+    "param_parity": {
+      "ff_baseline_params": 121218,
+      "fractal_over_ff_ratio": 0.9693774851919682,
+      "fractal_param_count": 117506,
+      "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+      "science_open": false,
+      "tolerance": 0.05,
+      "window": [
+        115157,
+        127279
+      ],
+      "within_5pct": true
+    },
+    "science_open": false,
+    "train_history": [
+      {
+        "epoch": 1,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.720625,
+        "train_loss": 0.5515732938051223,
+        "val_acc": 0.8475,
+        "val_loss": 0.4123878188524395
+      },
+      {
+        "epoch": 2,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.859375,
+        "train_loss": 0.35928657948970794,
+        "val_acc": 0.87,
+        "val_loss": 0.34155271559488026
+      },
+      {
+        "epoch": 3,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.8875,
+        "train_loss": 0.30017409279942514,
+        "val_acc": 0.8775,
+        "val_loss": 0.3235432226443663
+      },
+      {
+        "epoch": 4,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.884375,
+        "train_loss": 0.3092585971951485,
+        "val_acc": 0.8775,
+        "val_loss": 0.3250410429714248
+      },
+      {
+        "epoch": 5,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.89375,
+        "train_loss": 0.2764275279641151,
+        "val_acc": 0.8775,
+        "val_loss": 0.3359100295696408
+      },
+      {
+        "epoch": 6,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.901875,
+        "train_loss": 0.24946412011981012,
+        "val_acc": 0.88,
+        "val_loss": 0.3153948420856614
+      },
+      {
+        "epoch": 7,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.901875,
+        "train_loss": 0.2637332545220852,
+        "val_acc": 0.8875,
+        "val_loss": 0.29053583775879815
+      },
+      {
+        "epoch": 8,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.909375,
+        "train_loss": 0.23889941558241845,
+        "val_acc": 0.8925,
+        "val_loss": 0.2945241772499867
+      },
+      {
+        "epoch": 9,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.9025,
+        "train_loss": 0.24672836422920227,
+        "val_acc": 0.87,
+        "val_loss": 0.2908858378976584
+      },
+      {
+        "epoch": 10,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.9125,
+        "train_loss": 0.21794648170471193,
+        "val_acc": 0.895,
+        "val_loss": 0.2812372284324374
+      },
+      {
+        "epoch": 11,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.916875,
+        "train_loss": 0.21466322347521782,
+        "val_acc": 0.92,
+        "val_loss": 0.24990869191824458
+      },
+      {
+        "epoch": 12,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.923125,
+        "train_loss": 0.20414060816168786,
+        "val_acc": 0.9025,
+        "val_loss": 0.2525163231359329
+      },
+      {
+        "epoch": 13,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.930625,
+        "train_loss": 0.1844377138093114,
+        "val_acc": 0.9075,
+        "val_loss": 0.2909805251623038
+      },
+      {
+        "epoch": 14,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.93625,
+        "train_loss": 0.17620432011783124,
+        "val_acc": 0.9175,
+        "val_loss": 0.25027980643091724
+      },
+      {
+        "epoch": 15,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.93625,
+        "train_loss": 0.16742361456155777,
+        "val_acc": 0.9275,
+        "val_loss": 0.23265912562550511
+      },
+      {
+        "epoch": 16,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.933125,
+        "train_loss": 0.1752332057058811,
+        "val_acc": 0.925,
+        "val_loss": 0.2390513693820685
+      },
+      {
+        "epoch": 17,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.94125,
+        "train_loss": 0.1597921136766672,
+        "val_acc": 0.9125,
+        "val_loss": 0.2592849566944642
+      },
+      {
+        "epoch": 18,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.946875,
+        "train_loss": 0.1501054661348462,
+        "val_acc": 0.9325,
+        "val_loss": 0.15628882078279274
+      },
+      {
+        "epoch": 19,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.961875,
+        "train_loss": 0.11678302001208067,
+        "val_acc": 0.9725,
+        "val_loss": 0.12856751672457903
+      },
+      {
+        "epoch": 20,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.976875,
+        "train_loss": 0.0970298627577722,
+        "val_acc": 0.9725,
+        "val_loss": 0.1308619348052889
+      },
+      {
+        "epoch": 21,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.98125,
+        "train_loss": 0.08129675522446632,
+        "val_acc": 0.9825,
+        "val_loss": 0.09828178307390772
+      },
+      {
+        "epoch": 22,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.97875,
+        "train_loss": 0.0916090521402657,
+        "val_acc": 0.935,
+        "val_loss": 0.2223081077740062
+      },
+      {
+        "epoch": 23,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.98375,
+        "train_loss": 0.07460248868912459,
+        "val_acc": 0.9825,
+        "val_loss": 0.09844110327161616
+      },
+      {
+        "epoch": 24,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.986875,
+        "train_loss": 0.06019040396437049,
+        "val_acc": 0.9825,
+        "val_loss": 0.09486590380329289
+      },
+      {
+        "epoch": 25,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.985,
+        "train_loss": 0.06758988799527288,
+        "val_acc": 0.9825,
+        "val_loss": 0.09140738874964882
+      },
+      {
+        "epoch": 26,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.98375,
+        "train_loss": 0.07482223282568157,
+        "val_acc": 0.9825,
+        "val_loss": 0.10099117467179894
+      },
+      {
+        "epoch": 27,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.983125,
+        "train_loss": 0.06923944328911602,
+        "val_acc": 0.9825,
+        "val_loss": 0.09906276106834412
+      },
+      {
+        "epoch": 28,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.985,
+        "train_loss": 0.06738314537331462,
+        "val_acc": 0.9825,
+        "val_loss": 0.10002563644040492
+      },
+      {
+        "epoch": 29,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.988125,
+        "train_loss": 0.054569852887652814,
+        "val_acc": 0.985,
+        "val_loss": 0.07930250263671042
+      },
+      {
+        "epoch": 30,
+        "mean_halt_step": 6.0,
+        "train_acc": 0.988125,
+        "train_loss": 0.053480557734146714,
+        "val_acc": 0.985,
+        "val_loss": 0.07606844048059429
+      }
+    ],
+    "val_by_hop": {
+      "-1": {
+        "acc_mean": 0.97,
+        "correct": 194,
+        "loss_mean": 0.12843573508987902,
+        "n": 200
+      },
+      "2": {
+        "acc_mean": 1.0,
+        "correct": 40,
+        "loss_mean": 0.01610687330830842,
+        "n": 40
+      },
+      "3": {
+        "acc_mean": 1.0,
+        "correct": 40,
+        "loss_mean": 0.019296478177420796,
+        "n": 40
+      },
+      "4": {
+        "acc_mean": 1.0,
+        "correct": 40,
+        "loss_mean": 0.020334915671264754,
+        "n": 40
+      },
+      "5": {
+        "acc_mean": 1.0,
+        "correct": 40,
+        "loss_mean": 0.03127298867329955,
+        "n": 40
+      },
+      "6": {
+        "acc_mean": 1.0,
+        "correct": 40,
+        "loss_mean": 0.0314944735262543,
+        "n": 40
+      }
+    }
+  }
+}

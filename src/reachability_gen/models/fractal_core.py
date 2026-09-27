@@ -1,52 +1,31 @@
 """FractalCore: adjacency-masked recurrent reachability arm (MEASURE plumbing).
 
-Architecture (documented formulas; Mandelbrot analogy is **aspirational** only —
-evidence comes from metrics artifacts, never from the metaphor)::
+CYCLE_STALK_LOCALIZATION architecture
+-------------------------------------
+Local stalk / probe potentials — **no** global ``(s, t)`` broadcast::
 
-    Mask construction (node-slot sequence)
-    --------------------------------------
-    Positions ``0 .. n-1`` are graph nodes (batch-padded to ``M = max_n``).
-    Additive attention mask ``A`` (float) for directed message-passing::
+    potential[i] = stalk_proj(e_s)   if i == s   (source stalk)
+    potential[i] = probe_proj(e_t)   if i == t   (target probe)
+    potential[i] = 0                 otherwise   (intermediates)
 
-        A[b, i, j] = 0      if j → i is an edge, or i == j (self),
-                            or (optional) either index is a documented
-                            special slot (none by default in v0)
-        A[b, i, j] = -inf   otherwise
+Cycle update (discrete fixed-T unroll only — soft ACT removed)::
 
-    Padded node slots are excluded via ``key_padding_mask`` (True = pad).
-    The locked edge-list string encoding cannot recover adjacency at token
-    indices (tokens are ``N``, ``EDGES``, ``u``, ``,``, ``v``, ``QUERY``, …).
-    FractalCore therefore uses :func:`build_node_slot_batch` to parse
-    ``encoding`` → ``(n, edges, s, t)`` and build node-slot tensors + ``A``.
-    Masks are never fabricated from token co-occurrence.
+    h_t = z_t + τ_t                         # optional cycle embed
+    φ_t = Φ(h_t; Mask=A)                    # masked Pre-LN block
+    z_{t+1} = RMSNorm(z_t + α · (φ_t - z_t) + potential)
 
-    Boundary injection (+c)
-    -----------------------
-    Invariant prompt embedding ``c`` from query ``(s, t)`` (and optional
-    residual mix α)::
+Readout from target slot ``z_T[t]`` after exactly ``T`` cycles.
+Protocol discrete depths: ``T ∈ {6, 8, 12, 16}``.
 
-        h_t = z_t + τ_t                         # optional cycle embed
-        φ_t = Φ(h_t; Mask=A)                    # masked Pre-LN block
-        z_{t+1} = RMSNorm(z_t + α · (φ_t - z_t) + c)
+Mask construction (unchanged)
+-----------------------------
+Positions ``0 .. n-1`` are graph nodes (batch-padded to ``M = max_n``).
+Additive attention mask ``A`` (float) for directed message-passing::
 
-    with α = 0.5 by default (same residual step as Geo bound30).
+    A[b, i, j] = 0      if j → i is an edge, or i == j (self)
+    A[b, i, j] = -inf   otherwise
 
-    Adaptive halting (ACT-style continuous merit gate)
-    --------------------------------------------------
-    After each cycle, from the **target-node** state ``z_t[t]``::
-
-        u_t = σ(W_halt · z_t[target] + b) ∈ (0, 1)
-        p_1 = u_1
-        p_k = u_k · (1 - Σ_{j<k} p_j)     for k < N
-        N = min{k : Σ_{j≤k} u_j ≥ 1-ε} ∪ {T_max}
-        p_N = R_N = 1 - Σ_{j<N} p_j       (remainder)
-
-    Soft train/eval output::
-
-        logits = Σ_k p_k · Head(z_k[target])
-
-    Halt diagnostics (mean halt step, mean ponder, u-trajectory) are exposed
-    in metrics; they are MEASURE plumbing only.
+Masks are built from parsed graph edges only — never from token co-occurrence.
 
 RESEARCH / MEASURE — ``science_open=false`` always. No science OPEN claims.
 """
@@ -57,20 +36,22 @@ from typing import Any, Mapping, Optional, Sequence
 
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 
 from reachability_gen.encode import parse_instance
-from reachability_gen.models.feedforward import TransformerBlock
 from reachability_gen.models.geometric import DEFAULT_RESIDUAL_ALPHA
 from reachability_gen.tokenize import DEFAULT_MAX_NODE_ID
 
-# ACT remainder threshold (Graves-style).
-DEFAULT_HALT_EPS: float = 0.01
+# Discrete protocol depths (Gate0/1). Forward still accepts any T>=1 for tests.
+DISCRETE_T_VALUES: tuple[int, ...] = (6, 8, 12, 16)
+
 # Aspirational metaphor only — never used as evidence.
 MANDELBROT_ANALOGY_NOTE: str = (
     "Mandelbrot-style boundary re-injection is an aspirational analogy for "
-    "the +c residual; scientific claims require metrics artifacts only."
+    "local stalk/probe potentials; scientific claims require metrics artifacts only."
 )
+
+# Default L2 tolerance: stalk-ablation delta at target for disconnected pairs.
+DEFAULT_DISCONNECT_LEAK_ATOL: float = 1e-3
 
 
 def build_adjacency_attn_mask(
@@ -237,17 +218,18 @@ class MaskedTransformerBlock(nn.Module):
 
 
 class FractalCore(nn.Module):
-    """Weight-tied masked recurrent core with +c boundary and ACT halt.
+    """Weight-tied masked recurrent core with **local** stalk/probe potentials.
+
+    Soft ACT removed. Discrete fixed-T unroll only. No global ``(s,t)``
+    broadcast across node slots.
 
     Parameters
     ----------
     d, T, n_heads, mlp_expansion :
-        Width / max cycles / heads / MLP expansion (default mlp×10 for
+        Width / cycles / heads / MLP expansion (default mlp×10 for
         parity with bound30 recurrent arms vs FF ~121218).
     max_nodes :
         Node-slot capacity (pad length). Must cover dataset ``n``.
-    halt_eps :
-        ACT remainder threshold ε.
     residual_alpha :
         Outer residual step α (default 0.5).
     """
@@ -262,12 +244,15 @@ class FractalCore(nn.Module):
         max_nodes: int = DEFAULT_MAX_NODE_ID,
         max_T: Optional[int] = None,
         dropout: float = 0.0,
-        halt_eps: float = DEFAULT_HALT_EPS,
         residual_alpha: float = DEFAULT_RESIDUAL_ALPHA,
         use_tau: bool = True,
         apply_cycle_rmsnorm: bool = True,
+        # Legacy kwargs accepted then ignored (stalk localization kill-list).
+        halt_eps: float = 0.0,
+        adaptive_halt: bool = False,
     ) -> None:
         super().__init__()
+        del halt_eps, adaptive_halt  # soft ACT stripped
         if T < 1:
             raise ValueError(f"T must be >= 1, got {T}")
         if d < 1:
@@ -279,8 +264,7 @@ class FractalCore(nn.Module):
         self.n_heads = int(n_heads)
         self.mlp_expansion = int(mlp_expansion)
         self.max_nodes = int(max_nodes)
-        self.max_T = int(max_T) if max_T is not None else max(self.T, 16)
-        self.halt_eps = float(halt_eps)
+        self.max_T = int(max_T) if max_T is not None else max(self.T, max(DISCRETE_T_VALUES))
         self.residual_alpha = float(residual_alpha)
         self.use_tau = bool(use_tau)
         self.apply_cycle_rmsnorm = bool(apply_cycle_rmsnorm)
@@ -292,8 +276,9 @@ class FractalCore(nn.Module):
         self.pos_emb = nn.Embedding(self.max_nodes, d)
         self.src_emb = nn.Parameter(torch.zeros(d))
         self.tgt_emb = nn.Parameter(torch.zeros(d))
-        # Boundary prompt c from (s, t) node embeddings.
-        self.c_proj = nn.Linear(2 * d, d)
+        # Local potentials: stalk at s, probe at t — NOT broadcast c(s,t).
+        self.stalk_proj = nn.Linear(d, d)
+        self.probe_proj = nn.Linear(d, d)
         self.phi = MaskedTransformerBlock(
             d, n_heads, mlp_expansion=mlp_expansion, dropout=dropout
         )
@@ -304,12 +289,16 @@ class FractalCore(nn.Module):
         self.cycle_rmsnorm = nn.RMSNorm(d) if apply_cycle_rmsnorm else None
         self.ln_f = nn.LayerNorm(d)
         self.head = nn.Linear(d, 2)
-        self.halt_gate = nn.Linear(d, 1)
         self._init_specials()
 
     def _init_specials(self) -> None:
         nn.init.normal_(self.src_emb, std=0.02)
         nn.init.normal_(self.tgt_emb, std=0.02)
+        # Near-identity local potentials so early cycles stay stable.
+        nn.init.eye_(self.stalk_proj.weight)
+        nn.init.zeros_(self.stalk_proj.bias)
+        nn.init.eye_(self.probe_proj.weight)
+        nn.init.zeros_(self.probe_proj.bias)
 
     def _gather_node(
         self, z: torch.Tensor, idx: torch.Tensor
@@ -318,17 +307,30 @@ class FractalCore(nn.Module):
         bsz = z.shape[0]
         return z[torch.arange(bsz, device=z.device), idx]
 
-    def _build_c(
+    def _local_potential(
         self,
         node_ids: torch.Tensor,
         s_idx: torch.Tensor,
         t_idx: torch.Tensor,
+        *,
+        zero_stalk: bool = False,
+        zero_probe: bool = False,
     ) -> torch.Tensor:
-        """Invariant prompt ``c`` [B, 1, d] from (s, t) embeddings."""
-        s_e = self.node_emb(s_idx.clamp(0, self.max_nodes - 1))
-        t_e = self.node_emb(t_idx.clamp(0, self.max_nodes - 1))
-        c = self.c_proj(torch.cat([s_e, t_e], dim=-1))  # [B, d]
-        return c.unsqueeze(1)
+        """Build ``[B, M, d]`` potential: stalk@s, probe@t, else 0."""
+        bsz, mlen = node_ids.shape
+        device = node_ids.device
+        dtype = self.stalk_proj.weight.dtype
+        pot = torch.zeros(bsz, mlen, self.d, device=device, dtype=dtype)
+        batch_ix = torch.arange(bsz, device=device)
+        s_ids = s_idx.clamp(0, self.max_nodes - 1)
+        t_ids = t_idx.clamp(0, self.max_nodes - 1)
+        if not zero_stalk:
+            stalk = self.stalk_proj(self.node_emb(s_ids))  # [B, d]
+            pot[batch_ix, s_idx] = stalk
+        if not zero_probe:
+            probe = self.probe_proj(self.node_emb(t_ids))  # [B, d]
+            pot[batch_ix, t_idx] = pot[batch_ix, t_idx] + probe
+        return pot
 
     def _initial_state(
         self,
@@ -336,8 +338,8 @@ class FractalCore(nn.Module):
         node_mask: torch.Tensor,
         s_idx: torch.Tensor,
         t_idx: torch.Tensor,
-    ) -> tuple[torch.Tensor, torch.Tensor]:
-        """z_0 and broadcast prompt c."""
+    ) -> torch.Tensor:
+        """z_0 with role marks at s/t only (no broadcast c)."""
         bsz, mlen = node_ids.shape
         if mlen > self.max_nodes:
             raise ValueError(
@@ -345,28 +347,24 @@ class FractalCore(nn.Module):
             )
         device = node_ids.device
         pos = torch.arange(mlen, device=device).unsqueeze(0).expand(bsz, -1)
-        # Clamp pad slots to 0 for embedding lookup; mask zeros them out later.
         ids_clamped = node_ids.clamp(0, self.max_nodes - 1)
         z = self.node_emb(ids_clamped) + self.pos_emb(pos)
-        # Mark source / target nodes (additive role features).
         batch_ix = torch.arange(bsz, device=device)
         z = z.clone()
         z[batch_ix, s_idx] = z[batch_ix, s_idx] + self.src_emb
         z[batch_ix, t_idx] = z[batch_ix, t_idx] + self.tgt_emb
-        c = self._build_c(node_ids, s_idx, t_idx)
         if self.cycle_rmsnorm is not None:
             z = self.cycle_rmsnorm(z)
-        # Zero pad slots for cleanliness.
         z = z * node_mask.unsqueeze(-1).to(dtype=z.dtype)
-        return z, c
+        return z
 
     def _cycle_update(
         self,
         z: torch.Tensor,
-        c: torch.Tensor,
+        potential: torch.Tensor,
         *,
         attn_mask: torch.Tensor,
-        key_padding_mask: torch.Tensor,
+        key_padding_mask: Optional[torch.Tensor],
         t: int,
     ) -> torch.Tensor:
         device = z.device
@@ -380,7 +378,7 @@ class FractalCore(nn.Module):
         phi_out = self.phi(
             h, attn_mask=attn_mask, key_padding_mask=key_padding_mask
         )
-        z_new = z + self.residual_alpha * (phi_out - z) + c
+        z_new = z + self.residual_alpha * (phi_out - z) + potential
         if self.cycle_rmsnorm is not None:
             z_new = self.cycle_rmsnorm(z_new)
         return z_new
@@ -396,16 +394,20 @@ class FractalCore(nn.Module):
         return_trajectory: bool = False,
         return_halt: bool = False,
         T: Optional[int] = None,
-        adaptive_halt: bool = True,
+        adaptive_halt: bool = False,  # ignored; soft ACT stripped
+        zero_stalk: bool = False,
+        zero_probe: bool = False,
+        return_states: bool = False,
     ) -> tuple[torch.Tensor, Optional[list[torch.Tensor]], Optional[dict[str, Any]]]:
-        """Forward with optional ACT soft halt.
+        """Discrete fixed-T forward (no soft ACT).
 
         Returns
         -------
-        logits, trajectory, halt_info
-            ``logits``: ``[B, 2]``. Trajectory is list of target-pooled
-            ``[B, d]`` states when requested. ``halt_info`` holds diagnostics.
+        logits, trajectory, info
+            ``logits``: ``[B, 2]`` from final target state. Trajectory is
+            list of target-pooled ``[B, d]`` when requested.
         """
+        del adaptive_halt  # stripped
         if node_ids.dim() != 2:
             raise ValueError(f"node_ids must be [B, M], got {tuple(node_ids.shape)}")
         cycles = int(self.T if T is None else T)
@@ -414,7 +416,10 @@ class FractalCore(nn.Module):
         if self.use_tau and cycles > self.max_T:
             raise ValueError(f"T={cycles} exceeds tau table max_T={self.max_T}")
 
-        z, c = self._initial_state(node_ids, node_mask, s_idx, t_idx)
+        z = self._initial_state(node_ids, node_mask, s_idx, t_idx)
+        potential = self._local_potential(
+            node_ids, s_idx, t_idx, zero_stalk=zero_stalk, zero_probe=zero_probe
+        )
         # Fold pad into additive attn_mask (float) so MHA sees one mask type.
         key_padding_mask = node_mask == 0  # [B, M] True=pad
         neg = torch.finfo(attn_mask.dtype).min / 2
@@ -427,88 +432,50 @@ class FractalCore(nn.Module):
         if return_trajectory:
             trajectory.append(self._gather_node(z, t_idx))
 
-        # Soft ACT accumulators
-        bsz = node_ids.shape[0]
-        device = node_ids.device
-        halt_still = torch.ones(bsz, device=device, dtype=z.dtype)
-        probs: list[torch.Tensor] = []
-        u_list: list[torch.Tensor] = []
-        logits_acc = torch.zeros(bsz, 2, device=device, dtype=z.dtype)
-        cum_u = torch.zeros(bsz, device=device, dtype=z.dtype)
-        halt_step = torch.full(
-            (bsz,), float(cycles), device=device, dtype=z.dtype
-        )
-
+        final_states: Optional[torch.Tensor] = None
         for t in range(cycles):
             z = self._cycle_update(
                 z,
-                c,
+                potential,
                 attn_mask=attn_mask,
                 key_padding_mask=key_padding_mask_arg,
                 t=t,
             )
             z = z * node_mask.unsqueeze(-1).to(dtype=z.dtype)
-            tgt = self._gather_node(self.ln_f(z), t_idx)  # [B, d]
-            step_logits = self.head(tgt)  # [B, 2]
-            u_t = torch.sigmoid(self.halt_gate(tgt)).squeeze(-1)  # [B]
-            u_list.append(u_t)
-
-            if adaptive_halt:
-                # p_t = u_t * remaining mass (halt_still)
-                p_t = u_t * halt_still
-                # If last step, dump remainder into p_T
-                is_last = t == cycles - 1
-                if is_last:
-                    p_t = halt_still
-                probs.append(p_t)
-                logits_acc = logits_acc + p_t.unsqueeze(-1) * step_logits
-                cum_u = cum_u + u_t
-                # Mark first time cum_u >= 1-eps (for diagnostics).
-                newly = (cum_u >= 1.0 - self.halt_eps) & (halt_step >= float(cycles))
-                halt_step = torch.where(
-                    newly, torch.full_like(halt_step, float(t + 1)), halt_step
-                )
-                if not is_last:
-                    halt_still = halt_still - p_t
-                    # Numerical floor
-                    halt_still = halt_still.clamp(min=0.0)
-            else:
-                # Fixed unroll: final step only (like Geo).
-                logits_acc = step_logits
-                probs.append(torch.ones(bsz, device=device, dtype=z.dtype))
-
             if return_trajectory:
-                trajectory.append(tgt)
+                trajectory.append(self._gather_node(self.ln_f(z), t_idx))
 
-        if not adaptive_halt:
-            # already set to last step logits
-            pass
+        final_states = z
+        tgt = self._gather_node(self.ln_f(z), t_idx)
+        logits = self.head(tgt)
 
-        halt_info: Optional[dict[str, Any]] = None
-        if return_halt or adaptive_halt:
-            u_stack = torch.stack(u_list, dim=1) if u_list else torch.zeros(bsz, 0)
-            p_stack = torch.stack(probs, dim=1) if probs else torch.zeros(bsz, 0)
-            ponder = (p_stack * torch.arange(1, p_stack.shape[1] + 1, device=device).float()).sum(dim=1) if p_stack.numel() else torch.zeros(bsz)
-            halt_info = {
-                "u_trajectory": u_stack.detach(),
-                "p_trajectory": p_stack.detach(),
-                "halt_step": halt_step.detach(),
-                "mean_halt_step": float(halt_step.mean().item()) if bsz else float("nan"),
-                "mean_ponder": float(ponder.mean().item()) if bsz else float("nan"),
-                "mean_u_final": float(u_stack[:, -1].mean().item()) if u_stack.numel() else float("nan"),
-                "halt_eps": self.halt_eps,
-                "adaptive_halt": bool(adaptive_halt),
+        info: Optional[dict[str, Any]] = None
+        if return_halt or return_states:
+            bsz = node_ids.shape[0]
+            info = {
+                "adaptive_halt": False,
                 "T": cycles,
+                "discrete_T": True,
+                "mean_halt_step": float(cycles),
+                "mean_ponder": float(cycles),  # fixed unroll: ponder = T
+                "local_potential": True,
+                "broadcast_c": False,
                 "mandelbrot_analogy": MANDELBROT_ANALOGY_NOTE,
+                "halt_step": torch.full(
+                    (bsz,), float(cycles), device=node_ids.device, dtype=z.dtype
+                ),
             }
+            if return_states and final_states is not None:
+                info["final_states"] = final_states.detach()
+                info["target_hidden"] = tgt.detach()
 
         if return_trajectory and return_halt:
-            return logits_acc, trajectory, halt_info
+            return logits, trajectory, info
         if return_trajectory:
-            return logits_acc, trajectory, halt_info
+            return logits, trajectory, info
         if return_halt:
-            return logits_acc, None, halt_info
-        return logits_acc, None, halt_info
+            return logits, None, info
+        return logits, None, info
 
     def forward_from_examples(
         self,
@@ -518,7 +485,7 @@ class FractalCore(nn.Module):
         return_trajectory: bool = False,
         return_halt: bool = False,
         T: Optional[int] = None,
-        adaptive_halt: bool = True,
+        adaptive_halt: bool = False,
     ) -> tuple[torch.Tensor, Optional[list[torch.Tensor]], Optional[dict[str, Any]]]:
         """Convenience: encode examples then forward."""
         batch = build_node_slot_batch(
@@ -533,15 +500,99 @@ class FractalCore(nn.Module):
             return_trajectory=return_trajectory,
             return_halt=return_halt,
             T=T,
-            adaptive_halt=adaptive_halt,
+            adaptive_halt=False,
         )
+
+    @torch.no_grad()
+    def disconnected_target_leak(
+        self,
+        examples: Sequence[Mapping[str, Any]],
+        *,
+        T_values: Sequence[int] = DISCRETE_T_VALUES,
+        max_n: Optional[int] = None,
+        atol: float = DEFAULT_DISCONNECT_LEAK_ATOL,
+    ) -> dict[str, Any]:
+        """Stalk-ablation leak at target for y=0 (disconnected) pairs.
+
+        For each ``T``, compare ``||h_t(full) - h_t(zero_stalk)||_2`` on
+        hard-neg examples. Under local potentials + adjacency mask, source
+        stalk cannot reach unreachable ``t``, so the delta should stay
+        ~0 (within ``atol``) across ``T``.
+        """
+        negs = [ex for ex in examples if int(ex.get("y", 1)) == 0]
+        if not negs:
+            return {
+                "n_neg": 0,
+                "ok": False,
+                "reason": "no y=0 examples",
+                "atol": atol,
+                "science_open": False,
+            }
+        batch = build_node_slot_batch(
+            negs, max_n=max_n or self.max_nodes, device=next(self.parameters()).device
+        )
+        was_training = self.training
+        self.eval()
+        by_T: dict[str, Any] = {}
+        all_ok = True
+        for T in T_values:
+            _, _, info_full = self.forward(
+                batch["node_ids"],
+                batch["node_mask"],
+                batch["attn_mask"],
+                batch["s_idx"],
+                batch["t_idx"],
+                T=int(T),
+                return_halt=True,
+                return_states=True,
+                zero_stalk=False,
+            )
+            _, _, info_abl = self.forward(
+                batch["node_ids"],
+                batch["node_mask"],
+                batch["attn_mask"],
+                batch["s_idx"],
+                batch["t_idx"],
+                T=int(T),
+                return_halt=True,
+                return_states=True,
+                zero_stalk=True,
+            )
+            assert info_full is not None and info_abl is not None
+            h_full = info_full["target_hidden"]
+            h_abl = info_abl["target_hidden"]
+            delta = (h_full - h_abl).norm(dim=-1)  # [B]
+            mean_l2 = float(delta.mean().item())
+            max_l2 = float(delta.max().item())
+            ok_T = max_l2 <= atol
+            all_ok = all_ok and ok_T
+            by_T[str(T)] = {
+                "mean_l2": mean_l2,
+                "max_l2": max_l2,
+                "n": int(delta.numel()),
+                "ok": bool(ok_T),
+            }
+        if was_training:
+            self.train()
+        return {
+            "n_neg": len(negs),
+            "atol": atol,
+            "T_values": list(T_values),
+            "by_T": by_T,
+            "ok": bool(all_ok),
+            "note": (
+                "Stalk-ablation L2 at target for disconnected pairs; "
+                f"expect max_l2 <= {atol} across T (local potential, no c broadcast)."
+            ),
+            "science_open": False,
+        }
 
     def param_count(self) -> int:
         """Total trainable params (matches rematch accounting vs FF ~121218)."""
         return int(sum(p.numel() for p in self.parameters() if p.requires_grad))
 
     def non_embedding_param_count(self) -> int:
-        """Exclude node/pos embeddings (tau + halt + c_proj counted)."""
+        """Exclude node/pos embeddings (tau + stalk/probe counted)."""
         emb_ids = {id(p) for p in self.node_emb.parameters()}
         emb_ids |= {id(p) for p in self.pos_emb.parameters()}
         total = 0
@@ -586,8 +637,14 @@ def _verify_param_parity(
     return section
 
 
+# Back-compat alias (soft ACT removed; value unused).
+DEFAULT_HALT_EPS: float = 0.0
+
+
 __all__ = [
+    "DEFAULT_DISCONNECT_LEAK_ATOL",
     "DEFAULT_HALT_EPS",
+    "DISCRETE_T_VALUES",
     "MANDELBROT_ANALOGY_NOTE",
     "FractalCore",
     "MaskedTransformerBlock",

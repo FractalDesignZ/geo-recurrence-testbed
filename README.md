@@ -346,6 +346,20 @@ prereg STOP/OPEN-candidate framing; hard-neg collapse still primary).
 No retraining. Band is fail-closed: do not silently widen past 70.
 
 
+## Cycle: STALK_LOCALIZATION (MEASURE)
+
+Follow-on to FRACTAL_CORE_GENESIS. Kills global `(s,t)` broadcast `+c` and soft
+ACT. Local potentials: stalk at source slot `s`, probe at target slot `t`,
+intermediates `0`. Discrete `T ∈ {6,8,12,16}` only. Param parity ±5% of FF
+~121218. `science_open=false`.
+
+```bash
+python -m reachability_gen.overfit_fractal --balanced --out artifacts/fractal_core_stalk_overfit.json
+python -m reachability_gen.run_fractal_core_gate1  # writes artifacts/fractal_core_stalk_gate1_matched_ood.json
+```
+
+Prereg (report honestly): hard-neg ≥0.98 AND K16≥0.80 at T=16 on covariate-matched OOD.
+
 ## Cycle: FRACTAL_CORE_GENESIS (MEASURE)
 
 Branch: `cycle/fractal-core-genesis`. Adds **FractalCore** — adjacency-masked

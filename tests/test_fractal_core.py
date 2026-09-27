@@ -1,4 +1,4 @@
-"""Tests for FractalCore mask / parity / overfit Gate0 (MEASURE)."""
+"""Tests for FractalCore mask / parity / stalk-local Gate0 (MEASURE)."""
 
 from __future__ import annotations
 
@@ -9,6 +9,7 @@ import pytest
 torch = pytest.importorskip("torch")
 
 from reachability_gen.models.fractal_core import (  # noqa: E402
+    DISCRETE_T_VALUES,
     FractalCore,
     build_adjacency_attn_mask,
     build_node_slot_batch,
@@ -49,17 +50,21 @@ def test_node_slot_batch_recovers_edges_from_encoding():
     assert batch["attn_mask"][0, 1, 0].item() == 0.0
 
 
-def test_fractal_forward_shapes_halt_and_parity():
+def test_fractal_forward_shapes_discrete_and_parity():
     model = FractalCore(d=64, T=4, mlp_expansion=10, max_nodes=64, max_T=16)
     parity = _verify_param_parity(model.param_count(), ff_baseline=FF_BASELINE_PARAMS)
     assert parity["within_5pct"] is True
     assert parity["science_open"] is False
+    # no halt_gate / no c_proj; has local stalk/probe
+    assert not hasattr(model, "halt_gate") or model.halt_gate is None
+    assert hasattr(model, "stalk_proj") and hasattr(model, "probe_proj")
+    assert not hasattr(model, "c_proj")
     ex = [
         {"encoding": "N 5 EDGES 0,1 1,2 2,3 3,4 QUERY 0 4", "y": 1},
         {"encoding": "N 5 EDGES 0,1 2,3 QUERY 0 4", "y": 0},
     ]
     batch = build_node_slot_batch(ex, max_n=64)
-    logits, traj, halt = model(
+    logits, traj, info = model(
         batch["node_ids"],
         batch["node_mask"],
         batch["attn_mask"],
@@ -67,15 +72,27 @@ def test_fractal_forward_shapes_halt_and_parity():
         batch["t_idx"],
         return_trajectory=True,
         return_halt=True,
-        adaptive_halt=True,
     )
     assert tuple(logits.shape) == (2, 2)
     assert traj is not None and len(traj) == 5  # z0 + 4 cycles
-    assert halt is not None
-    assert "mean_halt_step" in halt and "mean_ponder" in halt
-    # probs should sum ~1
-    p = halt["p_trajectory"]
-    assert torch.allclose(p.sum(dim=1), torch.ones(2), atol=1e-4)
+    assert info is not None
+    assert info["adaptive_halt"] is False
+    assert info["broadcast_c"] is False
+    assert info["local_potential"] is True
+    assert info["mean_halt_step"] == 4.0
+
+
+def test_disconnected_target_leak_near_zero():
+    model = FractalCore(d=64, T=6, mlp_expansion=10, max_nodes=64, max_T=16)
+    ex = [
+        {"encoding": "N 5 EDGES 0,1 2,3 QUERY 0 4", "y": 0},
+        {"encoding": "N 4 EDGES 0,1 QUERY 0 3", "y": 0},
+        {"encoding": "N 6 EDGES 0,1 1,2 3,4 QUERY 0 5", "y": 0},
+    ]
+    leak = model.disconnected_target_leak(ex, T_values=DISCRETE_T_VALUES, atol=1e-3)
+    assert leak["ok"] is True
+    for T, row in leak["by_T"].items():
+        assert row["max_l2"] <= 1e-3, (T, row)
 
 
 def test_fractal_arm_attach_and_forward():
@@ -112,9 +129,9 @@ def test_fractal_overfit_gate0_balanced():
         require_per_class=True,
         mlp_expansion=10,
         max_nodes=64,
-        adaptive_halt=True,
     )
     assert result["ok"] is True
     assert result["final_acc"] >= 1.0 - 1e-9
     assert result["final_loss"] < 1e-3
     assert result["science_open"] is False
+    assert result.get("disconnect_leak", {}).get("ok") is True
