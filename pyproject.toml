@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reachability-gen"
+version = "0.1.0"
+description = "RESEARCH scaffold: directed-graph reachability dataset generator + FLOP/arm stubs + optional torch FF/Geo/Loop training plumbing (no science OPEN)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+torch = ["torch"]
+
+[project.scripts]
+reachability-gen = "reachability_gen.generate:main"
+reachability-overfit-ff = "reachability_gen.overfit_ff:main"
+reachability-overfit-geo = "reachability_gen.overfit_geo:main"
+reachability-train-ff-id = "reachability_gen.train_ff_id:main"
+reachability-id-2k-comparison = "reachability_gen.run_id_2k_comparison:main"
+reachability-id-2k-rematch = "reachability_gen.run_id_2k_rematch:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = [
+    "slow: longer training / overfit checks (deselect with -m 'not slow')",
+]

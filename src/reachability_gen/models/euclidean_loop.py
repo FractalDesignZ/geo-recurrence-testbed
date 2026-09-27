@@ -1,0 +1,60 @@
+"""Real torch Euclidean loop arm: weight-tied Phi(z_t, c) with no τ.
+
+Same architecture as :class:`GeometricRecurrent` but τ disabled / zeroed
+(``use_tau=False``). Used as the Euclidean control in the id_2k rematch.
+
+RESEARCH / MEASURE plumbing only — no science OPEN claims.
+"""
+
+from __future__ import annotations
+
+from typing import Optional
+
+from reachability_gen.models.geometric import (
+    GeometricRecurrent,
+    drift_from_trajectory,
+    trajectory_finite_nonzero,
+)
+
+
+class EuclideanLoop(GeometricRecurrent):
+    """Weight-tied Phi reused T times → logits ``[B, 2]``; no cycle τ.
+
+    Parameters mirror :class:`GeometricRecurrent` except ``use_tau`` is always
+    forced off (any caller-supplied ``use_tau`` is ignored).
+    """
+
+    def __init__(
+        self,
+        vocab_size: int,
+        d: int = 64,
+        T: int = 6,
+        *,
+        n_heads: int = 4,
+        max_len: int = 256,
+        mlp_expansion: int = 4,
+        pad_id: int = 0,
+        dropout: float = 0.0,
+        max_T: Optional[int] = None,
+        use_tau: bool = False,  # accepted for API parity; always forced False
+    ) -> None:
+        del use_tau  # Euclidean loop never uses τ
+        super().__init__(
+            vocab_size,
+            d=d,
+            T=T,
+            n_heads=n_heads,
+            max_len=max_len,
+            mlp_expansion=mlp_expansion,
+            pad_id=pad_id,
+            dropout=dropout,
+            use_tau=False,
+            max_T=max_T,
+        )
+
+
+__all__ = [
+    "EuclideanLoop",
+    "drift_from_trajectory",
+    "trajectory_finite_nonzero",
+]
