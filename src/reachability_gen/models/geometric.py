@@ -3,7 +3,23 @@
 T cycles of one shared transformer block with cycle (tau) embeddings.
 Context ``c`` is the tokenized edge-list encoding (same tokenizer as FF).
 ``forward(..., return_trajectory=True)`` returns ``(logits [B,2], list[z_t])``
-for drift telemetry (delta_t = ||z_{t+1}-z_t||_2).
+for drift telemetry.
+
+Recurrent update (drift-audit)::
+
+    v_t = Phi(h_t) - z_t                # Phi is Pre-LN TransformerBlock
+    z_{t+1} = z_t + α · v_t             # α=0.5 (fixed)
+
+Outer LayerNorm on the residual stream (``z ← LN(z+α·v)``) was tried and
+**blocked learning** for this Pre-LN Phi (val stuck at chance). Per protocol
+option (b) we therefore keep the α-scaled residual without stream LN and
+report **both** raw and LN-normalized drift.
+
+δ_t computation (documented)::
+
+    raw:        δ_t = mean_batch ||z_{t+1} - z_t||_2
+    LN-normed:  δ_t = mean_batch ||LN(z_{t+1}) - LN(z_t)||_2
+                (feature LN applied only for the metric; diameter proxy)
 
 RESEARCH / MEASURE plumbing only — no science OPEN claims.
 """
@@ -14,8 +30,12 @@ from typing import Optional
 
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 from reachability_gen.models.feedforward import TransformerBlock
+
+# Fixed residual step size for outer recurrent update (not learned).
+DEFAULT_RESIDUAL_ALPHA: float = 0.5
 
 
 class GeometricRecurrent(nn.Module):
@@ -41,6 +61,12 @@ class GeometricRecurrent(nn.Module):
         If True, add a learned cycle embedding ``tau_t`` each step.
     max_T :
         Capacity of the tau embedding table (default ``max(T, 16)``).
+    residual_alpha :
+        Outer residual step size α in ``z ← z + α·(Φ-z)`` (default 0.5).
+    apply_cycle_ln :
+        If True, apply outer LayerNorm after each cycle. Default **False**:
+        stream LN blocked learning with this Pre-LN Phi; use LN-normalized
+        drift metrics instead (protocol option b).
     """
 
     def __init__(
@@ -56,6 +82,8 @@ class GeometricRecurrent(nn.Module):
         dropout: float = 0.0,
         use_tau: bool = True,
         max_T: Optional[int] = None,
+        residual_alpha: float = DEFAULT_RESIDUAL_ALPHA,
+        apply_cycle_ln: bool = False,
     ) -> None:
         super().__init__()
         if T < 1:
@@ -73,6 +101,8 @@ class GeometricRecurrent(nn.Module):
         self.mlp_expansion = int(mlp_expansion)
         self.use_tau = bool(use_tau)
         self.max_T = int(max_T) if max_T is not None else max(self.T, 16)
+        self.residual_alpha = float(residual_alpha)
+        self.apply_cycle_ln = bool(apply_cycle_ln)
         if self.T > self.max_T:
             raise ValueError(f"T={self.T} exceeds max_T={self.max_T}")
 
@@ -86,6 +116,8 @@ class GeometricRecurrent(nn.Module):
             self.tau_emb = nn.Embedding(self.max_T, d)
         else:
             self.tau_emb = None  # type: ignore[assignment]
+        # Outer cycle LN keeps residual-stream norms from runaway growth.
+        self.cycle_ln = nn.LayerNorm(d) if self.apply_cycle_ln else None
         self.ln_f = nn.LayerNorm(d)
         self.head = nn.Linear(d, 2)
 
@@ -100,6 +132,20 @@ class GeometricRecurrent(nn.Module):
             denom = mask.sum(dim=1).clamp(min=1.0)
             return (x * mask).sum(dim=1) / denom
         return x.mean(dim=1)
+
+    def _cycle_update(
+        self,
+        z_seq: torch.Tensor,
+        h: torch.Tensor,
+        key_padding_mask: Optional[torch.Tensor],
+    ) -> torch.Tensor:
+        """One outer recurrent step: ``z ← z + α·(Φ(h)-z)`` (+ optional LN)."""
+        phi_out = self.phi(h, key_padding_mask=key_padding_mask)
+        # v_t = Phi(h_t) - z_t; z_{t+1} = LN(z_t + α · v_t)
+        z_new = z_seq + self.residual_alpha * (phi_out - z_seq)
+        if self.cycle_ln is not None:
+            z_new = self.cycle_ln(z_new)
+        return z_new
 
     def forward(
         self,
@@ -144,9 +190,9 @@ class GeometricRecurrent(nn.Module):
 
         device = token_ids.device
         pos = torch.arange(mlen, device=device).unsqueeze(0).expand(bsz, -1)
-        # Context c from tokenized encoding; z_0 := c.
+        # Context c from tokenized encoding; z_0 := c (LN z0 only if cycle_ln on).
         c = self.tok_emb(token_ids) + self.pos_emb(pos)
-        z_seq = c
+        z_seq = self.cycle_ln(c) if self.cycle_ln is not None else c
 
         key_padding_mask: Optional[torch.Tensor] = None
         if attention_mask is not None:
@@ -164,8 +210,7 @@ class GeometricRecurrent(nn.Module):
                 h = z_seq + tau_t.view(1, 1, -1)
             else:
                 h = z_seq
-            # Phi(z_t, c; tau_t): weight-tied block; c is baked into z_0 / residual path.
-            z_seq = self.phi(h, key_padding_mask=key_padding_mask)
+            z_seq = self._cycle_update(z_seq, h, key_padding_mask)
             if return_trajectory:
                 trajectory.append(self._pool(z_seq, attention_mask))
 
@@ -189,10 +234,24 @@ class GeometricRecurrent(nn.Module):
 
 def drift_from_trajectory(
     trajectory: list[torch.Tensor],
+    *,
+    apply_ln: bool = False,
 ) -> list[float]:
     """Compute δ_t = mean_batch ||z_{t+1}-z_t||_2 for consecutive latents.
 
-    Returns a Python list of length ``len(trajectory)-1``.
+    Parameters
+    ----------
+    trajectory :
+        List of ``[B, d]`` pooled states (length T+1 → T drifts).
+    apply_ln :
+        If True, LayerNorm each latent (feature-dim) before differencing.
+        Use when states lack outer cycle LN so raw drift can explode; when
+        cycle LN is already applied this is nearly a no-op (affine re-scale).
+
+    Returns
+    -------
+    list[float]
+        Length ``len(trajectory)-1``.
     """
     if len(trajectory) < 2:
         return []
@@ -200,11 +259,25 @@ def drift_from_trajectory(
     for t in range(len(trajectory) - 1):
         z0 = trajectory[t]
         z1 = trajectory[t + 1]
-        # Per-example L2, then mean over batch.
+        if apply_ln:
+            z0 = F.layer_norm(z0.float(), (z0.shape[-1],))
+            z1 = F.layer_norm(z1.float(), (z1.shape[-1],))
         delta = (z1 - z0).float().reshape(z0.shape[0], -1)
         norms = torch.linalg.vector_norm(delta, ord=2, dim=-1)
         drifts.append(float(norms.mean().item()))
     return drifts
+
+
+def mean_z_norms_from_trajectory(
+    trajectory: list[torch.Tensor],
+) -> list[float]:
+    """Mean over batch of ||z_t||_2 for each cycle index t=0..T."""
+    out: list[float] = []
+    for z in trajectory:
+        flat = z.float().reshape(z.shape[0], -1)
+        norms = torch.linalg.vector_norm(flat, ord=2, dim=-1)
+        out.append(float(norms.mean().item()))
+    return out
 
 
 def trajectory_finite_nonzero(drifts: list[float]) -> tuple[bool, str]:
@@ -222,7 +295,9 @@ def trajectory_finite_nonzero(drifts: list[float]) -> tuple[bool, str]:
 
 
 __all__ = [
+    "DEFAULT_RESIDUAL_ALPHA",
     "GeometricRecurrent",
     "drift_from_trajectory",
+    "mean_z_norms_from_trajectory",
     "trajectory_finite_nonzero",
 ]

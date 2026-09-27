@@ -240,6 +240,31 @@ perturbation_delta / damp regime) and a `param_match` section with
 `within_5pct` for both vs FF.
 
 
+
+
+## ID 2k fixed-30 rematch (MEASURE; no early stop)
+
+Same three arms / exact `data/id_2k.jsonl` / ±5% parity (recurrent **mlp×10**),
+but **epochs=30 locked with NO early stopping**. Still tracks/saves the best
+val-acc checkpoint, then always finishes all 30 epochs.
+
+Drift-audit on recurrent update::
+
+    z_{t+1} = z_t + α · (Φ(h_t) - z_t),  α = 0.5
+
+Outer stream LN (``LN(z+α·v)``) blocked learning with this Pre-LN Phi, so the
+run keeps the α-mix and reports **raw + LN-normalized** δ_t (protocol option
+b), plus mean ``||z_t||₂`` per cycle and grad-clip saturation rate.
+**`science_open=false` always.**
+
+```bash
+python -m reachability_gen.run_id_2k_rematch_fixed30
+# or: reachability-id-2k-rematch-fixed30
+```
+
+Writes `artifacts/id_2k_rematch_fixed30.json`.
+
+
 ## Tests
 
 

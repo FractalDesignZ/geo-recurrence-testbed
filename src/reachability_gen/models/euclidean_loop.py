@@ -2,6 +2,7 @@
 
 Same architecture as :class:`GeometricRecurrent` but τ disabled / zeroed
 (``use_tau=False``). Used as the Euclidean control in the id_2k rematch.
+Inherits residual α=0.5 + outer cycle LN from GeometricRecurrent.
 
 RESEARCH / MEASURE plumbing only — no science OPEN claims.
 """
@@ -11,8 +12,10 @@ from __future__ import annotations
 from typing import Optional
 
 from reachability_gen.models.geometric import (
+    DEFAULT_RESIDUAL_ALPHA,
     GeometricRecurrent,
     drift_from_trajectory,
+    mean_z_norms_from_trajectory,
     trajectory_finite_nonzero,
 )
 
@@ -37,6 +40,8 @@ class EuclideanLoop(GeometricRecurrent):
         dropout: float = 0.0,
         max_T: Optional[int] = None,
         use_tau: bool = False,  # accepted for API parity; always forced False
+        residual_alpha: float = DEFAULT_RESIDUAL_ALPHA,
+        apply_cycle_ln: bool = False,
     ) -> None:
         del use_tau  # Euclidean loop never uses τ
         super().__init__(
@@ -50,11 +55,14 @@ class EuclideanLoop(GeometricRecurrent):
             dropout=dropout,
             use_tau=False,
             max_T=max_T,
+            residual_alpha=residual_alpha,
+            apply_cycle_ln=apply_cycle_ln,
         )
 
 
 __all__ = [
     "EuclideanLoop",
     "drift_from_trajectory",
+    "mean_z_norms_from_trajectory",
     "trajectory_finite_nonzero",
 ]

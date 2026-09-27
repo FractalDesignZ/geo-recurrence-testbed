@@ -37,6 +37,7 @@ class FeedForwardTrainer:
             self.model.parameters(), lr=lr, weight_decay=weight_decay
         )
         self.loss_fn = nn.CrossEntropyLoss()
+        self.last_pre_clip_grad_norm: float = 0.0
 
     def train_step(
         self,
@@ -55,7 +56,10 @@ class FeedForwardTrainer:
         logits, _ = self.model(token_ids, attention_mask)
         loss = self.loss_fn(logits, labels)
         loss.backward()
-        clip_grad_norm_(self.model.parameters(), self.grad_clip)
+        pre_clip = clip_grad_norm_(self.model.parameters(), self.grad_clip)
+        self.last_pre_clip_grad_norm = float(
+            pre_clip.item() if hasattr(pre_clip, "item") else pre_clip
+        )
         self.opt.step()
 
         with torch.no_grad():

@@ -1,7 +1,8 @@
 """AdamW + CE trainer for the Euclidean loop arm (MEASURE plumbing).
 
 Same recipe as GeometricTrainer: AdamW, grad clip 1.0, optional drift
-telemetry (trajectory / terminal_drift / perturbation_delta). No τ.
+telemetry (trajectory / terminal_drift / perturbation_delta / z-norms).
+Exposes ``last_pre_clip_grad_norm`` after each ``train_step``. No τ.
 No science OPEN claims.
 """
 
@@ -18,6 +19,7 @@ from reachability_gen.models.euclidean_loop import EuclideanLoop
 from reachability_gen.models.geometric import (
     GeometricRecurrent,
     drift_from_trajectory,
+    mean_z_norms_from_trajectory,
 )
 
 RecurrentModel = Union[EuclideanLoop, GeometricRecurrent]
@@ -43,6 +45,7 @@ class LoopTrainer:
             self.model.parameters(), lr=lr, weight_decay=weight_decay
         )
         self.loss_fn = nn.CrossEntropyLoss()
+        self.last_pre_clip_grad_norm: float = 0.0
 
     def train_step(
         self,
@@ -50,7 +53,10 @@ class LoopTrainer:
         labels: torch.Tensor,
         attention_mask: Optional[torch.Tensor] = None,
     ) -> tuple[float, float]:
-        """One AdamW step. Returns ``(loss, accuracy)`` as Python floats."""
+        """One AdamW step. Returns ``(loss, accuracy)`` as Python floats.
+
+        Also sets ``self.last_pre_clip_grad_norm`` (total grad L2 before clip).
+        """
         self.model.train()
         token_ids = token_ids.to(self.device)
         labels = labels.to(self.device)
@@ -61,7 +67,10 @@ class LoopTrainer:
         logits, _ = self.model(token_ids, attention_mask)
         loss = self.loss_fn(logits, labels)
         loss.backward()
-        clip_grad_norm_(self.model.parameters(), self.grad_clip)
+        pre_clip = clip_grad_norm_(self.model.parameters(), self.grad_clip)
+        self.last_pre_clip_grad_norm = float(
+            pre_clip.item() if hasattr(pre_clip, "item") else pre_clip
+        )
         self.opt.step()
 
         with torch.no_grad():
@@ -103,15 +112,18 @@ class LoopTrainer:
         *,
         eps_sigma: Optional[float] = None,
     ) -> dict:
-        """Compute drift_trajectory, terminal_drift, optional perturbation_delta."""
+        """Compute drift (raw + LN-normalized), terminal, z-norms, perturbation."""
         self.model.eval()
         token_ids = token_ids.to(self.device)
         if attention_mask is not None:
             attention_mask = attention_mask.to(self.device)
         _, traj = self.model(token_ids, attention_mask, return_trajectory=True)
         traj_list = list(traj or [])
-        drifts = drift_from_trajectory(traj_list)
-        terminal = drifts[-1] if drifts else None
+        drifts_raw = drift_from_trajectory(traj_list, apply_ln=False)
+        drifts_ln = drift_from_trajectory(traj_list, apply_ln=True)
+        z_norms = mean_z_norms_from_trajectory(traj_list)
+        terminal = drifts_raw[-1] if drifts_raw else None
+        terminal_ln = drifts_ln[-1] if drifts_ln else None
         perturbation_delta = None
         if eps_sigma is not None and traj_list:
             emb = self.model.tok_emb(token_ids)
@@ -120,6 +132,8 @@ class LoopTrainer:
                 token_ids.shape[1], device=token_ids.device
             ).unsqueeze(0).expand(token_ids.shape[0], -1)
             noisy = emb + noise + self.model.pos_emb(pos)
+            if getattr(self.model, "cycle_ln", None) is not None:
+                noisy = self.model.cycle_ln(noisy)
             clean_z0 = traj_list[0]
             if attention_mask is not None:
                 mask = attention_mask.to(dtype=noisy.dtype).unsqueeze(-1)
@@ -131,10 +145,21 @@ class LoopTrainer:
             norms = torch.linalg.vector_norm(delta, ord=2, dim=-1)
             perturbation_delta = float(norms.mean().item())
         return {
-            "drift_trajectory": drifts,
+            "drift_trajectory": drifts_raw,
+            "drift_trajectory_ln": drifts_ln,
             "terminal_drift": terminal,
+            "terminal_drift_ln": terminal_ln,
+            "mean_z_norm_by_t": z_norms,
             "perturbation_delta": perturbation_delta,
             "trajectory_len": len(traj_list),
+            "residual_alpha": float(getattr(self.model, "residual_alpha", 0.5)),
+            "apply_cycle_ln": bool(getattr(self.model, "apply_cycle_ln", False)),
+            "drift_formula": (
+                "δ_t = mean_batch ||z_{t+1}-z_t||_2 on pooled latents; "
+                "z_{t+1}=LN(z_t+α·(Φ(h_t)-z_t)) with α="
+                f"{getattr(self.model, 'residual_alpha', 0.5)}; "
+                "LN-normalized drift reapplies LayerNorm before differencing"
+            ),
         }
 
 

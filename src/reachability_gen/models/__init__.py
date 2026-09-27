@@ -13,14 +13,18 @@ except ImportError:  # pragma: no cover - torch optional
 
 try:
     from reachability_gen.models.geometric import (
+        DEFAULT_RESIDUAL_ALPHA,
         GeometricRecurrent,
         drift_from_trajectory,
+        mean_z_norms_from_trajectory,
         trajectory_finite_nonzero,
     )
 
     __all__ += [
+        "DEFAULT_RESIDUAL_ALPHA",
         "GeometricRecurrent",
         "drift_from_trajectory",
+        "mean_z_norms_from_trajectory",
         "trajectory_finite_nonzero",
     ]
 except ImportError:  # pragma: no cover - torch optional
