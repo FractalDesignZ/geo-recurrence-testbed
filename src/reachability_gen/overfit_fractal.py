@@ -1,10 +1,11 @@
-"""Overfit sanity CLI for FractalCore (Gate 0 — MEASURE plumbing).
+"""Overfit sanity CLI for FractalCore stalk-local (Gate 0 — MEASURE).
 
 Balanced gate (shared helpers with FF/Geo):
   - exactly 16 y=1 with hop_distance K in [2, 6]
   - exactly 16 y=0 hard negatives (deg(s)>=1, deg(t)>=1, unreachable)
   - Pass: acc=1.0 AND CE loss < 1e-3 within <=100 steps
-  - Fail-closed if miss
+  - Assert disconnected stalk-ablation leak at t ~0 across T
+    (atol=DEFAULT_DISCONNECT_LEAK_ATOL); fail-closed if miss
 
 No science OPEN claims.
 
@@ -23,7 +24,8 @@ from typing import Any, Optional
 
 from reachability_gen.adr_invariants import ID_HOP_MAX
 from reachability_gen.models.fractal_core import (
-    DEFAULT_HALT_EPS,
+    DEFAULT_DISCONNECT_LEAK_ATOL,
+    DISCRETE_T_VALUES,
     _verify_param_parity,
 )
 from reachability_gen.overfit_ff import (
@@ -86,11 +88,6 @@ def build_parser() -> argparse.ArgumentParser:
         default=DEFAULT_MAX_NODE_ID,
         help=f"Node-slot capacity (default {DEFAULT_MAX_NODE_ID}).",
     )
-    p.add_argument(
-        "--fixed-halt",
-        action="store_true",
-        help="Disable ACT soft halt (fixed T unroll only).",
-    )
     bal = p.add_mutually_exclusive_group()
     bal.add_argument(
         "--balanced",
@@ -111,7 +108,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--out",
         type=Path,
         default=None,
-        help="Optional JSON summary path (e.g. artifacts/fractal_core_overfit.json).",
+        help="Optional JSON summary path (e.g. artifacts/fractal_core_stalk_overfit.json).",
     )
     return p
 
@@ -129,7 +126,8 @@ def run_overfit_fractal(
     require_per_class: bool = True,
     mlp_expansion: int = 10,
     max_nodes: int = DEFAULT_MAX_NODE_ID,
-    adaptive_halt: bool = True,
+    leak_atol: float = DEFAULT_DISCONNECT_LEAK_ATOL,
+    adaptive_halt: bool = False,  # ignored; soft ACT stripped
 ) -> dict[str, Any]:
     """Train FractalCore on a fixed batch; return Gate-0 diagnostics."""
     import torch
@@ -148,10 +146,9 @@ def run_overfit_fractal(
         n_heads=4 if d % 4 == 0 else 2,
         mlp_expansion=mlp_expansion,
         max_nodes=max_nodes,
-        max_T=max(T, 16),
+        max_T=max(T, max(DISCRETE_T_VALUES)),
         use_tau=True,
         apply_cycle_rmsnorm=True,
-        halt_eps=DEFAULT_HALT_EPS,
     )
     parity = _verify_param_parity(model.param_count(), ff_baseline=FF_BASELINE_PARAMS)
     trainer = FractalTrainer(
@@ -159,7 +156,7 @@ def run_overfit_fractal(
         lr=lr,
         weight_decay=0.01,
         grad_clip=grad_clip,
-        adaptive_halt=adaptive_halt,
+        adaptive_halt=False,
     )
 
     losses: list[float] = []
@@ -215,7 +212,6 @@ def run_overfit_fractal(
                 attn_mask,
                 s_idx,
                 t_idx,
-                adaptive_halt=adaptive_halt,
             )
             preds = logits.argmax(dim=-1)
             pc = _per_class_accuracy(preds, labels)
@@ -252,9 +248,18 @@ def run_overfit_fractal(
     ok = (passed_at is not None) or (below and acc_ok and class_ok)
     ok = bool(ok) and acc_ok and (class_ok if require_per_class else True)
 
+    disconnect_leak = model.disconnected_target_leak(
+        examples,
+        T_values=DISCRETE_T_VALUES,
+        max_n=max_nodes,
+        atol=leak_atol,
+    )
+    ok = bool(ok) and bool(disconnect_leak.get("ok"))
+
     return {
         "ok": bool(ok),
-        "gate": "gate0_overfit_fractal",
+        "gate": "gate0_overfit_fractal_stalk",
+        "cycle": "CYCLE_STALK_LOCALIZATION",
         "steps_run": steps,
         "passed_at": passed_at,
         "final_loss": float(final_loss),
@@ -273,12 +278,16 @@ def run_overfit_fractal(
         "grad_clip": grad_clip,
         "mlp_expansion": mlp_expansion,
         "max_nodes": max_nodes,
-        "adaptive_halt": adaptive_halt,
+        "adaptive_halt": False,
+        "local_potential": True,
+        "broadcast_c": False,
         "loss_threshold": loss_threshold,
         "require_per_class": require_per_class,
         "param_count": model.param_count(),
         "param_parity": parity,
         "halt_diagnostics": last_halt,
+        "disconnect_leak": disconnect_leak,
+        "disconnect_leak_atol": leak_atol,
         "science_open": False,
     }
 
@@ -357,7 +366,6 @@ def main(argv: Optional[list[str]] = None) -> int:
             require_per_class=require_per_class,
             mlp_expansion=args.mlp_expansion,
             max_nodes=args.max_nodes,
-            adaptive_halt=not args.fixed_halt,
         )
     except AssertionError as e:
         print(f"FAIL: param parity — {e}", file=sys.stderr)
@@ -388,6 +396,11 @@ def main(argv: Optional[list[str]] = None) -> int:
         "param_count": result["param_count"],
         "param_parity": result["param_parity"],
         "halt_diagnostics": result.get("halt_diagnostics"),
+        "disconnect_leak": result.get("disconnect_leak"),
+        "disconnect_leak_atol": result.get("disconnect_leak_atol"),
+        "local_potential": True,
+        "broadcast_c": False,
+        "cycle": "CYCLE_STALK_LOCALIZATION",
         "reject_reasons": meta.get("reject_reasons"),
         "science_open": False,
     }

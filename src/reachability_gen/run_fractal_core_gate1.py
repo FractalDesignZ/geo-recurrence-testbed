@@ -1,17 +1,19 @@
-"""Gate 1: train FractalCore on id_2k (30 epochs) + matched-OOD eval (MEASURE).
+"""Gate 1: train stalk-local FractalCore on id_2k + matched-OOD (MEASURE).
 
-Protocol (matched to bound30 recurrent where sensible)
-------------------------------------------------------
+CYCLE_STALK_LOCALIZATION protocol
+---------------------------------
+- Local stalk@s / probe@t potentials; **no** global ``(s,t)`` broadcast.
+- Soft ACT stripped; discrete fixed-T unroll only. ``T ∈ {6,8,12,16}``.
 - Dataset: exact ``data/id_2k.jsonl`` (never regenerated here).
 - Epochs: 30 locked; no early stop (track best val-acc ckpt).
 - LR / clip: ``lr=1.5e-3``, ``grad_clip=2.5`` (bound30 Phase-A recurrent).
-- Architecture: d=64, mlp×10, T_train=6, RMSNorm +c, ACT soft halt.
+- Architecture: d=64, mlp×10, T_train=6, RMSNorm + local potentials.
 - Param parity: ``_verify_param_parity`` ±5% of FF ~121218 (fail-closed).
-- Eval: ``data/covariate_matched_ood.jsonl`` (regenerate if missing).
-  Modes: fixed T=6 + dynamic T∈{8,12,16}; adaptive + fixed-unroll variants.
+- Eval: ``data/covariate_matched_ood.jsonl`` at T∈{8,12,16}.
+- Prereg (fail-closed report): hard-neg ≥0.98 AND K16≥0.80 at T=16.
 
-Writes ``artifacts/fractal_core_gate1_matched_ood.json`` with
-``science_open: false`` always. Mandelbrot analogy is aspirational only.
+Writes ``artifacts/fractal_core_stalk_gate1_matched_ood.json`` with
+``science_open: false`` always.
 
 Usage::
 
@@ -25,7 +27,7 @@ import json
 import sys
 import time
 import uuid
-from collections import Counter, defaultdict
+from collections import defaultdict
 from pathlib import Path
 from typing import Any, Optional
 
@@ -34,7 +36,7 @@ from reachability_gen.gen_covariate_matched_ood import (
     verify_covariate_matched_ood,
 )
 from reachability_gen.models.fractal_core import (
-    DEFAULT_HALT_EPS,
+    DISCRETE_T_VALUES,
     MANDELBROT_ANALOGY_NOTE,
     FractalCore,
     _verify_param_parity,
@@ -52,12 +54,14 @@ DEFAULT_LR = 1.5e-3  # bound30 recurrent
 DEFAULT_CLIP = 2.5
 DEFAULT_BATCH = 32
 DYNAMIC_T_VALUES: tuple[int, ...] = tuple(OOD_HOP_VALUES)  # 8,12,16
+PREREG_HARD_NEG = 0.98
+PREREG_K16 = 0.80
 
 DEFAULT_ID = Path("data/id_2k.jsonl")
 DEFAULT_OOD = Path("data/covariate_matched_ood.jsonl")
-DEFAULT_OUT = Path("artifacts/fractal_core_gate1_matched_ood.json")
-DEFAULT_CKPT = Path("artifacts/fractal_core_gate1_best.pt")
-DEFAULT_OVERFIT = Path("artifacts/fractal_core_overfit.json")
+DEFAULT_OUT = Path("artifacts/fractal_core_stalk_gate1_matched_ood.json")
+DEFAULT_CKPT = Path("artifacts/fractal_core_stalk_gate1_best.pt")
+DEFAULT_OVERFIT = Path("artifacts/fractal_core_stalk_overfit.json")
 
 
 def _mean(xs: list[float]) -> float:
@@ -120,7 +124,6 @@ def _eval_split(
     *,
     max_nodes: int,
     T: int,
-    adaptive_halt: bool,
     batch_size: int = 64,
 ) -> dict[str, Any]:
     import torch
@@ -129,14 +132,12 @@ def _eval_split(
     model.eval()
     hop_losses: dict[int, list[float]] = defaultdict(list)
     hop_accs: dict[int, list[float]] = defaultdict(list)
-    halt_steps: list[float] = []
-    ponders: list[float] = []
 
     with torch.no_grad():
         for start in range(0, len(rows), batch_size):
             batch_rows = rows[start : start + batch_size]
             batch = build_node_slot_batch(batch_rows, max_n=max_nodes)
-            logits, _, halt = model(
+            logits, _, _halt = model(
                 batch["node_ids"],
                 batch["node_mask"],
                 batch["attn_mask"],
@@ -144,20 +145,12 @@ def _eval_split(
                 batch["t_idx"],
                 return_halt=True,
                 T=T,
-                adaptive_halt=adaptive_halt,
+                adaptive_halt=False,
             )
             labels = batch["labels"]
             losses = F.cross_entropy(logits, labels, reduction="none")
             preds = logits.argmax(dim=-1)
             correct = (preds == labels).float()
-            if halt and "halt_step" in halt:
-                halt_steps.extend(halt["halt_step"].detach().cpu().tolist())
-            if halt and "p_trajectory" in halt:
-                p = halt["p_trajectory"]
-                if p.numel():
-                    idx = torch.arange(1, p.shape[1] + 1, device=p.device).float()
-                    pond = (p * idx).sum(dim=1)
-                    ponders.extend(pond.detach().cpu().tolist())
             for i, ex in enumerate(batch_rows):
                 hop = int(ex.get("hop_distance", HOP_UNREACHABLE))
                 hop_losses[hop].append(float(losses[i].item()))
@@ -173,11 +166,7 @@ def _eval_split(
         }
     overall_acc, overall_loss, n_tot = _overall_from_hop(by_hop)
     hard_neg = by_hop.get(str(HOP_UNREACHABLE), by_hop.get("-1", {}))
-    pos_hops = {
-        k: v
-        for k, v in by_hop.items()
-        if int(k) > 0
-    }
+    pos_hops = {k: v for k, v in by_hop.items() if int(k) > 0}
     return {
         "overall_acc": overall_acc,
         "overall_loss": overall_loss,
@@ -187,30 +176,36 @@ def _eval_split(
         "hard_neg_n": int(hard_neg.get("n", 0)) if hard_neg else 0,
         "pos_by_hop": pos_hops,
         "T": T,
-        "adaptive_halt": adaptive_halt,
-        "mean_halt_step": _mean(halt_steps),
-        "mean_ponder": _mean(ponders),
+        "adaptive_halt": False,
+        "discrete_T": True,
+        "mean_halt_step": float(T),
+        "mean_ponder": float(T),
     }
 
 
 def _mask_leakage_note(hard_neg_acc: float) -> dict[str, Any]:
-    """Document whether hard-neg is algebraically perfect under the mask."""
+    """Document whether hard-neg meets algebraic / prereg target."""
     algebraic_target = 1.0
     ok = hard_neg_acc == hard_neg_acc and abs(hard_neg_acc - algebraic_target) < 1e-9
     return {
-        "prereg_hard_neg_target": algebraic_target,
+        "prereg_hard_neg_target": PREREG_HARD_NEG,
+        "algebraic_hard_neg_target": algebraic_target,
         "observed_hard_neg_acc": hard_neg_acc,
         "algebraically_perfect": bool(ok),
+        "meets_prereg_hard_neg": bool(
+            hard_neg_acc == hard_neg_acc and hard_neg_acc >= PREREG_HARD_NEG
+        ),
         "explanation": (
-            "With adjacency-only + self mask and target-node readout, "
-            "unreachable (s,t) cannot receive source-seeded signal along edges. "
+            "Stalk-local potentials (stalk@s, probe@t, intermediates=0) + "
+            "adjacency mask + discrete T. Unreachable (s,t) cannot receive "
+            "source-seeded signal along edges. "
             + (
                 "Hard-neg acc=1.0 is consistent with that algebra."
                 if ok
                 else (
-                    "Hard-neg acc < 1.0 ⇒ residual leakage: broadcast boundary "
-                    "prompt c(s,t) on all nodes, shared Φ weights, soft ACT "
-                    "mixing, and/or finite-T under-propagation — not a fake mask."
+                    "Hard-neg acc < 1.0 ⇒ residual leakage from shared Φ, "
+                    "role marks, finite-T, or readout — not c-broadcast "
+                    "(broadcast removed) or soft ACT (stripped)."
                 )
             )
         ),
@@ -232,7 +227,6 @@ def train_fractal_id2k(
     seed: int = 0,
     max_nodes: int = DEFAULT_MAX_NODE_ID,
     ckpt_path: Path = DEFAULT_CKPT,
-    adaptive_halt: bool = True,
 ) -> dict[str, Any]:
     import torch
 
@@ -245,10 +239,9 @@ def train_fractal_id2k(
         n_heads=_n_heads(d),
         mlp_expansion=mlp_expansion,
         max_nodes=max_nodes,
-        max_T=max(T, max(DYNAMIC_T_VALUES)),
+        max_T=max(T, max(DISCRETE_T_VALUES)),
         use_tau=True,
         apply_cycle_rmsnorm=True,
-        halt_eps=DEFAULT_HALT_EPS,
     )
     parity = _verify_param_parity(model.param_count(), ff_baseline=FF_BASELINE_PARAMS)
     trainer = FractalTrainer(
@@ -256,11 +249,11 @@ def train_fractal_id2k(
         lr=lr,
         weight_decay=0.01,
         grad_clip=grad_clip,
-        adaptive_halt=adaptive_halt,
+        adaptive_halt=False,
     )
     param_count = model.param_count()
     print(
-        f"[fractal] params={param_count} parity_ok={parity['within_5pct']} "
+        f"[fractal-stalk] params={param_count} parity_ok={parity['within_5pct']} "
         f"d={d} mlp={mlp_expansion} T={T} lr={lr} clip={grad_clip}",
         file=sys.stderr,
     )
@@ -297,9 +290,7 @@ def train_fractal_id2k(
 
         train_loss = _mean(epoch_losses)
         train_acc = _mean(epoch_accs)
-        val_stats = _eval_split(
-            model, val, max_nodes=max_nodes, T=T, adaptive_halt=adaptive_halt
-        )
+        val_stats = _eval_split(model, val, max_nodes=max_nodes, T=T)
         ov_acc = float(val_stats["overall_acc"])
         train_hist.append(
             {
@@ -308,7 +299,7 @@ def train_fractal_id2k(
                 "train_acc": train_acc,
                 "val_acc": ov_acc,
                 "val_loss": float(val_stats["overall_loss"]),
-                "mean_halt_step": val_stats.get("mean_halt_step"),
+                "mean_halt_step": float(T),
             }
         )
         val_by_hop_final = val_stats["by_hop"]
@@ -319,9 +310,8 @@ def train_fractal_id2k(
                 k: v.detach().cpu().clone() for k, v in model.state_dict().items()
             }
         print(
-            f"[fractal] epoch {epoch}/{epochs} train_acc={train_acc:.4f} "
-            f"val_acc={ov_acc:.4f} (best={best_val_acc:.4f}@ep{best_epoch}) "
-            f"halt={val_stats.get('mean_halt_step')}",
+            f"[fractal-stalk] epoch {epoch}/{epochs} train_acc={train_acc:.4f} "
+            f"val_acc={ov_acc:.4f} (best={best_val_acc:.4f}@ep{best_epoch})",
             file=sys.stderr,
         )
 
@@ -333,8 +323,9 @@ def train_fractal_id2k(
                 "epoch": best_epoch,
                 "val_acc": best_val_acc,
                 "state_dict": best_state,
-                "arm": f"fractal-T{T}-d{d}-mlp{mlp_expansion}",
+                "arm": f"fractal-stalk-T{T}-d{d}-mlp{mlp_expansion}",
                 "science_open": False,
+                "cycle": "CYCLE_STALK_LOCALIZATION",
                 "hparams": {
                     "d": d,
                     "T": T,
@@ -342,15 +333,16 @@ def train_fractal_id2k(
                     "max_nodes": max_nodes,
                     "lr": lr,
                     "grad_clip": grad_clip,
-                    "adaptive_halt": adaptive_halt,
-                    "halt_eps": DEFAULT_HALT_EPS,
+                    "adaptive_halt": False,
+                    "local_potential": True,
+                    "broadcast_c": False,
                 },
             },
             ckpt_path,
         )
 
     return {
-        "arm": f"fractal-T{T}-d{d}-mlp{mlp_expansion}",
+        "arm": f"fractal-stalk-T{T}-d{d}-mlp{mlp_expansion}",
         "param_count": param_count,
         "param_parity": parity,
         "epochs": epochs,
@@ -366,7 +358,9 @@ def train_fractal_id2k(
         "T": T,
         "mlp_expansion": mlp_expansion,
         "max_nodes": max_nodes,
-        "adaptive_halt": adaptive_halt,
+        "adaptive_halt": False,
+        "local_potential": True,
+        "broadcast_c": False,
         "checkpoint_path": str(ckpt_path),
         "science_open": False,
     }
@@ -409,7 +403,7 @@ def run_gate1(
             n_heads=_n_heads(int(hp.get("d", DEFAULT_D))),
             mlp_expansion=int(hp.get("mlp_expansion", DEFAULT_MLP)),
             max_nodes=int(hp.get("max_nodes", max_nodes)),
-            max_T=max(int(hp.get("T", DEFAULT_T)), max(DYNAMIC_T_VALUES)),
+            max_T=max(int(hp.get("T", DEFAULT_T)), max(DISCRETE_T_VALUES)),
             use_tau=True,
             apply_cycle_rmsnorm=True,
         )
@@ -439,22 +433,18 @@ def run_gate1(
             n_heads=_n_heads(DEFAULT_D),
             mlp_expansion=DEFAULT_MLP,
             max_nodes=max_nodes,
-            max_T=max(DEFAULT_T, max(DYNAMIC_T_VALUES)),
+            max_T=max(DEFAULT_T, max(DISCRETE_T_VALUES)),
             use_tau=True,
             apply_cycle_rmsnorm=True,
         )
         ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
         model.load_state_dict(ckpt["state_dict"])
 
-    # Matched OOD eval: fixed T + dynamic T; adaptive + fixed unroll.
+    # Discrete T eval only (soft ACT removed).
     evals: dict[str, Any] = {}
-    for label, T, ah in [
-        ("fixed_T6_adaptive", DEFAULT_T, True),
-        ("fixed_T6_unroll", DEFAULT_T, False),
-    ]:
-        evals[label] = _eval_split(
-            model, ood_rows, max_nodes=max_nodes, T=T, adaptive_halt=ah
-        )
+    for T in (DEFAULT_T,):
+        label = f"fixed_T{T}_unroll"
+        evals[label] = _eval_split(model, ood_rows, max_nodes=max_nodes, T=T)
         print(
             f"[gate1-ood] {label} acc={evals[label]['overall_acc']:.4f} "
             f"hard_neg={evals[label]['hard_neg_acc']:.4f}",
@@ -463,24 +453,22 @@ def run_gate1(
 
     dynamic: dict[str, Any] = {}
     for T in DYNAMIC_T_VALUES:
-        key = f"dynamic_T{T}_adaptive"
-        dynamic[key] = _eval_split(
-            model, ood_rows, max_nodes=max_nodes, T=T, adaptive_halt=True
-        )
-        key_f = f"dynamic_T{T}_unroll"
-        dynamic[key_f] = _eval_split(
-            model, ood_rows, max_nodes=max_nodes, T=T, adaptive_halt=False
-        )
+        key = f"dynamic_T{T}_unroll"
+        dynamic[key] = _eval_split(model, ood_rows, max_nodes=max_nodes, T=T)
         print(
-            f"[gate1-ood] T={T} adaptive_acc={dynamic[key]['overall_acc']:.4f} "
-            f"unroll_acc={dynamic[key_f]['overall_acc']:.4f} "
-            f"hard_neg_ad={dynamic[key]['hard_neg_acc']:.4f}",
+            f"[gate1-ood] T={T} unroll_acc={dynamic[key]['overall_acc']:.4f} "
+            f"hard_neg={dynamic[key]['hard_neg_acc']:.4f} "
+            f"K16={dynamic[key]['by_hop'].get('16', {}).get('acc_mean')}",
             file=sys.stderr,
         )
 
-    # Primary table: fixed adaptive + dynamic unroll (prereg framing).
-    primary = evals["fixed_T6_adaptive"]
-    # Recover K≥8 positives via unroll: look at hop-8/12/16 acc under dynamic.
+    t16 = dynamic["dynamic_T16_unroll"]
+    hard_neg_t16 = float(t16["hard_neg_acc"])
+    k16_acc = float(t16["by_hop"].get("16", {}).get("acc_mean", float("nan")))
+    prereg_hard_ok = hard_neg_t16 == hard_neg_t16 and hard_neg_t16 >= PREREG_HARD_NEG
+    prereg_k16_ok = k16_acc == k16_acc and k16_acc >= PREREG_K16
+    prereg_pass = bool(prereg_hard_ok and prereg_k16_ok)
+
     recover: dict[str, Any] = {}
     for T in DYNAMIC_T_VALUES:
         stats = dynamic[f"dynamic_T{T}_unroll"]
@@ -493,39 +481,49 @@ def run_gate1(
             "hard_neg_acc": stats["hard_neg_acc"],
         }
 
-    leakage = _mask_leakage_note(float(primary["hard_neg_acc"]))
+    leakage = _mask_leakage_note(hard_neg_t16)
 
     overfit_summary = None
     if overfit_path.exists():
         overfit_summary = json.loads(overfit_path.read_text(encoding="utf-8"))
 
     artifact = {
-        "cycle": "CYCLE_FRACTAL_CORE_GENESIS",
+        "cycle": "CYCLE_STALK_LOCALIZATION",
         "mode": "MEASURE",
         "science_open": False,
         "mandelbrot_analogy": MANDELBROT_ANALOGY_NOTE,
-        "run_id": f"fractal-gate1-{uuid.uuid4().hex[:10]}",
+        "run_id": f"fractal-stalk-gate1-{uuid.uuid4().hex[:10]}",
         "dataset_id": str(id_data),
         "ood_dataset": str(ood_data),
         "train": train_summary,
         "gate0_overfit": overfit_summary,
+        "architecture": {
+            "local_potential": True,
+            "broadcast_c": False,
+            "soft_ACT": False,
+            "discrete_T_values": list(DISCRETE_T_VALUES),
+            "stalk_slot": "s",
+            "probe_slot": "t",
+            "intermediates": 0,
+        },
         "ood_eval": {
             "fixed": evals,
             "dynamic": dynamic,
             "recover_K_via_unroll": recover,
             "mask_leakage": leakage,
         },
-        "prereg_aspirational": {
-            "hard_neg_ood_1_0_if_mask_forbids": (
-                "Aspirational: hard-neg acc=1.0 on OOD if mask algebraically "
-                "forbids disconnected pairs. Report observed honestly."
+        "prereg": {
+            "hard_neg_at_T16_ge": PREREG_HARD_NEG,
+            "K16_at_T16_ge": PREREG_K16,
+            "observed_hard_neg_T16": hard_neg_t16,
+            "observed_K16_T16": k16_acc,
+            "hard_neg_ok": prereg_hard_ok,
+            "K16_ok": prereg_k16_ok,
+            "pass": prereg_pass,
+            "fail_closed": not prereg_pass,
+            "note": (
+                "Report honestly if miss. science_open=false regardless."
             ),
-            "recover_K_ge_8_via_unroll": (
-                "Aspirational: recover K≥8 positives via dynamic unroll. "
-                "See recover_K_via_unroll table."
-            ),
-            "observed_hard_neg": primary["hard_neg_acc"],
-            "observed_recover": recover,
         },
         "hparams_matched_to_bound30_recurrent": {
             "lr": DEFAULT_LR,
@@ -536,7 +534,8 @@ def run_gate1(
             "T_train": DEFAULT_T,
             "note": (
                 "LR/clip/epochs/mlp match bound30 recurrent Geo/Loop settings; "
-                "FractalCore adds adjacency mask, +c boundary, ACT halt."
+                "FractalCore stalk-local: adjacency mask + local stalk/probe; "
+                "no c broadcast; no soft ACT."
             ),
         },
         "elapsed_sec": time.time() - t0,
@@ -544,11 +543,18 @@ def run_gate1(
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(artifact, indent=2, sort_keys=True) + "\n")
     print(f"[gate1] wrote {out_path}", file=sys.stderr)
+    print(
+        f"[gate1] prereg pass={prereg_pass} hard_neg_T16={hard_neg_t16:.4f} "
+        f"(≥{PREREG_HARD_NEG}) K16_T16={k16_acc:.4f} (≥{PREREG_K16})",
+        file=sys.stderr,
+    )
     return artifact
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description="FractalCore Gate1 MEASURE runner")
+    p = argparse.ArgumentParser(
+        description="FractalCore stalk-local Gate1 MEASURE runner"
+    )
     p.add_argument("--id-data", type=Path, default=DEFAULT_ID)
     p.add_argument("--ood-data", type=Path, default=DEFAULT_OOD)
     p.add_argument("--out", type=Path, default=DEFAULT_OUT)

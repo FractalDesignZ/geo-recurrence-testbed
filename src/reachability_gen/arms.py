@@ -492,7 +492,7 @@ class EuclideanLoopArm:
 
 @dataclass
 class FractalCoreArm:
-    """FractalCore treatment: masked recurrence + boundary c + ACT halt.
+    """FractalCore treatment: masked recurrence + local stalk/probe (no ACT).
 
     When ``model`` is attached, ``forward`` expects batch keys from
     :func:`build_node_slot_batch` (or ``encoding`` strings to parse).

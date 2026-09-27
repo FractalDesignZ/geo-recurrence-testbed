@@ -40,7 +40,9 @@ except ImportError:  # pragma: no cover - torch optional
 
 try:
     from reachability_gen.models.fractal_core import (
+        DEFAULT_DISCONNECT_LEAK_ATOL,
         DEFAULT_HALT_EPS,
+        DISCRETE_T_VALUES,
         MANDELBROT_ANALOGY_NOTE,
         FractalCore,
         MaskedTransformerBlock,
@@ -50,7 +52,9 @@ try:
     )
 
     __all__ += [
+        "DEFAULT_DISCONNECT_LEAK_ATOL",
         "DEFAULT_HALT_EPS",
+        "DISCRETE_T_VALUES",
         "MANDELBROT_ANALOGY_NOTE",
         "FractalCore",
         "MaskedTransformerBlock",
