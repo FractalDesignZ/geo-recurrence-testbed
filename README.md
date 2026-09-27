@@ -345,6 +345,28 @@ Writes `artifacts/covariate_matched_ood_generation_report.json` and
 prereg STOP/OPEN-candidate framing; hard-neg collapse still primary).
 No retraining. Band is fail-closed: do not silently widen past 70.
 
+
+## PR / review lane
+
+Copilot (and similar) are **authoring-side**. **CodeRabbit** is **review-side**
+hygiene for MaxOp OPEN|STOP cycles (`science_open=false` by default).
+
+- Config: [`.coderabbit.yaml`](.coderabbit.yaml) — auto-review on PRs to `main`
+  (drafts skipped; WIP titles skipped); path instructions for seals/ADRs,
+  `artifacts/*.json`, `gen_*.py` / `run_*.py`, and `tests/`.
+- Template: [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md)
+  — Mode, cycle, substrate, prereg criteria, evidence paths, `science_open`
+  default checkbox, STOP / OPEN-candidate / RESIDUE, test plan
+  (`pytest -m "not slow"`).
+
+**Install (one-liner):** install the [CodeRabbit GitHub app](https://github.com/apps/coderabbitai)
+on this repo for reviews to fire. This repo only ships the config; the app is
+not installed from here.
+
+Direct pushes to `main` remain possible; **PRs are preferred for research
+cycles** so review-lane checks (seals append-only, no invented OPEN, artifact
+cite hygiene) can run before merge.
+
 ## Tests
 
 

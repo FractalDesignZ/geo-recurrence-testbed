@@ -1,0 +1,117 @@
+# CodeRabbit review-lane for MaxOp OPEN|STOP research hygiene.
+# science_open defaults false. Reviews do not stamp OPEN.
+# Install the CodeRabbit GitHub app on this repo for reviews to fire:
+#   https://github.com/apps/coderabbitai
+language: en-US
+
+reviews:
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  # Assertive on invariants; quiet on style nits.
+  instructions: |
+    This repo is MaxOp RESEARCH / MEASURE plumbing for directed-graph
+    reachability. Default stance: science_open=false.
+
+    Be assertive on research invariants:
+    - Never allow silent science_open=true or invented OPEN claims.
+    - OPEN requires an explicit human / ADR gate with artifact cites.
+    - Session seals and ADRs are append-only; do not rewrite historical digests.
+    - Metrics in artifacts must match run scripts / generation reports.
+    - Hard-neg rules, hop sets, and seq_len bands need tests + deterministic seeds.
+    - Tests must stay in parity with ADR-001 invariants.
+
+    Stay quiet on style nits, formatting, and naming preferences unless they
+    break clarity of a science_open / STOP / OPEN-candidate / RESIDUE claim
+    or break ADR invariants.
+
+  path_filters:
+    - "!**/*.pt"
+    - "!**/*.pth"
+    - "!**/*.bin"
+    - "!**/*.pkl"
+    - "!**/*.pickle"
+    - "!**/*.npz"
+    - "!**/*.h5"
+    - "!**/*.onnx"
+    - "!**/*.jsonl"
+    - "!**/data/**/*.jsonl"
+    - "!**/artifacts/**/*.jsonl"
+    - "!**/*.egg-info/**"
+    - "!**/.venv/**"
+    - "!**/__pycache__/**"
+
+  path_instructions:
+    - path: "docs/SESSION-SEAL*.md"
+      instructions: |
+        Append-only session seals. Never rewrite historical digests or
+        change prior verdict numbers without an explicit new seal section.
+        Require explicit science_open (default false). Fail soft (warn) on
+        claim / OPEN / STOP / RESIDUE language that lacks concrete artifact
+        path cites (e.g. artifacts/*.json tables). Do not invent OPEN.
+
+    - path: "docs/ADR*"
+      instructions: |
+        Append-only ADRs. Never rewrite historical digests or silently
+        mutate frozen invariants. Require explicit science_open framing
+        (MEASURE plumbing — not OPEN unless a human gate says otherwise).
+        Fail soft on claim language without artifact or schema cites.
+        Flag any change that would allow harnesses to self-stamp
+        science_open=true.
+
+    - path: "artifacts/*.json"
+      instructions: |
+        Metrics JSON must be consistent with the run / gen scripts that
+        produce them (keys, hop tables, hard-neg, seq_len bands, seeds).
+        Flag science_open: true without an explicit human gate note.
+        Flag invented OPEN / OPEN-candidate claims not backed by cited
+        numbers in the same artifact. Prefer fail-closed STOP / RESIDUE
+        language. Ignore binary companion files (*.pt) entirely.
+
+    - path: "src/reachability_gen/gen_*.py"
+      instructions: |
+        Generation scripts: hard-neg rules, hop sets, and seq_len bands
+        must have corresponding tests. Prefer deterministic seeds.
+        Do not widen fail-closed bands silently. science_open must remain
+        false / unset in outputs. Flag missing verify-only parity or
+        report-writing drift vs artifacts/*.json.
+
+    - path: "src/reachability_gen/run_*.py"
+      instructions: |
+        Run / eval scripts: hard-neg rules, hop sets, and seq_len bands
+        need tests; use deterministic seeds. Never self-stamp
+        science_open=true. interpretation_stop / prereg framing must cite
+        artifact fields. Flag silent band widening or covariate confounds.
+
+    - path: "tests/**"
+      instructions: |
+        Keep parity with ADR-001 invariants (encoding, FLOP formulas,
+        param parity, hop stratification, RunMetricRecord schema,
+        science_open never true from harness). Cover hard-neg, hop sets,
+        and seq_len bands for gen_*/run_* changes. Prefer pytest -m
+        "not slow" paths for default CI.
+
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - "main"
+    ignore_title_keywords:
+      - "WIP"
+      - "[WIP]"
+      - "DO NOT MERGE"
+    auto_incremental_review: true
+
+  pre_merge_checks:
+    title:
+      mode: "warning"
+      requirements: >
+        Title must not contain WIP / [WIP] / DO NOT MERGE.
+        Prefer Mode prefix (MEASURE / FREEZE / …) and a short cycle name.
+        Keep under ~72 characters when practical.
+    description:
+      mode: "warning"
+    docstrings:
+      mode: "off"
