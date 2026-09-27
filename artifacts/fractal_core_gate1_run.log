@@ -1,0 +1,39 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[fractal] params=117507 parity_ok=True d=64 mlp=10 T=6 lr=0.0015 clip=2.5
+[fractal] epoch 1/30 train_acc=0.6075 val_acc=0.7400 (best=0.7400@ep1) halt=2.345
+[fractal] epoch 2/30 train_acc=0.8113 val_acc=0.8550 (best=0.8550@ep2) halt=3.68
+[fractal] epoch 3/30 train_acc=0.8812 val_acc=0.8925 (best=0.8925@ep3) halt=3.8225
+[fractal] epoch 4/30 train_acc=0.8912 val_acc=0.8625 (best=0.8925@ep3) halt=3.6875
+[fractal] epoch 5/30 train_acc=0.9150 val_acc=0.9050 (best=0.9050@ep5) halt=3.765
+[fractal] epoch 6/30 train_acc=0.9200 val_acc=0.9200 (best=0.9200@ep6) halt=4.365
+[fractal] epoch 7/30 train_acc=0.9344 val_acc=0.9350 (best=0.9350@ep7) halt=3.91
+[fractal] epoch 8/30 train_acc=0.9363 val_acc=0.9400 (best=0.9400@ep8) halt=4.0025
+[fractal] epoch 9/30 train_acc=0.9487 val_acc=0.9300 (best=0.9400@ep8) halt=4.0375
+[fractal] epoch 10/30 train_acc=0.9537 val_acc=0.9450 (best=0.9450@ep10) halt=4.235
+[fractal] epoch 11/30 train_acc=0.9475 val_acc=0.9300 (best=0.9450@ep10) halt=4.0575
+[fractal] epoch 12/30 train_acc=0.9663 val_acc=0.9500 (best=0.9500@ep12) halt=4.2725
+[fractal] epoch 13/30 train_acc=0.9688 val_acc=0.9325 (best=0.9500@ep12) halt=4.22
+[fractal] epoch 14/30 train_acc=0.9688 val_acc=0.9450 (best=0.9500@ep12) halt=4.36
+[fractal] epoch 15/30 train_acc=0.9725 val_acc=0.9400 (best=0.9500@ep12) halt=4.87
+[fractal] epoch 16/30 train_acc=0.9625 val_acc=0.9550 (best=0.9550@ep16) halt=4.6975
+[fractal] epoch 17/30 train_acc=0.9669 val_acc=0.9600 (best=0.9600@ep17) halt=4.585
+[fractal] epoch 18/30 train_acc=0.9756 val_acc=0.9575 (best=0.9600@ep17) halt=4.8875
+[fractal] epoch 19/30 train_acc=0.9731 val_acc=0.9625 (best=0.9625@ep19) halt=4.6325
+[fractal] epoch 20/30 train_acc=0.9756 val_acc=0.9575 (best=0.9625@ep19) halt=4.5575
+[fractal] epoch 21/30 train_acc=0.9819 val_acc=0.9600 (best=0.9625@ep19) halt=4.7025
+[fractal] epoch 22/30 train_acc=0.9769 val_acc=0.9500 (best=0.9625@ep19) halt=4.5975
+[fractal] epoch 23/30 train_acc=0.9850 val_acc=0.9575 (best=0.9625@ep19) halt=4.7925
+[fractal] epoch 24/30 train_acc=0.9800 val_acc=0.9475 (best=0.9625@ep19) halt=4.6725
+[fractal] epoch 25/30 train_acc=0.9800 val_acc=0.9700 (best=0.9700@ep25) halt=4.515
+[fractal] epoch 26/30 train_acc=0.9869 val_acc=0.9575 (best=0.9700@ep25) halt=4.375
+[fractal] epoch 27/30 train_acc=0.9844 val_acc=0.9525 (best=0.9700@ep25) halt=4.5625
+[fractal] epoch 28/30 train_acc=0.9869 val_acc=0.9525 (best=0.9700@ep25) halt=4.7925
+[fractal] epoch 29/30 train_acc=0.9881 val_acc=0.9625 (best=0.9700@ep25) halt=4.6125
+[fractal] epoch 30/30 train_acc=0.9825 val_acc=0.9525 (best=0.9700@ep25) halt=4.3725
+[gate1-ood] fixed_T6_adaptive acc=0.3292 hard_neg=0.5958
+[gate1-ood] fixed_T6_unroll acc=0.5396 hard_neg=0.6375
+[gate1-ood] T=8 adaptive_acc=0.3479 unroll_acc=0.4708 hard_neg_ad=0.6333
+[gate1-ood] T=12 adaptive_acc=0.3479 unroll_acc=0.4500 hard_neg_ad=0.6333
+[gate1-ood] T=16 adaptive_acc=0.3479 unroll_acc=0.5542 hard_neg_ad=0.6333
+[gate1] wrote artifacts/fractal_core_gate1_matched_ood.json

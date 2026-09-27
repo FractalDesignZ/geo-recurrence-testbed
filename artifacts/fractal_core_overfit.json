@@ -1,0 +1,55 @@
+{
+  "T": 6,
+  "arm": "fractal_core",
+  "balanced": true,
+  "final_acc": 1.0,
+  "final_loss": 0.0009495940757915378,
+  "gate": "gate0",
+  "halt_diagnostics": {
+    "T": 6.0,
+    "adaptive_halt": 1.0,
+    "halt_eps": 0.01,
+    "mean_halt_step": 4.03125,
+    "mean_ponder": 3.2376298904418945,
+    "mean_u_final": 0.45838409662246704
+  },
+  "label_counts": {
+    "y0": 16,
+    "y1": 16
+  },
+  "loss_threshold": 0.001,
+  "n_examples": 32,
+  "ok": true,
+  "param_count": 117507,
+  "param_parity": {
+    "ff_baseline_params": 121218,
+    "fractal_over_ff_ratio": 0.9693857347918626,
+    "fractal_param_count": 117507,
+    "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+    "science_open": false,
+    "tolerance": 0.05,
+    "window": [
+      115157,
+      127279
+    ],
+    "within_5pct": true
+  },
+  "passed_at": 26,
+  "per_class": {
+    "y0_acc": 1.0,
+    "y0_correct": 16.0,
+    "y0_n": 16.0,
+    "y1_acc": 1.0,
+    "y1_correct": 16.0,
+    "y1_n": 16.0
+  },
+  "reject_reasons": {
+    "both_deg0": 1,
+    "deg_s0": 2,
+    "deg_t0": 3,
+    "ok": 66,
+    "skipped_not_y0": 72
+  },
+  "science_open": false,
+  "steps": 100
+}

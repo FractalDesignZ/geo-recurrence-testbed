@@ -346,6 +346,29 @@ prereg STOP/OPEN-candidate framing; hard-neg collapse still primary).
 No retraining. Band is fail-closed: do not silently widen past 70.
 
 
+## Cycle: FRACTAL_CORE_GENESIS (MEASURE)
+
+Branch: `cycle/fractal-core-genesis`. Adds **FractalCore** — adjacency-masked
+weight-tied recurrence with boundary re-injection `+c` and ACT-style adaptive
+halting. **`science_open=false` always.** Mandelbrot / fractal boundary
+language in docs is **aspirational analogy only**; evidence is metrics in
+`artifacts/` (never the metaphor).
+
+Node-slot encoding helpers recover directed adjacency from the locked
+edge-list `encoding` (token indices alone cannot); attention uses
+`A_ij = -inf` when no directed edge (self allowed). Param parity via
+`_verify_param_parity` ±5% of FF ~121218.
+
+```bash
+# Gate 0 — balanced 16/16 overfit (fail-closed)
+python -m reachability_gen.overfit_fractal --balanced \
+  --out artifacts/fractal_core_overfit.json
+
+# Gate 1 — id_2k ×30 epochs (bound30 recurrent lr/clip) + matched OOD
+python -m reachability_gen.run_fractal_core_gate1
+# writes artifacts/fractal_core_gate1_matched_ood.json
+```
+
 ## PR / review lane
 
 Copilot (and similar) are **authoring-side**. **CodeRabbit** is **review-side**

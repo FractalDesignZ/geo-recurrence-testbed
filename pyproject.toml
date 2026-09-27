@@ -27,6 +27,8 @@ reachability-gen-ood-hops = "reachability_gen.gen_ood_hops:main"
 reachability-ood-gate2 = "reachability_gen.run_ood_gate2:main"
 reachability-gen-covariate-matched-ood = "reachability_gen.gen_covariate_matched_ood:main"
 reachability-ood-covariate-matched = "reachability_gen.run_covariate_matched_ood:main"
+reachability-overfit-fractal = "reachability_gen.overfit_fractal:main"
+reachability-fractal-core-gate1 = "reachability_gen.run_fractal_core_gate1:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

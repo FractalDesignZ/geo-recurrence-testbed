@@ -194,3 +194,17 @@ def ratios_from_counts(
     if ref <= 0:
         raise ValueError(f"reference count must be > 0, got {ref}")
     return {k: v / ref for k, v in counts.items()}
+
+
+def verify_fractal_param_parity(
+    fractal_count: int,
+    *,
+    ff_baseline: int = 121_218,
+    tol: float = PARAM_TOL,
+) -> dict:
+    """Delegate to FractalCore ``_verify_param_parity`` (fail-closed)."""
+    from reachability_gen.models.fractal_core import _verify_param_parity
+
+    return _verify_param_parity(
+        fractal_count, ff_baseline=ff_baseline, tol=tol
+    )
