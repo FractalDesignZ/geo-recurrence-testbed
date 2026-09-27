@@ -1,9 +1,9 @@
 """Arm interfaces for the geometric-recurrence testbed (RESEARCH / MEASURE).
 
 CoT remains a Protocol stub (placeholder logits). The feed-forward,
-geometric, and Euclidean-loop arms optionally host real torch modules
-(``FeedForward`` / ``GeometricRecurrent`` / ``EuclideanLoop``) when torch
-is installed; otherwise stub paths.
+geometric, Euclidean-loop, and FractalCore arms optionally host real torch
+modules (``FeedForward`` / ``GeometricRecurrent`` / ``EuclideanLoop`` /
+``FractalCore``) when torch is installed; otherwise stub paths.
 
 Encoding remains the locked edge-list scheme in ``encode.py``.
 No science OPEN claims.
@@ -487,6 +487,159 @@ class EuclideanLoopArm:
         if return_trajectory:
             traj_out: list = list(traj) if traj is not None else []
             return logits_list, traj_out
+        return logits_list, None
+
+
+@dataclass
+class FractalCoreArm:
+    """FractalCore treatment: masked recurrence + boundary c + ACT halt.
+
+    When ``model`` is attached, ``forward`` expects batch keys from
+    :func:`build_node_slot_batch` (or ``encoding`` strings to parse).
+    Stub path otherwise.
+    """
+
+    T: int
+    d: int
+    use_tau: bool = True
+    config: SharedArmConfig = field(default_factory=SharedArmConfig)
+    mlp_expansion: int = 10
+    model: Any = field(default=None, repr=False, compare=False)
+
+    def __post_init__(self) -> None:
+        if self.T < 0:
+            raise ValueError(f"T must be non-negative, got {self.T}")
+        if self.d < 1:
+            raise ValueError(f"d must be >= 1, got {self.d}")
+
+    @property
+    def name(self) -> str:
+        tau = "tau" if self.use_tau else "notau"
+        return f"fractal-T{self.T}-d{self.d}-mlp{self.mlp_expansion}-{tau}"
+
+    @property
+    def has_real_model(self) -> bool:
+        return self.model is not None and HAS_TORCH
+
+    def attach_default_model(
+        self,
+        *,
+        max_nodes: int = 64,
+        n_heads: int = 4,
+        seed: Optional[int] = None,
+    ) -> Any:
+        if not HAS_TORCH:
+            return None
+        from reachability_gen.models.fractal_core import FractalCore
+
+        if seed is not None:
+            torch.manual_seed(int(seed))
+        heads = n_heads if self.d % n_heads == 0 else 1
+        self.model = FractalCore(
+            d=self.d,
+            T=max(self.T, 1),
+            n_heads=heads,
+            mlp_expansion=self.mlp_expansion,
+            max_nodes=max_nodes,
+            use_tau=self.use_tau,
+            apply_cycle_rmsnorm=True,
+        )
+        return self.model
+
+    def param_count(self) -> int:
+        if self.has_real_model and hasattr(self.model, "param_count"):
+            return int(self.model.param_count())
+        # Schematic: one tied block + cheap halt/c heads (ADR-ish).
+        p = params_per_block(self.d, mlp_expansion=self.mlp_expansion)
+        if self.use_tau:
+            p += tau_embed_params(self.d)
+        p += 2 * self.d + 1  # halt + rough head
+        return int(p)
+
+    def inference_flops(self, context_len: int, **kwargs: Any) -> FlopReport:
+        # Reuse geometric FLOP schematic (weight-tied T cycles).
+        T = int(kwargs.get("T", self.T))
+        use_tau = bool(kwargs.get("use_tau", self.use_tau))
+        return flops_geometric(
+            context_len,
+            self.d,
+            T,
+            use_tau=use_tau,
+            params_estimate=self.param_count(),
+        )
+
+    def forward_stub(self, batch: Mapping[str, Any]) -> dict[str, Any]:
+        n = _batch_size(batch)
+        return {
+            "logits": [0.0] * n,
+            "arm": self.name,
+            "T": self.T,
+            "placeholder": True,
+            "drift_trajectory": [],
+            "halt_diagnostics": {},
+        }
+
+    def forward(
+        self,
+        batch: Mapping[str, Any],
+        *,
+        return_trajectory: bool = False,
+    ) -> tuple[Any, Any] | dict[str, Any]:
+        if self.has_real_model:
+            return self._forward_real(batch, return_trajectory=return_trajectory)
+        return _forward_impl(
+            self, batch, return_trajectory=return_trajectory, steps=self.T
+        )
+
+    def _forward_real(
+        self,
+        batch: Mapping[str, Any],
+        *,
+        return_trajectory: bool,
+    ) -> tuple[Any, Any]:
+        from reachability_gen.models.fractal_core import build_node_slot_batch
+
+        if "node_ids" in batch:
+            node_ids = batch["node_ids"]
+            node_mask = batch["node_mask"]
+            attn_mask = batch["attn_mask"]
+            s_idx = batch["s_idx"]
+            t_idx = batch["t_idx"]
+            if not isinstance(node_ids, torch.Tensor):
+                raise TypeError("node_ids must be a torch.Tensor when provided")
+        else:
+            encodings = batch.get("encoding")
+            if encodings is None:
+                encodings = [""]
+            if isinstance(encodings, str):
+                encodings = [encodings]
+            ys = batch.get("y")
+            examples = []
+            for i, enc in enumerate(encodings):
+                ex: dict[str, Any] = {"encoding": enc}
+                if ys is not None:
+                    ex["y"] = ys[i] if not isinstance(ys, (str, int)) else ys
+                examples.append(ex)
+            slot = build_node_slot_batch(examples)
+            node_ids = slot["node_ids"]
+            node_mask = slot["node_mask"]
+            attn_mask = slot["attn_mask"]
+            s_idx = slot["s_idx"]
+            t_idx = slot["t_idx"]
+        self.model.eval()
+        with torch.no_grad():
+            logits_t, traj, _halt = self.model(
+                node_ids,
+                node_mask,
+                attn_mask,
+                s_idx,
+                t_idx,
+                return_trajectory=return_trajectory,
+                return_halt=True,
+            )
+        logits_list = logits_t.detach().cpu().tolist()
+        if return_trajectory:
+            return logits_list, list(traj) if traj is not None else []
         return logits_list, None
 
 

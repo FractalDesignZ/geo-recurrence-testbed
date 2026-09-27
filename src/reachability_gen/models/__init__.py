@@ -37,3 +37,26 @@ try:
 except ImportError:  # pragma: no cover - torch optional
     pass
 
+
+try:
+    from reachability_gen.models.fractal_core import (
+        DEFAULT_HALT_EPS,
+        MANDELBROT_ANALOGY_NOTE,
+        FractalCore,
+        MaskedTransformerBlock,
+        build_adjacency_attn_mask,
+        build_node_slot_batch,
+        _verify_param_parity,
+    )
+
+    __all__ += [
+        "DEFAULT_HALT_EPS",
+        "MANDELBROT_ANALOGY_NOTE",
+        "FractalCore",
+        "MaskedTransformerBlock",
+        "build_adjacency_attn_mask",
+        "build_node_slot_batch",
+        "_verify_param_parity",
+    ]
+except ImportError:  # pragma: no cover - torch optional
+    pass
