@@ -317,6 +317,34 @@ Writes `artifacts/ood_hops_generation_report.json` and
 `interpretation_stop`; never stamps OPEN). No retraining.
 
 
+
+
+## Covariate-matched OOD (MEASURE; Gate2 residue)
+
+Resolves the Gate2 confound (hop K∈{8,12,16} vs seq_len dilation: ID
+whitespace-mean~57 / prior OOD split-token mean~203). New held-out set
+(`data/covariate_matched_ood.jsonl`) keeps positives at hop ∈{8,12,16} and
+hard negatives (50/50), but **strictly** constrains model-visible encoding
+token length (`split_encoding_tokens`) to **[45, 70]** (target mean ~57) via
+path-backbone + few non-shortcut distractors (ER grid search documented in
+the generation report; pure ER under the band rarely yields K=16).
+**`science_open=false` always.**
+
+```bash
+# generate matched OOD JSONL + report (jsonl gitignored)
+python -m reachability_gen.gen_covariate_matched_ood
+python -m reachability_gen.gen_covariate_matched_ood --verify-only data/covariate_matched_ood.jsonl
+
+# zero-retrain eval on bound30 best ckpts (fixed L=2/T=6; dynamic T∈{8,12,16})
+python -m reachability_gen.run_covariate_matched_ood
+# or: reachability-ood-covariate-matched
+```
+
+Writes `artifacts/covariate_matched_ood_generation_report.json` and
+`artifacts/id_2k_rematch_bound30_gate2_matched_ood.json` (hop tables +
+prereg STOP/OPEN-candidate framing; hard-neg collapse still primary).
+No retraining. Band is fail-closed: do not silently widen past 70.
+
 ## Tests
 
 
