@@ -2,7 +2,7 @@
 
 Same architecture as :class:`GeometricRecurrent` but τ disabled / zeroed
 (``use_tau=False``). Used as the Euclidean control in the id_2k rematch.
-Inherits residual α=0.5 + outer cycle LN from GeometricRecurrent.
+Inherits residual α=0.5 + optional outer RMSNorm/LN bound from GeometricRecurrent.
 
 RESEARCH / MEASURE plumbing only — no science OPEN claims.
 """
@@ -42,6 +42,7 @@ class EuclideanLoop(GeometricRecurrent):
         use_tau: bool = False,  # accepted for API parity; always forced False
         residual_alpha: float = DEFAULT_RESIDUAL_ALPHA,
         apply_cycle_ln: bool = False,
+        apply_cycle_rmsnorm: bool = False,
     ) -> None:
         del use_tau  # Euclidean loop never uses τ
         super().__init__(
@@ -57,6 +58,7 @@ class EuclideanLoop(GeometricRecurrent):
             max_T=max_T,
             residual_alpha=residual_alpha,
             apply_cycle_ln=apply_cycle_ln,
+            apply_cycle_rmsnorm=apply_cycle_rmsnorm,
         )
 
 

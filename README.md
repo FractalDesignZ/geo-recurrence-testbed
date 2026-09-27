@@ -265,6 +265,34 @@ python -m reachability_gen.run_id_2k_rematch_fixed30
 Writes `artifacts/id_2k_rematch_fixed30.json`.
 
 
+## ID 2k bound-30 rematch (MEASURE; clip/LR + RMSNorm)
+
+Same three arms / exact `data/id_2k.jsonl` / ±5% parity / **epochs=30 no
+early-stop**, plus Phase A+B plumbing:
+
+**Phase A — effective LR / clip** (chosen values; FF control unchanged):
+
+| Arm | lr | grad clip |
+|-----|-----|-----------|
+| FF | `3e-3` | `1.0` |
+| Geo / Loop | `1.5e-3` (=0.5×FF) | `2.5` (=2.5×FF) |
+
+Rationale: fixed30 under shared clip=1.0 lr=3e-3 had FF sat≈7.7%, Geo≈16%,
+Loop≈21%. With RMSNorm, lr=3e-3 stuck Geo at chance; scaled recurrent lr +
+raised max_norm brings sat ≈ FF while remaining learnable.
+
+**Phase B — state bound:** after α=0.5 residual mix apply **RMSNorm** on `z`
+(stream LN blocked learning). Logs mean `||z_t||₂` and raw + LN- +
+RMS-normalized drift. **`science_open=false` always.**
+
+```bash
+python -m reachability_gen.run_id_2k_rematch_bound30
+# or: reachability-id-2k-rematch-bound30
+```
+
+Writes `artifacts/id_2k_rematch_bound30.json`.
+
+
 ## Tests
 
 

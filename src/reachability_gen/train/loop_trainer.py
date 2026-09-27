@@ -121,9 +121,11 @@ class LoopTrainer:
         traj_list = list(traj or [])
         drifts_raw = drift_from_trajectory(traj_list, apply_ln=False)
         drifts_ln = drift_from_trajectory(traj_list, apply_ln=True)
+        drifts_rms = drift_from_trajectory(traj_list, apply_rmsnorm=True)
         z_norms = mean_z_norms_from_trajectory(traj_list)
         terminal = drifts_raw[-1] if drifts_raw else None
         terminal_ln = drifts_ln[-1] if drifts_ln else None
+        terminal_rms = drifts_rms[-1] if drifts_rms else None
         perturbation_delta = None
         if eps_sigma is not None and traj_list:
             emb = self.model.tok_emb(token_ids)
@@ -132,7 +134,9 @@ class LoopTrainer:
                 token_ids.shape[1], device=token_ids.device
             ).unsqueeze(0).expand(token_ids.shape[0], -1)
             noisy = emb + noise + self.model.pos_emb(pos)
-            if getattr(self.model, "cycle_ln", None) is not None:
+            if getattr(self.model, "cycle_rmsnorm", None) is not None:
+                noisy = self.model.cycle_rmsnorm(noisy)
+            elif getattr(self.model, "cycle_ln", None) is not None:
                 noisy = self.model.cycle_ln(noisy)
             clean_z0 = traj_list[0]
             if attention_mask is not None:
@@ -147,18 +151,25 @@ class LoopTrainer:
         return {
             "drift_trajectory": drifts_raw,
             "drift_trajectory_ln": drifts_ln,
+            "drift_trajectory_rms": drifts_rms,
             "terminal_drift": terminal,
             "terminal_drift_ln": terminal_ln,
+            "terminal_drift_rms": terminal_rms,
             "mean_z_norm_by_t": z_norms,
             "perturbation_delta": perturbation_delta,
             "trajectory_len": len(traj_list),
             "residual_alpha": float(getattr(self.model, "residual_alpha", 0.5)),
             "apply_cycle_ln": bool(getattr(self.model, "apply_cycle_ln", False)),
+            "apply_cycle_rmsnorm": bool(
+                getattr(self.model, "apply_cycle_rmsnorm", False)
+            ),
             "drift_formula": (
                 "δ_t = mean_batch ||z_{t+1}-z_t||_2 on pooled latents; "
-                "z_{t+1}=LN(z_t+α·(Φ(h_t)-z_t)) with α="
+                "z_{t+1}=bound(z_t+α·(Φ(h_t)-z_t)) with α="
                 f"{getattr(self.model, 'residual_alpha', 0.5)}; "
-                "LN-normalized drift reapplies LayerNorm before differencing"
+                "bound=RMSNorm if apply_cycle_rmsnorm else identity "
+                "(LN stream blocked learning); also report LN- and "
+                "RMS-normalized drift metrics"
             ),
         }
 

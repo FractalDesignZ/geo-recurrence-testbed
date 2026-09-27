@@ -22,6 +22,7 @@ reachability-train-ff-id = "reachability_gen.train_ff_id:main"
 reachability-id-2k-comparison = "reachability_gen.run_id_2k_comparison:main"
 reachability-id-2k-rematch = "reachability_gen.run_id_2k_rematch:main"
 reachability-id-2k-rematch-fixed30 = "reachability_gen.run_id_2k_rematch_fixed30:main"
+reachability-id-2k-rematch-bound30 = "reachability_gen.run_id_2k_rematch_bound30:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

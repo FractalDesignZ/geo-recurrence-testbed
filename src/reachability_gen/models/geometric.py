@@ -9,17 +9,22 @@ Recurrent update (drift-audit)::
 
     v_t = Phi(h_t) - z_t                # Phi is Pre-LN TransformerBlock
     z_{t+1} = z_t + α · v_t             # α=0.5 (fixed)
+    z_{t+1} ← RMSNorm(z_{t+1})          # optional learning-compatible bound
 
 Outer LayerNorm on the residual stream (``z ← LN(z+α·v)``) was tried and
-**blocked learning** for this Pre-LN Phi (val stuck at chance). Per protocol
-option (b) we therefore keep the α-scaled residual without stream LN and
-report **both** raw and LN-normalized drift.
+**blocked learning** for this Pre-LN Phi (val stuck at chance). Preferred
+state bound is **RMSNorm** after the α-mix (``apply_cycle_rmsnorm=True``),
+which keeps ||z|| ~ O(√d) while remaining learnable. With the bound off,
+report **raw + LN-normalized** drift (protocol option b); with RMSNorm on,
+also report **RMS-normalized** drift.
 
 δ_t computation (documented)::
 
-    raw:        δ_t = mean_batch ||z_{t+1} - z_t||_2
-    LN-normed:  δ_t = mean_batch ||LN(z_{t+1}) - LN(z_t)||_2
-                (feature LN applied only for the metric; diameter proxy)
+    raw:         δ_t = mean_batch ||z_{t+1} - z_t||_2
+    LN-normed:   δ_t = mean_batch ||LN(z_{t+1}) - LN(z_t)||_2
+    RMS-normed:  δ_t = mean_batch ||RMSNorm(z_{t+1}) - RMSNorm(z_t)||_2
+                 (feature norm applied only for the metric when not already
+                  on the stream; diameter / bound proxy)
 
 RESEARCH / MEASURE plumbing only — no science OPEN claims.
 """
@@ -65,8 +70,11 @@ class GeometricRecurrent(nn.Module):
         Outer residual step size α in ``z ← z + α·(Φ-z)`` (default 0.5).
     apply_cycle_ln :
         If True, apply outer LayerNorm after each cycle. Default **False**:
-        stream LN blocked learning with this Pre-LN Phi; use LN-normalized
-        drift metrics instead (protocol option b).
+        stream LN blocked learning with this Pre-LN Phi; prefer RMSNorm.
+    apply_cycle_rmsnorm :
+        If True, apply outer RMSNorm after each α-mix (and on z_0). Preferred
+        learning-compatible state bound so ||z|| stays ~O(√d). Default False
+        for backward-compatible fixed30 plumbing; bound30 enables it.
     """
 
     def __init__(
@@ -84,6 +92,7 @@ class GeometricRecurrent(nn.Module):
         max_T: Optional[int] = None,
         residual_alpha: float = DEFAULT_RESIDUAL_ALPHA,
         apply_cycle_ln: bool = False,
+        apply_cycle_rmsnorm: bool = False,
     ) -> None:
         super().__init__()
         if T < 1:
@@ -103,6 +112,12 @@ class GeometricRecurrent(nn.Module):
         self.max_T = int(max_T) if max_T is not None else max(self.T, 16)
         self.residual_alpha = float(residual_alpha)
         self.apply_cycle_ln = bool(apply_cycle_ln)
+        self.apply_cycle_rmsnorm = bool(apply_cycle_rmsnorm)
+        if self.apply_cycle_ln and self.apply_cycle_rmsnorm:
+            raise ValueError(
+                "apply_cycle_ln and apply_cycle_rmsnorm are mutually exclusive; "
+                "prefer apply_cycle_rmsnorm=True (learning-compatible bound)"
+            )
         if self.T > self.max_T:
             raise ValueError(f"T={self.T} exceeds max_T={self.max_T}")
 
@@ -116,8 +131,11 @@ class GeometricRecurrent(nn.Module):
             self.tau_emb = nn.Embedding(self.max_T, d)
         else:
             self.tau_emb = None  # type: ignore[assignment]
-        # Outer cycle LN keeps residual-stream norms from runaway growth.
+        # Outer cycle LN (legacy; blocked learning) or preferred RMSNorm bound.
         self.cycle_ln = nn.LayerNorm(d) if self.apply_cycle_ln else None
+        self.cycle_rmsnorm = (
+            nn.RMSNorm(d) if self.apply_cycle_rmsnorm else None
+        )
         self.ln_f = nn.LayerNorm(d)
         self.head = nn.Linear(d, 2)
 
@@ -139,11 +157,13 @@ class GeometricRecurrent(nn.Module):
         h: torch.Tensor,
         key_padding_mask: Optional[torch.Tensor],
     ) -> torch.Tensor:
-        """One outer recurrent step: ``z ← z + α·(Φ(h)-z)`` (+ optional LN)."""
+        """One outer recurrent step: ``z ← z + α·(Φ(h)-z)`` (+ optional bound)."""
         phi_out = self.phi(h, key_padding_mask=key_padding_mask)
-        # v_t = Phi(h_t) - z_t; z_{t+1} = LN(z_t + α · v_t)
+        # v_t = Phi(h_t) - z_t; z_{t+1} = z_t + α · v_t; then optional bound
         z_new = z_seq + self.residual_alpha * (phi_out - z_seq)
-        if self.cycle_ln is not None:
+        if self.cycle_rmsnorm is not None:
+            z_new = self.cycle_rmsnorm(z_new)
+        elif self.cycle_ln is not None:
             z_new = self.cycle_ln(z_new)
         return z_new
 
@@ -190,9 +210,14 @@ class GeometricRecurrent(nn.Module):
 
         device = token_ids.device
         pos = torch.arange(mlen, device=device).unsqueeze(0).expand(bsz, -1)
-        # Context c from tokenized encoding; z_0 := c (LN z0 only if cycle_ln on).
+        # Context c from tokenized encoding; z_0 := c (bound z0 if enabled).
         c = self.tok_emb(token_ids) + self.pos_emb(pos)
-        z_seq = self.cycle_ln(c) if self.cycle_ln is not None else c
+        if self.cycle_rmsnorm is not None:
+            z_seq = self.cycle_rmsnorm(c)
+        elif self.cycle_ln is not None:
+            z_seq = self.cycle_ln(c)
+        else:
+            z_seq = c
 
         key_padding_mask: Optional[torch.Tensor] = None
         if attention_mask is not None:
@@ -236,6 +261,7 @@ def drift_from_trajectory(
     trajectory: list[torch.Tensor],
     *,
     apply_ln: bool = False,
+    apply_rmsnorm: bool = False,
 ) -> list[float]:
     """Compute δ_t = mean_batch ||z_{t+1}-z_t||_2 for consecutive latents.
 
@@ -247,12 +273,18 @@ def drift_from_trajectory(
         If True, LayerNorm each latent (feature-dim) before differencing.
         Use when states lack outer cycle LN so raw drift can explode; when
         cycle LN is already applied this is nearly a no-op (affine re-scale).
+    apply_rmsnorm :
+        If True, RMSNorm each latent (feature-dim, no affine) before
+        differencing. Preferred diameter proxy when ``apply_cycle_rmsnorm``
+        is on the stream (near-identity aside from affine weight).
 
     Returns
     -------
     list[float]
         Length ``len(trajectory)-1``.
     """
+    if apply_ln and apply_rmsnorm:
+        raise ValueError("apply_ln and apply_rmsnorm are mutually exclusive")
     if len(trajectory) < 2:
         return []
     drifts: list[float] = []
@@ -262,6 +294,9 @@ def drift_from_trajectory(
         if apply_ln:
             z0 = F.layer_norm(z0.float(), (z0.shape[-1],))
             z1 = F.layer_norm(z1.float(), (z1.shape[-1],))
+        elif apply_rmsnorm:
+            z0 = F.rms_norm(z0.float(), (z0.shape[-1],))
+            z1 = F.rms_norm(z1.float(), (z1.shape[-1],))
         delta = (z1 - z0).float().reshape(z0.shape[0], -1)
         norms = torch.linalg.vector_norm(delta, ord=2, dim=-1)
         drifts.append(float(norms.mean().item()))
