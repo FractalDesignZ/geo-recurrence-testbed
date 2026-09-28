@@ -1,0 +1,243 @@
+{
+  "band_deviations": [],
+  "band_rejects": 0,
+  "construction": {
+    "er_search": null,
+    "p_field": "empirical |E|/(n*(n-1))",
+    "primary": "path_backbone_plus_non_shortcut_distractors",
+    "seq_len_band": [
+      45,
+      70
+    ],
+    "seq_len_target_mean": 57.0,
+    "token_len_formula": "len(split_encoding_tokens(encode)) = 6 + 3*|E|"
+  },
+  "extra_edges_by_hop": {
+    "12": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "16": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "8": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ]
+  },
+  "graph_draws": 127,
+  "hop_counts": {
+    "-1": 120,
+    "12": 40,
+    "16": 40,
+    "8": 40
+  },
+  "id_band_reference": {
+    "id_split_encoding": {
+      "max": 315,
+      "mean": 160.0875,
+      "min": 27,
+      "n": 2000
+    },
+    "id_split_encoding_mean_recomputed_note": "Recompute from data/id_2k.jsonl at report time if present; seal mixed whitespace(ID) vs split_encoding(OOD).",
+    "id_whitespace": {
+      "max": 109,
+      "mean": 57.3625,
+      "min": 13,
+      "n": 2000
+    },
+    "id_whitespace_mean_cited": 57.36,
+    "prior_ood_split_encoding_mean": 203.225
+  },
+  "matched_ood_floors_set": "data/covariate_matched_ood.jsonl",
+  "n_is_ood_true": 120,
+  "n_support_by_hop": {
+    "12": [
+      14,
+      16,
+      18,
+      20,
+      22
+    ],
+    "16": [
+      17,
+      18,
+      19,
+      20,
+      22
+    ],
+    "8": [
+      10,
+      12,
+      14,
+      16,
+      18
+    ]
+  },
+  "n_support_neg": [
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22
+  ],
+  "n_total": 240,
+  "n_values_used": {
+    "10": 8,
+    "12": 15,
+    "14": 16,
+    "16": 19,
+    "17": 8,
+    "18": 79,
+    "19": 5,
+    "20": 74,
+    "22": 16
+  },
+  "overlap_policy": "runtime filter in run_stalk_stabilize_v3 drops any (edge_hash,s,t) also in matched-OOD",
+  "p_values_used": {
+    "0.0325": 1,
+    "0.0342": 1,
+    "0.0346": 1,
+    "0.0368": 65,
+    "0.039": 4,
+    "0.0411": 2,
+    "0.0421": 3,
+    "0.0425": 1,
+    "0.0433": 2,
+    "0.0455": 2,
+    "0.0474": 3,
+    "0.049": 1,
+    "0.0497": 2,
+    "0.05": 1,
+    "0.0523": 63,
+    "0.0526": 5,
+    "0.0553": 1,
+    "0.0556": 3,
+    "0.0583": 1,
+    "0.0621": 1,
+    "0.0625": 3,
+    "0.0654": 8,
+    "0.0662": 1,
+    "0.0667": 2,
+    "0.0686": 4,
+    "0.0699": 2,
+    "0.0708": 3,
+    "0.0714": 1,
+    "0.0735": 4,
+    "0.075": 4,
+    "0.0769": 1,
+    "0.0792": 1,
+    "0.0833": 3,
+    "0.0875": 3,
+    "0.0879": 1,
+    "0.0934": 3,
+    "0.0985": 2,
+    "0.0989": 3,
+    "0.1044": 2,
+    "0.1061": 4,
+    "0.1099": 2,
+    "0.1136": 3,
+    "0.1154": 3,
+    "0.1212": 1,
+    "0.1288": 1,
+    "0.1364": 1,
+    "0.1439": 1,
+    "0.1444": 1,
+    "0.1515": 1,
+    "0.1556": 1,
+    "0.1591": 1,
+    "0.1778": 1,
+    "0.1889": 1,
+    "0.2111": 3,
+    "0.2333": 1
+  },
+  "purpose": "SELECTION_ONLY_longhop_aux_for_CYCLE_STALK_STABILIZE_V3; NOT used for final floors",
+  "quotas": {
+    "n_neg": 120,
+    "n_pos_total": 120,
+    "ood_hops": [
+      8,
+      12,
+      16
+    ],
+    "pos_per_hop": 40
+  },
+  "regen": "python -m reachability_gen.gen_covariate_matched_ood --out data/id_select_longhop.jsonl --report artifacts/id_select_longhop_generation_report.json --seed 168000 --pos-per-hop 40 --n-neg 120 --skip-er-search",
+  "reject_reasons": {
+    "dup_pos": 7
+  },
+  "science_open": false,
+  "seed": 168000,
+  "token_len": {
+    "band": [
+      45,
+      70
+    ],
+    "bound30_max_len": 257,
+    "by_hop": {
+      "-1": {
+        "max": 54,
+        "mean": 51.0,
+        "min": 48,
+        "n": 120
+      },
+      "12": {
+        "max": 69,
+        "mean": 58.425,
+        "min": 45,
+        "n": 40
+      },
+      "16": {
+        "max": 69,
+        "mean": 63.075,
+        "min": 54,
+        "n": 40
+      },
+      "8": {
+        "max": 69,
+        "mean": 57.375,
+        "min": 45,
+        "n": 40
+      }
+    },
+    "max": 69,
+    "mean": 55.3125,
+    "measure": "split_encoding_tokens",
+    "min": 45,
+    "out_of_band": 0,
+    "target_mean": 57.0
+  },
+  "verify_issues": [],
+  "verify_ok": true,
+  "whitespace_len": {
+    "max": 27,
+    "mean": 22.4375,
+    "min": 19,
+    "note": "Whitespace token count (seal Gate2 cited ID mean~57 on this measure); model-visible length is token_len above."
+  },
+  "y_counts": {
+    "0": 120,
+    "1": 120
+  }
+}
