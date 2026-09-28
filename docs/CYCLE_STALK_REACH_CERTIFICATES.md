@@ -159,7 +159,7 @@ Priority: if collateral harm fires → verdict **`COLLATERAL_HARM`**. Still **ME
 | **Log** | `artifacts/stalk_reach_certificates_run.log` |
 | **Prereg SHA** | `759357f` |
 | **Harness SHA** | `b856104` |
-| **Results SHA** | _(stamped after results commit)_ |
+| **Results SHA** | `1abd8904194bcc5eb72fa036328d543a4cb542b2` |
 | **Cycle verdict** | **`CERT_FO_CATCH`** |
 | **science_open** | **false** (not widened; §22 unchanged) |
 | **Tropical Phase 2** | **not started** |

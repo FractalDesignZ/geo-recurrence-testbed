@@ -803,7 +803,7 @@ Prior seal body + §13–§31 are **not** rewritten. This §32 is append-only do
 | **Cycle note** | `docs/CYCLE_STALK_REACH_CERTIFICATES.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_reach_certificates` |
 | **Base** | `main` `3730558` (after PR #34) |
-| **Prereg / harness / results** | `759357f` / `b856104` / _(results SHA stamped on merge)_ |
+| **Prereg / harness / results** | `759357f` / `b856104` / `1abd8904194bcc5eb72fa036328d543a4cb542b2` |
 | **Cycle verdict** | **`CERT_FO_CATCH`** |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
 | **Tropical Phase 2** | **not started** |
