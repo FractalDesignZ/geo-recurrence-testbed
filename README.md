@@ -363,6 +363,20 @@ python -m reachability_gen.run_sheaf_infer_gate1  # artifacts/sheaf_infer_matche
 
 Prereg (report honestly): hard-neg ≥0.95 AND K16≥0.75 at T=16 on covariate-matched OOD.
 
+## Cycle: STALK_MULTI_SEED_RECONFIRM (MEASURE)
+
+Follow-on to stalk untrained control (PR #11). Retrain stalk-local FractalCore
+≥3 seeds (hard A, stalk-local, no soft ACT); matched-OOD T∈{6,8,12,16};
+mean±std overall/hard-neg/K16; untrained per seed; degree-balanced secondary.
+Prereg (mean): hard-neg≥0.95 and K16@T16≥0.75. `science_open=false` always.
+
+```bash
+python -m reachability_gen.run_stalk_multi_seed_reconfirm
+```
+
+Verdict this run: **`OPEN_CONTINGENT_AT_RISK`** (1/3 seeds; means miss floors).
+Do not silently widen §6. See `docs/CYCLE_STALK_MULTI_SEED_RECONFIRM.md`.
+
 ## Cycle: STALK_LOCALIZATION (MEASURE)
 
 Follow-on to FRACTAL_CORE_GENESIS. Kills global `(s,t)` broadcast `+c` and soft

@@ -1,0 +1,150 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[stalk-reconfirm] === seed 0 train ===
+[fractal-stalk] params=117506 parity_ok=True d=64 mlp=10 T=6 lr=0.0015 clip=2.5
+[fractal-stalk] epoch 1/30 train_acc=0.7206 val_acc=0.8475 (best=0.8475@ep1)
+[fractal-stalk] epoch 2/30 train_acc=0.8594 val_acc=0.8700 (best=0.8700@ep2)
+[fractal-stalk] epoch 3/30 train_acc=0.8875 val_acc=0.8775 (best=0.8775@ep3)
+[fractal-stalk] epoch 4/30 train_acc=0.8844 val_acc=0.8775 (best=0.8775@ep3)
+[fractal-stalk] epoch 5/30 train_acc=0.8938 val_acc=0.8775 (best=0.8775@ep3)
+[fractal-stalk] epoch 6/30 train_acc=0.9019 val_acc=0.8800 (best=0.8800@ep6)
+[fractal-stalk] epoch 7/30 train_acc=0.9019 val_acc=0.8875 (best=0.8875@ep7)
+[fractal-stalk] epoch 8/30 train_acc=0.9094 val_acc=0.8925 (best=0.8925@ep8)
+[fractal-stalk] epoch 9/30 train_acc=0.9025 val_acc=0.8700 (best=0.8925@ep8)
+[fractal-stalk] epoch 10/30 train_acc=0.9125 val_acc=0.8950 (best=0.8950@ep10)
+[fractal-stalk] epoch 11/30 train_acc=0.9169 val_acc=0.9200 (best=0.9200@ep11)
+[fractal-stalk] epoch 12/30 train_acc=0.9231 val_acc=0.9025 (best=0.9200@ep11)
+[fractal-stalk] epoch 13/30 train_acc=0.9306 val_acc=0.9075 (best=0.9200@ep11)
+[fractal-stalk] epoch 14/30 train_acc=0.9363 val_acc=0.9175 (best=0.9200@ep11)
+[fractal-stalk] epoch 15/30 train_acc=0.9363 val_acc=0.9275 (best=0.9275@ep15)
+[fractal-stalk] epoch 16/30 train_acc=0.9331 val_acc=0.9250 (best=0.9275@ep15)
+[fractal-stalk] epoch 17/30 train_acc=0.9413 val_acc=0.9125 (best=0.9275@ep15)
+[fractal-stalk] epoch 18/30 train_acc=0.9469 val_acc=0.9325 (best=0.9325@ep18)
+[fractal-stalk] epoch 19/30 train_acc=0.9619 val_acc=0.9725 (best=0.9725@ep19)
+[fractal-stalk] epoch 20/30 train_acc=0.9769 val_acc=0.9725 (best=0.9725@ep19)
+[fractal-stalk] epoch 21/30 train_acc=0.9812 val_acc=0.9825 (best=0.9825@ep21)
+[fractal-stalk] epoch 22/30 train_acc=0.9788 val_acc=0.9350 (best=0.9825@ep21)
+[fractal-stalk] epoch 23/30 train_acc=0.9838 val_acc=0.9825 (best=0.9825@ep21)
+[fractal-stalk] epoch 24/30 train_acc=0.9869 val_acc=0.9825 (best=0.9825@ep21)
+[fractal-stalk] epoch 25/30 train_acc=0.9850 val_acc=0.9825 (best=0.9825@ep21)
+[fractal-stalk] epoch 26/30 train_acc=0.9838 val_acc=0.9825 (best=0.9825@ep21)
+[fractal-stalk] epoch 27/30 train_acc=0.9831 val_acc=0.9825 (best=0.9825@ep21)
+[fractal-stalk] epoch 28/30 train_acc=0.9850 val_acc=0.9825 (best=0.9825@ep21)
+[fractal-stalk] epoch 29/30 train_acc=0.9881 val_acc=0.9850 (best=0.9850@ep29)
+[fractal-stalk] epoch 30/30 train_acc=0.9881 val_acc=0.9850 (best=0.9850@ep29)
+[stalk-reconfirm] seed=0 OOD eval T∈(6, 8, 12, 16)
+[stalk-reconfirm] seed=0 untrained control
+[stalk-reconfirm] seed=0 T16 overall=0.9771 hard_neg=1.0000 K16=0.9250 prereg=True
+[stalk-reconfirm] === seed 1 train ===
+[fractal-stalk] params=117506 parity_ok=True d=64 mlp=10 T=6 lr=0.0015 clip=2.5
+[fractal-stalk] epoch 1/30 train_acc=0.7163 val_acc=0.8300 (best=0.8300@ep1)
+[fractal-stalk] epoch 2/30 train_acc=0.8375 val_acc=0.8575 (best=0.8575@ep2)
+[fractal-stalk] epoch 3/30 train_acc=0.8700 val_acc=0.8500 (best=0.8575@ep2)
+[fractal-stalk] epoch 4/30 train_acc=0.8738 val_acc=0.8625 (best=0.8625@ep4)
+[fractal-stalk] epoch 5/30 train_acc=0.8850 val_acc=0.8625 (best=0.8625@ep4)
+[fractal-stalk] epoch 6/30 train_acc=0.8962 val_acc=0.8825 (best=0.8825@ep6)
+[fractal-stalk] epoch 7/30 train_acc=0.9006 val_acc=0.8775 (best=0.8825@ep6)
+[fractal-stalk] epoch 8/30 train_acc=0.9044 val_acc=0.8550 (best=0.8825@ep6)
+[fractal-stalk] epoch 9/30 train_acc=0.9131 val_acc=0.9175 (best=0.9175@ep9)
+[fractal-stalk] epoch 10/30 train_acc=0.9313 val_acc=0.9300 (best=0.9300@ep10)
+[fractal-stalk] epoch 11/30 train_acc=0.9325 val_acc=0.9300 (best=0.9300@ep10)
+[fractal-stalk] epoch 12/30 train_acc=0.9463 val_acc=0.9275 (best=0.9300@ep10)
+[fractal-stalk] epoch 13/30 train_acc=0.9444 val_acc=0.9375 (best=0.9375@ep13)
+[fractal-stalk] epoch 14/30 train_acc=0.9569 val_acc=0.9500 (best=0.9500@ep14)
+[fractal-stalk] epoch 15/30 train_acc=0.9644 val_acc=0.9500 (best=0.9500@ep14)
+[fractal-stalk] epoch 16/30 train_acc=0.9675 val_acc=0.9600 (best=0.9600@ep16)
+[fractal-stalk] epoch 17/30 train_acc=0.9700 val_acc=0.9600 (best=0.9600@ep16)
+[fractal-stalk] epoch 18/30 train_acc=0.9663 val_acc=0.9650 (best=0.9650@ep18)
+[fractal-stalk] epoch 19/30 train_acc=0.9750 val_acc=0.9500 (best=0.9650@ep18)
+[fractal-stalk] epoch 20/30 train_acc=0.9794 val_acc=0.9650 (best=0.9650@ep18)
+[fractal-stalk] epoch 21/30 train_acc=0.9762 val_acc=0.9475 (best=0.9650@ep18)
+[fractal-stalk] epoch 22/30 train_acc=0.9794 val_acc=0.9675 (best=0.9675@ep22)
+[fractal-stalk] epoch 23/30 train_acc=0.9781 val_acc=0.9550 (best=0.9675@ep22)
+[fractal-stalk] epoch 24/30 train_acc=0.9819 val_acc=0.9725 (best=0.9725@ep24)
+[fractal-stalk] epoch 25/30 train_acc=0.9850 val_acc=0.9675 (best=0.9725@ep24)
+[fractal-stalk] epoch 26/30 train_acc=0.9600 val_acc=0.9600 (best=0.9725@ep24)
+[fractal-stalk] epoch 27/30 train_acc=0.9513 val_acc=0.9425 (best=0.9725@ep24)
+[fractal-stalk] epoch 28/30 train_acc=0.9556 val_acc=0.9450 (best=0.9725@ep24)
+[fractal-stalk] epoch 29/30 train_acc=0.9563 val_acc=0.9450 (best=0.9725@ep24)
+[fractal-stalk] epoch 30/30 train_acc=0.9563 val_acc=0.9450 (best=0.9725@ep24)
+[stalk-reconfirm] seed=1 OOD eval T∈(6, 8, 12, 16)
+[stalk-reconfirm] seed=1 untrained control
+[stalk-reconfirm] seed=1 T16 overall=0.5813 hard_neg=1.0000 K16=0.0500 prereg=False
+[stalk-reconfirm] === seed 2 train ===
+[fractal-stalk] params=117506 parity_ok=True d=64 mlp=10 T=6 lr=0.0015 clip=2.5
+[fractal-stalk] epoch 1/30 train_acc=0.7262 val_acc=0.8225 (best=0.8225@ep1)
+[fractal-stalk] epoch 2/30 train_acc=0.8469 val_acc=0.8500 (best=0.8500@ep2)
+[fractal-stalk] epoch 3/30 train_acc=0.8575 val_acc=0.8600 (best=0.8600@ep3)
+[fractal-stalk] epoch 4/30 train_acc=0.8712 val_acc=0.8775 (best=0.8775@ep4)
+[fractal-stalk] epoch 5/30 train_acc=0.8850 val_acc=0.8700 (best=0.8775@ep4)
+[fractal-stalk] epoch 6/30 train_acc=0.8962 val_acc=0.8625 (best=0.8775@ep4)
+[fractal-stalk] epoch 7/30 train_acc=0.8944 val_acc=0.8625 (best=0.8775@ep4)
+[fractal-stalk] epoch 8/30 train_acc=0.9087 val_acc=0.8800 (best=0.8800@ep8)
+[fractal-stalk] epoch 9/30 train_acc=0.9075 val_acc=0.8900 (best=0.8900@ep9)
+[fractal-stalk] epoch 10/30 train_acc=0.9038 val_acc=0.8875 (best=0.8900@ep9)
+[fractal-stalk] epoch 11/30 train_acc=0.9125 val_acc=0.9075 (best=0.9075@ep11)
+[fractal-stalk] epoch 12/30 train_acc=0.9375 val_acc=0.9275 (best=0.9275@ep12)
+[fractal-stalk] epoch 13/30 train_acc=0.9456 val_acc=0.9525 (best=0.9525@ep13)
+[fractal-stalk] epoch 14/30 train_acc=0.9519 val_acc=0.9500 (best=0.9525@ep13)
+[fractal-stalk] epoch 15/30 train_acc=0.9550 val_acc=0.9575 (best=0.9575@ep15)
+[fractal-stalk] epoch 16/30 train_acc=0.9613 val_acc=0.9550 (best=0.9575@ep15)
+[fractal-stalk] epoch 17/30 train_acc=0.9619 val_acc=0.9575 (best=0.9575@ep15)
+[fractal-stalk] epoch 18/30 train_acc=0.9694 val_acc=0.9600 (best=0.9600@ep18)
+[fractal-stalk] epoch 19/30 train_acc=0.9631 val_acc=0.9625 (best=0.9625@ep19)
+[fractal-stalk] epoch 20/30 train_acc=0.9675 val_acc=0.9600 (best=0.9625@ep19)
+[fractal-stalk] epoch 21/30 train_acc=0.9694 val_acc=0.9525 (best=0.9625@ep19)
+[fractal-stalk] epoch 22/30 train_acc=0.9681 val_acc=0.9575 (best=0.9625@ep19)
+[fractal-stalk] epoch 23/30 train_acc=0.9694 val_acc=0.9575 (best=0.9625@ep19)
+[fractal-stalk] epoch 24/30 train_acc=0.9700 val_acc=0.9600 (best=0.9625@ep19)
+[fractal-stalk] epoch 25/30 train_acc=0.9719 val_acc=0.9600 (best=0.9625@ep19)
+[fractal-stalk] epoch 26/30 train_acc=0.9719 val_acc=0.9575 (best=0.9625@ep19)
+[fractal-stalk] epoch 27/30 train_acc=0.9706 val_acc=0.9650 (best=0.9650@ep27)
+[fractal-stalk] epoch 28/30 train_acc=0.9738 val_acc=0.9475 (best=0.9650@ep27)
+[fractal-stalk] epoch 29/30 train_acc=0.9681 val_acc=0.9550 (best=0.9650@ep27)
+[fractal-stalk] epoch 30/30 train_acc=0.9694 val_acc=0.9575 (best=0.9650@ep27)
+[stalk-reconfirm] seed=2 OOD eval T∈(6, 8, 12, 16)
+[stalk-reconfirm] seed=2 untrained control
+[stalk-reconfirm] seed=2 T16 overall=0.8500 hard_neg=0.7542 K16=0.9875 prereg=False
+[stalk-reconfirm] wrote artifacts/stalk_multi_seed_reconfirm.json
+[stalk-reconfirm] verdict=OPEN_CONTINGENT_AT_RISK science_open=False mean hard_neg=0.9181±0.1419 K16=0.6542±0.5242
+{
+  "verdict": "OPEN_CONTINGENT_AT_RISK",
+  "open_status": "OPEN_CONTINGENT_AT_RISK",
+  "science_open": false,
+  "prereg_mean_pass": false,
+  "mean_std": {
+    "T16_overall": {
+      "mean": 0.8027777777777777,
+      "std": 0.2020976512682622
+    },
+    "T16_hard_neg": {
+      "mean": 0.9180555555555555,
+      "std": 0.141931941175783
+    },
+    "T16_K8": {
+      "mean": 0.7374999999999999,
+      "std": 0.325
+    },
+    "T16_K12": {
+      "mean": 0.6708333333333334,
+      "std": 0.516952206043589
+    },
+    "T16_K16": {
+      "mean": 0.6541666666666667,
+      "std": 0.5241560677253801
+    },
+    "untrained_T16_overall": {
+      "mean": 0.6256944444444444,
+      "std": 0.015071204454313
+    },
+    "untrained_T16_hard_neg": {
+      "mean": 0.5847222222222223,
+      "std": 0.3065356755263086
+    },
+    "untrained_vs_trained_agree_T16": {
+      "mean": 0.6590277751286825,
+      "std": 0.05501473488730217
+    }
+  },
+  "out": "artifacts/stalk_multi_seed_reconfirm.json"
+}

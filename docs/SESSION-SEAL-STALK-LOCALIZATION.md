@@ -169,3 +169,33 @@ Untrained is **mid (~0.6)**, not ≈ sealed 1.0 — **bake-in NOT proven**. Shea
 
 **science_open policy:** do **not** silently widen; do **not** revoke §6 OPEN. Stalk OPEN remains **standing but contingent** — needs **multi-seed trained reconfirm** before treating the single-seed Gate1 seal as fully robust. Prefer truth over prior OPEN; only revoke if a future bake-in proof lands.
 
+
+---
+
+## 12. Multi-seed reconfirm — OPEN contingent AT RISK (2026-09-27 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_MULTI_SEED_RECONFIRM` |
+| **Artifact** | `artifacts/stalk_multi_seed_reconfirm.json` |
+| **Harness** | `python -m reachability_gen.run_stalk_multi_seed_reconfirm` |
+| **Base after PR #11** | `7f1037a750cb078d66521dd2ca867010f0d85f7e` |
+| **Verdict** | **`OPEN_CONTINGENT_AT_RISK`** |
+| **science_open** | **false** (harness); §6 human seal **not widened** |
+| **Prereg (mean)** | hard-neg≥0.95 **FAIL** (0.918±0.142); K16≥0.75 **FAIL** (0.654±0.524) |
+| **Individual** | **1/3** seeds pass (seed 0 only — matches sealed) |
+
+**Matched-OOD T16 mean±std vs sealed single-seed:**
+
+| Arm | overall | hard-neg | K16 |
+|-----|---------|----------|-----|
+| Sealed OPEN (seed 0 Gate1) | **0.977** | **1.000** | **0.925** |
+| Reconfirm mean±std (seeds 0–2) | **0.803±0.202** | **0.918±0.142** | **0.654±0.524** |
+| Untrained mean±std | 0.626±0.015 | 0.585±0.307 | — |
+
+Untrained mid ≈0.63 — bake-in still **not** proven. Failure mode is **seed instability**
+of trained stalk (seed 1 K16 collapse; seed 2 hard-neg drop), not init oracle.
+
+**Policy:** Prefer truth over prior OPEN. Do **not** silently widen `science_open`.
+§6 remains **standing but contingent at risk** pending human review. Cite
+`docs/CYCLE_STALK_MULTI_SEED_RECONFIRM.md`.

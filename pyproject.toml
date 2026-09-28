@@ -36,6 +36,7 @@ reachability-sheaf-neutral-init-retrain = "reachability_gen.run_sheaf_neutral_in
 reachability-sheaf-no-aux-edge-recon = "reachability_gen.run_sheaf_no_aux_edge_recon:main"
 reachability-sheaf-ste-no-aux = "reachability_gen.run_sheaf_ste_no_aux:main"
 reachability-stalk-untrained-control = "reachability_gen.run_stalk_untrained_control:main"
+reachability-stalk-multi-seed-reconfirm = "reachability_gen.run_stalk_multi_seed_reconfirm:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
