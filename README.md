@@ -378,6 +378,18 @@ Verdict this run: **`OPEN_CONTINGENT_AT_RISK` → DEMOTION `MEASURE`** (1/3 seed
 Stalk §6 live OPEN demoted to MEASURE (seal §13); not INVALID. Do not silently widen.
 See `docs/CYCLE_STALK_MULTI_SEED_RECONFIRM.md`.
 
+## Cycle: STALK_STABILIZE_MULTI_SEED (MEASURE)
+
+Middle-out harden of hard-Â stalk corridor (5 seeds, 60 ep, cosine LR, joint ID-val
+T16 selection). Mean floors PASS (HN 0.957 / K16 0.863); seed-wise **2/5** →
+**`MEASURE_STILL`**. `science_open=false` (not widened).
+
+```bash
+python -m reachability_gen.run_stalk_stabilize_multi_seed
+```
+
+Artifact: `artifacts/stalk_stabilize_multi_seed.json`. See `docs/CYCLE_STALK_STABILIZE_MULTI_SEED.md`.
+
 ## Cycle: STALK_LOCALIZATION (MEASURE)
 
 Follow-on to FRACTAL_CORE_GENESIS. Kills global `(s,t)` broadcast `+c` and soft
