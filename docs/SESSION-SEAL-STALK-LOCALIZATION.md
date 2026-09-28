@@ -12,6 +12,8 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
+**Current status (2026-09-27 CDT):** live claim = **`MEASURE` / demoted** (see **§13**). Header/`§6` `science_open=true` is **historical** single-seed seal only — not a live OPEN. Measurement §12 = `OPEN_CONTINGENT_AT_RISK`; demotion prefers honesty over lonely OPEN. **Not INVALID** (PR #11 untrained mid).
+
 Fail-closed outside the single claim in §6. Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
 ---
@@ -169,3 +171,76 @@ Untrained is **mid (~0.6)**, not ≈ sealed 1.0 — **bake-in NOT proven**. Shea
 
 **science_open policy:** do **not** silently widen; do **not** revoke §6 OPEN. Stalk OPEN remains **standing but contingent** — needs **multi-seed trained reconfirm** before treating the single-seed Gate1 seal as fully robust. Prefer truth over prior OPEN; only revoke if a future bake-in proof lands.
 
+
+---
+
+## 12. Multi-seed reconfirm — OPEN contingent AT RISK (2026-09-27 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_MULTI_SEED_RECONFIRM` |
+| **Artifact** | `artifacts/stalk_multi_seed_reconfirm.json` |
+| **Harness** | `python -m reachability_gen.run_stalk_multi_seed_reconfirm` |
+| **Base after PR #11** | `7f1037a750cb078d66521dd2ca867010f0d85f7e` |
+| **Verdict** | **`OPEN_CONTINGENT_AT_RISK`** |
+| **science_open** | **false** (harness); §6 human seal **not widened** |
+| **Prereg (mean)** | hard-neg≥0.95 **FAIL** (0.918±0.142); K16≥0.75 **FAIL** (0.654±0.524) |
+| **Individual** | **1/3** seeds pass (seed 0 only — matches sealed) |
+
+**Matched-OOD T16 mean±std vs sealed single-seed:**
+
+| Arm | overall | hard-neg | K16 |
+|-----|---------|----------|-----|
+| Sealed OPEN (seed 0 Gate1) | **0.977** | **1.000** | **0.925** |
+| Reconfirm mean±std (seeds 0–2) | **0.803±0.202** | **0.918±0.142** | **0.654±0.524** |
+| Untrained mean±std | 0.626±0.015 | 0.585±0.307 | — |
+
+Untrained mid ≈0.63 — bake-in still **not** proven. Failure mode is **seed instability**
+of trained stalk (seed 1 K16 collapse; seed 2 hard-neg drop), not init oracle.
+
+**Policy (pre-demotion note):** Prefer truth over prior OPEN. Do **not** silently widen `science_open`.
+§12 measured `OPEN_CONTINGENT_AT_RISK`; **human demotion to MEASURE** is recorded in **§13** (append-only). Cite
+`docs/CYCLE_STALK_MULTI_SEED_RECONFIRM.md`.
+
+---
+
+## 13. DEMOTION — science_open OPEN → MEASURE (append-only; 2026-09-27 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Label** | **DEMOTION** / MEASURE (not INVALID; not a rewrite of §1–§12) |
+| **Date** | 2026-09-27 (CDT) |
+| **Trigger** | PR #12 `CYCLE_STALK_MULTI_SEED_RECONFIRM` multi-seed fragility |
+| **Artifact** | `artifacts/stalk_multi_seed_reconfirm.json` |
+| **Prior untrained control** | PR #11 — bake-in **not** proven (u≈0.63); seals_invalidated=false |
+| **Verdict now** | **`MEASURE`** — live `science_open=true` claim **demoted** |
+| **Not** | **INVALID** — failure mode is seed instability, not init bake-in |
+
+### 13.1 Evidence cited (PR #12)
+
+| Metric @ matched-OOD T16 | Sealed single-seed | Reconfirm mean±std (seeds 0–2) |
+|--------------------------|--------------------|--------------------------------|
+| overall | 0.977 | **0.803±0.202** |
+| hard-neg | 1.000 | **0.918±0.142** (prereg mean ≥0.95 **FAIL**) |
+| K16 | 0.925 | **0.654±0.524** (prereg mean ≥0.75 **FAIL**) |
+| individual prereg | PASS (seed 0) | **1/3** seeds PASS |
+
+Untrained mean overall **0.626±0.015** — mid; bake-in still not proven. Prefer honesty over lonely OPEN.
+
+### 13.2 Science status — DEMOTE (not revoke-as-INVALID)
+
+| Prior | Status now |
+|-------|------------|
+| §6 `science_open=true` scoped stalk locality OPEN | **DEMOTED → MEASURE** (no live science_open claim) |
+| §6 / §4 / §5 numeric tables | Remain **historical** evidence of the single-seed run |
+| PR #11 contingent standing | Superseded by multi-seed FAIL → demotion |
+| Claim widening | **None** — `science_open` stays false/narrow; human-only widen later |
+
+**Do not silently defend prior OPEN.** Multi-seed means miss floors; only 1/3 seeds pass.
+Not INVALID: untrained control passed (no bake-in). Demotion = honesty that single-seed
+OPEN is not robust enough to remain a live science_open claim.
+
+### 13.3 Non-rewrite rule
+
+Prior seal body (§1–§12) is **not** rewritten. This §13 is append-only DEMOTION.
+Ledger: `docs/LEDGER-OPEN-MEASURE-STOP.md`. Cycle note: `docs/CYCLE_STALK_MULTI_SEED_RECONFIRM.md`.
