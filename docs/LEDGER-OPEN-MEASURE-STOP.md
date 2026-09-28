@@ -4,8 +4,8 @@
 |-------|-------|
 | **Date** | 2026-09-27 (CDT) |
 | **Repo** | https://github.com/FractalDesignZ/geo-recurrence-testbed |
-| **Base after PR #14** | `61314a0` (merge CYCLE_STALK_STABILIZE_MULTI_SEED MEASURE_STILL) |
-| **Hygiene** | PR #12 demotes stalk §6 OPEN → **MEASURE**; PR #14 MEASURE_STILL; PR #15 V2 = **STOP_FRAGILE** (HN-heavy select → K16 collapse) |
+| **Base after PR #15** | `f94f9f7` (merge CYCLE_STALK_STABILIZE_V2 STOP_FRAGILE) |
+| **Hygiene** | PR #12 demotes stalk §6 OPEN → **MEASURE**; PR #14 MEASURE_STILL 2/5; PR #15 V2 STOP_FRAGILE (HN-heavy→K16↓); PR #16 V3 STOP_FRAGILE (K16-aux→HN↓) |
 | **science_open policy** | Fail-closed. Harness never self-stamps `true`. Human seal only. |
 | **Purpose** | Single dimensional table of seals/PRs and **clear next cells**. |
 
@@ -32,7 +32,8 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | **PR #11** `7f1037a` | Stalk untrained control | was OPEN contingent → superseded | was true §6 → demoted via PR #12 | sealed stalk | n/a | n/a | matched-OOD T∈{6,8,12,16} | `OPEN_STILL_CONTINGENT_NEEDS_MULTI_SEED` (u≈0.63; **not** bake-in) | `artifacts/stalk_untrained_control_audit.json` |
 | **PR #12** `69d61a9` | `CYCLE_STALK_MULTI_SEED_RECONFIRM` | **MEASURE** (demoted from OPEN) | **false** (demoted; not widened) | hard-A stalk | n/a | n/a | matched-OOD T∈{6,8,12,16}; ≥3 seeds | `OPEN_CONTINGENT_AT_RISK` → **DEMOTION MEASURE** (1/3; mean HN 0.918 / K16 0.654) | `artifacts/stalk_multi_seed_reconfirm.json` / seal §13 |
 | **PR #14** `61314a0` | `CYCLE_STALK_STABILIZE_MULTI_SEED` | **MEASURE** | **false** (not widened) | hard-A stalk harden | n/a | n/a | matched-OOD T∈{6,8,12,16}; **5 seeds**; 60ep cosine | `MEASURE_STILL` (mean HN **0.957** / K16 **0.863** PASS; seed **2/5** &lt;4/5) | `artifacts/stalk_stabilize_multi_seed.json` / seal §14 / `docs/CYCLE_STALK_STABILIZE_MULTI_SEED.md` |
-| **PR #15** _(this PR)_ | `CYCLE_STALK_STABILIZE_V2` | **MEASURE** | **false** (not widened) | hard-A stalk V2 | n/a | n/a | matched-OOD T∈{6,8,12,16}; **5 seeds**; 90ep; gated 0.7·HN | `STOP_FRAGILE` (seed **1/5**; K16 mean **0.423**; HN-heavy under-propagation) | `artifacts/stalk_stabilize_v2.json` / seal §15 / `docs/CYCLE_STALK_STABILIZE_V2.md` |
+| **PR #15** `f94f9f7` | `CYCLE_STALK_STABILIZE_V2` | **MEASURE** | **false** (not widened) | hard-A stalk V2 | n/a | n/a | matched-OOD T∈{6,8,12,16}; **5 seeds**; 90ep; gated 0.7·HN | `STOP_FRAGILE` (seed **1/5**; K16 mean **0.423**; HN-heavy under-propagation) | `artifacts/stalk_stabilize_v2.json` / seal §15 / `docs/CYCLE_STALK_STABILIZE_V2.md` |
+| **PR #16** _(this PR)_ | `CYCLE_STALK_STABILIZE_V3` | **MEASURE** | **false** (not widened) | hard-A stalk V3 | n/a | n/a | matched-OOD T∈{6,8,12,16}; **5 seeds**; 60ep; equal HN+K16+ov select-aux | `STOP_FRAGILE` (seed **1/5**; HN mean **0.838**; K16 **0.968** rescued) | `artifacts/stalk_stabilize_v3.json` / seal §16 / `docs/CYCLE_STALK_STABILIZE_V3.md` |
 
 ### 1.1 Status legend
 
@@ -51,7 +52,7 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 |-------|--------|
 | Sheaf §6 sparse [45,70] K≤16 "**learned** Â" | **INVALID** (PR #7 / seal §16) |
 | Dense-context §6 "**learned**" dense band | **INVALIDATED** (dense seal §8) |
-| Stalk §6 hard-A locality | **MEASURE** (**demoted**; PR #14 means PASS seed 2/5; V2 PR STOP_FRAGILE 1/5 K16 collapse; **not INVALID**; science_open false) |
+| Stalk §6 hard-A locality | **MEASURE** (**demoted**; PR #14 means PASS seed 2/5; V2/V3 both STOP_FRAGILE 1/5 — V2 K16↓ / V3 HN↓; **not INVALID**; science_open false) |
 | Feasibility true p=0.15 under [45,70] | **INVALID** (PR #5) |
 | With-aux neutral retrain floors (PR #8) | **MEASURE** candidate only (`science_open=false`) |
 | No-aux detach (PR #9) | **STOP** residue |
@@ -67,8 +68,9 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | **2 (done)** | Stalk untrained control (PR #11 `7f1037a`) | FractalCore/stalk = sealed OPEN; matched-OOD T∈{6,8,12,16} | — | bake-in would INVALIDATE | **Verdict:** OPEN still contingent (u T16 overall 0.633 / hard-neg 0.600 vs sealed 0.977 / 1.000; agree 0.610). No revoke. |
 | **3 (done)** | `CYCLE_STALK_MULTI_SEED_RECONFIRM` (PR #12) | ≥3 seeds; hard-A stalk; T∈{6,8,12,16}; prereg mean HN≥0.95 & K16≥0.75 | — | **DEMOTION MEASURE** | Measurement `OPEN_CONTINGENT_AT_RISK` (1/3); mean HN 0.918±0.142 / K16 0.654±0.524 → **demote** live §6 OPEN to MEASURE (seal §13). Not INVALID. |
 | **3b (done)** | `CYCLE_STALK_STABILIZE_MULTI_SEED` (PR #14 `61314a0`) | 5 seeds; 60ep cosine; joint 0.5 ID-val T16; floors + seed ≥4/5 | PASS_CANDIDATE (still science_open=false) | **MEASURE_STILL** | Means PASS (HN 0.957±0.061 / K16 0.863±0.143); seed **2/5**. Prefer this corridor over V2. |
-| **3c (done)** | `CYCLE_STALK_STABILIZE_V2` (this PR) | 90ep; LR→1e-4; gated **0.7·HN+0.3·ov** (ov≥0.85) | PASS_CANDIDATE | **STOP_FRAGILE** | Seed **1/5**; K16 mean **0.423**; HN weight reintroduced under-propagation. Do **not** raise HN weight further. |
-| **4 (active)** | Stalk seed-fraction (non-HN-heavy) / Gumbel optional | prefer **#14 0.5/0.5** + longer train **or** accept MEASURE; sheaf gumbel optional | MEASURE / PASS_CANDIDATE | STOP | Prefer stalk ≥4/5 before OPEN revive; sheaf unsupervised still blocked; **no further HN-primary** |
+| **3c (done)** | `CYCLE_STALK_STABILIZE_V2` (PR #15 `f94f9f7`) | 90ep; LR→1e-4; gated **0.7·HN+0.3·ov** (ov≥0.85) | PASS_CANDIDATE | **STOP_FRAGILE** | Seed **1/5**; K16 mean **0.423**; HN weight reintroduced under-propagation. Do **not** raise HN weight further. |
+| **3d (done)** | `CYCLE_STALK_STABILIZE_V3` (this PR) | 60ep #14 corridor; equal **(1/3)HN+(1/3)K16_sel+(1/3)ov**; select-aux longhop | PASS_CANDIDATE | **STOP_FRAGILE** | Seed **1/5**; K16 **0.968** rescued; HN mean **0.838** fails. Inverted V2 failure. Prefer #14. |
+| **4 (active)** | Accept MEASURE / orthogonal (non-select) | prefer **#14 0.5/0.5** as best stabilize; sheaf gumbel optional | MEASURE | STOP | Prefer honesty: #14 MEASURE_STILL best corridor; V2/V3 select variants both STOP_FRAGILE; **no further HN-primary**; select-aux equal-weight also STOP |
 | 5 | Aux ablation attribution | with-aux vs STE-no-aux under matched seeds | document necessity | — | Human review before any OPEN revive |
 | 6 | Neutral-init RED_TEST / dense re-eval | frozen or retrained neutral ckpt | MEASURE | STOP | Do not revive bake-in OPEN |
 | 7 | Depth×Density frontier | longer K **and** dense ER under admissible band | MEASURE plan | — | Orthogonal envelopes; `science_open=false` until seal |
@@ -98,6 +100,7 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | Stalk multi-seed reconfirm | `docs/CYCLE_STALK_MULTI_SEED_RECONFIRM.md` / `artifacts/stalk_multi_seed_reconfirm.json` |
 | Stalk stabilize multi-seed | `docs/CYCLE_STALK_STABILIZE_MULTI_SEED.md` / `artifacts/stalk_stabilize_multi_seed.json` |
 | Stalk stabilize V2 | `docs/CYCLE_STALK_STABILIZE_V2.md` / `artifacts/stalk_stabilize_v2.json` |
+| Stalk stabilize V3 | `docs/CYCLE_STALK_STABILIZE_V3.md` / `artifacts/stalk_stabilize_v3.json` |
 | This ledger | `docs/LEDGER-OPEN-MEASURE-STOP.md` |
 
 ---

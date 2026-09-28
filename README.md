@@ -403,6 +403,20 @@ python -m reachability_gen.run_stalk_stabilize_v2
 
 Artifact: `artifacts/stalk_stabilize_v2.json`. See `docs/CYCLE_STALK_STABILIZE_V2.md`.
 
+## Cycle: STALK_STABILIZE_V3 (MEASURE → STOP_FRAGILE)
+
+Continue from PR #15 STOP_FRAGILE / prefer #14 corridor. Knobs: 60 ep, cosine
+1.5e-3→1.5e-4, equal-weight joint **(1/3)·HN+(1/3)·K16_sel+(1/3)·overall** @ T16
+(K16 from selection-only longhop aux; HN_weight=1/3). Result: seed **1/5**,
+HN mean **0.838** FAIL / K16 **0.968** PASS → **`STOP_FRAGILE`** (inverted V2
+failure). Prefer #14 0.5/0.5 corridor. `science_open=false`.
+
+```bash
+python -m reachability_gen.run_stalk_stabilize_v3
+```
+
+Artifact: `artifacts/stalk_stabilize_v3.json`. See `docs/CYCLE_STALK_STABILIZE_V3.md`.
+
 ## Cycle: STALK_LOCALIZATION (MEASURE)
 
 Follow-on to FRACTAL_CORE_GENESIS. Kills global `(s,t)` broadcast `+c` and soft

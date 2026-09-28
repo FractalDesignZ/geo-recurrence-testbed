@@ -302,3 +302,34 @@ HN-heavy selection rescued seed2 HN but collapsed K16 on seeds 0/1/3 (ID overall
 
 Prior seal body + §13 DEMOTION + §14 MEASURE_STILL are **not** rewritten. This §15 is append-only STOP_FRAGILE.
 
+---
+
+## 16. Stabilize V3 — STOP_FRAGILE (append-only; 2026-09-27 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_STABILIZE_V3` |
+| **Artifact** | `artifacts/stalk_stabilize_v3.json` |
+| **Harness** | `python -m reachability_gen.run_stalk_stabilize_v3` |
+| **Base** | `main` `f94f9f7` (PR #15 merge) + prereg `0e464b3` |
+| **Verdict** | **`STOP_FRAGILE`** |
+| **science_open** | **false** (not widened) |
+| **Harden V3** | 5 seeds; 60 ep (#14 corridor); cosine 1.5e-3→1.5e-4; equal-weight joint **(1/3)·HN+(1/3)·K16_sel+(1/3)·overall** @ T16 (K16 from select-aux `id_select_longhop`; HN_weight=1/3≤0.5) |
+| **Prereg mean** | hard-neg≥0.95 **FAIL** (0.838±0.142); K16≥0.75 **PASS** (0.968±0.046) |
+| **Seed-wise** | **1/5** PASS (goal ≥4/5 **FAIL**; ≤1/5 → STOP_FRAGILE) |
+
+### 16.1 Matched-OOD T16 mean±std
+
+| Arm | overall | hard-neg | K16 |
+|-----|---------|----------|-----|
+| PR #14 stabilize (n=5) | 0.929±0.035 | 0.957±0.061 | 0.863±0.143 |
+| PR #15 V2 (n=5) | 0.813±0.157 | 0.955±0.101 | 0.423±0.477 |
+| **This V3 (n=5)** | **0.890±0.067** | **0.838±0.142** | **0.968±0.046** |
+| Untrained mean | 0.488±0.194 | 0.577±0.235 | — |
+
+K16 select-aux rescued mean K16 (0.423→0.968) but traded HN (0.957→0.838). Inverted V2 failure mode. Prefer honesty: **STOP** this select-aux equal-weight line; retain #14 MEASURE_STILL as best stabilize evidence. Cite `docs/CYCLE_STALK_STABILIZE_V3.md`.
+
+### 16.2 Non-rewrite rule
+
+Prior seal body + §13 DEMOTION + §14 MEASURE_STILL + §15 STOP_FRAGILE are **not** rewritten. This §16 is append-only STOP_FRAGILE.
+
