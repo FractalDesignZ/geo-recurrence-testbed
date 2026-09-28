@@ -50,6 +50,7 @@ reachability-stalk-bag-diversity = "reachability_gen.run_stalk_bag_diversity:mai
 reachability-stalk-competent-dissonance = "reachability_gen.run_stalk_competent_dissonance:main"
 reachability-gen-stalk-red-cd = "reachability_gen.gen_stalk_red_competent_dissonance:main"
 reachability-stalk-red-competent-dissonance = "reachability_gen.run_stalk_red_competent_dissonance:main"
+reachability-stalk-hop-ood-hn = "reachability_gen.run_stalk_hop_ood_hn:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

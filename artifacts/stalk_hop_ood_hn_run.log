@@ -1,0 +1,6 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[stalk-hop-ood-hn] loading #14/#18/#22 ens n=10
+[stalk-hop-ood-hn] AUDIT baseline prob_mean ood_hops T16
+[stalk-hop-ood-hn] AUDIT secondary majority_vote
+[stalk-hop-ood-hn] verdict=FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED ens_HN=0.06666666666666667 gate_HN=0.0 FAIL_OPEN=45 FAIL_CLOSED=190 CD=0.553125 replicate_ok=True wrote artifacts/stalk_hop_ood_hn.json (12.7s)
