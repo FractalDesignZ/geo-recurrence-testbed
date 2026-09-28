@@ -1,0 +1,157 @@
+# SESSION SEAL — CYCLE_SHEAF_INFERENCE (SheafInferCore Gate0/1)
+
+| Field | Value |
+|-------|-------|
+| **Date** | 2026-09-27 |
+| **Mode** | FREEZE / human seal |
+| **Cycle** | `CYCLE_SHEAF_INFERENCE` |
+| **science_open** | **true** (scoped claim only — §6) |
+| **Repo** | https://github.com/FractalDesignZ/geo-recurrence-testbed |
+| **Branch** | `cycle/sheaf-inference` |
+| **MEASURE SHA (pre-merge tip)** | `f374e7c` (`f374e7c2414e70345bbb6fe9a68dafb1dc95f77f`) |
+| **Merge target** | PR #3 → `main` |
+| **Merge SHA (post-merge)** | _pending — filled after `gh pr merge 3 --merge`_ |
+| **Prior stalk seal** | `docs/SESSION-SEAL-STALK-LOCALIZATION.md` @ `b144dac` (append-only; not rewritten) |
+| **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
+
+Fail-closed outside the single claim in §6. Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited. Evidence = cited artifact paths; do not invent metrics.
+
+---
+
+## 1. Scope sealed
+
+| Slice | Artifact | Status |
+|-------|----------|--------|
+| Gate0 balanced overfit + disconnect under `A_hat` | `artifacts/sheaf_infer_overfit.json` | SEALED — **PASS** |
+| Gate1 id_2k × 30 ep + matched-OOD (discrete T) | `artifacts/sheaf_infer_matched_ood.json` | SEALED — **Prereg PASS** |
+| Gate1 best checkpoint | `artifacts/sheaf_infer_gate1_best.pt` | SEALED |
+| Gate1 run log | `artifacts/sheaf_infer_gate1_run.log` | SEALED |
+
+Architecture (from artifact `architecture` + Gate0): edge-token encoder → `E_hat` → hard gate θ=0.5 → inferred `A_hat`; **default `gate_detach_diffusion=true`** into stalk-local discrete diffusion; shared bias-free Φ; local stalk@`s` / else 0; discrete `T ∈ {6,8,12,16}`; **no hard A oracle at eval**; aux edge-recon BCE **train-only**. Param count **123206** within ±5% of FF 121218 (ratio ≈1.016).
+
+Substrate: `covariate_matched_ood` (`data/covariate_matched_ood.jsonl`, n=480; token_len band [45,70]) on synthetic ER digraphs / matched seq-len band. Prior cycle seal: stalk locality with hard `A_ij` mask (`docs/SESSION-SEAL-STALK-LOCALIZATION.md` @ `b144dac`) — residue was handed topology; this cycle removes the eval oracle.
+
+---
+
+## 2. Gate0 — PASS + disconnect invariant
+
+Balanced 32 (16 y=0 hard-neg + 16 y=1), T=6, discrete halt (`adaptive_halt=false`). Cite: `artifacts/sheaf_infer_overfit.json`.
+
+| Metric | Value |
+|--------|-------|
+| final_acc | **1.0** |
+| final_loss | **~2.28e-5** (&lt; 1e-3) |
+| final_edge_recon_acc | **1.0** (≥ 0.99) |
+| passed_at | step 1 / 150 |
+| param_count | **123206** |
+| within ±5% of FF 121218 | **true** (ratio ≈1.016; window [115157, 127279]) |
+| hard_A_oracle_eval | **false** |
+| disconnect ‖h_t‖ under `A_hat` | **ok** — max_l2 = **0.0** across T∈{6,8,12,16} (atol=1e-3) |
+| edge recon (disconnect eval) | **1.0** offdiag across those T |
+
+**Invariant (Gate0):** for disconnected pairs, ‖h_t‖ = 0 under inferred hard gate / `A_hat` at every sealed T. `ste_softening_note` = null. Harness `science_open=false` on Gate0 engineering.
+
+---
+
+## 3. Gate1 — ID best
+
+Train: `data/id_2k.jsonl`, 30 epochs, bound30 recurrent hparams (lr=1.5e-3, clip=2.5, d=64, mlp×12, T_train=6, discrete). Cite: `artifacts/sheaf_infer_matched_ood.json` → `train`.
+
+| Metric | Value |
+|--------|-------|
+| best_epoch | **1** |
+| best_val_acc | **1.0** |
+| param_count | 123206 |
+| param_parity | within_5pct **true** |
+| run_id | `sheaf-infer-gate1-23a9f0978a` |
+| hard_A_oracle_eval | **false** |
+| science_open (harness) | false |
+
+---
+
+## 4. Prereg PASS — matched-OOD @ T=16
+
+Cite: `artifacts/sheaf_infer_matched_ood.json` → `prereg` / `ood_eval.dynamic.dynamic_T16_unroll`.
+
+| Prereg threshold | Observed | Status |
+|------------------|----------|--------|
+| hard-neg @ T16 ≥ 0.95 | **1.000** (240/240) | **PASS** |
+| K16 @ T16 ≥ 0.75 | **1.000** (80/80) | **PASS** |
+| `prereg.pass` | true | |
+
+Harness stamp on artifact remains `science_open: false` (never self-stamps true). Human seal may open **only** the scoped claim in §6.
+
+---
+
+## 5. Causal horizon — T vs K (discrete unroll)
+
+Cite: same artifact `ood_eval.fixed.fixed_T6_unroll` + `ood_eval.dynamic.dynamic_T{8,12,16}_unroll` (dynamic T6 matches fixed). Hard-neg = hop −1.
+
+| T | Overall | Hard-neg | K8 | K12 | K16 |
+|---|---------|---------|----|-----|-----|
+| 6 | 0.500 | **1.000** | **0.000** | **0.000** | **0.000** |
+| 8 | 0.667 | **1.000** | **1.000** | **0.000** | **0.000** |
+| 12 | 0.833 | **1.000** | **1.000** | **1.000** | **0.000** |
+| **16** | **1.000** | **1.000** | **1.000** | **1.000** | **1.000** |
+
+**Causal horizon confirmation:** when **T &lt; K**, hop-stratified accuracy on that K column is **0.000** (under-propagation); when **T ≥ K**, accuracy is **1.000** at T=16 for all sealed K∈{8,12,16}. Hard-neg stays **1.000** at every T — zero leakage under inferred hard gate (no A oracle at eval).
+
+---
+
+## 6. Scoped science OPEN (single claim)
+
+| Field | Value |
+|-------|-------|
+| **science_open** | **true** |
+| **Claim** | Learned directed restriction maps (edge-token → Ê → hard-gated Â) + stalk-local discrete cycle diffusion resolve zero-shot path-length generalization up to K=16 on directed graphs without an external adjacency oracle at eval (covariate-matched OOD, this substrate). |
+| **Substrate** | `covariate_matched_ood` (synthetic ER digraphs, token_len band [45,70]); SheafInferCore with train-only aux edge recon + default `gate_detach_diffusion`; **no** hard A at eval |
+| **Evidence** | Prereg PASS (§4); causal horizon table (§5); Gate0 disconnect ‖h_t‖=0 + edge recon 1.0 (§2) |
+| **SHAs** | MEASURE pre-merge tip `f374e7c`; merge via PR #3 → `main` (post-merge SHA recorded in header when known) |
+
+Do **not** generalize this OPEN beyond the cited substrate, K≤16, and architecture.
+
+---
+
+## 7. Explicit residue / NOT open
+
+`science_open=false` on all of the following (fail-closed):
+
+| Residue | Why closed |
+|---------|------------|
+| K &gt; 16 path-length gen | Sealed evidence stops at K16@T16; longer hops unmeasured |
+| Denser / alternate graph families | Only this matched ER / seq-len-band substrate; no claim on denser graphs beyond sealed draw |
+| Aux edge recon at eval | Train-only gold-edge BCE; eval uses inferred gate only |
+| STE / Gumbel as required mechanism | Available in code; reported numbers use default **gate_detach_diffusion** (STE mode for gate construction, detached into Φ) |
+| Soft ACT | Stripped; not re-licensed |
+| Unrestricted MLP loops | Not the stalk-local discrete-T design |
+| Stalk OPEN with hard mask | Separate sealed claim — `docs/SESSION-SEAL-STALK-LOCALIZATION.md` @ `b144dac` (append-only; not rewritten here) |
+| Mandelbrot analogy as science | Aspirational only (`mandelbrot_analogy` in artifact) |
+| Prior Gate2 / Geo-Loop length-gen | STOP — see `docs/SESSION-SEAL-GATE2.md` |
+
+---
+
+## 8. Evidence vs aspiration
+
+| Label | Content |
+|-------|---------|
+| **Evidence** | Gate0/1 JSON metrics cited above; causal horizon T vs K; prereg PASS; param parity hygiene; `hard_A_oracle_eval: false` |
+| **Aspiration** | Sheaf / Mandelbrot metaphor; universal graphs; K&gt;16; density stress — deferred to next cycle |
+
+---
+
+## 9. Next frontier — `CYCLE_SHEAF_STRESS_TEST`
+
+Stress learned sheaf beyond sealed K≤16 / current matched density. MEASURE plan only until measured; `science_open=false` until a later human seal.
+
+Stub: `docs/CYCLE_SHEAF_STRESS_TEST.md`.
+
+---
+
+## 10. Fail-closed invariants preserved
+
+- Artifact harness never self-stamps `science_open=true` (`science_open: false` in JSON).
+- `_verify_param_parity` ±5% of FF 121218; hard-fail outside window.
+- No A oracle at eval; gold edges for aux recon in training only.
+- Evidence = cited artifact paths above; SHAs `f374e7c` / PR #3 → `main`.
+- Outside §6 claim: **fail-closed**.
+- Do not rewrite `docs/SESSION-SEAL-STALK-LOCALIZATION.md`.
