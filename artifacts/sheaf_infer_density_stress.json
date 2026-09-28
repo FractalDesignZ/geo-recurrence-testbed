@@ -1,0 +1,235 @@
+{
+  "A_hat_vs_gold": {
+    "FNR": 0.0,
+    "FPR": 0.0,
+    "comparable": "offdiag_real_nodes_vs_gold_A",
+    "fn": 0,
+    "fp": 0,
+    "n_examples": 128,
+    "n_offdiag_cells": 30720,
+    "note": "\u00c2 = hard gate(\u03c3(E_hat)>\u03b8) vs gold adjacency from edge tokens; diagonal excluded; pad excluded. Not an eval oracle for reachability.",
+    "tn": 26237,
+    "tp": 4483
+  },
+  "attribution": {
+    "acc_drop_under_clean_A_hat": false,
+    "compiler_clean": true,
+    "fnr_exceeds": false,
+    "fpr_exceeds": false,
+    "hard_neg_ok": true,
+    "mode": "INVALID",
+    "modes_fired": [],
+    "note": "Attribution suspended: run INVALID (seq_len mean out of band).",
+    "pos_ok_T12": true,
+    "pos_ok_T8": true
+  },
+  "baseline_sheaf_seal": "af8e49f",
+  "cell": {
+    "K": 8,
+    "T_values": [
+      8,
+      12
+    ],
+    "construction": "true_er_digraph",
+    "n": 16,
+    "note": "True ER digraph Bernoulli(p=0.15); no path-backbone density drop. If seq_len mean \u2209 [45,70], INVALID.",
+    "p_requested": 0.15,
+    "path_backbone": false
+  },
+  "checkpoint": {
+    "ckpt_arm": "sheaf-infer-T6-d64-mlp12",
+    "ckpt_epoch": 1,
+    "ckpt_val_acc": 1.0,
+    "expected_param_count": 123206,
+    "frozen": true,
+    "gate_detach_diffusion": true,
+    "hard_A_oracle_eval": false,
+    "param_count": 123206,
+    "param_parity": {
+      "ff_baseline_params": 121218,
+      "fractal_over_ff_ratio": 1.0164002045900773,
+      "fractal_param_count": 123206,
+      "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+      "science_open": false,
+      "tolerance": 0.05,
+      "window": [
+        115157,
+        127279
+      ],
+      "within_5pct": true
+    },
+    "path": "artifacts/sheaf_infer_gate1_best.pt",
+    "retrain": false,
+    "verified_exists": true
+  },
+  "cycle": "CYCLE_SHEAF_DENSITY_STRESS",
+  "dataset": {
+    "construction": "true_er_digraph",
+    "generation_report": "artifacts/sheaf_density_stress_generation_report.json",
+    "hard_neg_discipline": {
+      "R_out_bfs_dfs_assert": true,
+      "n_hard_neg_checked": 64,
+      "ok": true
+    },
+    "n_examples": 128,
+    "n_neg": 64,
+    "n_pos": 64,
+    "p_empirical_mean": 0.14593098958333334,
+    "path": "data/sheaf_density_stress_p015.jsonl",
+    "path_backbone": false,
+    "seed": 189000
+  },
+  "elapsed_sec": 0.7460381984710693,
+  "generation_report_summary": {
+    "construction": "true_er_digraph",
+    "mean_in_band": false,
+    "p_empirical_mean": 0.14593098958333334,
+    "path_backbone": false,
+    "token_len_mean": 111.0703125
+  },
+  "invalid_reason": "seq_len mean=111.0703 not in sealed band [45, 70] under true ER digraph p=0.15 n=16 (no path-backbone). Density stress INVALID \u2014 stop.",
+  "mode": "MEASURE",
+  "prereg": {
+    "compiler_clean_ok": true,
+    "fail_closed": true,
+    "floors": {
+      "compiler_clean": {
+        "FNR_A_hat_le": 0.02,
+        "FPR_A_hat_le": 0.02
+      },
+      "hard_neg_ge": 0.95,
+      "modes": {
+        "A": "FPR(A_hat) > 0.02",
+        "B": "FNR(A_hat) > 0.02",
+        "C": "A_hat compiler-clean but accuracy drops below floors",
+        "PASS": "all floors met",
+        "multi_mode": "comma-joined subset of A,B,C when multiple fire"
+      },
+      "note": "Prereg floors locked before metric interpretation. Report PASS/FAIL/INVALID honestly. science_open=false regardless.",
+      "positive_reachability_ge": {
+        "T12": 0.95,
+        "T8": 0.95
+      },
+      "written_before_interpret": true
+    },
+    "hard_neg_ok": true,
+    "invalid": true,
+    "observed": {
+      "FNR_A_hat": 0.0,
+      "FPR_A_hat": 0.0,
+      "hard_neg_T12": 1.0,
+      "hard_neg_T8": 1.0,
+      "positive_K8_T12": 1.0,
+      "positive_K8_T8": 1.0,
+      "seq_len_mean": 111.0703125
+    },
+    "pass": false,
+    "positive_T12_ok": true,
+    "positive_T8_ok": true,
+    "run_valid": false
+  },
+  "prereg_floors": {
+    "compiler_clean": {
+      "FNR_A_hat_le": 0.02,
+      "FPR_A_hat_le": 0.02
+    },
+    "hard_neg_ge": 0.95,
+    "modes": {
+      "A": "FPR(A_hat) > 0.02",
+      "B": "FNR(A_hat) > 0.02",
+      "C": "A_hat compiler-clean but accuracy drops below floors",
+      "PASS": "all floors met",
+      "multi_mode": "comma-joined subset of A,B,C when multiple fire"
+    },
+    "note": "Prereg floors locked before metric interpretation. Report PASS/FAIL/INVALID honestly. science_open=false regardless.",
+    "positive_reachability_ge": {
+      "T12": 0.95,
+      "T8": 0.95
+    },
+    "written_before_interpret": true
+  },
+  "prior_red_test_merge": "7a02dea",
+  "reachability": {
+    "T12": {
+      "K8_acc": 1.0,
+      "K8_n": 64,
+      "T": 12,
+      "adaptive_halt": false,
+      "by_hop": {
+        "-1": {
+          "acc_mean": 1.0,
+          "correct": 64,
+          "n": 64
+        },
+        "8": {
+          "acc_mean": 1.0,
+          "correct": 64,
+          "n": 64
+        }
+      },
+      "discrete_T": true,
+      "hard_A_oracle": false,
+      "hard_neg_acc": 1.0,
+      "hard_neg_n": 64,
+      "n": 128,
+      "overall_acc": 1.0,
+      "positive_acc": 1.0,
+      "positive_n": 64
+    },
+    "T8": {
+      "K8_acc": 1.0,
+      "K8_n": 64,
+      "T": 8,
+      "adaptive_halt": false,
+      "by_hop": {
+        "-1": {
+          "acc_mean": 1.0,
+          "correct": 64,
+          "n": 64
+        },
+        "8": {
+          "acc_mean": 1.0,
+          "correct": 64,
+          "n": 64
+        }
+      },
+      "discrete_T": true,
+      "hard_A_oracle": false,
+      "hard_neg_acc": 1.0,
+      "hard_neg_n": 64,
+      "n": 128,
+      "overall_acc": 1.0,
+      "positive_acc": 1.0,
+      "positive_n": 64
+    }
+  },
+  "run_id": "sheaf-density-stress-4da32b2ff2",
+  "run_valid": false,
+  "science_open": false,
+  "seq_len_stats": {
+    "all_in_band": false,
+    "invalid_if_mean_out_of_band": true,
+    "max": 168,
+    "mean": 111.0703125,
+    "mean_in_band": false,
+    "min": 78,
+    "n": 128,
+    "note": "Density stress requires seq_len mean \u2208 [45,70] under true ER p=0.15 with no path-backbone. Out-of-band mean \u2192 INVALID.",
+    "sealed_band": [
+      45,
+      70
+    ]
+  },
+  "telemetry": {
+    "FNR_A_hat": 0.0,
+    "FPR_A_hat": 0.0,
+    "hard_neg_T12": 1.0,
+    "hard_neg_T8": 1.0,
+    "p_empirical_mean": 0.14593098958333334,
+    "positive_K8_T12": 1.0,
+    "positive_K8_T8": 1.0,
+    "reachability_overall_T12": 1.0,
+    "reachability_overall_T8": 1.0,
+    "seq_len_mean": 111.0703125
+  }
+}

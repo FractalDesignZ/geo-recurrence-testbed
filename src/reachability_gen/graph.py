@@ -141,3 +141,43 @@ def hop_distances_from(
                 dist[v] = dist[u] + 1
                 q.append(v)
     return dist
+
+
+def reachable_out_set(
+    n: int,
+    edges: Sequence[tuple[int, int]],
+    s: int,
+    *,
+    method: str = "bfs",
+) -> set[int]:
+    """Directed out-closure R_out(s): nodes reachable from ``s`` (includes ``s``).
+
+    ``method`` is ``\"bfs\"`` or ``\"dfs\"``. Used for hard-neg rejection sampling
+    so unreachable queries assert ``t not in R_out(s)``.
+    """
+    if not (0 <= s < n):
+        raise ValueError(f"source {s} out of range for n={n}")
+    if method not in ("bfs", "dfs"):
+        raise ValueError(f"method must be 'bfs' or 'dfs', got {method!r}")
+    adj = adjacency_list(n, edges)
+    seen: set[int] = set()
+    if method == "bfs":
+        q: deque[int] = deque([s])
+        seen.add(s)
+        while q:
+            u = q.popleft()
+            for v in adj[u]:
+                if v not in seen:
+                    seen.add(v)
+                    q.append(v)
+        return seen
+    # DFS iterative to avoid recursion depth on dense digraphs.
+    stack = [s]
+    seen.add(s)
+    while stack:
+        u = stack.pop()
+        for v in adj[u]:
+            if v not in seen:
+                seen.add(v)
+                stack.append(v)
+    return seen

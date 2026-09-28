@@ -183,3 +183,17 @@ Stub: `docs/CYCLE_SHEAF_STRESS_TEST.md`.
 | **Density** | **p=0.15 still unverified.** Path-backbone keeps band; empirical p ≪ 0.15. Pure ER@p=0.15 × band × K=20 documented infeasible in gen report. |
 | **Note** | K=20 sparse RED_TEST PASS is **MEASURE residue** only. Prior seal body (§1–§11) is **not** rewritten. Fail-closed elsewhere. |
 | **Next MEASURE** | `CYCLE_SHEAF_DENSITY_STRESS` — true ER digraph p=0.15, K=8, n=16, T∈{8,12}, no path-backbone density drop |
+
+---
+
+## 13. MEASURE residue — CYCLE_SHEAF_DENSITY_STRESS feasibility wall (append-only)
+
+| Field | Value |
+|-------|-------|
+| **Label** | MEASURE residue / feasibility wall (not science OPEN) |
+| **Date** | 2026-09-27 |
+| **Slice** | `CYCLE_SHEAF_DENSITY_STRESS` — true ER p=0.15 @ n=16 → &#124;E&#124;≈36 → seq_len≈111 ∉ sealed [45,70] → **INVALID** |
+| **Seal** | `docs/SESSION-SEAL-SHEAF-DENSITY-FEASIBILITY.md` (PR #5 telemetry **SUSPENDED/INVALID**; no scientific promotion) |
+| **science_open claim** | **Unchanged** — §6 remains **K≤16 only**. Do **not** widen OPEN. |
+| **Note** | Prior seal body (§1–§12) is **not** rewritten. Fail-closed elsewhere. |
+| **Next MEASURE** | `CYCLE_SHEAF_DENSE_CONTEXT` — band [100,140]; dense vs matched-sparse control |
