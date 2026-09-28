@@ -321,3 +321,31 @@ Prior seal body (§1–§15) is **not** rewritten. This §16 is append-only INVA
 
 Gates A–D (neutral init, ≥3 seeds, degree-balanced reach-cue ≤0.52). If floors fail → STOP with residue. If floors pass → MEASURE candidate only. Cite artifact for numbers; do not invent.
 
+
+### 17.1 PR #8 merge (MEASURE-only)
+
+| Field | Value |
+|-------|-------|
+| **PR** | #8 → `main` |
+| **Merge SHA** | `e0877ebf52a16efd81df1c80ca6fb3f1c3289a31` |
+| **Verdict** | `MEASURE_CANDIDATE_PASS_FLOORS` (with-aux; science_open=false) |
+| **Note** | Aux edge-recon recovers Â in epoch 1 (train-only gold edges). Attribution still MEASURE — no human OPEN stamp. |
+
+---
+
+## 18. MEASURE residue — CYCLE_SHEAF_NO_AUX_EDGE_RECON (append-only; science_open=false)
+
+| Field | Value |
+|-------|-------|
+| **Label** | MEASURE residue / **STOP** (not a science OPEN) |
+| **Date** | 2026-09-27 |
+| **Trigger** | §17 with-aux MEASURE candidate; isolate whether aux edge-recon is necessary |
+| **Plan** | `docs/CYCLE_SHEAF_NO_AUX_EDGE_RECON.md` |
+| **Harness** | `python -m reachability_gen.run_sheaf_no_aux_edge_recon` |
+| **Artifact** | `artifacts/sheaf_no_aux_edge_recon.json` |
+| **PR #8 baseline** | merge `e0877eb` / `artifacts/sheaf_neutral_init_retrain.json` (with-aux) |
+| **science_open** | **false** |
+| **Verdict** | `STOP_LEARNING_FAIL` — CE-only (edge_recon_weight=0) misses prereg K16/overall floors |
+
+Residue: under gate_detach_diffusion + neutral_init, reachability CE alone does **not** recover Â or OOD path-length gen in the locked 30-ep budget. Matched-OOD collapses to always-unreach (T16 overall=0.5, FNR=1, K8/12/16=0). Â FNR remains near-chance. Do **not** stamp OPEN; do not revive with-aux OPEN without human review of aux necessity.
+
