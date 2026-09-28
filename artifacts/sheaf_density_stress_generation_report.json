@@ -1,0 +1,49 @@
+{
+  "K": 8,
+  "construction": "true_er_digraph",
+  "cycle": "CYCLE_SHEAF_DENSITY_STRESS",
+  "draws": 432,
+  "feasibility": {
+    "seq_len_mean_in_band": false,
+    "would_be_invalid_if_mean_out_of_band": true
+  },
+  "hard_neg_discipline": {
+    "R_out_bfs_dfs_assert": true,
+    "degree_filter": "deg(s)>=1 and deg(t)>=1",
+    "rejection_sampled": true
+  },
+  "n": 16,
+  "n_examples": 128,
+  "n_neg": 64,
+  "n_pos": 64,
+  "p_empirical": {
+    "max": 0.225,
+    "mean": 0.14593098958333334,
+    "min": 0.1,
+    "near_requested": true,
+    "note": "Empirical p from |E|/(n(n-1)) on accepted ER draws; must stay near p_requested (no backbone density drop)."
+  },
+  "p_requested": 0.15,
+  "path_backbone": false,
+  "path_backbone_forbidden": true,
+  "reject_reasons": {
+    "no_hard_neg": 5,
+    "no_hop_k": 299
+  },
+  "science_open": false,
+  "seed": 189000,
+  "seq_len_band": [
+    45,
+    70
+  ],
+  "split": "sheaf_density_stress_p015",
+  "token_len": {
+    "all_in_band": false,
+    "max": 168,
+    "mean": 111.0703125,
+    "mean_in_band": false,
+    "min": 78,
+    "n": 128,
+    "note": "Under true ER p=0.15 @ n=16, expected |E|\u224836 \u2192 token_len\u2248114; sealed band [45,70] requires |E|\u2208[13,21]. If mean \u2209 band, runner marks INVALID \u2014 do not fake density with path-backbone."
+  }
+}

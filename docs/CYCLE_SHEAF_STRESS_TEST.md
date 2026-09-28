@@ -113,6 +113,16 @@ Concrete thresholds for a later OPEN consideration (report PASS/FAIL honestly; `
 
 Path-backbone construction keeps seq_len in sealed band [45,70]; pure ER@p=0.15 under band is documented infeasible for K=20. See artifact for prereg floors, Â FPR/FNR, attribution mode, and PASS/FAIL.
 
+## DENSITY_STRESS cell (executed MEASURE pointer)
+
+| Field | Value |
+|-------|-------|
+| **Cycle slice** | `CYCLE_SHEAF_DENSITY_STRESS` |
+| **Cell** | K=8, n=16, true ER p=0.15, T∈{8,12}, frozen Gate1 |
+| **Doc** | `docs/CYCLE_SHEAF_DENSITY_STRESS.md` |
+| **Result** | `artifacts/sheaf_infer_density_stress.json` — **INVALID** (seq_len mean≈111 ∉ [45,70]; no path-backbone) |
+| **science_open** | **false** |
+
 ## science_open
 
-**false** until a human seal cites stress Gate artifacts. Harness stamps `science_open: false` always. RED_TEST does **not** open science.
+**false** until a human seal cites stress Gate artifacts. Harness stamps `science_open: false` always. RED_TEST / DENSITY_STRESS do **not** open science.
