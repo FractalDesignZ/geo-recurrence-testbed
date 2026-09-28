@@ -60,6 +60,7 @@ reachability-stalk-orientation-collapse-probe = "reachability_gen.run_stalk_orie
 reachability-stalk-energy-selector = "reachability_gen.run_stalk_energy_selector:main"
 reachability-stalk-fo-cert-regression = "reachability_gen.run_stalk_fo_cert_regression:main"
 reachability-stalk-sheaf-energy-fo-probe = "reachability_gen.run_stalk_sheaf_energy_fo_probe:main"
+reachability-stalk-spectral-zeta-fo-probe = "reachability_gen.run_stalk_spectral_zeta_fo_probe:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
