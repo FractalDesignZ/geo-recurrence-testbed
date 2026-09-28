@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **Date** | 2026-09-27 |
-| **Mode** | MEASURE (plan only) |
+| **Mode** | MEASURE (plan + RED_TEST cell pointer) |
 | **Cycle** | `CYCLE_SHEAF_STRESS_TEST` |
 | **science_open** | **false** (until measured + human seal; harness never self-stamps true) |
 | **Prior seal** | sheaf inference seal — `docs/SESSION-SEAL-SHEAF-INFERENCE.md` (PR #3 / MEASURE `f374e7c`) |
 | **Baseline stalk seal** | `docs/SESSION-SEAL-STALK-LOCALIZATION.md` @ `b144dac` (hard-mask claim; separate) |
-| **Out of scope (this stub)** | Implementing generators, training loops, or new model code — **docs only** |
+| **Out of scope (full stress)** | Full K∈{20,24,32} × density grid + retrain arm — still deferred; **RED_TEST** single cell is the first executed slice |
 
 Fail-closed. Do not stamp OPEN from this document alone.
 
@@ -92,10 +92,27 @@ Concrete thresholds for a later OPEN consideration (report PASS/FAIL honestly; `
 
 | Slice | Path (proposed) |
 |-------|-----------------|
-| Stress OOD report | `artifacts/sheaf_stress_matched_ood.json` (or successor name) |
+| Stress OOD report | `artifacts/sheaf_stress_matched_ood.json` (or successor name; full grid TBD) |
 | Generation report | `artifacts/sheaf_stress_ood_generation_report.json` |
 | Retrain ckpt (if any) | `artifacts/sheaf_stress_gate1_best.pt` |
+| **RED_TEST result** | `artifacts/sheaf_infer_red_test.json` |
+| **RED_TEST gen report** | `artifacts/sheaf_red_test_generation_report.json` |
+
+## RED_TEST cell (executed MEASURE pointer)
+
+| Field | Value |
+|-------|-------|
+| **Cycle slice** | `CYCLE_SHEAF_RED_TEST` (single cell under this stress plan) |
+| **Cell** | K=20, p_requested=0.15, T∈{20,24}, frozen Gate1 ckpt |
+| **Runner** | `src/reachability_gen/run_sheaf_red_test.py` |
+| **Gen helper** | `src/reachability_gen/gen_sheaf_red_test.py` |
+| **Result artifact** | `artifacts/sheaf_infer_red_test.json` |
+| **Gen report** | `artifacts/sheaf_red_test_generation_report.json` |
+| **Data** | `data/sheaf_red_test_k20.jsonl` |
+| **science_open** | **false** (stress / red-test still fail-closed; do not widen §6 sheaf claim) |
+
+Path-backbone construction keeps seq_len in sealed band [45,70]; pure ER@p=0.15 under band is documented infeasible for K=20. See artifact for prereg floors, Â FPR/FNR, attribution mode, and PASS/FAIL.
 
 ## science_open
 
-**false** until a human seal cites stress Gate artifacts. Harness stamps `science_open: false` always.
+**false** until a human seal cites stress Gate artifacts. Harness stamps `science_open: false` always. RED_TEST does **not** open science.
