@@ -32,6 +32,7 @@ reachability-fractal-core-gate1 = "reachability_gen.run_fractal_core_gate1:main"
 reachability-sheaf-infer-gate1 = "reachability_gen.run_sheaf_infer_gate1:main"
 reachability-overfit-sheaf = "reachability_gen.overfit_sheaf:main"
 reachability-sheaf-untrained-control = "reachability_gen.run_sheaf_untrained_control:main"
+reachability-sheaf-neutral-init-retrain = "reachability_gen.run_sheaf_neutral_init_retrain:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

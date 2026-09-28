@@ -172,22 +172,32 @@ def ste_hard_gate(
 class SheafDiffusionPhi(nn.Module):
     """Shared bias-free Φ: gated aggregate + residual MLP (zeros stay zeros).
 
-    Core diffusion is ``gate @ W_msg(h)`` (init W_msg=I) so stalk mass
-    propagates along inferred edges from step 0. MLP is a residual
-    refinement (init near 0) for capacity / param parity.
+    Default (bake-in / historical): W_msg=I, W_out=I, MLP=0 so stalk mass
+    propagates along gated edges from step 0.
+
+    ``neutral_init=True``: Xavier on W_msg/W_out; small Gaussian MLP — no
+    forced identity diffusion at t=0 (MEASURE retrain).
     """
 
-    def __init__(self, d: int, *, mlp_expansion: int = 10) -> None:
+    def __init__(
+        self, d: int, *, mlp_expansion: int = 10, neutral_init: bool = False
+    ) -> None:
         super().__init__()
         hidden = int(mlp_expansion) * d
         self.W_msg = nn.Linear(d, d, bias=False)
         self.mlp_up = nn.Linear(d, hidden, bias=False)
         self.mlp_down = nn.Linear(hidden, d, bias=False)
         self.W_out = nn.Linear(d, d, bias=False)
-        nn.init.eye_(self.W_msg.weight)
-        nn.init.eye_(self.W_out.weight)
-        nn.init.zeros_(self.mlp_up.weight)
-        nn.init.zeros_(self.mlp_down.weight)
+        if neutral_init:
+            nn.init.xavier_uniform_(self.W_msg.weight)
+            nn.init.xavier_uniform_(self.W_out.weight)
+            nn.init.normal_(self.mlp_up.weight, std=0.02)
+            nn.init.normal_(self.mlp_down.weight, std=0.02)
+        else:
+            nn.init.eye_(self.W_msg.weight)
+            nn.init.eye_(self.W_out.weight)
+            nn.init.zeros_(self.mlp_up.weight)
+            nn.init.zeros_(self.mlp_down.weight)
 
     def forward(self, h: torch.Tensor, gate: torch.Tensor) -> torch.Tensor:
         """``h`` [B,M,d], ``gate`` [B,M,M] in [0,1] (row i ← cols j)."""
@@ -218,6 +228,7 @@ class SheafInferCore(nn.Module):
         gumbel_temp: float = 1.0,
         absent_bias_init: float = DEFAULT_ABSENT_BIAS,
         gate_detach_diffusion: bool = True,
+        neutral_init: bool = False,
     ) -> None:
         super().__init__()
         del n_heads, dropout  # MP Φ; API compat with FractalCore call sites
@@ -255,8 +266,13 @@ class SheafInferCore(nn.Module):
             nn.GELU(),
             nn.Linear(d, 1),
         )
-        self.absent_bias = nn.Parameter(torch.tensor(float(absent_bias_init)))
-        self.phi = SheafDiffusionPhi(d, mlp_expansion=self.mlp_expansion)
+        self.neutral_init = bool(neutral_init)
+        # Neutral: absent_bias=0 (no OFF bake-in). Legacy default keeps −4.
+        ab_init = 0.0 if self.neutral_init else float(absent_bias_init)
+        self.absent_bias = nn.Parameter(torch.tensor(ab_init))
+        self.phi = SheafDiffusionPhi(
+            d, mlp_expansion=self.mlp_expansion, neutral_init=self.neutral_init
+        )
         if self.use_tau:
             self.tau_emb = nn.Embedding(self.max_T, d)
         else:
@@ -265,23 +281,43 @@ class SheafInferCore(nn.Module):
         self.ln_f = nn.Identity()  # keep stalk magnitude; 0 stays 0
         # Readout: [z_t ; ‖z_t‖] — energy channel makes disconnect (‖h‖=0) linearly separable
         self.head = nn.Linear(d + 1, 2)
-        self._init_specials()
+        self._init_specials(neutral=self.neutral_init)
 
-    def _init_specials(self) -> None:
+    def _init_specials(self, *, neutral: bool = False) -> None:
+        """Init hooks. ``neutral=True`` removes reachability bake-in (MEASURE).
+
+        Legacy (neutral=False): listed edges ON (bias=+4), absent OFF (−4),
+        energy readout ±5 — discrete reachability oracle at t=0 (INVALIDATED).
+
+        Neutral: Xavier/Gaussian zero-mean; biases 0; no energy±5 / edge+4.
+        Structural self-logit=+8 in encode_edge_logits is kept (self-loop).
+        STE/Gumbel remain available for learning Â.
+        """
         nn.init.normal_(self.src_emb, std=0.02)
-        nn.init.eye_(self.stalk_proj.weight)
         last = self.edge_encoder[-1]
         assert isinstance(last, nn.Linear)
-        nn.init.zeros_(last.weight)
-        nn.init.constant_(last.bias, 4.0)
-        # Head: energy column separates disconnect (‖h‖=0 → y=0) from reach (‖h‖>0 → y=1)
-        nn.init.zeros_(self.head.weight)
-        nn.init.zeros_(self.head.bias)
-        self.head.weight.data[0, -1] = -1.0  # high energy → not class 0
-        self.head.weight.data[1, -1] = 1.0   # high energy → class 1
-        # Bias alone must make y=0 (energy=0) confident: σ(2b)>0.999 → b≳3.5
-        self.head.bias.data[0] = 5.0
-        self.head.bias.data[1] = -5.0
+        first = self.edge_encoder[0]
+        assert isinstance(first, nn.Linear)
+        if neutral:
+            nn.init.xavier_uniform_(self.stalk_proj.weight)
+            nn.init.xavier_uniform_(first.weight)
+            nn.init.zeros_(first.bias)
+            nn.init.normal_(last.weight, std=0.02)
+            nn.init.zeros_(last.bias)
+            nn.init.xavier_uniform_(self.head.weight)
+            nn.init.zeros_(self.head.bias)
+        else:
+            nn.init.eye_(self.stalk_proj.weight)
+            nn.init.zeros_(last.weight)
+            nn.init.constant_(last.bias, 4.0)
+            # Head: energy column separates disconnect (‖h‖=0 → y=0) from reach
+            nn.init.zeros_(self.head.weight)
+            nn.init.zeros_(self.head.bias)
+            self.head.weight.data[0, -1] = -1.0  # high energy → not class 0
+            self.head.weight.data[1, -1] = 1.0   # high energy → class 1
+            # Bias alone must make y=0 (energy=0) confident: σ(2b)>0.999 → b≳3.5
+            self.head.bias.data[0] = 5.0
+            self.head.bias.data[1] = -5.0
 
     def _gather_node(self, z: torch.Tensor, idx: torch.Tensor) -> torch.Tensor:
         bsz = z.shape[0]
