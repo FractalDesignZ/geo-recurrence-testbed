@@ -59,6 +59,7 @@ reachability-stalk-tropical-attention-probe = "reachability_gen.run_stalk_tropic
 reachability-stalk-orientation-collapse-probe = "reachability_gen.run_stalk_orientation_collapse_probe:main"
 reachability-stalk-energy-selector = "reachability_gen.run_stalk_energy_selector:main"
 reachability-stalk-fo-cert-regression = "reachability_gen.run_stalk_fo_cert_regression:main"
+reachability-stalk-sheaf-energy-fo-probe = "reachability_gen.run_stalk_sheaf_energy_fo_probe:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
