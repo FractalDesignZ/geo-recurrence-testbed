@@ -1,0 +1,854 @@
+{
+  "aux_edge_recon": false,
+  "base_sha": "e0877ebf52a16efd81df1c80ca6fb3f1c3289a31",
+  "comparison_to_pr8_with_aux": {
+    "available": true,
+    "deltas": {
+      "T16_K16": {
+        "delta_no_aux_minus_with_aux": -1.0,
+        "no_aux_mean": 0.0,
+        "with_aux_mean": 1.0
+      },
+      "T16_K8": {
+        "delta_no_aux_minus_with_aux": -1.0,
+        "no_aux_mean": 0.0,
+        "with_aux_mean": 1.0
+      },
+      "T16_fnr": {
+        "delta_no_aux_minus_with_aux": 1.0,
+        "no_aux_mean": 1.0,
+        "with_aux_mean": 0.0
+      },
+      "T16_fpr": {
+        "delta_no_aux_minus_with_aux": 0.0,
+        "no_aux_mean": 0.0,
+        "with_aux_mean": 0.0
+      },
+      "T16_hard_neg": {
+        "delta_no_aux_minus_with_aux": 0.0,
+        "no_aux_mean": 1.0,
+        "with_aux_mean": 1.0
+      },
+      "T16_overall": {
+        "delta_no_aux_minus_with_aux": -0.5,
+        "no_aux_mean": 0.5,
+        "with_aux_mean": 1.0
+      },
+      "ahat_fnr": {
+        "delta_no_aux_minus_with_aux": 0.3580123948649845,
+        "no_aux_mean": 0.3580123948649845,
+        "with_aux_mean": 0.0
+      },
+      "ahat_fpr": {
+        "delta_no_aux_minus_with_aux": 0.0,
+        "no_aux_mean": 0.0,
+        "with_aux_mean": 0.0
+      },
+      "val_acc": {
+        "delta_no_aux_minus_with_aux": -0.3075000000000001,
+        "no_aux_mean": 0.6924999999999999,
+        "with_aux_mean": 1.0
+      }
+    },
+    "pr8_merge_sha": "e0877ebf52a16efd81df1c80ca6fb3f1c3289a31",
+    "science_open": false,
+    "with_aux_verdict": "MEASURE_CANDIDATE_PASS_FLOORS"
+  },
+  "cycle": "CYCLE_SHEAF_NO_AUX_EDGE_RECON",
+  "edge_recon_weight": 0.0,
+  "elapsed_s": 237.79165601730347,
+  "gate0_overfit": {
+    "aux_edge_recon": false,
+    "balanced_note": "loaded 144 rows from data/train_tiny.jsonl; candidates y1_id=72 y0_hard=66 reject_reasons={'skipped_not_y0': 72, 'both_deg0': 1, 'ok': 66, 'deg_s0': 2, 'deg_t0': 3}; balanced batch ready: 16+16",
+    "edge_recon_weight": 0.0,
+    "last": {
+      "edge_recon_weight": 0.0,
+      "eval_acc": 0.53125,
+      "eval_loss": 0.6709821820259094,
+      "per_class": {
+        "y0": 1.0,
+        "y0_correct": 16.0,
+        "y0_n": 16.0,
+        "y1": 0.0625,
+        "y1_correct": 1.0,
+        "y1_n": 16.0
+      },
+      "recon_offdiag": null,
+      "step": 150
+    },
+    "neutral_init": true,
+    "note": "Gate0 without recon floor (aux OFF); CE+acc+per-class only.",
+    "param_count": 123206,
+    "param_parity_ok": true,
+    "passed": false,
+    "passed_at_step": null,
+    "science_open": false
+  },
+  "gates": {
+    "A": {
+      "ahat": {
+        "ahat_edge_acc": 0.964724327149203,
+        "ahat_fn": 4590.0,
+        "ahat_fnr": 0.5079681274900398,
+        "ahat_fp": 0.0,
+        "ahat_fpr": 0.0,
+        "ahat_tn": 121082.0,
+        "ahat_tp": 4446.0
+      },
+      "ahat_note": "absent_bias=0 \u21d2 hard-gate FPR\u22480 by construction (not bake-in). Gate A requires \u00c2 FNR\u2248chance (listed edges not all ON).",
+      "checks": {
+        "ahat_fnr_ok": true,
+        "ahat_not_perfect": true,
+        "bake_ok": true,
+        "reach_ok": true
+      },
+      "disqualify_above_chance": false,
+      "gate": "A",
+      "init": {
+        "absent_bias": 0.0,
+        "bake_in_removed": {
+          "no_absent_minus4": true,
+          "no_edge_bias_plus4": true,
+          "no_energy_bias_pm5": true
+        },
+        "edge_encoder_first_bias_abs_max": 0.0,
+        "edge_encoder_last_bias": 0.0,
+        "edge_encoder_last_weight_l2": 0.1503896862268448,
+        "gate_theta": 0.5,
+        "head_bias": [
+          0.0,
+          0.0
+        ],
+        "head_energy_col": [
+          -0.008760714903473854,
+          -0.013098318129777908
+        ],
+        "neutral_init": true,
+        "param_count": 123206,
+        "residual_alpha": 1.0,
+        "self_logit_hardcoded": 8.0
+      },
+      "matched_ood_T16": {
+        "T": 16,
+        "reach_acc": 0.5,
+        "reach_fnr": 1.0,
+        "reach_fpr": 0.0
+      },
+      "matched_ood_T6": {
+        "T": 6,
+        "reach_acc": 0.5,
+        "reach_fnr": 1.0,
+        "reach_fpr": 0.0
+      },
+      "passed": true,
+      "science_open": false,
+      "thresholds": {
+        "ahat_fnr_hi": 0.65,
+        "ahat_fnr_lo": 0.35,
+        "reach_acc_hi": 0.6,
+        "reach_acc_lo": 0.4
+      }
+    },
+    "B": {
+      "bake_in_removed": {
+        "no_absent_minus4": true,
+        "no_edge_bias_plus4": true,
+        "no_energy_bias_pm5": true
+      },
+      "gate": "B",
+      "init": {
+        "absent_bias": 0.0,
+        "bake_in_removed": {
+          "no_absent_minus4": true,
+          "no_edge_bias_plus4": true,
+          "no_energy_bias_pm5": true
+        },
+        "edge_encoder_first_bias_abs_max": 0.0,
+        "edge_encoder_last_bias": 0.0,
+        "edge_encoder_last_weight_l2": 0.1503896862268448,
+        "gate_theta": 0.5,
+        "head_bias": [
+          0.0,
+          0.0
+        ],
+        "head_energy_col": [
+          -0.008760714903473854,
+          -0.013098318129777908
+        ],
+        "neutral_init": true,
+        "param_count": 123206,
+        "residual_alpha": 1.0,
+        "self_logit_hardcoded": 8.0
+      },
+      "note": "neutral_init=True: Xavier/Gaussian zero-mean; biases 0; no edge+4 / absent\u22124 / energy\u00b15. STE OK for learning \u00c2. This cycle: aux edge-recon OFF \u2014 \u00c2 must emerge from CE only or remain chance.",
+      "passed": true,
+      "science_open": false
+    },
+    "C": {
+      "artifact": "artifacts/sheaf_no_aux_reach_cue_audit.json",
+      "ceiling": 0.52,
+      "degree_balanced_ood": {
+        "cue_max_acc": 0.5031446540880503,
+        "cue_max_rule": "out_s",
+        "n": 477,
+        "n_neg": 237,
+        "n_pos": 240,
+        "pass_ceiling": true,
+        "shortfall_unmatched_pos": 3
+      },
+      "gate": "C",
+      "id_2k_raw": {
+        "max_acc": 0.766,
+        "max_rule": "out_s_plus_in_t",
+        "pass_ceiling": false
+      },
+      "matched_ood_raw": {
+        "max_acc": 0.7375,
+        "max_rule": "in_t",
+        "pass_ceiling": false
+      },
+      "passed": true,
+      "science_open": false
+    },
+    "D": {
+      "edge_recon_weight": 0.0,
+      "gate": "D",
+      "mean_std": {
+        "T16_K12": {
+          "mean": 0.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "T16_K16": {
+          "mean": 0.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "T16_K8": {
+          "mean": 0.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "T16_fnr": {
+          "mean": 1.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "T16_fpr": {
+          "mean": 0.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "T16_hard_neg": {
+          "mean": 1.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "T16_overall": {
+          "mean": 0.5,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "ahat_edge_acc": {
+          "mean": 0.9751379517053751,
+          "n": 3,
+          "std": 0.009228125127124646,
+          "values": [
+            0.964724327149203,
+            0.978388847046527,
+            0.9823006809203954
+          ]
+        },
+        "ahat_fnr": {
+          "mean": 0.3580123948649845,
+          "n": 3,
+          "std": 0.13288459332571942,
+          "values": [
+            0.5079681274900398,
+            0.31119964586100046,
+            0.2548694112439132
+          ]
+        },
+        "ahat_fpr": {
+          "mean": 0.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "degbal_T16_hard_neg": {
+          "mean": 1.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "degbal_T16_overall": {
+          "mean": 0.49685534591194963,
+          "n": 3,
+          "std": 6.798699777552591e-17,
+          "values": [
+            0.4968553459119497,
+            0.4968553459119497,
+            0.4968553459119497
+          ]
+        },
+        "untrained_val_acc": {
+          "mean": 0.6033333333333334,
+          "n": 3,
+          "std": 0.0621154838452808,
+          "values": [
+            0.57,
+            0.675,
+            0.565
+          ]
+        },
+        "val_acc": {
+          "mean": 0.6924999999999999,
+          "n": 3,
+          "std": 0.05408326913195983,
+          "values": [
+            0.6475,
+            0.6775,
+            0.7525
+          ]
+        }
+      },
+      "n_prereg_pass": 0,
+      "n_relaxed_K8_pass": 0,
+      "n_seeds": 3,
+      "passed": true,
+      "per_seed": [
+        {
+          "ahat_trained": {
+            "ahat_edge_acc": 0.964724327149203,
+            "ahat_fn": 4590.0,
+            "ahat_fnr": 0.5079681274900398,
+            "ahat_fp": 0.0,
+            "ahat_fpr": 0.0,
+            "ahat_tn": 121082.0,
+            "ahat_tp": 4446.0
+          },
+          "best_epoch": 1,
+          "best_val_acc": 0.6475,
+          "checkpoint_path": "artifacts/sheaf_no_aux_gate1_seed0_best.pt",
+          "degree_balanced_ood_T16": {
+            "hard_neg_acc": 1.0,
+            "n": 477,
+            "overall_acc": 0.4968553459119497
+          },
+          "edge_recon_weight": 0.0,
+          "matched_ood": {
+            "T16_K12": 0.0,
+            "T16_K16": 0.0,
+            "T16_K8": 0.0,
+            "T16_fnr": 1.0,
+            "T16_fpr": 0.0,
+            "T16_hard_neg": 1.0,
+            "T16_overall": 0.5,
+            "by_T": {
+              "12": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              },
+              "16": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              },
+              "6": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              },
+              "8": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              }
+            }
+          },
+          "param_count": 123206,
+          "param_parity_ok": true,
+          "prereg": {
+            "K16_at_T16_ge": 0.75,
+            "K16_ok": false,
+            "K8_alt_ok": false,
+            "hard_neg_at_T16_ge": 0.95,
+            "hard_neg_ok": true,
+            "observed_K16_T16": 0.0,
+            "observed_K8_T16": 0.0,
+            "observed_hard_neg_T16": 1.0,
+            "pass": false,
+            "pass_relaxed_K8": false
+          },
+          "science_open": false,
+          "seed": 0,
+          "train_history_tail": [
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 28,
+              "train_acc": 0.65,
+              "train_ce": 0.5759253036975861,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 0.5759253036975861,
+              "val_acc": 0.6475,
+              "val_loss": 0.5780933563411236
+            },
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 29,
+              "train_acc": 0.65,
+              "train_ce": 0.575896303653717,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 0.575896303653717,
+              "val_acc": 0.6475,
+              "val_loss": 0.5780850756168365
+            },
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 30,
+              "train_acc": 0.65,
+              "train_ce": 0.5759130179882049,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 0.5759130179882049,
+              "val_acc": 0.6475,
+              "val_loss": 0.5780869218707084
+            }
+          ],
+          "untrained_val_acc": 0.57
+        },
+        {
+          "ahat_trained": {
+            "ahat_edge_acc": 0.978388847046527,
+            "ahat_fn": 2812.0,
+            "ahat_fnr": 0.31119964586100046,
+            "ahat_fp": 0.0,
+            "ahat_fpr": 0.0,
+            "ahat_tn": 121082.0,
+            "ahat_tp": 6224.0
+          },
+          "best_epoch": 1,
+          "best_val_acc": 0.6775,
+          "checkpoint_path": "artifacts/sheaf_no_aux_gate1_seed1_best.pt",
+          "degree_balanced_ood_T16": {
+            "hard_neg_acc": 1.0,
+            "n": 477,
+            "overall_acc": 0.4968553459119497
+          },
+          "edge_recon_weight": 0.0,
+          "matched_ood": {
+            "T16_K12": 0.0,
+            "T16_K16": 0.0,
+            "T16_K8": 0.0,
+            "T16_fnr": 1.0,
+            "T16_fpr": 0.0,
+            "T16_hard_neg": 1.0,
+            "T16_overall": 0.5,
+            "by_T": {
+              "12": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              },
+              "16": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              },
+              "6": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              },
+              "8": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              }
+            }
+          },
+          "param_count": 123206,
+          "param_parity_ok": true,
+          "prereg": {
+            "K16_at_T16_ge": 0.75,
+            "K16_ok": false,
+            "K8_alt_ok": false,
+            "hard_neg_at_T16_ge": 0.95,
+            "hard_neg_ok": true,
+            "observed_K16_T16": 0.0,
+            "observed_K8_T16": 0.0,
+            "observed_hard_neg_T16": 1.0,
+            "pass": false,
+            "pass_relaxed_K8": false
+          },
+          "science_open": false,
+          "seed": 1,
+          "train_history_tail": [
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 28,
+              "train_acc": 0.691875,
+              "train_ce": 0.5372014558315277,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 0.5372014558315277,
+              "val_acc": 0.6775,
+              "val_loss": 0.5510086131095886
+            },
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 29,
+              "train_acc": 0.691875,
+              "train_ce": 0.5372131156921387,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 0.5372131156921387,
+              "val_acc": 0.6775,
+              "val_loss": 0.5510232158005237
+            },
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 30,
+              "train_acc": 0.691875,
+              "train_ce": 0.5372814786434174,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 0.5372814786434174,
+              "val_acc": 0.6775,
+              "val_loss": 0.5510786688327789
+            }
+          ],
+          "untrained_val_acc": 0.675
+        },
+        {
+          "ahat_trained": {
+            "ahat_edge_acc": 0.9823006809203954,
+            "ahat_fn": 2303.0,
+            "ahat_fnr": 0.2548694112439132,
+            "ahat_fp": 0.0,
+            "ahat_fpr": 0.0,
+            "ahat_tn": 121082.0,
+            "ahat_tp": 6733.0
+          },
+          "best_epoch": 1,
+          "best_val_acc": 0.7525,
+          "checkpoint_path": "artifacts/sheaf_no_aux_gate1_seed2_best.pt",
+          "degree_balanced_ood_T16": {
+            "hard_neg_acc": 1.0,
+            "n": 477,
+            "overall_acc": 0.4968553459119497
+          },
+          "edge_recon_weight": 0.0,
+          "matched_ood": {
+            "T16_K12": 0.0,
+            "T16_K16": 0.0,
+            "T16_K8": 0.0,
+            "T16_fnr": 1.0,
+            "T16_fpr": 0.0,
+            "T16_hard_neg": 1.0,
+            "T16_overall": 0.5,
+            "by_T": {
+              "12": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              },
+              "16": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              },
+              "6": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              },
+              "8": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              }
+            }
+          },
+          "param_count": 123206,
+          "param_parity_ok": true,
+          "prereg": {
+            "K16_at_T16_ge": 0.75,
+            "K16_ok": false,
+            "K8_alt_ok": false,
+            "hard_neg_at_T16_ge": 0.95,
+            "hard_neg_ok": true,
+            "observed_K16_T16": 0.0,
+            "observed_K8_T16": 0.0,
+            "observed_hard_neg_T16": 1.0,
+            "pass": false,
+            "pass_relaxed_K8": false
+          },
+          "science_open": false,
+          "seed": 2,
+          "train_history_tail": [
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 28,
+              "train_acc": 0.741875,
+              "train_ce": 0.4863553029298782,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 0.4863553029298782,
+              "val_acc": 0.7525,
+              "val_loss": 0.4747648784518242
+            },
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 29,
+              "train_acc": 0.741875,
+              "train_ce": 0.4862767344713211,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 0.4862767344713211,
+              "val_acc": 0.7525,
+              "val_loss": 0.47474711954593657
+            },
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 30,
+              "train_acc": 0.741875,
+              "train_ce": 0.4862686079740524,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 0.4862686079740524,
+              "val_acc": 0.7525,
+              "val_loss": 0.4748098447918892
+            }
+          ],
+          "untrained_val_acc": 0.565
+        }
+      ],
+      "science_open": false
+    }
+  },
+  "hparams": {
+    "T_train": 6,
+    "aux_edge_recon": false,
+    "batch_size": 32,
+    "d": 64,
+    "edge_recon_weight": 0.0,
+    "epochs": 30,
+    "ff_baseline": 121218,
+    "grad_clip": 2.5,
+    "lr": 0.0015,
+    "mlp_expansion": 12,
+    "neutral_init": true,
+    "param_parity_window": [
+      115157,
+      127279
+    ],
+    "same_as_pr8_except": "edge_recon_weight=0 (reachability CE only)"
+  },
+  "mode": "MEASURE",
+  "pr8_merge_sha": "e0877ebf52a16efd81df1c80ca6fb3f1c3289a31",
+  "pr8_with_aux_baseline": {
+    "available": true,
+    "cycle": "CYCLE_SHEAF_NEUTRAL_INIT_RETRAIN",
+    "edge_recon_weight": 1.0,
+    "mean_std": {
+      "T16_K16": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "T16_K8": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "T16_fnr": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "T16_fpr": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "T16_hard_neg": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "T16_overall": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "ahat_fnr": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "ahat_fpr": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "degbal_T16_hard_neg": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "degbal_T16_overall": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "untrained_val_acc": {
+        "mean": 0.6033333333333334,
+        "std": 0.0621154838452808
+      },
+      "val_acc": {
+        "mean": 1.0,
+        "std": 0.0
+      }
+    },
+    "path": "artifacts/sheaf_neutral_init_retrain.json",
+    "pr8_merge_sha": "e0877ebf52a16efd81df1c80ca6fb3f1c3289a31",
+    "science_open": false,
+    "verdict": "MEASURE_CANDIDATE_PASS_FLOORS"
+  },
+  "reach_cue_artifact": "artifacts/sheaf_no_aux_reach_cue_audit.json",
+  "residue": "No-aux training failed prereg floors (same as neutral retrain). STOP with residue: aux edge-recon appears necessary for \u00c2/reach under this budget, or CE-only learning insufficient. science_open=false. Do not revive OPEN from bake-in or with-aux seals.",
+  "science_open": false,
+  "scope": {
+    "datasets": {
+      "id": "data/id_2k.jsonl",
+      "matched_ood": "data/covariate_matched_ood.jsonl"
+    },
+    "protocol": "Gates A\u2013D identical to neutral retrain; train with aux edge-recon OFF. Prereg floors unchanged. Compare to PR#8."
+  },
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "stalk_untrained_control": {
+    "arm": "fractal-stalk-untrained",
+    "matched_ood_T16": {
+      "hard_neg_acc": 0.6,
+      "overall_acc": 0.6333333333333333
+    },
+    "matched_ood_T6": {
+      "hard_neg_acc": 0.6,
+      "overall_acc": 0.6333333333333333
+    },
+    "note": "Cheap untrained FractalCore stalk control for context only \u2014 not a sheaf Gate. science_open=false.",
+    "param_count": 117506,
+    "report_only": true,
+    "science_open": false
+  },
+  "untrained_vs_trained_seed0_matched_ood_T16": {
+    "note": "\u22480.5 \u21d2 untrained\u226atrained (learning signal). \u22481.0 \u21d2 bake-in/residue.",
+    "prediction_agreement": 1.0,
+    "science_open": false
+  },
+  "verdict": "STOP_LEARNING_FAIL"
+}
