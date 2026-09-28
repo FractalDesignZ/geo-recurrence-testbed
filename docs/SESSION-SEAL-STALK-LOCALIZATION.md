@@ -970,7 +970,7 @@ Prior seal body + §13–§37 are **not** rewritten. This §38 is append-only ME
 | **Cycle note** | `docs/CYCLE_STALK_SPECTRAL_ZETA_FO_PROBE.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_spectral_zeta_fo_probe` |
 | **Base** | `main` `34d059b` (after PR #40) |
-| **Prereg / harness** | `7a242254d6095552ebefa3dc7d782d6c817d531a` |
+| **Prereg / harness / results** | `7a242254d6095552ebefa3dc7d782d6c817d531a` / `c0d2b0a6d2e34455037acbf8042ee7c9452ccd09` |
 | **Cycle verdict** | **`COLLATERAL_HARM`** |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
 | **Exact L / ζ** | `A_sym` from hard Â; `L=D−A_sym`; `ζ(2)=Σ_{λ>1e-8} λ^{−2}`; ρ=Id primary; **no** learned ρ |

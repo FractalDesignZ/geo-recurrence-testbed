@@ -216,6 +216,7 @@ pytest -q tests/test_stalk_spectral_zeta_fo_probe.py
 | **vs #35 cert** | cert FO_cap_dirty=1.0 / 45/45; zeta ≢ cert (0/45 refuse ∩ FO) |
 | **vs #40 energy** | energy AUROC 0.317 / ENERGY_NULL; zeta AUROC 0.500 / COLLATERAL_HARM — neither tracks cert |
 | **Prereg SHA** | `7a242254d6095552ebefa3dc7d782d6c817d531a` |
+| **Results SHA** | `c0d2b0a6d2e34455037acbf8042ee7c9452ccd09` |
 | **Base SHA** | `34d059b` |
 | **Elapsed** | 12.8s |
 | **Train / sheaf / ens-agg** | **none** / closed / `prob_mean` unchanged |
