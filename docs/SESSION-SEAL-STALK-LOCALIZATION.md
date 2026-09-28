@@ -365,3 +365,33 @@ ID train curriculum (HN+longhop upsample) missed mean HN floor and collapsed see
 
 Prior seal body + §13 DEMOTION + §14 MEASURE_STILL + §15/§16 STOP_FRAGILE are **not** rewritten. This §17 is append-only STOP_FRAGILE.
 
+## 18. Seed stability — MEASURE_ENVELOPE (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_SEED_STABILITY` |
+| **Artifact** | `artifacts/stalk_seed_stability.json` |
+| **Harness** | `python -m reachability_gen.run_stalk_seed_stability` |
+| **Base** | `main` `4560d24` (PR #17 merge) + prereg `59337cb` |
+| **Verdict** | **`MEASURE_ENVELOPE`** |
+| **science_open** | **false** (not widened) |
+| **Recipe** | **#14 frozen** exactly: 0.5·HN+0.5·ov select; 60ep cosine; hard-Â; **uniform ID** (NO upsample). Seeds **0..4** reconfirm #14 ckpts; **5..9** train identical harden. |
+| **Prereg mean** | hard-neg≥0.95 **FAIL** (0.935±0.090); K16≥0.75 **PASS** (0.792±0.288) |
+| **Seed-wise** | **3/10** PASS (rate 0.30; goal ≥8/10 **FAIL**) |
+| **CI95** | HN [0.879, 0.991]; K16 [0.614, 0.971]; overall [0.870, 0.936] |
+
+### 18.1 Matched-OOD T16 mean±std
+
+| Arm | overall | hard-neg | K16 | seed PASS |
+|-----|---------|----------|-----|-----------|
+| PR #14 stabilize (n=5) | **0.929±0.035** | **0.957±0.061** | **0.863±0.143** | **2/5** |
+| PR #15 V2 / #16 V3 / #17 ObjV1 | STOP_FRAGILE | | | ≤1/5 |
+| **This envelope (n=10)** | **0.903±0.053** | **0.935±0.090** | **0.792±0.288** | **3/10** |
+| Untrained mean (n=10) | 0.490±0.164 | 0.480±0.216 | — | — |
+
+Wider seed panel under frozen #14 dips mean HN below floor and widens K16 std (seed6 K16=0.113). Prefer honesty: **MEASURE_ENVELOPE**; retain **#14 unchanged** as best MEASURE corridor. Cite `docs/CYCLE_STALK_SEED_STABILITY.md`.
+
+### 18.2 Non-rewrite rule
+
+Prior seal body + §13 DEMOTION + §14 MEASURE_STILL + §15/§16/§17 STOP_FRAGILE are **not** rewritten. This §18 is append-only MEASURE_ENVELOPE.
+

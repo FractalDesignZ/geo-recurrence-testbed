@@ -112,13 +112,94 @@ propose a new select/train recipe.
 - No `science_open=true` from harness
 - No claim that more seeds alone upgrades MEASURE → OPEN
 
-## Results (filled after run)
+## Results (this run — cite artifact)
 
 | Field | Value |
 |-------|-------|
 | **Artifact** | `artifacts/stalk_seed_stability.json` |
 | **Log** | `artifacts/stalk_seed_stability_run.log` |
 | **Ckpts** | #14 `stabilize_seed{0..4}_best.pt` (reconfirm) + `seed_stability_seed{5..9}_best.pt` |
-| **Verdict** | _(pending run)_ |
-| **science_open** | **false** |
-| **Prereg SHA** | _(this commit before runs)_ |
+| **Verdict** | **`MEASURE_ENVELOPE`** (seed **3/10**; mean HN **0.935** fails ≥0.95; K16 **0.792** PASS) |
+| **science_open** | **false** (not widened) |
+| **Elapsed** | ~715 s (~11.9 min CDT) |
+| **Individual prereg** | **3/10** seeds PASS (rate **0.30**; goal ≥8/10 **FAIL**) |
+| **Mean floors** | HN **0.935≥0.95 FAIL**; K16 **0.792≥0.75 PASS** |
+| **CI95 (normal)** | HN [0.879, 0.991]; K16 [0.614, 0.971]; overall [0.870, 0.936] |
+| **Prereg SHA** | `59337cb` (committed before runs) |
+| **Prefer** | **#14 unchanged** (`MEASURE_STILL` corridor) |
+
+### Per-seed matched-OOD T16
+
+| Seed | mode | best_ep | overall | hard-neg | K8 | K12 | K16 | prereg |
+|------|------|---------|---------|----------|----|-----|-----|--------|
+| 0 | reconfirm #14 | 58 | **0.975** | **1.000** | 0.988 | 1.000 | **0.863** | **PASS** |
+| 1 | reconfirm #14 | 25 | 0.919 | **1.000** | 0.825 | 0.813 | **0.875** | **PASS** |
+| 2 | reconfirm #14 | 26 | 0.915 | 0.871 | 0.900 | 1.000 | 0.975 | FAIL (HN) |
+| 3 | reconfirm #14 | 43 | 0.885 | **1.000** | 0.750 | 0.938 | 0.625 | FAIL (K16) |
+| 4 | reconfirm #14 | 37 | 0.952 | 0.912 | 1.000 | 1.000 | 0.975 | FAIL (HN) |
+| 5 | train frozen | 51 | 0.865 | 0.912 | 0.938 | 0.975 | 0.537 | FAIL (HN+K16) |
+| 6 | train frozen | 31 | 0.812 | **0.992** | 0.925 | 0.863 | **0.113** | FAIL (K16) |
+| 7 | train frozen | 2 | 0.883 | 0.946 | 0.463 | 1.000 | **1.000** | FAIL (HN) |
+| 8 | train frozen | 28 | 0.854 | 0.717 | 1.000 | 1.000 | 0.975 | FAIL (HN) |
+| 9 | train frozen | 50 | **0.971** | **1.000** | 0.838 | 1.000 | **0.988** | **PASS** |
+| **mean±std** | — | — | **0.903±0.053** | **0.935±0.090** | 0.863±0.163 | 0.959±0.068 | **0.792±0.288** | **3/10** |
+
+### Untrained control (per seed, T16)
+
+| Seed | u overall | u hard-neg | u K16 | agree vs trained |
+|------|-----------|------------|-------|------------------|
+| 0 | 0.633 | 0.600 | 1.000 | 0.608 |
+| 1 | 0.608 | 0.883 | 0.000 | 0.627 |
+| 2 | 0.635 | 0.271 | 1.000 | 0.625 |
+| 3 | 0.346 | 0.692 | 0.000 | 0.460 |
+| 4 | 0.219 | 0.438 | 0.000 | 0.225 |
+| 5 | 0.231 | 0.129 | 0.000 | 0.329 |
+| 6 | 0.508 | 0.350 | 1.000 | 0.346 |
+| 7 | 0.615 | 0.562 | 1.000 | 0.698 |
+| 8 | 0.562 | 0.458 | 0.000 | 0.613 |
+| 9 | 0.540 | 0.412 | 1.000 | 0.565 |
+| **mean±std** | **0.490±0.164** | **0.480±0.216** | — | **0.510±0.159** |
+
+Untrained remains mid/low vs trained; bake-in still **not** proven.
+
+### Degree-balanced T16 (secondary)
+
+| Seed | overall | hard-neg | K16 |
+|------|---------|----------|-----|
+| 0..4 | (same as #14 reconfirm) | | |
+| 5 | 0.805 | 0.793 | 0.537 |
+| 6 | 0.801 | 0.970 | 0.113 |
+| 7 | 0.870 | 0.920 | 1.000 |
+| 8 | 0.811 | 0.629 | 0.975 |
+| 9 | 0.971 | 1.000 | 0.988 |
+| **mean±std (n=10)** | **0.885±0.064** | **0.899±0.126** | **0.792±0.288** |
+
+### Causal horizon mean±std (matched-OOD, n=10)
+
+| T | overall | hard-neg | K16 |
+|---|---------|----------|-----|
+| 6 | 0.673±0.134 | 0.934±0.089 | 0.309±0.478 |
+| 8 | 0.736±0.123 | 0.941±0.090 | 0.319±0.469 |
+| 12 | 0.815±0.122 | 0.952±0.079 | 0.479±0.465 |
+| **16** | **0.903±0.053** | **0.935±0.090** | **0.792±0.288** |
+
+### vs PR #14 (n=5) under same recipe
+
+| Metric @ T16 | PR #14 (n=5) | **This envelope (n=10)** |
+|--------------|--------------|--------------------------|
+| overall | **0.929±0.035** | 0.903±0.053 |
+| hard-neg | **0.957±0.061 PASS** | **0.935±0.090 FAIL** |
+| K16 | **0.863±0.143 PASS** | **0.792±0.288 PASS** |
+| seed PASS | **2/5 (0.40)** | **3/10 (0.30)** |
+| CI95 HN | — | [0.879, 0.991] |
+| CI95 K16 | — | [0.614, 0.971] |
+
+### Reading (fail-closed)
+
+Frozen #14 recipe on a wider seed panel (**0..9**) yields **`MEASURE_ENVELOPE`**:
+mean HN dips below floor (0.957→0.935), K16 mean still PASS but std widens
+(0.143→0.288; seed6 K16 collapse 0.113), seed PASS rate **0.30** (3/10) vs
+goal 0.80. New seeds 5..8 mostly fail; seed9 PASS. Envelope shows #14 n=5
+means were optimistic; corridor remains seed-fragile. Prefer honesty: keep
+**#14 unchanged** as best MEASURE corridor; do **not** invent new
+select/upsample. `science_open=false`.
