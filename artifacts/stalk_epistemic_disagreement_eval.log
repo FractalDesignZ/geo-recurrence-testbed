@@ -1,0 +1,11 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[stalk-epi] AUDIT loading #14/#18 ensemble n=10
+[stalk-epi] AUDIT matched-OOD T16 ensemble bag
+[stalk-epi] AUDIT matched-OOD T16 SWA bag
+[stalk-epi] wrote artifacts/stalk_epistemic_disagreement.json verdict=STOP audit=AUDIT_LIFTS_ON_DISAGREEMENT science_open=false elapsed=37.4s
+{
+  "verdict": "STOP",
+  "audit_verdict": "AUDIT_LIFTS_ON_DISAGREEMENT",
+  "science_open": false
+}

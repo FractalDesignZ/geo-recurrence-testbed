@@ -453,6 +453,23 @@ python -m reachability_gen.run_stalk_swa_persist
 
 Artifact: `artifacts/stalk_swa_persist.json`. See `docs/CYCLE_STALK_SWA_PERSIST.md`.
 
+## Cycle: STALK_EPISTEMIC_DISAGREEMENT (MEASURE → STOP)
+
+After #22/#24 ens OPEN and #25 SWA MEASURE: (1) audit whether #22 lift rides on
+member disagreement; (2) one multi-hyp (H=3) train with CE−λ·JS (**not** soft
+distill). Audit: **`AUDIT_LIFTS_ON_DISAGREEMENT`** — median-split lift gaps
+Δoverall/HN/K16 **+0.175 / +0.164 / +0.221** on high-disagreement examples;
+epistemic H 0.192 > aleatoric 0.080. Multi-hyp mean HN **0.942** / K16 **0.712**
+FAIL floors; within-head disagree collapsed (~0.009); **0/3** → **`STOP`**.
+§22 **not** widened. `science_open=false`.
+
+```bash
+python -m reachability_gen.run_stalk_epistemic_disagreement
+# or: reachability-stalk-epistemic-disagreement
+```
+
+Artifact: `artifacts/stalk_epistemic_disagreement.json`. See `docs/CYCLE_STALK_EPISTEMIC_DISAGREEMENT.md`.
+
 ## Cycle: STALK_ENSEMBLE_DISTILL (MEASURE → STOP)
 
 After #22 ensemble **PASS_CANDIDATE** (map), distill frozen #14/#18
