@@ -45,10 +45,16 @@ ID `val` has hops ∈ {−1,2..6} only — **no K16 proxy on ID**.
 Each epoch after train step:
 
 1. Eval ID **val** at **T=16**.
-2. Record `sel_hard_neg` = hard-neg acc (hop −1) and `sel_overall` = overall acc.
-3. **Best ckpt** = argmax lexicographic `(sel_hard_neg, sel_overall, −epoch)`  
-   i.e. maximize hard-neg@T16-val, then overall@T16-val, then prefer **earlier** epoch on ties.
-4. Matched-OOD / degree-balanced / K16 are **never** used for selection — only for final report.
+2. Record `sel_hard_neg` (hop −1) and `sel_overall`.
+3. `joint = 0.5 * sel_hard_neg + 0.5 * sel_overall`.
+4. **Best ckpt** = argmax lexicographic `(joint, sel_overall, sel_hard_neg, −epoch)`  
+   (prefer earlier epoch on ties).
+5. Matched-OOD / degree-balanced / K16 are **never** used for selection — only for final report.
+
+**Amendment (structural, before full 5-seed):** HN-primary alone was aborted after a
+seed-0 pilot — maximizing HN without overall biases **under-propagation** (HN↑ while
+positives collapse). Joint score is the honest reading of “early-stop on hard-neg+path
+competence” given no K16 on ID. No matched-OOD floors were used to choose this amendment.
 
 ### Prereg floors (match PR #12)
 

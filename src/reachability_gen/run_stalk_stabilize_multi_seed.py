@@ -141,8 +141,10 @@ def train_fractal_id2k_harden(
         file=sys.stderr,
     )
 
-    # Selection key: (hard_neg, overall, -epoch) — maximize; earlier epoch on ties
-    best_key: tuple[float, float, int] = (-1.0, -1.0, 0)
+    # Selection key: (joint, overall, hard_neg, -epoch) — joint = 0.5*HN+0.5*overall
+    # Structural: HN-only biases under-propagation (HN↑ while positives collapse).
+    # ID has no K16; overall@T16 is the path-competence proxy under long unroll.
+    best_key: tuple[float, float, float, int] = (-1.0, -1.0, -1.0, 0)
     best_epoch = 0
     best_state: Optional[dict[str, Any]] = None
     best_sel: dict[str, float] = {}
@@ -189,7 +191,8 @@ def train_fractal_id2k_harden(
         ov_ttrain = float(val_ttrain["overall_acc"])
         val_by_hop_final = sel_stats["by_hop"]
 
-        key = (sel_hard, sel_overall, -epoch)
+        joint = 0.5 * sel_hard + 0.5 * sel_overall
+        key = (joint, sel_overall, sel_hard, -epoch)
         improved = key > best_key
         if improved:
             best_key = key
@@ -197,6 +200,7 @@ def train_fractal_id2k_harden(
             best_sel = {
                 "hard_neg_acc_T16_val": sel_hard,
                 "overall_acc_T16_val": sel_overall,
+                "joint_score_T16_val": joint,
             }
             best_state = {
                 k: v.detach().cpu().clone() for k, v in model.state_dict().items()
@@ -211,6 +215,7 @@ def train_fractal_id2k_harden(
                 "val_acc_T_train": ov_ttrain,
                 "sel_hard_neg_T16": sel_hard,
                 "sel_overall_T16": sel_overall,
+                "sel_joint_T16": joint,
                 "selected": improved,
             }
         )
@@ -218,7 +223,7 @@ def train_fractal_id2k_harden(
             f"[stalk-stabilize] epoch {epoch}/{epochs} lr={lr:.5g} "
             f"train_acc={train_acc:.4f} val@T{T}={ov_ttrain:.4f} "
             f"sel@T16 HN={sel_hard:.4f} ov={sel_overall:.4f} "
-            f"(best@ep{best_epoch} HN={best_sel.get('hard_neg_acc_T16_val', float('nan')):.4f})",
+            f"(best@ep{best_epoch} joint={best_sel.get('joint_score_T16_val', float('nan')):.4f} HN={best_sel.get('hard_neg_acc_T16_val', float('nan')):.4f})",
             file=sys.stderr,
         )
 
@@ -236,7 +241,7 @@ def train_fractal_id2k_harden(
                 "science_open": False,
                 "cycle": CYCLE,
                 "selection_rule": (
-                    "lexicographic (hard_neg_T16_id_val, overall_T16_id_val, -epoch); "
+                    "lexicographic (0.5*HN+0.5*overall @ T16 ID-val, overall, HN, -epoch); "
                     "matched-OOD never used for selection"
                 ),
                 "hparams": {
@@ -268,8 +273,9 @@ def train_fractal_id2k_harden(
         "best_sel_hard_neg_T16_val": best_sel.get("hard_neg_acc_T16_val"),
         "best_sel_overall_T16_val": best_sel.get("overall_acc_T16_val"),
         "selection_rule": (
-            "lexicographic (hard_neg_T16_id_val, overall_T16_id_val, -epoch)"
+            "lexicographic (0.5*HN+0.5*overall @ T16 ID-val, overall, HN, -epoch)"
         ),
+        "best_sel_joint_T16_val": best_sel.get("joint_score_T16_val"),
         "train_history": train_hist,
         "val_by_hop": val_by_hop_final,
         "grad_clip": grad_clip,
@@ -346,13 +352,18 @@ def run_cycle(
             "grad_clip": grad_clip,
             "n_seeds": len(seeds),
             "selection": (
-                "ID val @ T16 lexicographic (hard_neg, overall, -epoch); "
-                "matched-OOD never used for ckpt selection"
+                "ID val @ T16 lexicographic (0.5*HN+0.5*overall, overall, HN, -epoch); "
+                "matched-OOD never used for ckpt selection. "
+                "HN-only rejected structurally (under-propagation bias)."
             ),
             "vs_pr12": {
                 "epochs_was": 30,
                 "lr_was": "fixed 1.5e-3",
                 "selection_was": "best ID-val overall @ T_train=6",
+                "selection_amendment": (
+                    "v1 HN-primary aborted structurally before full 5-seed; "
+                    "v2 joint 0.5*HN+0.5*overall @ T16 ID-val"
+                ),
                 "seeds_was": [0, 1, 2],
             },
         },
@@ -377,9 +388,11 @@ def run_cycle(
             "seed_pass_goal_ge": SEED_PASS_GOAL,
             "seed_pass_stretch": SEED_PASS_STRETCH,
             "selection_rule": (
-                "Before any OOD look: best ckpt = argmax (HN@T16 ID-val, "
-                "overall@T16 ID-val, -epoch). K16 unavailable on ID; not used "
-                "in selection. Floors evaluated only on matched-OOD after train."
+                "Before any OOD look: best ckpt = argmax "
+                "(0.5*HN+0.5*overall @ T16 ID-val, overall, HN, -epoch). "
+                "K16 unavailable on ID; overall@T16 is path-competence proxy. "
+                "HN-only rejected: structural under-propagation bias. "
+                "Floors evaluated only on matched-OOD after train."
             ),
             "note": (
                 "Mean floors match PR #12. science_open never self-stamped; "
