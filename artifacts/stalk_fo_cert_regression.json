@@ -1,0 +1,243 @@
+{
+  "T_fixed": 16,
+  "cycle": "CYCLE_STALK_FO_CERT_REGRESSION",
+  "datasets": {
+    "cite30": "artifacts/stalk_hop_ood_hn.json",
+    "cite31": "artifacts/stalk_hn_fail_open_autopsy.json",
+    "cite35": "artifacts/stalk_reach_certificates.json",
+    "cite38": "artifacts/stalk_energy_selector.json"
+  },
+  "decision": {
+    "pass": true,
+    "reasons": [],
+    "require_smoke": true,
+    "science_open": false,
+    "verdict": "PASS_REGRESSION"
+  },
+  "elapsed_sec": 0.0032052993774414062,
+  "gates": {
+    "A": {
+      "checks": [
+        {
+          "floor": 45,
+          "name": "fo_total",
+          "ok": true,
+          "value": 45
+        },
+        {
+          "floor": 30,
+          "name": "hard_unanimous_count",
+          "ok": true,
+          "sealed_cite": 34,
+          "value": 34
+        },
+        {
+          "floor": 0.7,
+          "name": "hard_unanimous_rate",
+          "ok": true,
+          "value": 0.7555555555555555
+        },
+        {
+          "floor": 0,
+          "name": "mixed_pred",
+          "ok": true,
+          "value": 0
+        },
+        {
+          "floor": 0,
+          "name": "oracle_fo_killed",
+          "note": "oracle member cannot kill FO (HARD_UNANIMOUS wall)",
+          "ok": true,
+          "value": 0
+        },
+        {
+          "floor": 0,
+          "name": "oracle_rem22_killed",
+          "ok": true,
+          "value": 0
+        },
+        {
+          "floor": false,
+          "name": "science_open_false_cites",
+          "ok": true,
+          "value": {
+            "cite31": false,
+            "cite38": false
+          }
+        }
+      ],
+      "gate": "A_HARD_UNANIMOUS_ORACLE",
+      "pass": true,
+      "reasons": [],
+      "summary": {
+        "HARD_UNANIMOUS": 34,
+        "MIXED_PRED": 0,
+        "SOFT_AGREE": 11,
+        "fo_total": 45,
+        "hard_unanimous_rate": 0.7555555555555555,
+        "oracle_fo_killed": 0,
+        "oracle_rem22_killed": 0
+      }
+    },
+    "B": {
+      "checks": [
+        {
+          "floor": 45,
+          "name": "fo_killed_cert",
+          "ok": true,
+          "value": 45
+        },
+        {
+          "floor": 22,
+          "name": "rem22_killed_cert",
+          "ok": true,
+          "value": 22
+        },
+        {
+          "floor": "CERT_FO_CATCH",
+          "name": "cert_verdict",
+          "ok": true,
+          "value": "CERT_FO_CATCH"
+        },
+        {
+          "floor": 0.99,
+          "name": "p_correct_given_clean",
+          "ok": true,
+          "value": 1.0
+        },
+        {
+          "floor": false,
+          "name": "collateral_harm_false",
+          "ok": true,
+          "value": false
+        },
+        {
+          "floor_abs": 0.01,
+          "name": "matched_ood_deltas_cert",
+          "ok": true,
+          "value": {
+            "K16": 0.0,
+            "hard_neg_acc": 0.0,
+            "overall_acc": 0.0
+          }
+        },
+        {
+          "floor": false,
+          "name": "science_open_false_cite35",
+          "ok": true,
+          "value": false
+        }
+      ],
+      "gate": "B_CERT_REFUSE",
+      "pass": true,
+      "reasons": [],
+      "summary": {
+        "fo_killed": 45,
+        "harm": false,
+        "matched_deltas_cert": {
+          "K16": 0.0,
+          "hard_neg_acc": 0.0,
+          "overall_acc": 0.0
+        },
+        "p_correct_given_clean": 1.0,
+        "rem22_killed": 22,
+        "verdict": "CERT_FO_CATCH"
+      }
+    },
+    "C": {
+      "checks": [
+        {
+          "floor": 45,
+          "name": "baseline_FO",
+          "ok": true,
+          "value": 45
+        },
+        {
+          "floor_max": 0.1,
+          "name": "baseline_HN_shatter",
+          "ok": true,
+          "sealed_cite": 0.06666666666666667,
+          "shatter_max": 0.5,
+          "value": 0.06666666666666667
+        },
+        {
+          "floor": 0.95,
+          "name": "baseline_K16",
+          "ok": true,
+          "sealed_cite": 0.9875,
+          "value": 0.987500011920929
+        },
+        {
+          "floor": "HN_SHATTER_CONFIRMED",
+          "name": "cite30_verdict_needle",
+          "ok": true,
+          "value": "FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED"
+        },
+        {
+          "floor": false,
+          "name": "science_open_false_cite30",
+          "ok": true,
+          "value": false
+        }
+      ],
+      "gate": "C_SMOKE_CITE30",
+      "pass": true,
+      "reasons": [],
+      "summary": {
+        "FAIL_OPEN": 45,
+        "HN": 0.06666666666666667,
+        "K16": 0.987500011920929,
+        "verdict": "FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED"
+      }
+    }
+  },
+  "generation": false,
+  "git_sha": "a8b8a688eb5ed2164a104c2230cbfe3140eae70b",
+  "hop_ood_remains_measure_residue": true,
+  "mode": "MEASURE_CI_HYGIENE",
+  "open_status": {
+    "claim_hop_ood_open": false,
+    "science_open": false,
+    "section22_widened": false
+  },
+  "prereg": {
+    "non_goals": [
+      "no_train",
+      "no_generation",
+      "no_science_open_widen",
+      "section22_unchanged",
+      "T_fixed_16",
+      "no_hop_ood_open_claim",
+      "artifact_first_ci_gate"
+    ],
+    "thresholds": {
+      "CERT_VERDICT_LOCKED": "CERT_FO_CATCH",
+      "CITE30_FO_EXACT": 45,
+      "CITE30_HN_MAX": 0.1,
+      "CITE30_K16_MIN": 0.95,
+      "CITE30_VERDICT_NEEDLE": "HN_SHATTER_CONFIRMED",
+      "FOCUS_T": 16,
+      "FO_CATCH_EXACT": 45,
+      "FO_TOTAL_LOCKED": 45,
+      "HARD_UNANIMOUS_MIN_COUNT": 30,
+      "HARD_UNANIMOUS_MIN_RATE": 0.7,
+      "HN_SHATTER_MAX": 0.5,
+      "MATCHED_COLLATERAL_ABS_MAX": 0.01,
+      "MIXED_PRED_MAX": 0,
+      "ORACLE_FO_KILLED_MAX": 0,
+      "ORACLE_REM22_KILLED_MAX": 0,
+      "P_CORRECT_CLEAN_MIN": 0.99,
+      "REM22_CATCH_EXACT": 22
+    },
+    "verdicts": [
+      "PASS_REGRESSION",
+      "FAIL"
+    ]
+  },
+  "reading": "Regression lock on sealed #30/#31/#35/#38 storyline: HARD_UNANIMOUS FO wall + oracle FO killed=0; cert refuse 45/45 with P(correct|clean)\u22481 and matched \u0394\u22480; optional #30 FO/HN shatter smoke. MEASURE/CI only; science_open=false.",
+  "residue": "HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/CERT_FO_CATCH/HARD_UNANIMOUS_ORACLE_WALL/PASS_REGRESSION",
+  "science_open": false,
+  "section22_unchanged": true,
+  "train": false,
+  "verdict": "PASS_REGRESSION"
+}
