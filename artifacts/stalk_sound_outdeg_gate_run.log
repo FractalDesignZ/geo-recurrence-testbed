@@ -1,0 +1,6 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[stalk-sound-outdeg] loading #14/#18/#22 ens n=10
+[stalk-sound-outdeg] infer ood_hops T16 (#22 baseline)
+[stalk-sound-outdeg] infer matched-OOD T16 collateral
+[stalk-sound-outdeg] verdict=FO_PARTIAL residue=HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL FO_killed=23/45 HN 0.067→0.304 triggers=59 wrote artifacts/stalk_sound_outdeg_gate.json (16.3s)

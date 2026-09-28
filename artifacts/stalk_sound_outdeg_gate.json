@@ -1,0 +1,557 @@
+{
+  "architecture": {
+    "T_fixed": 16,
+    "aggregator_primary": "prob_mean",
+    "bag_noise_trained": false,
+    "bfs_oracle_gate": false,
+    "broadcast_c": false,
+    "curriculum_reopened": false,
+    "d": 64,
+    "gate_optional_arm2": "|out-neighborhood(s)|==0 (identical on simple digraphs)",
+    "gate_primary": "outdeg(s)==0 and t!=s \u2192 force pred=0",
+    "hard_A": true,
+    "kind": "eval_only_sound_outdeg_gate_overlay",
+    "select_reopened": false,
+    "train": false
+  },
+  "arms": {
+    "0_baseline": {
+      "CD": {
+        "CD": 0.553125,
+        "CD_raw": 0.1574869782909324,
+        "D_SAT": 0.25,
+        "D_clip": 1.0,
+        "D_hard": 0.28472222063897384,
+        "mu_acc": 0.553125
+      },
+      "D_hard": 0.28472222063897384,
+      "ensemble": {
+        "K12": 0.9750000238418579,
+        "K16": 0.987500011920929,
+        "K8": 0.8999999761581421,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 0.06666666666666667,
+            "correct": 16,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 0.975,
+            "correct": 78,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.9875,
+            "correct": 79,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 0.9,
+            "correct": 72,
+            "n": 80
+          }
+        },
+        "hard_neg_acc": 0.06666666666666667,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.5104166666666666
+      },
+      "fail_mode": {
+        "FAIL_AMBIG": 0,
+        "FAIL_CLOSED": 190,
+        "FAIL_OPEN": 45,
+        "ens_overall_acc": 0.5104166666666666,
+        "n_wrong": 235,
+        "verdict": "FAIL_CLOSED_DOMINANT"
+      },
+      "name": "baseline_#22_prob_mean"
+    },
+    "1_outdeg0_force_unreach": {
+      "CD": {
+        "CD": 0.553125,
+        "CD_raw": 0.1574869782909324,
+        "D_SAT": 0.25,
+        "D_clip": 1.0,
+        "D_hard": 0.28472222063897384,
+        "mu_acc": 0.553125
+      },
+      "D_hard": 0.28472222063897384,
+      "ensemble": {
+        "K12": 0.9750000238418579,
+        "K16": 0.987500011920929,
+        "K8": 0.8999999761581421,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 0.30416666666666664,
+            "correct": 73,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 0.975,
+            "correct": 78,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.9875,
+            "correct": 79,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 0.9,
+            "correct": 72,
+            "n": 80
+          }
+        },
+        "hard_neg_acc": 0.30416666666666664,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.6291666666666667
+      },
+      "fail_mode": {
+        "FAIL_AMBIG": 0,
+        "FAIL_CLOSED": 156,
+        "FAIL_OPEN": 22,
+        "ens_overall_acc": 0.6291666666666667,
+        "n_wrong": 178,
+        "verdict": "FAIL_CLOSED_DOMINANT"
+      },
+      "n_triggers": 59,
+      "name": "outdeg(s)==0_force_pred0",
+      "trigger_ids_sample": [
+        41,
+        58,
+        59,
+        64,
+        67,
+        71,
+        89,
+        90,
+        93,
+        112,
+        113,
+        127,
+        128,
+        136,
+        148,
+        149,
+        165,
+        172,
+        176,
+        202,
+        216,
+        221,
+        223,
+        227,
+        233,
+        236,
+        238,
+        242,
+        243,
+        244,
+        257,
+        264,
+        273,
+        282,
+        286,
+        312,
+        317,
+        319,
+        335,
+        336
+      ]
+    }
+  },
+  "base_sha": "6a75b1f62fcb7de3b10764f46f5261b7c0a8215a",
+  "collateral": {
+    "OK_HN": {
+      "baseline_acc": 1.0,
+      "delta": 0.0,
+      "gated_acc": 1.0,
+      "n": 16
+    },
+    "harm": false,
+    "matched_ood_T16": {
+      "baseline": {
+        "K12": 1.0,
+        "K16": 1.0,
+        "K8": 0.9750000238418579,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 1.0,
+            "correct": 240,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 0.975,
+            "correct": 78,
+            "n": 80
+          }
+        },
+        "hard_neg_acc": 1.0,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.9958333333333333
+      },
+      "deltas": {
+        "K16": 0.0,
+        "hard_neg_acc": 0.0,
+        "overall_acc": 0.0
+      },
+      "gated": {
+        "K12": 1.0,
+        "K16": 1.0,
+        "K8": 0.9750000238418579,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 1.0,
+            "correct": 240,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 0.975,
+            "correct": 78,
+            "n": 80
+          }
+        },
+        "hard_neg_acc": 1.0,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.9958333333333333
+      },
+      "n": 480,
+      "n_gate_triggers": 97,
+      "path": "data/covariate_matched_ood.jsonl",
+      "skipped": false
+    },
+    "positives": {
+      "baseline_acc": 0.9541666507720947,
+      "delta": 0.0,
+      "gated_acc": 0.9541666507720947,
+      "n": 240
+    },
+    "reasons": []
+  },
+  "comparison_table": {
+    "baseline": {
+      "FC": 190,
+      "FO": 45,
+      "HN": 0.06666666666666667,
+      "K16": 0.987500011920929,
+      "overall": 0.5104166666666666
+    },
+    "gated": {
+      "FC": 156,
+      "FO": 22,
+      "FO_killed_of_45": 23,
+      "HN": 0.30416666666666664,
+      "K16": 0.987500011920929,
+      "overall": 0.6291666666666667
+    }
+  },
+  "cycle": "CYCLE_STALK_SOUND_OUTDEG_GATE",
+  "datasets": {
+    "cite30": "artifacts/stalk_hop_ood_hn.json",
+    "cite31": "artifacts/stalk_hn_fail_open_autopsy.json",
+    "matched_ood": "data/covariate_matched_ood.jsonl",
+    "n_ood_hops": 480,
+    "ood_hops": "data/ood_hops.jsonl"
+  },
+  "decision": {
+    "fo_killed": 23,
+    "fo_total": 45,
+    "gated_hn": 0.30416666666666664,
+    "reasons": [
+      "fo_killed=23/45",
+      "gated_hn=0.3042",
+      "not_FO_CORE_KILLED"
+    ],
+    "verdict": "FO_PARTIAL"
+  },
+  "elapsed_sec": 16.32034397125244,
+  "fo_analysis": {
+    "cite31_fo_ids": [
+      5,
+      30,
+      36,
+      52,
+      59,
+      71,
+      112,
+      122,
+      127,
+      142,
+      172,
+      176,
+      180,
+      188,
+      190,
+      202,
+      205,
+      215,
+      217,
+      223,
+      225,
+      236,
+      238,
+      242,
+      243,
+      249,
+      259,
+      260,
+      264,
+      265,
+      282,
+      294,
+      302,
+      312,
+      335,
+      336,
+      347,
+      352,
+      353,
+      373,
+      381,
+      405,
+      417,
+      436,
+      441
+    ],
+    "cite31_fo_match": true,
+    "fo_ids": [
+      5,
+      30,
+      36,
+      52,
+      59,
+      71,
+      112,
+      122,
+      127,
+      142,
+      172,
+      176,
+      180,
+      188,
+      190,
+      202,
+      205,
+      215,
+      217,
+      223,
+      225,
+      236,
+      238,
+      242,
+      243,
+      249,
+      259,
+      260,
+      264,
+      265,
+      282,
+      294,
+      302,
+      312,
+      335,
+      336,
+      347,
+      352,
+      353,
+      373,
+      381,
+      405,
+      417,
+      436,
+      441
+    ],
+    "fo_killed": 23,
+    "fo_killed_ids": [
+      59,
+      71,
+      112,
+      127,
+      172,
+      176,
+      202,
+      223,
+      236,
+      238,
+      242,
+      243,
+      264,
+      282,
+      312,
+      335,
+      336,
+      353,
+      373,
+      405,
+      417,
+      436,
+      441
+    ],
+    "fo_still_wrong": 22,
+    "fo_still_wrong_ids": [
+      5,
+      30,
+      36,
+      52,
+      122,
+      142,
+      180,
+      188,
+      190,
+      205,
+      215,
+      217,
+      225,
+      249,
+      259,
+      260,
+      265,
+      294,
+      302,
+      347,
+      352,
+      381
+    ],
+    "fo_total": 45,
+    "fo_with_outdeg0": 23
+  },
+  "hop_ood_remains_measure_residue": true,
+  "members_pr22": [
+    {
+      "best_epoch": 58,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed0_best.pt",
+      "seed": 0,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 25,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed1_best.pt",
+      "seed": 1,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 26,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed2_best.pt",
+      "seed": 2,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 43,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed3_best.pt",
+      "seed": 3,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 37,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed4_best.pt",
+      "seed": 4,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 51,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed5_best.pt",
+      "seed": 5,
+      "source": "pr18"
+    },
+    {
+      "best_epoch": 31,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed6_best.pt",
+      "seed": 6,
+      "source": "pr18"
+    },
+    {
+      "best_epoch": 2,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed7_best.pt",
+      "seed": 7,
+      "source": "pr18"
+    },
+    {
+      "best_epoch": 28,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed8_best.pt",
+      "seed": 8,
+      "source": "pr18"
+    },
+    {
+      "best_epoch": 50,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed9_best.pt",
+      "seed": 9,
+      "source": "pr18"
+    }
+  ],
+  "mode": "MEASURE",
+  "open_status": "science_open_false_not_widened",
+  "outdeg_def": {
+    "formula": "outdeg(s)=|{v:(s,v) in A_hat}|",
+    "matches_autopsy_directed_out_edges": true,
+    "not_bfs_out_closure": true,
+    "not_total_degree": true,
+    "out_neighborhood_equiv_outdeg_on_simple": true
+  },
+  "prereg": {
+    "COLLATERAL_DROP": 0.05,
+    "CONF_THRESH": 0.8,
+    "D_CLOSED_MIN": 0.1,
+    "EPI_CLOSED_MIN": 0.15,
+    "FO_CORE_KILL_MIN": 40,
+    "HN_CORE_MIN": 0.8,
+    "non_goals": [
+      "no_train",
+      "no_science_open_widen",
+      "section22_unchanged",
+      "T_fixed_16",
+      "no_bfs_oracle_gate",
+      "no_hop_ood_open_claim"
+    ],
+    "verdicts": [
+      "FO_CORE_KILLED",
+      "FO_PARTIAL",
+      "FO_UNMOVED",
+      "COLLATERAL_HARM"
+    ]
+  },
+  "reading": "Sound local outdeg(s)==0 force-unreach overlay on #22 ens. MEASURE only; science_open=false; \u00a722 unchanged; no hop-OOD OPEN claim.",
+  "replicate_cite30": {
+    "FAIL_CLOSED": 190,
+    "FAIL_OPEN": 45,
+    "FO_match": true,
+    "cite30_FO": 45,
+    "ens_HN": 0.06666666666666667,
+    "ens_K16": 0.987500011920929,
+    "ens_overall": 0.5104166666666666,
+    "within_tol": true
+  },
+  "residue": "HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL",
+  "residue_note": "Sound outdeg gate killed 23/45 FO; residue remains; no \u00a722 widen.",
+  "science_open": false,
+  "section22_unchanged": true,
+  "soundness": {
+    "n_triggers": 59,
+    "n_violations_y_neq_0": 0,
+    "note": "outdeg(s)==0 \u2227 t\u2260s \u21d2 gold y=0 on digraphs without self-loops",
+    "violation_ids": []
+  },
+  "verdict": "FO_PARTIAL"
+}
