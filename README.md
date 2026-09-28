@@ -432,6 +432,20 @@ python -m reachability_gen.run_stalk_seed_ensemble
 
 Artifact: `artifacts/stalk_seed_ensemble.json`. See `docs/CYCLE_STALK_SEED_ENSEMBLE.md`.
 
+## Cycle: STALK_ENSEMBLE_DISTILL (MEASURE — map→location)
+
+After #22 ensemble **PASS_CANDIDATE** (map), distill frozen #14/#18
+**`prob_mean`** teacher into **ONE** hard-Â stalk student (location).
+Negatives=mirror (HN floor). Select stays **#14 0.5/0.5** (CLOSED).
+α=0.5, τ=2.0, student seeds **0,1,2**, floors HN≥0.95 / K16≥0.75.
+Compare student vs ensemble vs #14 seed0. `science_open=false`.
+
+```bash
+python -m reachability_gen.run_stalk_ensemble_distill
+# or: reachability-stalk-ensemble-distill
+```
+
+Artifact: `artifacts/stalk_ensemble_distill.json`. See `docs/CYCLE_STALK_ENSEMBLE_DISTILL.md`.
 
 ## Cycle: STALK_SEED_STABILITY (MEASURE → MEASURE_ENVELOPE)
 
