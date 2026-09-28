@@ -35,6 +35,7 @@ reachability-sheaf-untrained-control = "reachability_gen.run_sheaf_untrained_con
 reachability-sheaf-neutral-init-retrain = "reachability_gen.run_sheaf_neutral_init_retrain:main"
 reachability-sheaf-no-aux-edge-recon = "reachability_gen.run_sheaf_no_aux_edge_recon:main"
 reachability-sheaf-ste-no-aux = "reachability_gen.run_sheaf_ste_no_aux:main"
+reachability-stalk-untrained-control = "reachability_gen.run_stalk_untrained_control:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

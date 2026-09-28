@@ -1,0 +1,510 @@
+{
+  "T_values": [
+    6,
+    8,
+    12,
+    16
+  ],
+  "audit": "FAIL_CLOSED_STALK_UNTRAINED_CONTROL",
+  "base_sha": "af152bdcfe77a788e01764e07d193bf59fa03066",
+  "by_T": {
+    "12": {
+      "K_strata": {
+        "12": {
+          "n": 80,
+          "trained_acc": 1.0,
+          "untrained_acc": 0.0
+        },
+        "16": {
+          "n": 80,
+          "trained_acc": 0.0,
+          "untrained_acc": 1.0
+        },
+        "8": {
+          "n": 80,
+          "trained_acc": 1.0,
+          "untrained_acc": 1.0
+        }
+      },
+      "delta_hard_neg": 0.3916666666666667,
+      "delta_overall": 0.19583333333333341,
+      "prediction_agreement": 0.47083333134651184,
+      "trained": {
+        "T": 12,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 1.0,
+            "correct": 240,
+            "loss_mean": 0.005526771518149568,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.015273106354288756,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 1.652542446553707,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.009358691918896512,
+            "n": 80
+          }
+        },
+        "fnr": 0.3333333432674408,
+        "fpr": 0.0,
+        "hard_neg_acc": 1.0,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.8333333333333334
+      },
+      "untrained": {
+        "T": 12,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 0.6083333333333333,
+            "correct": 146,
+            "loss_mean": 0.6622102353721857,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 0.8945898801088333,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.24813337810337543,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.5954953491687774,
+            "n": 80
+          }
+        },
+        "fnr": 0.3333333432674408,
+        "fpr": 0.3916666805744171,
+        "hard_neg_acc": 0.6083333333333333,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.6375
+      }
+    },
+    "16": {
+      "K_strata": {
+        "12": {
+          "n": 80,
+          "trained_acc": 1.0,
+          "untrained_acc": 0.0
+        },
+        "16": {
+          "n": 80,
+          "trained_acc": 0.925,
+          "untrained_acc": 1.0
+        },
+        "8": {
+          "n": 80,
+          "trained_acc": 0.9375,
+          "untrained_acc": 1.0
+        }
+      },
+      "delta_hard_neg": 0.4,
+      "delta_overall": 0.34375,
+      "prediction_agreement": 0.6104166507720947,
+      "trained": {
+        "T": 16,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 1.0,
+            "correct": 240,
+            "loss_mean": 0.004911962339732175,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.008007636410184205,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.925,
+            "correct": 74,
+            "loss_mean": 0.4312247162219137,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 0.9375,
+            "correct": 75,
+            "loss_mean": 0.27082656195852906,
+            "n": 80
+          }
+        },
+        "fnr": 0.04583333432674408,
+        "fpr": 0.0,
+        "hard_neg_acc": 1.0,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.9770833333333333
+      },
+      "untrained": {
+        "T": 16,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 0.6,
+            "correct": 144,
+            "loss_mean": 0.789591845870018,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 0.7258136622607708,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.2060800863429904,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.4653239417821169,
+            "n": 80
+          }
+        },
+        "fnr": 0.3333333432674408,
+        "fpr": 0.4000000059604645,
+        "hard_neg_acc": 0.6,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.6333333333333333
+      }
+    },
+    "6": {
+      "K_strata": {
+        "12": {
+          "n": 80,
+          "trained_acc": 0.0125,
+          "untrained_acc": 0.0
+        },
+        "16": {
+          "n": 80,
+          "trained_acc": 0.0,
+          "untrained_acc": 1.0
+        },
+        "8": {
+          "n": 80,
+          "trained_acc": 0.0,
+          "untrained_acc": 1.0
+        }
+      },
+      "delta_hard_neg": 0.4,
+      "delta_overall": -0.13124999999999998,
+      "prediction_agreement": 0.4645833373069763,
+      "trained": {
+        "T": 6,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 1.0,
+            "correct": 240,
+            "loss_mean": 0.0062822754659767575,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 0.0125,
+            "correct": 1,
+            "loss_mean": 5.321687492786441,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 2.8907047688961027,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 4.695063945651055,
+            "n": 80
+          }
+        },
+        "fnr": 0.9958333373069763,
+        "fpr": 0.0,
+        "hard_neg_acc": 1.0,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.5020833333333333
+      },
+      "untrained": {
+        "T": 6,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 0.6,
+            "correct": 144,
+            "loss_mean": 0.7262016029407581,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 0.8048010468482971,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.2223281504586339,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.547180899977684,
+            "n": 80
+          }
+        },
+        "fnr": 0.3333333432674408,
+        "fpr": 0.4000000059604645,
+        "hard_neg_acc": 0.6,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.6333333333333333
+      }
+    },
+    "8": {
+      "K_strata": {
+        "12": {
+          "n": 80,
+          "trained_acc": 0.05,
+          "untrained_acc": 1.0
+        },
+        "16": {
+          "n": 80,
+          "trained_acc": 0.0,
+          "untrained_acc": 1.0
+        },
+        "8": {
+          "n": 80,
+          "trained_acc": 1.0,
+          "untrained_acc": 1.0
+        }
+      },
+      "delta_hard_neg": 0.6,
+      "delta_overall": -0.02499999999999991,
+      "prediction_agreement": 0.375,
+      "trained": {
+        "T": 8,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 1.0,
+            "correct": 240,
+            "loss_mean": 0.007140455205808393,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 0.05,
+            "correct": 4,
+            "loss_mean": 4.943815159803489,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.0,
+            "correct": 0,
+            "loss_mean": 2.3657818734645844,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.010176485346164554,
+            "n": 80
+          }
+        },
+        "fnr": 0.6499999761581421,
+        "fpr": 0.0,
+        "hard_neg_acc": 1.0,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.675
+      },
+      "untrained": {
+        "T": 8,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 0.4,
+            "correct": 96,
+            "loss_mean": 0.924431993936499,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.5863376379013061,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.1646507943049073,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 1.0,
+            "correct": 80,
+            "loss_mean": 0.3916290834546089,
+            "n": 80
+          }
+        },
+        "fnr": 0.0,
+        "fpr": 0.6000000238418579,
+        "hard_neg_acc": 0.4,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.7
+      }
+    }
+  },
+  "ckpt": {
+    "arm": "fractal-stalk-T6-d64-mlp10",
+    "cycle": "CYCLE_STALK_LOCALIZATION",
+    "epoch": 29,
+    "hparams": {
+      "T": 6,
+      "adaptive_halt": false,
+      "broadcast_c": false,
+      "d": 64,
+      "grad_clip": 2.5,
+      "local_potential": true,
+      "lr": 0.0015,
+      "max_nodes": 64,
+      "mlp_expansion": 10
+    },
+    "path": "artifacts/fractal_core_stalk_gate1_best.pt",
+    "present": true,
+    "sha256": "129a2f686d3bb21da07441a41f35698924667a87f3e6ab1c6e266ac9686442ce",
+    "val_acc": 0.985
+  },
+  "cycle": "CYCLE_STALK_LOCALIZATION",
+  "focus_T": 16,
+  "focus_summary": {
+    "K12_trained": 1.0,
+    "K12_untrained": 0.0,
+    "K16_trained": 0.925,
+    "K16_untrained": 1.0,
+    "K8_trained": 0.9375,
+    "K8_untrained": 1.0,
+    "T": 16,
+    "agreement": 0.6104166507720947,
+    "trained_hard_neg": 1.0,
+    "trained_overall": 0.9770833333333333,
+    "untrained_hard_neg": 0.6,
+    "untrained_overall": 0.6333333333333333
+  },
+  "init_doc": {
+    "architecture": {
+      "broadcast_c": false,
+      "discrete_T_values": [
+        6,
+        8,
+        12,
+        16
+      ],
+      "hard_A_ij_mask": true,
+      "intermediates": 0,
+      "local_potential": true,
+      "probe_slot": "t",
+      "soft_ACT": false,
+      "stalk_slot": "s"
+    },
+    "head_bias": [
+      0.008623257279396057,
+      0.022051900625228882
+    ],
+    "head_weight_norm": 0.821713924407959,
+    "mechanism": "Stalk-local FractalCore: hard adjacency mask + stalk@s / probe@t potentials (eye init), intermediates=0, no c broadcast, no soft ACT. Unlike SheafInferCore, there is no listed-edge gate bias / energy readout oracle at init \u2014 untrained performance is NOT expected to reproduce sealed Gate1 ceilings unless a hidden bake-in exists.",
+    "probe_proj_eye": true,
+    "residual_alpha": 0.5,
+    "science_open": false,
+    "stalk_proj_eye": true
+  },
+  "ood": {
+    "n": 480,
+    "path": "data/covariate_matched_ood.jsonl"
+  },
+  "policy": "Do not silently widen science_open. Only revoke stalk OPEN if bake-in proven (untrained\u2248sealed\u22481.0).",
+  "science_open": false,
+  "seals_invalidated": false,
+  "tables": [
+    {
+      "K12_t": 0.0125,
+      "K12_u": 0.0,
+      "K16_t": 0.0,
+      "K16_u": 1.0,
+      "K8_t": 0.0,
+      "K8_u": 1.0,
+      "T": 6,
+      "agreement": 0.4645833373069763,
+      "trained_hard_neg": 1.0,
+      "trained_overall": 0.5020833333333333,
+      "untrained_hard_neg": 0.6,
+      "untrained_overall": 0.6333333333333333
+    },
+    {
+      "K12_t": 0.05,
+      "K12_u": 1.0,
+      "K16_t": 0.0,
+      "K16_u": 1.0,
+      "K8_t": 1.0,
+      "K8_u": 1.0,
+      "T": 8,
+      "agreement": 0.375,
+      "trained_hard_neg": 1.0,
+      "trained_overall": 0.675,
+      "untrained_hard_neg": 0.4,
+      "untrained_overall": 0.7
+    },
+    {
+      "K12_t": 1.0,
+      "K12_u": 0.0,
+      "K16_t": 0.0,
+      "K16_u": 1.0,
+      "K8_t": 1.0,
+      "K8_u": 1.0,
+      "T": 12,
+      "agreement": 0.47083333134651184,
+      "trained_hard_neg": 1.0,
+      "trained_overall": 0.8333333333333334,
+      "untrained_hard_neg": 0.6083333333333333,
+      "untrained_overall": 0.6375
+    },
+    {
+      "K12_t": 1.0,
+      "K12_u": 0.0,
+      "K16_t": 0.925,
+      "K16_u": 1.0,
+      "K8_t": 0.9375,
+      "K8_u": 1.0,
+      "T": 16,
+      "agreement": 0.6104166507720947,
+      "trained_hard_neg": 1.0,
+      "trained_overall": 0.9770833333333333,
+      "untrained_hard_neg": 0.6,
+      "untrained_overall": 0.6333333333333333
+    }
+  ],
+  "verdict": "OPEN_STILL_CONTINGENT_NEEDS_MULTI_SEED",
+  "verdict_claim": "Untrained matched-OOD T16 overall=0.633 (mid (~0.6)); sealed trained overall=0.977, hard-neg=1.000, K16_trained=0.925, agreement=0.610. Bake-in NOT proven. Stalk OPEN remains standing but contingent \u2014 needs multi-seed trained reconfirm. Do not silently widen science_open."
+}
