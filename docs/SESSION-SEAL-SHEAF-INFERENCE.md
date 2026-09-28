@@ -155,3 +155,16 @@ Stub: `docs/CYCLE_SHEAF_STRESS_TEST.md`.
 - Evidence = cited artifact paths above; SHAs `f374e7c` / merge `af8e49f` / PR #3 → `main`.
 - Outside §6 claim: **fail-closed**.
 - Do not rewrite `docs/SESSION-SEAL-STALK-LOCALIZATION.md`.
+
+---
+
+## 11. External AUDIT commentary triage (append-only)
+
+| Field | Value |
+|-------|-------|
+| **Label** | external AUDIT commentary triage |
+| **Date** | 2026-09-27 |
+| **Scoped validation accepted** | MEASURE / seal body at SHAs **`f374e7c`** / merge **`af8e49f`** (PR #3) — Gate0/1 metrics and §6 scoped claim as written |
+| **Rejected as sealed claims** | universality; permanent confound elimination; CoT / o1 metaphors as mechanism; Spaces-first deployment; soft ACT halt; NL Llama bridge |
+| **Note** | Commentary outside the cited artifacts is not evidence. Prior seal body (§1–§10) is **not** rewritten. Fail-closed elsewhere. |
+| **Next MEASURE** | `CYCLE_SHEAF_RED_TEST` single cell (K=20, p=0.15, T∈{20,24}) — see `docs/CYCLE_SHEAF_STRESS_TEST.md` / `artifacts/sheaf_infer_red_test.json` |

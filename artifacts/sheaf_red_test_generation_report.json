@@ -1,0 +1,96 @@
+{
+  "K": 20,
+  "construction": "path_backbone",
+  "cycle": "CYCLE_SHEAF_RED_TEST",
+  "draws": 157,
+  "er_band_search": {
+    "K": 20,
+    "cells": [
+      {
+        "in_band": 0,
+        "n": 21,
+        "p": 0.15,
+        "probe_token_len_mean": null,
+        "trials": 200,
+        "with_hop_k": 0
+      },
+      {
+        "in_band": 0,
+        "n": 22,
+        "p": 0.15,
+        "probe_token_len_mean": null,
+        "trials": 200,
+        "with_hop_k": 0
+      },
+      {
+        "in_band": 0,
+        "n": 24,
+        "p": 0.15,
+        "probe_token_len_mean": null,
+        "trials": 200,
+        "with_hop_k": 0
+      },
+      {
+        "in_band": 0,
+        "n": 26,
+        "p": 0.15,
+        "probe_token_len_mean": null,
+        "trials": 200,
+        "with_hop_k": 0
+      },
+      {
+        "in_band": 0,
+        "n": 28,
+        "p": 0.15,
+        "probe_token_len_mean": null,
+        "trials": 200,
+        "with_hop_k": 0
+      }
+    ],
+    "note": "ER under sealed band is scarce/impossible for K=20 at p=0.15 (expected |E| \u226b band cap 21). Path-backbone used for locked cell.",
+    "p_requested": 0.15,
+    "seq_len_band": [
+      45,
+      70
+    ],
+    "total_in_band": 0,
+    "total_with_hop_k_in_band": 0
+  },
+  "extra_edges": [
+    0,
+    1
+  ],
+  "hard_neg_discipline": true,
+  "n_examples": 128,
+  "n_neg": 64,
+  "n_pos": 64,
+  "n_support": [
+    21,
+    22,
+    23
+  ],
+  "p_empirical": {
+    "max": 0.05,
+    "mean": 0.04804378705533597,
+    "min": 0.039525691699604744,
+    "note": "Empirical p \u226a p_requested=0.15 under band+|E| cap; joint (K=20, p=0.15, band) is infeasible for pure ER."
+  },
+  "p_requested": 0.15,
+  "reject_reasons": {
+    "dup_pos": 92
+  },
+  "science_open": false,
+  "seed": 168000,
+  "seq_len_band": [
+    45,
+    70
+  ],
+  "split": "sheaf_red_test_k20",
+  "token_len": {
+    "max": 69,
+    "mean": 68.9765625,
+    "min": 66,
+    "n": 128,
+    "note": "K=20 forces |E|\u226520 \u2192 token_len\u226566 under locked encoding; mean sits at the high end of sealed band [45,70], far from the ~200 Gate2 confound. INVALID if mean drifts toward ~200."
+  }
+}
