@@ -349,3 +349,31 @@ Gates A–D (neutral init, ≥3 seeds, degree-balanced reach-cue ≤0.52). If fl
 
 Residue: under gate_detach_diffusion + neutral_init, reachability CE alone does **not** recover Â or OOD path-length gen in the locked 30-ep budget. Matched-OOD collapses to always-unreach (T16 overall=0.5, FNR=1, K8/12/16=0). Â FNR remains near-chance. Do **not** stamp OPEN; do not revive with-aux OPEN without human review of aux necessity.
 
+### 18.1 PR #9 merge (STOP residue)
+
+| Field | Value |
+|-------|-------|
+| **PR** | #9 → `main` |
+| **Merge SHA** | `2834256a12a7a1d9ff826738cd860051f71e19ac` |
+| **Verdict** | `STOP_LEARNING_FAIL` (science_open=false) |
+| **Note** | Aux OFF + gate_detach_diffusion=True → OOD always-unreach collapse. |
+
+
+---
+
+## 19. MEASURE residue — CYCLE_SHEAF_STE_NO_AUX (append-only; science_open=false)
+
+| Field | Value |
+|-------|-------|
+| **Label** | MEASURE residue (PASS candidate or STOP) — not a science OPEN |
+| **Date** | 2026-09-27 |
+| **Trigger** | §18 / PR #9 `STOP_LEARNING_FAIL` (no-aux + detach) |
+| **Plan** | `docs/CYCLE_SHEAF_STE_NO_AUX.md` |
+| **Ledger** | `docs/LEDGER-OPEN-MEASURE-STOP.md` |
+| **Harness** | `python -m reachability_gen.run_sheaf_ste_no_aux` |
+| **Artifact** | `artifacts/sheaf_ste_no_aux.json` |
+| **Knobs** | neutral_init; edge_recon_weight=0; **gate_detach_diffusion=False**; STE (or Gumbel); 60 ep |
+| **science_open** | **false** |
+| **Verdict** | **`STOP_LEARNING_FAIL`** — 1/3 seeds prereg (seed2 PASS; seeds 0–1 miss hard-neg / K16). T16 mean±std overall **0.766±0.231**, hard-neg **0.679±0.278**, K16 **0.804±0.339**. Better than PR #9 collapse but unstable; science_open=false. |
+
+PR #9 merge SHA `2834256`. Do not stamp OPEN. Prefer complete gates over fake attribution.
