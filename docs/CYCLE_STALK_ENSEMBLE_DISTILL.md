@@ -88,12 +88,44 @@ Teacher ckpts must exist (same paths as #22). Student writes
 - No `science_open=true` from harness
 - No claim that distill alone upgrades MEASURE → OPEN without human seal
 
-## Results (fill after run)
+## Results (this run — cite artifact)
 
 | Field | Value |
 |-------|-------|
 | **Artifact** | `artifacts/stalk_ensemble_distill.json` |
 | **Log** | `artifacts/stalk_ensemble_distill_run.log` |
-| **Verdict** | _(pending)_ |
-| **science_open** | **false** |
-| **Prereg SHA** | _(this commit)_ |
+| **Ckpts** | `fractal_core_stalk_ensemble_distill_seed{0,1,2}_best.pt` |
+| **Verdict** | **`STOP`** |
+| **science_open** | **false** (not widened) |
+| **Elapsed** | ~404 s (~6.7 min CDT) |
+| **Prereg SHA** | `6117eb3` (committed before runs) |
+| **Floors (student mean)** | HN **0.843 FAIL** (≥0.95); K16 **0.575 FAIL** (≥0.75); seed PASS **0/3** |
+
+### Matched-OOD T16 — student vs ensemble vs #14
+
+| Arm | overall | hard-neg | K16 |
+|-----|---------|----------|-----|
+| Student mean±std (n=3) | 0.810±0.050 | **0.843±0.146** | **0.575±0.447** |
+| Ensemble `prob_mean` (re-eval) | **0.996** | **1.000** | **1.000** |
+| #14 seed0 (re-eval) | **0.975** | **1.000** | **0.863** |
+| #14 seeds 0..4 mean | 0.929±0.035 | 0.957±0.061 | 0.863±0.143 |
+| Δ student − ensemble | −0.186 | −0.157 | −0.425 |
+| Δ student − #14 seed0 | −0.165 | −0.157 | −0.288 |
+
+### Per-seed student matched-OOD T16
+
+| Seed | overall | hard-neg | K8 | K12 | K16 | prereg |
+|------|---------|----------|----|-----|-----|--------|
+| 0 | 0.754 | 0.817 | 0.975 | 1.000 | **0.100** | FAIL (HN+K16) |
+| 1 | 0.823 | **1.000** | 0.675 | 0.625 | 0.638 | FAIL (K16) |
+| 2 | 0.852 | 0.713 | 0.988 | 1.000 | **0.988** | FAIL (HN) |
+| **mean±std** | **0.810±0.050** | **0.843±0.146** | — | — | **0.575±0.447** | **0/3** |
+
+### Reading (fail-closed)
+
+ID-val select looked strong (seed0 best joint≈0.996) but matched-OOD did **not**
+inherit the ensemble map. Seeds trade HN vs K16 (inverted fragility, same class
+as V2/V3). Student mean HN **and** K16 both **below** #14 seed0 → verdict
+**`STOP`** (no distill transfer). Ensemble remains inference overlay only;
+select/curriculum stay **CLOSED**. Prefer honesty: map ≠ location — the map
+did not compress under this prereg. `science_open=false`.
