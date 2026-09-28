@@ -102,22 +102,85 @@ PASS definition identical to #14.
 | Ckpt select | joint 0.5·HN+0.5·overall @ T16 ID-val | **joint 0.7·HN+0.3·overall** among epochs with **overall≥0.85** |
 | Architecture / hard Â | sealed stalk | **unchanged** |
 
-## Results (filled after run)
+## Results (this run — cite artifact)
 
 | Field | Value |
 |-------|-------|
 | **Artifact** | `artifacts/stalk_stabilize_v2.json` |
 | **Log** | `artifacts/stalk_stabilize_v2_run.log` |
 | **Ckpts** | `artifacts/fractal_core_stalk_stabilize_v2_seed{0..4}_best.pt` |
-| **Verdict** | _TBD_ |
-| **science_open** | **false** |
-| **Elapsed** | _TBD_ |
-| **Individual prereg** | _TBD_ |
-| **Mean floors** | _TBD_ |
+| **Verdict** | **`STOP_FRAGILE`** (seed 1/5; K16 mean 0.423≪0.75; under-propagation return) |
+| **science_open** | **false** (not widened) |
+| **Elapsed** | ~1039 s (~17.3 min CDT) |
+| **Individual prereg** | **1/5** seeds PASS |
+| **Mean floors** | HN **0.955≥0.95 PASS**; K16 **0.423≥0.75 FAIL** |
 
 ### Per-seed matched-OOD T16
 
-_Filled after run._
+| Seed | best_ep | sel joint HN/ov | overall | hard-neg | K8 | K12 | K16 | prereg |
+|------|---------|-----------------|---------|----------|----|-----|-----|--------|
+| 0 | 53 | 0.998 / 1.000 / 0.995 | 0.838 | **1.000** | 1.000 | 0.963 | **0.062** | FAIL (K16) |
+| 1 | 25 | 0.973 / 0.975 / 0.968 | 0.802 | **1.000** | 0.800 | 0.938 | **0.075** | FAIL (K16) |
+| 2 | 39 | 0.964 / 0.965 / 0.963 | **0.983** | **1.000** | 1.000 | 1.000 | **0.900** | **PASS** |
+| 3 | 16 | 0.966 / 0.975 / 0.945 | 0.560 | **1.000** | 0.188 | 0.087 | **0.088** | FAIL (K16) |
+| 4 | 24 | 0.931 / 0.935 / 0.922 | 0.883 | 0.775 | 1.000 | 0.988 | **0.988** | FAIL (HN) |
+| **mean±std** | — | — | **0.813±0.157** | **0.955±0.101** | — | — | **0.423±0.477** | **1/5** |
+
+### Untrained control (per seed, T16)
+
+| Seed | u overall | u hard-neg | u K16 | agree vs trained |
+|------|-----------|------------|-------|------------------|
+| 0 | 0.633 | 0.600 | 1.000 | 0.483 |
+| 1 | 0.608 | 0.883 | 0.000 | 0.785 |
+| 2 | 0.635 | 0.271 | 1.000 | 0.619 |
+| 3 | 0.346 | 0.692 | 0.000 | 0.785 |
+| 4 | 0.219 | 0.438 | 0.000 | 0.265 |
+| **mean±std** | **0.488±0.194** | 0.577±0.235 | — | **0.587±0.220** |
+
+Untrained remains mid/low vs trained where trained still propagates; bake-in still **not** proven. K16 collapse on trained seeds 0/1/3 is a **selection** failure (HN-heavy), not bake-in.
+
+### Degree-balanced T16 (secondary)
+
+| Seed | overall | hard-neg | K16 |
+|------|---------|----------|-----|
+| 0 | 0.836 | 1.000 | 0.062 |
+| 1 | 0.801 | 1.000 | 0.075 |
+| 2 | 0.983 | 1.000 | 0.900 |
+| 3 | 0.558 | 1.000 | 0.087 |
+| 4 | 0.834 | 0.675 | 0.988 |
+| **mean±std** | 0.802±0.153 | 0.935±0.145 | 0.422±0.477 |
+
+### Causal horizon mean±std (matched-OOD)
+
+| T | overall | hard-neg | K16 |
+|---|---------|----------|-----|
+| 6 | 0.540±0.068 | 0.960±0.053 | 0.003±0.006 |
+| 8 | 0.621±0.077 | 0.957±0.058 | 0.020±0.019 |
+| 12 | 0.721±0.151 | 0.964±0.076 | 0.210±0.372 |
+| **16** | **0.813±0.157** | **0.955±0.101** | **0.423±0.477** |
+
+### vs PR #14 stabilize + PR #12
+
+| Metric @ T16 | PR #12 (n=3) | PR #14 (n=5) | **This V2 (n=5)** |
+|--------------|--------------|--------------|-------------------|
+| overall | 0.803±0.202 | **0.929±0.035** | 0.813±0.157 |
+| hard-neg | 0.918±0.142 | **0.957±0.061** | 0.955±0.101 |
+| K16 | 0.654±0.524 | **0.863±0.143** | **0.423±0.477** |
+| seed PASS | 1/3 | **2/5** | **1/5** |
+
+### Reading (fail-closed)
+
+Stronger HN weight (0.7) with overall≥0.85 gate **did** rescue seed2 HN (0.871→1.000) but **reintroduced under-propagation** on seeds 0/1/3: ID-val overall stayed ≥0.85 while matched-OOD **K16 collapsed** (0.06–0.09). Gate on ID overall is **insufficient** as a K16 proxy. Seed4 still misses HN (0.775).
+
+**Prefer #14 joint 0.5/0.5 corridor** over this V2 selection for any future harden. Do **not** chase further HN-primary variants without a true long-hop ID proxy (none exists on current ID val hops).
+
+Param count **117506** within ±5% of FF 121218 (parity ok all seeds). No selection_fallback fired (all seeds had eligible epochs).
+
+## Verdict
+
+**`STOP_FRAGILE`** — seed-wise **1/5**; K16 mean **0.423** fails floor and is deep-fragile (≪0.5 with ≤1/5 pass). Mean HN still clears 0.95 but is hollow without propagation.
+
+Stay **MEASURE** / stop this knob line. **`science_open=false`**. Do not widen. Flag: next middle-out should **not** increase HN weight further; prefer #14 protocol or orthogonal knobs (e.g. longer train under **0.5/0.5**, or accept MEASURE_STILL).
 
 ## Policy
 

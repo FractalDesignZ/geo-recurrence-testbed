@@ -390,11 +390,12 @@ python -m reachability_gen.run_stalk_stabilize_multi_seed
 
 Artifact: `artifacts/stalk_stabilize_multi_seed.json`. See `docs/CYCLE_STALK_STABILIZE_MULTI_SEED.md`.
 
-## Cycle: STALK_STABILIZE_V2 (MEASURE)
+## Cycle: STALK_STABILIZE_V2 (MEASURE → STOP_FRAGILE)
 
-Continue from PR #14 MEASURE_STILL. Same hard-Â stalk; knobs: 90 ep, cosine
-1.5e-3→1.0e-4, gated joint **0.7·HN+0.3·overall** @ T16 ID-val (overall≥0.85
-eligibility). Prereg floors unchanged; seed goal ≥4/5. `science_open=false`.
+Continue from PR #14 MEASURE_STILL. Knobs: 90 ep, cosine 1.5e-3→1.0e-4, gated
+joint **0.7·HN+0.3·overall** @ T16 ID-val (overall≥0.85). Result: seed **1/5**,
+K16 mean **0.423** → **`STOP_FRAGILE`** (HN-heavy under-propagation). Prefer #14
+0.5/0.5 corridor. `science_open=false`.
 
 ```bash
 python -m reachability_gen.run_stalk_stabilize_v2
