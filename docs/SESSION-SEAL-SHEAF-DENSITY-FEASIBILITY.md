@@ -8,6 +8,8 @@
 | **science_open** | **false** (no scientific promotion; do not widen sheaf §6 / K≤16) |
 | **Repo** | https://github.com/FractalDesignZ/geo-recurrence-testbed |
 | **Prior** | PR #4 merge `7a02dea` (K=20 RED_TEST MEASURE residue); sheaf seal §6 remains K≤16 only |
+| **Merge SHA (PR #5 → main)** | `a6665bc` (`a6665bc65e5c9eb2881e522095807b8292758328`) |
+| **PR** | [#5](https://github.com/FractalDesignZ/geo-recurrence-testbed/pull/5) MERGED |
 | **Artifact** | `artifacts/sheaf_infer_density_stress.json` |
 | **Doc** | `docs/CYCLE_SHEAF_DENSITY_STRESS.md` |
 
@@ -66,4 +68,4 @@ Ckpt: frozen `artifacts/sheaf_infer_gate1_best.pt` (param_count **123206**, no r
 
 ## 4. Next MEASURE (handoff)
 
-`CYCLE_SHEAF_DENSE_CONTEXT` — re-band to **[100,140]** (mean target ~110–120), keep frozen Gate1 ckpt, Cell1 dense n=16 p=0.15 vs Cell2 matched sparse n=32 ER p≈0.036 (&#124;E&#124; / seq_len matched), T∈{8,12}, 128/cell. Fail-closed; `science_open=false`.
+`CYCLE_SHEAF_DENSE_CONTEXT` — re-band to **[100,140]** (mean target ~110–120), keep frozen Gate1 ckpt, Cell1 dense n=16 p=0.15 vs Cell2 matched sparse n=32 ER p≈0.036 (&#124;E&#124; / seq_len matched), T∈{8,12}, 128/cell. Fail-closed; `science_open=false`. **Completed MEASURE PASS** (cite `docs/CYCLE_SHEAF_DENSE_CONTEXT.md` / `artifacts/sheaf_infer_dense_context.json`); science_open still false.

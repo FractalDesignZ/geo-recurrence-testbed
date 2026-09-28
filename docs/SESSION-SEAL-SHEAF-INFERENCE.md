@@ -197,3 +197,17 @@ Stub: `docs/CYCLE_SHEAF_STRESS_TEST.md`.
 | **science_open claim** | **Unchanged** — §6 remains **K≤16 only**. Do **not** widen OPEN. |
 | **Note** | Prior seal body (§1–§12) is **not** rewritten. Fail-closed elsewhere. |
 | **Next MEASURE** | `CYCLE_SHEAF_DENSE_CONTEXT` — band [100,140]; dense vs matched-sparse control |
+
+---
+
+## 14. MEASURE residue — CYCLE_SHEAF_DENSE_CONTEXT (append-only)
+
+| Field | Value |
+|-------|-------|
+| **Label** | MEASURE residue (not science OPEN) |
+| **Date** | 2026-09-27 |
+| **Slice** | `CYCLE_SHEAF_DENSE_CONTEXT` — band [100,140]; Cell1 dense n=16 p=0.15 vs Cell2 matched-sparse n=32 p≈0.0352; frozen Gate1 |
+| **Result** | Prereg **PASS** / attribution **PASS** (cite `artifacts/sheaf_infer_dense_context.json`) |
+| **seq_len** | Cell1 **110.79** / Cell2 **116.16** (both ∈ [100,140]) |
+| **science_open claim** | **Unchanged** — §6 remains **K≤16 only**. Do **not** widen OPEN from this MEASURE PASS. |
+| **Note** | Prior seal body (§1–§13) is **not** rewritten. Fail-closed elsewhere. Feasibility wall under sealed [45,70] remains INVALID (PR #5 / §13). |
