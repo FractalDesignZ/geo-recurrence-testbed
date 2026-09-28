@@ -4,8 +4,8 @@
 |-------|-------|
 | **Date** | 2026-09-28 (CDT) |
 | **Repo** | https://github.com/FractalDesignZ/geo-recurrence-testbed |
-| **Base after PR #19** | `0a69b3f` (merge AUDIT-STALK-STABILIZE-V3 PARK pointer); this PR = PARK_ACCEPT_MEASURE |
-| **Hygiene** | PR #12 demotes stalk §6 OPEN → **MEASURE**; PR #14 MEASURE_STILL 2/5 (best corridor); PR #15/#16/#17 STOP_FRAGILE; PR #18 seed-envelope 3/10; PR #19 audit parks select-line; **PR PARK** accepts #14 0.5/0.5 MEASURE close — select/curriculum **CLOSED**; `science_open=false` |
+| **Base after PR #20** | `faed05f` (merge CYCLE_STALK_PARK_ACCEPT_MEASURE — accept #14 MEASURE close) |
+| **Hygiene** | PR #12 demotes stalk §6 OPEN → **MEASURE**; PR #14 MEASURE_STILL 2/5 (best corridor); PR #15/#16/#17 STOP_FRAGILE; PR #18 seed-envelope 3/10; PR #19 audit parks select-line; **PR #20** accepts #14 0.5/0.5 MEASURE close — select/curriculum **CLOSED**; `science_open=false` |
 | **science_open policy** | Fail-closed. Harness never self-stamps `true`. Human seal only. |
 | **Purpose** | Single dimensional table of seals/PRs and **clear next cells**. |
 
@@ -37,7 +37,7 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | **PR #17** `4560d24` | `CYCLE_STALK_OBJECTIVE_V1` | **MEASURE** | **false** (not widened) | hard-A stalk objective | n/a | n/a | matched-OOD T∈{6,8,12,16}; **5 seeds**; 60ep; #14 select + HN/longhop train curriculum | `STOP_FRAGILE` (seed **0/5**; HN mean **0.927**; K16 **0.845**) | `artifacts/stalk_objective_v1.json` / seal §17 / `docs/CYCLE_STALK_OBJECTIVE_V1.md` |
 | **PR #18** `8850590` | `CYCLE_STALK_SEED_STABILITY` | **MEASURE** | **false** (not widened) | hard-A stalk #14 freeze | n/a | n/a | matched-OOD T∈{6,8,12,16}; **10 seeds** (0..4 reconfirm + 5..9 new); 60ep; #14 select **frozen** (NO upsample) | `MEASURE_ENVELOPE` (seed **3/10**; HN mean **0.935** FAIL; K16 **0.792** PASS) | `artifacts/stalk_seed_stability.json` / seal §18 / `docs/CYCLE_STALK_SEED_STABILITY.md` |
 | **PR #19** `0a69b3f` | `AUDIT-STALK-STABILIZE-V3` | **MEASURE** audit | **false** | — | — | — | cite #14/#16/#18 | `PARK_SELECT_LINE` pointer — prefer #14; no V4 select | `docs/AUDIT-STALK-STABILIZE-V3.md` |
-| **PR** _(this PR)_ | `CYCLE_STALK_PARK_ACCEPT_MEASURE` | **MEASURE** park close | **false** (not widened) | hard-A stalk #14 accept | n/a | n/a | cite #14/#15/#16/#17/#18/#19 | `PARK_ACCEPT_MEASURE` — accept #14 0.5/0.5 MEASURE_STILL; select/curriculum **CLOSED** | `docs/CYCLE_STALK_PARK_ACCEPT_MEASURE.md` / seal §19 |
+| **PR #20** `faed05f` | `CYCLE_STALK_PARK_ACCEPT_MEASURE` | **MEASURE** park close | **false** (not widened) | hard-A stalk #14 accept | n/a | n/a | cite #14/#15/#16/#17/#18/#19 | `PARK_ACCEPT_MEASURE` — accept #14 0.5/0.5 MEASURE_STILL; select/curriculum **CLOSED** | `docs/CYCLE_STALK_PARK_ACCEPT_MEASURE.md` / seal §19 |
 
 ### 1.1 Status legend
 
@@ -77,7 +77,7 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | **4 (done)** | Accept MEASURE / orthogonal (non-select) pointer | prefer **#14 0.5/0.5** | — | — | Select-weight chase closed (V2/V3 STOP). Prefer #14 corridor. |
 | **4b (done)** | `CYCLE_STALK_OBJECTIVE_V1` (PR #17 `4560d24`) | #14 select + HN×2/hop≥5×2 train curriculum | — | **STOP_FRAGILE** 0/5 | HN mean 0.927 FAIL; K16 0.845 PASS; worse seed rate than #14. Prefer #14 MEASURE_STILL. |
 | **4c (done)** | `CYCLE_STALK_SEED_STABILITY` (PR #18) | freeze #14; seeds **0..9**; NO new select/upsample | — | **MEASURE_ENVELOPE** 3/10 | HN mean 0.935 FAIL; K16 0.792 PASS; rate 0.30. Prefer #14 unchanged. |
-| **5 (done)** | `CYCLE_STALK_PARK_ACCEPT_MEASURE` (this PR) | accept **#14 0.5/0.5 MEASURE_STILL**; park select/curriculum/seed-panel | — | **PARK_ACCEPT_MEASURE** | Seal note + §19; seed-fragile (#14 2/5, #18 3/10); V2/V3/Obj STOP; no new train; `science_open=false`. |
+| **5 (done)** | `CYCLE_STALK_PARK_ACCEPT_MEASURE` (PR #20 `faed05f`) | accept **#14 0.5/0.5 MEASURE_STILL**; park select/curriculum/seed-panel | — | **PARK_ACCEPT_MEASURE** | Seal note + §19; seed-fragile (#14 2/5, #18 3/10); V2/V3/Obj STOP; no new train; `science_open=false`. |
 | **6 (active)** | Aux ablation attribution (orthogonal) | with-aux vs STE-no-aux under matched seeds; **no** stalk select re-chase | document necessity | STOP | Human review before any OPEN revive; `science_open=false` |
 | 8 | Neutral-init RED_TEST / dense re-eval | frozen or retrained neutral ckpt | MEASURE | STOP | Do not revive bake-in OPEN |
 | 9 | Depth×Density frontier | longer K **and** dense ER under admissible band | MEASURE plan | — | Orthogonal envelopes; `science_open=false` until seal |
