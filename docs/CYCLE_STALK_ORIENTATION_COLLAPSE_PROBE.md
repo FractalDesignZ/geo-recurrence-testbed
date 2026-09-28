@@ -149,38 +149,42 @@ Still **MEASURE**, never OPEN. Even `ORIENT_SEPARATES_FO` does **not** widen `sc
 - No `science_open=true` / §22 widen
 - No claim that hop-OOD metrics extend §22 OPEN
 
-## Results (this run — fill after MEASURE)
+## Results (this run — cite artifact)
 
 | Field | Value |
 |-------|-------|
 | **Artifact** | `artifacts/stalk_orientation_collapse_probe.json` |
 | **Log** | `artifacts/stalk_orientation_collapse_probe_run.log` |
-| **Prereg SHA** | _(fill)_ |
-| **Harness SHA** | _(fill)_ |
-| **Results SHA** | _(fill)_ |
-| **Cycle verdict** | _(fill)_ |
+| **Prereg SHA** | `a422eef` |
+| **Harness SHA** | `5d6c1a8` |
+| **Results SHA** | _(stamp after results commit)_ |
+| **Cycle verdict** | **`INCONCLUSIVE_ARCH`** |
 | **science_open** | **false** (not widened; §22 unchanged) |
 | **Proxy used** | directed incidence × final hidden (no explicit in/out channels) |
-| **rem-22 separates?** | _(fill)_ |
-| **Elapsed** | _(fill)_ CDT |
+| **rem-22 separates?** | **l2_t yes** (confounded); **cos_t no** (OK_HN cos nan_rate=1.0) |
+| **Cite #30/#32/#33** | FO **45** exact; rem22 **22** exact; fo replicate match |
+| **Elapsed** | **12.2 s** CDT |
 
-### Table (stratum medians — fill)
+### Table (stratum medians — target slot)
 
-| Stratum | n | cos_t med | l2_t med | mass_ratio_t med | cos nan rate |
-|---------|---|-----------|----------|------------------|--------------|
-| OK_HN | | | | | |
-| FO_HN | | | | | |
-| rem-22 | | | | | |
-| FO_KILLED | | | | | |
-| FC_HN | | | | | |
+| Stratum | n | cos_t med | l2_t med | mass_ratio_t med | cos nan rate | empty_in_t mean |
+|---------|---|-----------|----------|------------------|--------------|-----------------|
+| OK_HN | 16 | **nan** | **8.038** | 0.000 | **1.00** | 1.00 |
+| FO_HN | 45 | **0.910** | **2.643** | 0.499 | **0.00** | 0.00 |
+| FO_REMAINDER | 22 | **0.909** | **2.693** | 0.499 | **0.00** | 0.00 |
+| FO_KILLED | 23 | **0.912** | **1.988** | 0.499 | **0.00** | 0.00 |
+| FC_HN | 179 | **0.895** | **3.034** | 0.499 | **0.23** | 0.22 |
 
-### AUROC (fill)
+### AUROC
 
 | Contrast | cos_t AUROC | (−l2_t) AUROC |
 |----------|-------------|---------------|
-| FO_HN vs OK_HN | | |
-| rem-22 vs OK_HN | | |
+| FO_HN vs OK_HN | **nan** | **1.000** |
+| rem-22 vs OK_HN | **nan** | **1.000** |
 
-### Reading (fill after run)
+### Reading (fail-closed)
 
-_(fail-closed reading)_
+1. **INCONCLUSIVE_ARCH:** OK_HN targets have **empty_in_t mean = 1.0** (cos nan_rate **1.00**). Primary cos AUROC is undefined. Proxy cannot fair-test orientation collapse vs OK_HN under the locked definition.
+2. FO_HN / rem-22 sit in **bidirectional** target neighborhoods (empty_in/out ≈ 0) with high cos_t ≈ **0.91** — consistent with large cones, but without a cos-comparable OK control this does **not** establish orientation collapse as the rem-22 lever.
+3. (−l2_t) AUROC = 1.0 and rem-22 l2 median outside OK IQR are **confounded by empty-in structure** on OK_HN (l2 ≈ ‖h_out‖ when h_in=0), not clean orientation separation.
+4. Do **not** widen §22. Do **not** claim hop-OOD OPEN. Do **not** start Phase 4 energy selector from this inconclusive proxy. Prefer #14+#22 on matched-OOD; keep #35 certificates for FO catch. Still **MEASURE**.

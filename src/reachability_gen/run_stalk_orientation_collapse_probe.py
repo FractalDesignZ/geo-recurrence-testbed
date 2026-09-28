@@ -410,7 +410,18 @@ def run_cycle(
     }
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(artifact, indent=2, sort_keys=True) + "\n")
+    def _jsonable(o: Any) -> Any:
+        if isinstance(o, float):
+            if o != o or o in (float("inf"), float("-inf")):
+                return None
+            return o
+        if isinstance(o, dict):
+            return {k: _jsonable(v) for k, v in o.items()}
+        if isinstance(o, list):
+            return [_jsonable(v) for v in o]
+        return o
+
+    out_path.write_text(json.dumps(_jsonable(artifact), indent=2, sort_keys=True) + "\n")
     print(
         f"[{CYCLE}] verdict={decision['verdict']} rem22_separates={rem_separates} "
         f"auroc_cos_fo={auroc_cos_fo:.4f} auroc_l2_fo={auroc_l2_fo:.4f} "
