@@ -586,7 +586,7 @@ MEASURE/STOP (`science_open=false`).
 | **Cycle note** | `docs/CYCLE_STALK_BAG_DIVERSITY.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_bag_diversity` |
 | **Base** | `main` `f210d0c` (after PR #26 epistemic disagreement) |
-| **Prereg / results** | `c58ab73` / *(this commit)* |
+| **Prereg / results** | `c58ab73` / `9cabd4c` |
 | **Harness verdict** | **`MEASURE_LIFT`** |
 | **Disagreement diagnostic** | **`DISAGREE_GE_REF`** (bag pair **0.431** ≥ #22 **0.162**) |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
