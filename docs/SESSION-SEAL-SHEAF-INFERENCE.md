@@ -304,3 +304,20 @@ Propose `CYCLE_SHEAF_NEUTRAL_INIT_RETRAIN` (see `docs/CYCLE_SHEAF_NEUTRAL_INIT_R
 ### 16.6 Non-rewrite rule
 
 Prior seal body (§1–§15) is **not** rewritten. This §16 is append-only INVALIDATION. Downstream dense-context seal §6 learned OPEN is likewise invalidated by pointer — see that seal's INVALIDATION appendix.
+
+---
+
+## 17. MEASURE residue — CYCLE_SHEAF_NEUTRAL_INIT_RETRAIN (append-only; science_open=false)
+
+| Field | Value |
+|-------|-------|
+| **Label** | MEASURE residue (not a science OPEN) |
+| **Date** | 2026-09-27 |
+| **Trigger** | §16 INVALIDATION; PR #7 merge `034a074` |
+| **Plan** | `docs/CYCLE_SHEAF_NEUTRAL_INIT_RETRAIN.md` |
+| **Harness** | `python -m reachability_gen.run_sheaf_neutral_init_retrain` |
+| **Artifact** | `artifacts/sheaf_neutral_init_retrain.json` (+ `artifacts/sheaf_reach_cue_audit.json`) |
+| **science_open** | **false** — harness never self-stamps true; human seal required |
+
+Gates A–D (neutral init, ≥3 seeds, degree-balanced reach-cue ≤0.52). If floors fail → STOP with residue. If floors pass → MEASURE candidate only. Cite artifact for numbers; do not invent.
+

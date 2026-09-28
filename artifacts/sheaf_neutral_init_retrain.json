@@ -1,0 +1,689 @@
+{
+  "base_sha": "034a0742a143cd0f16384509e529a78282b8884c",
+  "cycle": "CYCLE_SHEAF_NEUTRAL_INIT_RETRAIN",
+  "elapsed_s": 232.68031907081604,
+  "gate0_overfit": {
+    "acc_recon_per_class": "PASS by ~step 10 (acc=1, recon=1, y0=y1=1) under neutral_init",
+    "balanced_note": "loaded 144 rows from data/train_tiny.jsonl; candidates y1_id=72 y0_hard=66 reject_reasons={'skipped_not_y0': 72, 'both_deg0': 1, 'ok': 66, 'deg_s0': 2, 'deg_t0': 3}; balanced batch ready: 16+16",
+    "ce_floor_diagnosis": {
+      "lr_1e-2_step800_ce": 0.0050672,
+      "lr_3e-2_passed_at_step": 787,
+      "lr_3e-3_step800_ce": 0.031259,
+      "note": "Neutral Xavier head does not hit CE<1e-3 within 150-step legacy Gate0 budget; attainable ~787 steps @ lr=3e-2. Acc/recon floors hold early. Documented residue \u2014 not a silent PASS."
+    },
+    "ce_threshold": 0.001,
+    "last": {
+      "eval_acc": 1.0,
+      "eval_loss": 0.18340255320072174,
+      "per_class": {
+        "y0": 1.0,
+        "y0_correct": 16.0,
+        "y0_n": 16.0,
+        "y1": 1.0,
+        "y1_correct": 16.0,
+        "y1_n": 16.0
+      },
+      "recon_offdiag": 1.0,
+      "step": 150
+    },
+    "legacy_step_budget": 150,
+    "neutral_init": true,
+    "param_count": 123206,
+    "param_parity_ok": true,
+    "passed": false,
+    "passed_at_step": null,
+    "passed_legacy_ce_budget": false,
+    "science_open": false
+  },
+  "gates": {
+    "A": {
+      "ahat": {
+        "ahat_edge_acc": 0.964724327149203,
+        "ahat_fn": 4590.0,
+        "ahat_fnr": 0.5079681274900398,
+        "ahat_fp": 0.0,
+        "ahat_fpr": 0.0,
+        "ahat_tn": 121082.0,
+        "ahat_tp": 4446.0
+      },
+      "ahat_note": "absent_bias=0 \u21d2 hard-gate FPR\u22480 by construction (not bake-in). Gate A requires \u00c2 FNR\u2248chance (listed edges not all ON).",
+      "checks": {
+        "ahat_fnr_ok": true,
+        "ahat_not_perfect": true,
+        "bake_ok": true,
+        "reach_ok": true
+      },
+      "disqualify_above_chance": false,
+      "gate": "A",
+      "init": {
+        "absent_bias": 0.0,
+        "bake_in_removed": {
+          "no_absent_minus4": true,
+          "no_edge_bias_plus4": true,
+          "no_energy_bias_pm5": true
+        },
+        "edge_encoder_first_bias_abs_max": 0.0,
+        "edge_encoder_last_bias": 0.0,
+        "edge_encoder_last_weight_l2": 0.1503896862268448,
+        "gate_theta": 0.5,
+        "head_bias": [
+          0.0,
+          0.0
+        ],
+        "head_energy_col": [
+          -0.008760714903473854,
+          -0.013098318129777908
+        ],
+        "neutral_init": true,
+        "param_count": 123206,
+        "residual_alpha": 1.0,
+        "self_logit_hardcoded": 8.0
+      },
+      "matched_ood_T16": {
+        "T": 16,
+        "reach_acc": 0.5,
+        "reach_fnr": 1.0,
+        "reach_fpr": 0.0
+      },
+      "matched_ood_T6": {
+        "T": 6,
+        "reach_acc": 0.5,
+        "reach_fnr": 1.0,
+        "reach_fpr": 0.0
+      },
+      "passed": true,
+      "science_open": false,
+      "thresholds": {
+        "ahat_fnr_hi": 0.65,
+        "ahat_fnr_lo": 0.35,
+        "reach_acc_hi": 0.6,
+        "reach_acc_lo": 0.4
+      }
+    },
+    "B": {
+      "bake_in_removed": {
+        "no_absent_minus4": true,
+        "no_edge_bias_plus4": true,
+        "no_energy_bias_pm5": true
+      },
+      "gate": "B",
+      "init": {
+        "absent_bias": 0.0,
+        "bake_in_removed": {
+          "no_absent_minus4": true,
+          "no_edge_bias_plus4": true,
+          "no_energy_bias_pm5": true
+        },
+        "edge_encoder_first_bias_abs_max": 0.0,
+        "edge_encoder_last_bias": 0.0,
+        "edge_encoder_last_weight_l2": 0.1503896862268448,
+        "gate_theta": 0.5,
+        "head_bias": [
+          0.0,
+          0.0
+        ],
+        "head_energy_col": [
+          -0.008760714903473854,
+          -0.013098318129777908
+        ],
+        "neutral_init": true,
+        "param_count": 123206,
+        "residual_alpha": 1.0,
+        "self_logit_hardcoded": 8.0
+      },
+      "note": "neutral_init=True: Xavier/Gaussian zero-mean; biases 0; no edge+4 / absent\u22124 / energy\u00b15. STE OK for learning \u00c2.",
+      "passed": true,
+      "science_open": false
+    },
+    "C": {
+      "artifact": "artifacts/sheaf_reach_cue_audit.json",
+      "ceiling": 0.52,
+      "degree_balanced_ood": {
+        "cue_max_acc": 0.5031446540880503,
+        "cue_max_rule": "out_s",
+        "n": 477,
+        "n_neg": 237,
+        "n_pos": 240,
+        "pass_ceiling": true,
+        "shortfall_unmatched_pos": 3
+      },
+      "gate": "C",
+      "id_2k_raw": {
+        "max_acc": 0.766,
+        "max_rule": "out_s_plus_in_t",
+        "pass_ceiling": false
+      },
+      "matched_ood_raw": {
+        "max_acc": 0.7375,
+        "max_rule": "in_t",
+        "pass_ceiling": false
+      },
+      "passed": true,
+      "science_open": false
+    },
+    "D": {
+      "gate": "D",
+      "mean_std": {
+        "T16_K16": {
+          "mean": 1.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "T16_K8": {
+          "mean": 1.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "T16_fnr": {
+          "mean": 0.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "T16_fpr": {
+          "mean": 0.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "T16_hard_neg": {
+          "mean": 1.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "T16_overall": {
+          "mean": 1.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "ahat_fnr": {
+          "mean": 0.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "ahat_fpr": {
+          "mean": 0.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "degbal_T16_hard_neg": {
+          "mean": 1.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "degbal_T16_overall": {
+          "mean": 1.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "untrained_val_acc": {
+          "mean": 0.6033333333333334,
+          "n": 3,
+          "std": 0.0621154838452808,
+          "values": [
+            0.57,
+            0.675,
+            0.565
+          ]
+        },
+        "val_acc": {
+          "mean": 1.0,
+          "n": 3,
+          "std": 0.0,
+          "values": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "n_prereg_pass": 3,
+      "n_relaxed_K8_pass": 3,
+      "n_seeds": 3,
+      "passed": true,
+      "per_seed": [
+        {
+          "ahat_trained": {
+            "ahat_edge_acc": 1.0,
+            "ahat_fn": 0.0,
+            "ahat_fnr": 0.0,
+            "ahat_fp": 0.0,
+            "ahat_fpr": 0.0,
+            "ahat_tn": 121082.0,
+            "ahat_tp": 9036.0
+          },
+          "best_epoch": 1,
+          "best_val_acc": 1.0,
+          "checkpoint_path": "artifacts/sheaf_neutral_gate1_seed0_best.pt",
+          "degree_balanced_ood_T16": {
+            "hard_neg_acc": 1.0,
+            "n": 477,
+            "overall_acc": 1.0
+          },
+          "matched_ood": {
+            "T16_K12": 1.0,
+            "T16_K16": 1.0,
+            "T16_K8": 1.0,
+            "T16_fnr": 0.0,
+            "T16_fpr": 0.0,
+            "T16_hard_neg": 1.0,
+            "T16_overall": 1.0,
+            "by_T": {
+              "12": {
+                "K_acc": {
+                  "12": 1.0,
+                  "16": 0.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.8333333333333334,
+                "reach_fnr": 0.3333333432674408,
+                "reach_fpr": 0.0
+              },
+              "16": {
+                "K_acc": {
+                  "12": 1.0,
+                  "16": 1.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 1.0,
+                "reach_fnr": 0.0,
+                "reach_fpr": 0.0
+              },
+              "6": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              },
+              "8": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.6666666666666666,
+                "reach_fnr": 0.6666666865348816,
+                "reach_fpr": 0.0
+              }
+            }
+          },
+          "param_count": 123206,
+          "param_parity_ok": true,
+          "prereg": {
+            "K16_at_T16_ge": 0.75,
+            "K16_ok": true,
+            "K8_alt_ok": true,
+            "hard_neg_at_T16_ge": 0.95,
+            "hard_neg_ok": true,
+            "observed_K16_T16": 1.0,
+            "observed_K8_T16": 1.0,
+            "observed_hard_neg_T16": 1.0,
+            "pass": true,
+            "pass_relaxed_K8": true
+          },
+          "science_open": false,
+          "seed": 0,
+          "train_history_tail": [
+            {
+              "epoch": 28,
+              "train_acc": 1.0,
+              "train_edge_recon_acc": 1.0,
+              "train_loss": 0.2015721756219864,
+              "val_acc": 1.0,
+              "val_loss": 0.03751395642757416
+            },
+            {
+              "epoch": 29,
+              "train_acc": 1.0,
+              "train_edge_recon_acc": 1.0,
+              "train_loss": 0.19301741272211076,
+              "val_acc": 1.0,
+              "val_loss": 0.035579826682806015
+            },
+            {
+              "epoch": 30,
+              "train_acc": 1.0,
+              "train_edge_recon_acc": 1.0,
+              "train_loss": 0.18494269937276842,
+              "val_acc": 1.0,
+              "val_loss": 0.033768460154533386
+            }
+          ],
+          "untrained_val_acc": 0.57
+        },
+        {
+          "ahat_trained": {
+            "ahat_edge_acc": 1.0,
+            "ahat_fn": 0.0,
+            "ahat_fnr": 0.0,
+            "ahat_fp": 0.0,
+            "ahat_fpr": 0.0,
+            "ahat_tn": 121082.0,
+            "ahat_tp": 9036.0
+          },
+          "best_epoch": 1,
+          "best_val_acc": 1.0,
+          "checkpoint_path": "artifacts/sheaf_neutral_gate1_seed1_best.pt",
+          "degree_balanced_ood_T16": {
+            "hard_neg_acc": 1.0,
+            "n": 477,
+            "overall_acc": 1.0
+          },
+          "matched_ood": {
+            "T16_K12": 1.0,
+            "T16_K16": 1.0,
+            "T16_K8": 1.0,
+            "T16_fnr": 0.0,
+            "T16_fpr": 0.0,
+            "T16_hard_neg": 1.0,
+            "T16_overall": 1.0,
+            "by_T": {
+              "12": {
+                "K_acc": {
+                  "12": 1.0,
+                  "16": 0.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.8333333333333334,
+                "reach_fnr": 0.3333333432674408,
+                "reach_fpr": 0.0
+              },
+              "16": {
+                "K_acc": {
+                  "12": 1.0,
+                  "16": 1.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 1.0,
+                "reach_fnr": 0.0,
+                "reach_fpr": 0.0
+              },
+              "6": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              },
+              "8": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.6666666666666666,
+                "reach_fnr": 0.6666666865348816,
+                "reach_fpr": 0.0
+              }
+            }
+          },
+          "param_count": 123206,
+          "param_parity_ok": true,
+          "prereg": {
+            "K16_at_T16_ge": 0.75,
+            "K16_ok": true,
+            "K8_alt_ok": true,
+            "hard_neg_at_T16_ge": 0.95,
+            "hard_neg_ok": true,
+            "observed_K16_T16": 1.0,
+            "observed_K8_T16": 1.0,
+            "observed_hard_neg_T16": 1.0,
+            "pass": true,
+            "pass_relaxed_K8": true
+          },
+          "science_open": false,
+          "seed": 1,
+          "train_history_tail": [
+            {
+              "epoch": 28,
+              "train_acc": 1.0,
+              "train_edge_recon_acc": 1.0,
+              "train_loss": 0.20238980352878572,
+              "val_acc": 1.0,
+              "val_loss": 0.03744416683912277
+            },
+            {
+              "epoch": 29,
+              "train_acc": 1.0,
+              "train_edge_recon_acc": 1.0,
+              "train_loss": 0.19387905299663544,
+              "val_acc": 1.0,
+              "val_loss": 0.035507380962371826
+            },
+            {
+              "epoch": 30,
+              "train_acc": 1.0,
+              "train_edge_recon_acc": 1.0,
+              "train_loss": 0.1856941094994545,
+              "val_acc": 1.0,
+              "val_loss": 0.033684272319078445
+            }
+          ],
+          "untrained_val_acc": 0.675
+        },
+        {
+          "ahat_trained": {
+            "ahat_edge_acc": 1.0,
+            "ahat_fn": 0.0,
+            "ahat_fnr": 0.0,
+            "ahat_fp": 0.0,
+            "ahat_fpr": 0.0,
+            "ahat_tn": 121082.0,
+            "ahat_tp": 9036.0
+          },
+          "best_epoch": 1,
+          "best_val_acc": 1.0,
+          "checkpoint_path": "artifacts/sheaf_neutral_gate1_seed2_best.pt",
+          "degree_balanced_ood_T16": {
+            "hard_neg_acc": 1.0,
+            "n": 477,
+            "overall_acc": 1.0
+          },
+          "matched_ood": {
+            "T16_K12": 1.0,
+            "T16_K16": 1.0,
+            "T16_K8": 1.0,
+            "T16_fnr": 0.0,
+            "T16_fpr": 0.0,
+            "T16_hard_neg": 1.0,
+            "T16_overall": 1.0,
+            "by_T": {
+              "12": {
+                "K_acc": {
+                  "12": 1.0,
+                  "16": 0.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.8333333333333334,
+                "reach_fnr": 0.3333333432674408,
+                "reach_fpr": 0.0
+              },
+              "16": {
+                "K_acc": {
+                  "12": 1.0,
+                  "16": 1.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 1.0,
+                "reach_fnr": 0.0,
+                "reach_fpr": 0.0
+              },
+              "6": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              },
+              "8": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.6666666666666666,
+                "reach_fnr": 0.6666666865348816,
+                "reach_fpr": 0.0
+              }
+            }
+          },
+          "param_count": 123206,
+          "param_parity_ok": true,
+          "prereg": {
+            "K16_at_T16_ge": 0.75,
+            "K16_ok": true,
+            "K8_alt_ok": true,
+            "hard_neg_at_T16_ge": 0.95,
+            "hard_neg_ok": true,
+            "observed_K16_T16": 1.0,
+            "observed_K8_T16": 1.0,
+            "observed_hard_neg_T16": 1.0,
+            "pass": true,
+            "pass_relaxed_K8": true
+          },
+          "science_open": false,
+          "seed": 2,
+          "train_history_tail": [
+            {
+              "epoch": 28,
+              "train_acc": 1.0,
+              "train_edge_recon_acc": 1.0,
+              "train_loss": 0.20091937899589538,
+              "val_acc": 1.0,
+              "val_loss": 0.037348758429288864
+            },
+            {
+              "epoch": 29,
+              "train_acc": 1.0,
+              "train_edge_recon_acc": 1.0,
+              "train_loss": 0.19238689452409743,
+              "val_acc": 1.0,
+              "val_loss": 0.03540388494729996
+            },
+            {
+              "epoch": 30,
+              "train_acc": 1.0,
+              "train_edge_recon_acc": 1.0,
+              "train_loss": 0.1843402636051178,
+              "val_acc": 1.0,
+              "val_loss": 0.03362013027071953
+            }
+          ],
+          "untrained_val_acc": 0.565
+        }
+      ],
+      "science_open": false
+    }
+  },
+  "hparams": {
+    "T_train": 6,
+    "batch_size": 32,
+    "d": 64,
+    "epochs": 30,
+    "ff_baseline": 121218,
+    "grad_clip": 2.5,
+    "lr": 0.0015,
+    "mlp_expansion": 12,
+    "neutral_init": true,
+    "param_parity_window": [
+      115157,
+      127279
+    ]
+  },
+  "learning_note": "Aux edge-recon BCE recovers \u00c2 within epoch 1 of ID training (gold edges train-only). This is supervised edge learning, not _init_specials bake-in. Gate A proved untrained reach=0.5 / \u00c2 FNR\u22480.51 before training.",
+  "merge_pr7_sha_expected_prefix": "034a074",
+  "mode": "MEASURE",
+  "pr7_merge_sha": "034a0742a143cd0f16384509e529a78282b8884c",
+  "reach_cue_artifact": "artifacts/sheaf_reach_cue_audit.json",
+  "residue": "Neutral-init trained meets prereg floors (hard-neg\u22650.95 and K16\u22650.75) across 3 seeds; untrained\u226atrained (agree=0.5). Gate0 CE<1e-3 missed in 150-step legacy budget (acc/recon OK). MEASURE candidate only \u2014 do NOT stamp science_open without human review.",
+  "science_open": false,
+  "scope": {
+    "datasets": {
+      "id": "data/id_2k.jsonl",
+      "matched_ood": "data/covariate_matched_ood.jsonl"
+    },
+    "protocol": "Gate0 overfit + ID val + matched-OOD; K16 preferred; document if K8-only scope."
+  },
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "untrained_vs_trained_seed0_matched_ood_T16": {
+    "prediction_agreement": 0.5,
+    "trained_overall": 1.0,
+    "untrained_ll_trained": true,
+    "untrained_overall": 0.5
+  },
+  "verdict": "MEASURE_CANDIDATE_PASS_FLOORS"
+}

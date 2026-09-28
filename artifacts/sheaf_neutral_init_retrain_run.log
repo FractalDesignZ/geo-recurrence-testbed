@@ -1,0 +1,242 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[gate A] neutral untrained control…
+[gate C] reach-cue audit + degree-balanced hard-negs…
+[gate0] overfit balanced…
+[gate D] train 3 seeds…
+[neutral seed=0] ep 1/30 train=0.9506 recon=0.9977 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 2/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 3/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 4/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 5/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 6/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 7/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 8/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 9/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 10/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 11/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 12/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 13/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 14/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 15/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 16/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 17/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 18/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 19/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 20/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 21/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 22/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 23/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 24/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 25/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 26/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 27/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 28/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 29/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=0] ep 30/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral-ood] T=6 acc=0.5000 hard_neg=1.0000 FPR=0.0000 FNR=1.0000 K16=0.0
+[neutral-ood] T=8 acc=0.6667 hard_neg=1.0000 FPR=0.0000 FNR=0.6667 K16=0.0
+[neutral-ood] T=12 acc=0.8333 hard_neg=1.0000 FPR=0.0000 FNR=0.3333 K16=0.0
+[neutral-ood] T=16 acc=1.0000 hard_neg=1.0000 FPR=0.0000 FNR=0.0000 K16=1.0
+[neutral seed=1] ep 1/30 train=0.9869 recon=0.9986 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 2/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 3/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 4/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 5/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 6/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 7/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 8/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 9/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 10/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 11/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 12/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 13/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 14/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 15/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 16/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 17/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 18/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 19/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 20/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 21/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 22/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 23/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 24/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 25/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 26/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 27/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 28/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 29/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=1] ep 30/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral-ood] T=6 acc=0.5000 hard_neg=1.0000 FPR=0.0000 FNR=1.0000 K16=0.0
+[neutral-ood] T=8 acc=0.6667 hard_neg=1.0000 FPR=0.0000 FNR=0.6667 K16=0.0
+[neutral-ood] T=12 acc=0.8333 hard_neg=1.0000 FPR=0.0000 FNR=0.3333 K16=0.0
+[neutral-ood] T=16 acc=1.0000 hard_neg=1.0000 FPR=0.0000 FNR=0.0000 K16=1.0
+[neutral seed=2] ep 1/30 train=0.9287 recon=0.9988 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 2/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 3/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 4/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 5/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 6/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 7/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 8/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 9/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 10/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 11/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 12/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 13/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 14/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 15/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 16/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 17/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 18/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 19/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 20/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 21/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 22/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 23/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 24/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 25/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 26/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 27/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 28/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 29/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral seed=2] ep 30/30 train=1.0000 recon=1.0000 val=1.0000 best=1.0000@ep1
+[neutral-ood] T=6 acc=0.5000 hard_neg=1.0000 FPR=0.0000 FNR=1.0000 K16=0.0
+[neutral-ood] T=8 acc=0.6667 hard_neg=1.0000 FPR=0.0000 FNR=0.6667 K16=0.0
+[neutral-ood] T=12 acc=0.8333 hard_neg=1.0000 FPR=0.0000 FNR=0.3333 K16=0.0
+[neutral-ood] T=16 acc=1.0000 hard_neg=1.0000 FPR=0.0000 FNR=0.0000 K16=1.0
+[neutral] verdict=MEASURE_CANDIDATE_PASS_FLOORS wrote artifacts/sheaf_neutral_init_retrain.json elapsed=232.7s
+{
+  "verdict": "MEASURE_CANDIDATE_PASS_FLOORS",
+  "science_open": false,
+  "gates_passed": {
+    "A": true,
+    "B": true,
+    "C": true,
+    "D": true
+  },
+  "mean_std": {
+    "val_acc": {
+      "mean": 1.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "untrained_val_acc": {
+      "mean": 0.6033333333333334,
+      "std": 0.0621154838452808,
+      "n": 3,
+      "values": [
+        0.57,
+        0.675,
+        0.565
+      ]
+    },
+    "T16_overall": {
+      "mean": 1.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "T16_hard_neg": {
+      "mean": 1.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "T16_K16": {
+      "mean": 1.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "T16_K8": {
+      "mean": 1.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "T16_fpr": {
+      "mean": 0.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "T16_fnr": {
+      "mean": 0.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "degbal_T16_overall": {
+      "mean": 1.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "degbal_T16_hard_neg": {
+      "mean": 1.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "ahat_fpr": {
+      "mean": 0.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "ahat_fnr": {
+      "mean": 0.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "out": "artifacts/sheaf_neutral_init_retrain.json"
+}
