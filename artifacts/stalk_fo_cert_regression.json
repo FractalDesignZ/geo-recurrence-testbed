@@ -14,7 +14,7 @@
     "science_open": false,
     "verdict": "PASS_REGRESSION"
   },
-  "elapsed_sec": 0.0032052993774414062,
+  "elapsed_sec": 0.0032885074615478516,
   "gates": {
     "A": {
       "checks": [
@@ -192,7 +192,7 @@
     }
   },
   "generation": false,
-  "git_sha": "a8b8a688eb5ed2164a104c2230cbfe3140eae70b",
+  "git_sha": "c13aec6d71e3661b7d16604cc9cebe74d966f47d",
   "hop_ood_remains_measure_residue": true,
   "mode": "MEASURE_CI_HYGIENE",
   "open_status": {
