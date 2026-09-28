@@ -168,3 +168,18 @@ Stub: `docs/CYCLE_SHEAF_STRESS_TEST.md`.
 | **Rejected as sealed claims** | universality; permanent confound elimination; CoT / o1 metaphors as mechanism; Spaces-first deployment; soft ACT halt; NL Llama bridge |
 | **Note** | Commentary outside the cited artifacts is not evidence. Prior seal body (§1–§10) is **not** rewritten. Fail-closed elsewhere. |
 | **Next MEASURE** | `CYCLE_SHEAF_RED_TEST` single cell (K=20, p=0.15, T∈{20,24}) — see `docs/CYCLE_SHEAF_STRESS_TEST.md` / `artifacts/sheaf_infer_red_test.json` |
+
+---
+
+## 12. MEASURE residue — CYCLE_SHEAF_RED_TEST K=20 (append-only)
+
+| Field | Value |
+|-------|-------|
+| **Label** | MEASURE residue (not science OPEN) |
+| **Date** | 2026-09-27 |
+| **Slice** | `CYCLE_SHEAF_RED_TEST` single cell — K=20 sparse / path-backbone under sealed seq_len band [45,70] |
+| **Result** | Prereg **PASS** / attribution **PASS** (cite `artifacts/sheaf_infer_red_test.json`) |
+| **science_open claim** | **Unchanged** — §6 remains **K≤16 only** on the sealed matched-OOD substrate. Do **not** widen OPEN from this RED_TEST PASS. |
+| **Density** | **p=0.15 still unverified.** Path-backbone keeps band; empirical p ≪ 0.15. Pure ER@p=0.15 × band × K=20 documented infeasible in gen report. |
+| **Note** | K=20 sparse RED_TEST PASS is **MEASURE residue** only. Prior seal body (§1–§11) is **not** rewritten. Fail-closed elsewhere. |
+| **Next MEASURE** | `CYCLE_SHEAF_DENSITY_STRESS` — true ER digraph p=0.15, K=8, n=16, T∈{8,12}, no path-backbone density drop |
