@@ -4,7 +4,7 @@
 |-------|-------|
 | **Date** | 2026-09-27 (CDT) |
 | **Repo** | https://github.com/FractalDesignZ/geo-recurrence-testbed |
-| **Base after PR #9** | `2834256a12a7a1d9ff826738cd860051f71e19ac` |
+| **Base after PR #10** | `af152bdcfe77a788e01764e07d193bf59fa03066` |
 | **science_open policy** | Fail-closed. Harness never self-stamps `true`. Human seal only. |
 | **Purpose** | Single dimensional table of seals/PRs and **clear next cells**. |
 
@@ -27,7 +27,8 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | **PR #7** `034a074` | AUDIT untrained control | **INVALIDATION** | **false** | documents bake-in | — | — | matched-OOD / RED / dense | `SEALS_COMPROMISED_INIT_BAKE_IN` | `docs/AUDIT-SHEAF-UNTRAINED-CONTROL.md` / `artifacts/sheaf_untrained_control_audit.json` |
 | **PR #8** `e0877eb` | `CYCLE_SHEAF_NEUTRAL_INIT_RETRAIN` | **MEASURE** | **false** | **neutral** | **ON** | **True** | [45,70] T16 | `MEASURE_CANDIDATE_PASS_FLOORS` | `artifacts/sheaf_neutral_init_retrain.json` |
 | **PR #9** `2834256` | `CYCLE_SHEAF_NO_AUX_EDGE_RECON` | **STOP** residue | **false** | **neutral** | **OFF** (w=0) | **True** | [45,70] T16 | `STOP_LEARNING_FAIL` | `artifacts/sheaf_no_aux_edge_recon.json` |
-| **STE branch** (→PR) | `CYCLE_SHEAF_STE_NO_AUX` | **STOP** residue | **false** | **neutral** | **OFF** | **False** (STE) | [45,70] T16; 60 ep | `STOP_LEARNING_FAIL` (1/3 seeds) | `artifacts/sheaf_ste_no_aux.json` |
+| **PR #10** `af152bd` | `CYCLE_SHEAF_STE_NO_AUX` | **STOP** residue | **false** | **neutral** | **OFF** | **False** (STE) | [45,70] T16; 60 ep | `STOP_LEARNING_FAIL` (unstable **1/3** seeds) | `artifacts/sheaf_ste_no_aux.json` |
+| **Stalk untrained** (→PR) | `CYCLE_STALK_LOCALIZATION` audit | **OPEN contingent** | **true** §6 standing | sealed stalk | n/a | n/a | matched-OOD T∈{6,8,12,16} | `OPEN_STILL_CONTINGENT_NEEDS_MULTI_SEED` (u≈0.63) | `artifacts/stalk_untrained_control_audit.json` |
 
 ### 1.1 Status legend
 
@@ -45,10 +46,11 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 |-------|--------|
 | Sheaf §6 sparse [45,70] K≤16 "**learned** Â" | **INVALID** (PR #7 / seal §16) |
 | Dense-context §6 "**learned**" dense band | **INVALIDATED** (dense seal §8) |
-| Stalk §6 hard-A locality | **OPEN** (standing; orthogonal) |
+| Stalk §6 hard-A locality | **OPEN** (standing; **contingent** — untrained mid≈0.63; needs multi-seed) |
 | Feasibility true p=0.15 under [45,70] | **INVALID** (PR #5) |
 | With-aux neutral retrain floors (PR #8) | **MEASURE** candidate only (`science_open=false`) |
 | No-aux detach (PR #9) | **STOP** residue |
+| STE no-aux (PR #10) | **STOP** residue (unstable 1/3) |
 
 ---
 
@@ -56,11 +58,12 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 
 | Priority | Cell | Knobs | Pass → | Fail → | Notes |
 |----------|------|-------|--------|--------|-------|
-| **1 (done)** | `CYCLE_SHEAF_STE_NO_AUX` | STE + detach=False + no-aux + 60 ep | — | **STOP** (1/3 prereg) | See artifact; mean T16 overall 0.766±0.231, hard-neg 0.679±0.278, K16 0.804±0.339 |
-| **2 (active)** | Gumbel-Sigmoid sweep | same as STE cell but `gate_mode=gumbel`, temp grid; still no-aux | MEASURE | STOP | STE STOP unstable; optional next |
-| 3 | Aux ablation attribution | with-aux vs STE-no-aux under matched seeds | document necessity | — | Human review before any OPEN revive |
-| 4 | Neutral-init RED_TEST / dense re-eval | frozen or retrained neutral ckpt | MEASURE | STOP | Do not revive bake-in OPEN |
-| 5 | Depth×Density frontier | longer K **and** dense ER under admissible band | MEASURE plan | — | Orthogonal envelopes; `science_open=false` until seal |
+| **1 (done)** | `CYCLE_SHEAF_STE_NO_AUX` (PR #10 `af152bd`) | STE + detach=False + no-aux + 60 ep | — | **STOP** (unstable **1/3**) | Artifact `sheaf_ste_no_aux.json`; mean T16 overall 0.766±0.231, hard-neg 0.679±0.278, K16 0.804±0.339 |
+| **2 (done)** | Stalk untrained control | FractalCore/stalk = sealed OPEN; matched-OOD T∈{6,8,12,16} | — | bake-in would INVALIDATE | **Verdict:** OPEN still contingent (u T16 overall 0.633 / hard-neg 0.600 vs sealed 0.977 / 1.000; agree 0.610). No revoke. |
+| **3 (active)** | Gumbel-Sigmoid sweep | same as STE but `gate_mode=gumbel`, temp grid; no-aux | MEASURE | STOP | STE STOP unstable 1/3; optional next |
+| 4 | Aux ablation attribution | with-aux vs STE-no-aux under matched seeds | document necessity | — | Human review before any OPEN revive |
+| 5 | Neutral-init RED_TEST / dense re-eval | frozen or retrained neutral ckpt | MEASURE | STOP | Do not revive bake-in OPEN |
+| 6 | Depth×Density frontier | longer K **and** dense ER under admissible band | MEASURE plan | — | Orthogonal envelopes; `science_open=false` until seal |
 | — | Revive sheaf learned OPEN | — | **blocked** | — | Requires human seal after clean attribution |
 
 ### 2.1 Explicit non-cells (closed)
@@ -82,7 +85,8 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | Feasibility INVALID | `docs/SESSION-SEAL-SHEAF-DENSITY-FEASIBILITY.md` |
 | MEASURE with-aux | `docs/CYCLE_SHEAF_NEUTRAL_INIT_RETRAIN.md` / PR #8 |
 | STOP no-aux | `docs/CYCLE_SHEAF_NO_AUX_EDGE_RECON.md` / PR #9 |
-| STE cycle plan | `docs/CYCLE_SHEAF_STE_NO_AUX.md` |
+| STE STOP (PR #10) | `docs/CYCLE_SHEAF_STE_NO_AUX.md` / `artifacts/sheaf_ste_no_aux.json` |
+| Stalk untrained control | `docs/AUDIT-STALK-UNTRAINED-CONTROL.md` / `artifacts/stalk_untrained_control_audit.json` |
 | This ledger | `docs/LEDGER-OPEN-MEASURE-STOP.md` |
 
 ---

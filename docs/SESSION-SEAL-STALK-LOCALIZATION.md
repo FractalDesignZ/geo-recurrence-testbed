@@ -145,3 +145,27 @@ Stub: `docs/CYCLE_SHEAF_INFERENCE.md`.
 - Masks (this cycle) from parsed graph edges only — never token co-occurrence as adjacency substitute.
 - Evidence = cited artifact paths above; SHAs `1d6c3da` / PR #2 → `main`.
 - Outside §6 claim: **fail-closed**.
+
+---
+
+## 11. Untrained-control contingent note (2026-09-27 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Audit** | `artifacts/stalk_untrained_control_audit.json` |
+| **Harness** | `python -m reachability_gen.run_stalk_untrained_control` |
+| **Config** | Matches sealed stalk OPEN: local stalk@s / probe@t, no `c` broadcast, no soft ACT, hard `A_ij`, discrete T∈{6,8,12,16} |
+| **Verdict** | **`OPEN_STILL_CONTINGENT_NEEDS_MULTI_SEED`** |
+| **seals_invalidated** | **false** |
+
+**Matched-OOD T=16 (cite artifact `focus_summary`):**
+
+| Arm | Overall | Hard-neg | K8 | K12 | K16 | Agreement |
+|-----|---------|----------|----|-----|-----|-----------|
+| Untrained | **0.633** | **0.600** | 1.000 | 0.000 | 1.000 | — |
+| Sealed ckpt | **0.977** | **1.000** | 0.938 | 1.000 | 0.925 | **0.610** |
+
+Untrained is **mid (~0.6)**, not ≈ sealed 1.0 — **bake-in NOT proven**. Sheaf-style init/oracle INVALIDATION does **not** apply here.
+
+**science_open policy:** do **not** silently widen; do **not** revoke §6 OPEN. Stalk OPEN remains **standing but contingent** — needs **multi-seed trained reconfirm** before treating the single-seed Gate1 seal as fully robust. Prefer truth over prior OPEN; only revoke if a future bake-in proof lands.
+
