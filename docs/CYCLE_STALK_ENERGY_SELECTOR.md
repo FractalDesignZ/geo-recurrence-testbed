@@ -202,18 +202,45 @@ Still **MEASURE**, never OPEN. Even `ENERGY_BEATS_MEAN` does **not** widen `scie
 |-------|-------|
 | **Artifact** | `artifacts/stalk_energy_selector.json` |
 | **Log** | `artifacts/stalk_energy_selector_run.log` |
-| **Prereg SHA** | *(stamp after prereg commit)* |
-| **Harness SHA** | *(stamp after harness commit)* |
+| **Prereg SHA** | `eecc4b7` |
+| **Harness SHA** | `79f7196` |
 | **Results SHA** | *(stamp after results commit)* |
-| **Cycle verdict** | *(fill after run)* |
+| **Cycle verdict** | **`COLLATERAL_HARM`** |
 | **science_open** | **false** (not widened; §22 unchanged) |
-| **Exact E_free** | `10·E_sound + 1·E_cone + 0.1·(−log p)` |
-| **Exact E_cert** | `10·E_disagree + 0.1·(−log p)` |
+| **Exact E_free** | `10·E_sound + 1·E_cone + 0.1·(−log(p+1e-8))` |
+| **Exact E_cert** | `10·E_disagree + 0.1·(−log(p+1e-8))` |
+| **Cite #30 replicate** | **exact** (FO=45 / HN=0.067 / K16=0.988 / ov=0.510) |
+| **Elapsed** | **16.7 s** CDT |
+| **Energy↔conf** | Pearson r(**−0.049**); sound/cone differs=**true** — not just-confidence |
 
-### Table (baseline vs arms)
+### Table (baseline vs arms) — ood_hops T16
 
-*(fill after run)*
+| Arm | HN | K16 | overall | FO | FO killed /45 | rem22 killed /22 |
+|-----|----|-----|---------|----|---------------|------------------|
+| (0) baseline #22 `prob_mean` | **0.067** | **0.988** | **0.510** | **45** | — | — |
+| (1) **E_free** energy_argmin (primary) | **0.812** | **0.438** | **0.592** | **45** | **0**/45 | **0**/22 |
+| (1b) E_free energy_weighted | 0.358 | 0.950 | 0.646 | 45 | 0/45 | 0/22 |
+| (2) oracle_member (upper bound) | **0.812** | **1.000** | **0.906** | 45 | **0**/45 | **0**/22 |
+| (3) E_cert energy_argmin (cert-energy) | 0.812 | 1.000 | 0.906 | 45 | 0/45 | 0/22 |
+| (3b) cert_energy_refuse | **1.000** | **1.000** | **1.000** | **0** | **45**/45 | **22**/22 |
+| #35 cert reference | 1.000 | 0.988 | 0.977 | 0 | 45/45 | 22/22 |
+
+Selector–oracle gap: `gap_mean=0.396` → `gap_free=0.315` (**gap_close=+0.081**). Oracle itself kills **0**/45 FO (HARD_UNANIMOUS generation wall).
+
+### Matched-OOD collateral (T16) — primary E_free
+
+| Slice | baseline | E_free argmin | Δ |
+|-------|----------|---------------|---|
+| overall | 0.996 | 0.669 | **−0.327** |
+| HN | 1.000 | 1.000 | 0.000 |
+| K16 | 1.000 | 0.062 | **−0.938** |
+
+**COLLATERAL_HARM** (K16/overall drops ≫ 0.05). E_cert argmin matched Δ≈0 (no harm) but FO catch 0/45 without refuse.
 
 ### Reading (fail-closed)
 
-*(fill after run)*
+1. **COLLATERAL_HARM:** Cert-free `E_free` energy_argmin destroys matched-OOD K16 (**1.000→0.062**) and overall (**0.996→0.669**). Priority verdict — same hygiene shape as #36 tropical ens harm.
+2. **FO / rem-22 null under member selection:** E_free and E_cert argmin kill **0**/45 FO and **0**/22 rem-22. Oracle also **0**/45 — FO core is HARD_UNANIMOUS (#31); **no member is correct**, so selection cannot repair generation failure.
+3. **HN / gap illusion:** E_free HN **0.067→0.812** (matches oracle HN) and gap_close **+0.081** come from non-FO HN routing; hop-OOD K16 collapses (**0.988→0.438**). Not a FO repair.
+4. **Cert-energy vs certificate:** E_cert argmin alone ≢ #35 (FO 0/45). `cert_energy_refuse` (force NO when all members disagree with checker) tracks #35-style FO catch (45/45 + 22/22) — that is refuse/certificate policy, not cert-free energy value.
+5. Energy ≠ confidence (r≈−0.05; sound/cone differentiate). Do **not** widen §22. Do **not** claim hop-OOD OPEN. Prefer #14+#22 on matched-OOD; keep #35 certificates for FO catch. Still **MEASURE**.

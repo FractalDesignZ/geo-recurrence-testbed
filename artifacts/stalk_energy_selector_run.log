@@ -1,0 +1,7 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[stalk-energy] loading #14/#18/#22 ens n=10
+[stalk-energy] infer ood_hops T16 (baseline + energy arms)
+[stalk-energy] scoring E_free + E_cert
+[stalk-energy] infer matched-OOD T16 collateral
+[stalk-energy] wrote artifacts/stalk_energy_selector.json verdict=COLLATERAL_HARM FO_free=0/45 rem22=0/22 gap_close=+0.0813 HN=0.067→0.812 elapsed=16.7s
