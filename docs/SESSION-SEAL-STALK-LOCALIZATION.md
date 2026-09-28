@@ -272,3 +272,33 @@ Ledger: `docs/LEDGER-OPEN-MEASURE-STOP.md`. Cycle note: `docs/CYCLE_STALK_MULTI_
 
 Seed1 K16 collapse **0.05 → 0.875** under harden. Means clear PR #12 floors; seed fraction does not. Stay MEASURE. Cite `docs/CYCLE_STALK_STABILIZE_MULTI_SEED.md`.
 
+---
+
+## 15. Stabilize V2 — STOP_FRAGILE (append-only; 2026-09-27 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_STABILIZE_V2` |
+| **Artifact** | `artifacts/stalk_stabilize_v2.json` |
+| **Harness** | `python -m reachability_gen.run_stalk_stabilize_v2` |
+| **Base** | `main` `61314a0` (PR #14 merge) + prereg `6db3341` |
+| **Verdict** | **`STOP_FRAGILE`** |
+| **science_open** | **false** (not widened) |
+| **Harden V2** | 5 seeds; 90 ep; cosine 1.5e-3→1.0e-4; gated joint **0.7·HN+0.3·overall** @ T16 ID-val (overall≥0.85) |
+| **Prereg mean** | hard-neg≥0.95 **PASS** (0.955±0.101); K16≥0.75 **FAIL** (0.423±0.477) |
+| **Seed-wise** | **1/5** PASS (goal ≥4/5 **FAIL**; ≤1/5 → STOP_FRAGILE) |
+
+### 15.1 Matched-OOD T16 mean±std
+
+| Arm | overall | hard-neg | K16 |
+|-----|---------|----------|-----|
+| PR #14 stabilize (n=5) | 0.929±0.035 | 0.957±0.061 | 0.863±0.143 |
+| **This V2 (n=5)** | **0.813±0.157** | **0.955±0.101** | **0.423±0.477** |
+| Untrained mean | 0.488±0.194 | 0.577±0.235 | — |
+
+HN-heavy selection rescued seed2 HN but collapsed K16 on seeds 0/1/3 (ID overall gate insufficient as long-hop proxy). Prefer honesty: **STOP** this knob line; retain #14 MEASURE_STILL as best stabilize evidence. Cite `docs/CYCLE_STALK_STABILIZE_V2.md`.
+
+### 15.2 Non-rewrite rule
+
+Prior seal body + §13 DEMOTION + §14 MEASURE_STILL are **not** rewritten. This §15 is append-only STOP_FRAGILE.
+

@@ -38,6 +38,7 @@ reachability-sheaf-ste-no-aux = "reachability_gen.run_sheaf_ste_no_aux:main"
 reachability-stalk-untrained-control = "reachability_gen.run_stalk_untrained_control:main"
 reachability-stalk-multi-seed-reconfirm = "reachability_gen.run_stalk_multi_seed_reconfirm:main"
 reachability-stalk-stabilize-multi-seed = "reachability_gen.run_stalk_stabilize_multi_seed:main"
+reachability-stalk-stabilize-v2 = "reachability_gen.run_stalk_stabilize_v2:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

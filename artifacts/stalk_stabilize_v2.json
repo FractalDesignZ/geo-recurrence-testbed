@@ -1,0 +1,3158 @@
+{
+  "architecture": {
+    "broadcast_c": false,
+    "discrete_T_values": [
+      6,
+      8,
+      12,
+      16
+    ],
+    "hard_A_ij_mask": true,
+    "intermediates": 0,
+    "local_potential": true,
+    "probe_slot": "t",
+    "soft_ACT": false,
+    "stalk_slot": "s"
+  },
+  "base_sha": "6db33412e57084aa4c07bb83e3ed55b5ffc1c84e",
+  "by_T_mean_std": {
+    "12": {
+      "K12": {
+        "mean": 0.40750000000000003,
+        "n": 5,
+        "std": 0.47987628614050104,
+        "values": [
+          0.05,
+          0.075,
+          0.875,
+          0.05,
+          0.9875
+        ]
+      },
+      "K16": {
+        "mean": 0.21000000000000002,
+        "n": 5,
+        "std": 0.3724286844484458,
+        "values": [
+          0.0375,
+          0.05,
+          0.875,
+          0.0125,
+          0.075
+        ]
+      },
+      "K8": {
+        "mean": 0.8175000000000001,
+        "n": 5,
+        "std": 0.36642274083358967,
+        "values": [
+          0.9875,
+          0.9625,
+          0.975,
+          0.1625,
+          1.0
+        ]
+      },
+      "hard_neg": {
+        "mean": 0.9641666666666667,
+        "n": 5,
+        "std": 0.07555351304428756,
+        "values": [
+          1.0,
+          1.0,
+          0.9916666666666667,
+          1.0,
+          0.8291666666666667
+        ]
+      },
+      "overall": {
+        "mean": 0.7212500000000001,
+        "n": 5,
+        "std": 0.15069572452093286,
+        "values": [
+          0.6791666666666667,
+          0.68125,
+          0.95,
+          0.5375,
+          0.7583333333333333
+        ]
+      }
+    },
+    "16": {
+      "K12": {
+        "mean": 0.795,
+        "n": 5,
+        "std": 0.396232255123179,
+        "values": [
+          0.9625,
+          0.9375,
+          1.0,
+          0.0875,
+          0.9875
+        ]
+      },
+      "K16": {
+        "mean": 0.42250000000000004,
+        "n": 5,
+        "std": 0.4769204598253256,
+        "values": [
+          0.0625,
+          0.075,
+          0.9,
+          0.0875,
+          0.9875
+        ]
+      },
+      "K8": {
+        "mean": 0.7975,
+        "n": 5,
+        "std": 0.3518255959989267,
+        "values": [
+          1.0,
+          0.8,
+          1.0,
+          0.1875,
+          1.0
+        ]
+      },
+      "hard_neg": {
+        "mean": 0.9550000000000001,
+        "n": 5,
+        "std": 0.10062305898749054,
+        "values": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.775
+        ]
+      },
+      "overall": {
+        "mean": 0.8133333333333332,
+        "n": 5,
+        "std": 0.15690556917741602,
+        "values": [
+          0.8375,
+          0.8020833333333334,
+          0.9833333333333333,
+          0.5604166666666667,
+          0.8833333333333333
+        ]
+      }
+    },
+    "6": {
+      "K12": {
+        "mean": 0.20750000000000002,
+        "n": 5,
+        "std": 0.33372893191930486,
+        "values": [
+          0.025,
+          0.025,
+          0.8,
+          0.0625,
+          0.125
+        ]
+      },
+      "K16": {
+        "mean": 0.0025,
+        "n": 5,
+        "std": 0.005590169943749474,
+        "values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0125
+        ]
+      },
+      "K8": {
+        "mean": 0.1525,
+        "n": 5,
+        "std": 0.09453835200594518,
+        "values": [
+          0.05,
+          0.05,
+          0.2,
+          0.2375,
+          0.225
+        ]
+      },
+      "hard_neg": {
+        "mean": 0.96,
+        "n": 5,
+        "std": 0.053489355119604017,
+        "values": [
+          0.9833333333333333,
+          1.0,
+          0.9833333333333333,
+          0.9666666666666667,
+          0.8666666666666667
+        ]
+      },
+      "overall": {
+        "mean": 0.5404166666666667,
+        "n": 5,
+        "std": 0.06750128599598018,
+        "values": [
+          0.5041666666666667,
+          0.5125,
+          0.6583333333333333,
+          0.5333333333333333,
+          0.49375
+        ]
+      }
+    },
+    "8": {
+      "K12": {
+        "mean": 0.3675,
+        "n": 5,
+        "std": 0.4499652764380825,
+        "values": [
+          0.025,
+          0.025,
+          0.975,
+          0.0875,
+          0.725
+        ]
+      },
+      "K16": {
+        "mean": 0.02,
+        "n": 5,
+        "std": 0.018957188610128878,
+        "values": [
+          0.0125,
+          0.0125,
+          0.025,
+          0.0,
+          0.05
+        ]
+      },
+      "K8": {
+        "mean": 0.46749999999999997,
+        "n": 5,
+        "std": 0.37129418928930197,
+        "values": [
+          0.95,
+          0.05,
+          0.2125,
+          0.3875,
+          0.7375
+        ]
+      },
+      "hard_neg": {
+        "mean": 0.9566666666666667,
+        "n": 5,
+        "std": 0.05815448774122636,
+        "values": [
+          1.0,
+          1.0,
+          0.9583333333333334,
+          0.9666666666666667,
+          0.8583333333333333
+        ]
+      },
+      "overall": {
+        "mean": 0.6208333333333333,
+        "n": 5,
+        "std": 0.07730823048033116,
+        "values": [
+          0.6645833333333333,
+          0.5145833333333333,
+          0.68125,
+          0.5625,
+          0.68125
+        ]
+      }
+    }
+  },
+  "cycle": "CYCLE_STALK_STABILIZE_V2",
+  "datasets": {
+    "id": "data/id_2k.jsonl",
+    "matched_ood": "data/covariate_matched_ood.jsonl"
+  },
+  "degree_balanced_construction": {
+    "bins": [
+      {
+        "bin": [
+          1,
+          1
+        ],
+        "n_neg_available": 26,
+        "n_neg_taken": 188,
+        "n_pos": 188,
+        "with_replacement": true
+      },
+      {
+        "bin": [
+          1,
+          2
+        ],
+        "n_neg_available": 12,
+        "n_neg_taken": 26,
+        "n_pos": 26,
+        "with_replacement": true
+      },
+      {
+        "bin": [
+          1,
+          3
+        ],
+        "n_neg_available": 3,
+        "n_neg_taken": 1,
+        "n_pos": 1,
+        "with_replacement": false
+      },
+      {
+        "bin": [
+          2,
+          1
+        ],
+        "n_neg_available": 4,
+        "n_neg_taken": 22,
+        "n_pos": 22,
+        "with_replacement": true
+      },
+      {
+        "bin": [
+          2,
+          2
+        ],
+        "n_neg_available": 0,
+        "n_neg_taken": 0,
+        "n_pos": 3
+      }
+    ],
+    "n": 477,
+    "n_neg": 237,
+    "n_pos": 240,
+    "science_open": false,
+    "seed": 0,
+    "shortfall_unmatched_pos": 3
+  },
+  "elapsed_sec": 1039.4104280471802,
+  "harden_knobs": {
+    "epochs": 90,
+    "grad_clip": 2.5,
+    "hn_weight": 0.7,
+    "lr_max": 0.0015,
+    "lr_min": 0.0001,
+    "lr_schedule": "cosine",
+    "n_seeds": 5,
+    "overall_gate": 0.85,
+    "overall_weight": 0.3,
+    "selection": "ID val @ T16 gated lexicographic (0.7*HN+0.3*overall, HN, overall, -epoch) among overall>=0.85; fallback=argmax(overall, HN, -epoch) if never eligible; matched-OOD never used for ckpt selection.",
+    "vs_pr14": {
+      "epochs_was": 60,
+      "lr_min_was": 0.00015,
+      "prior_seed_pass": "2/5",
+      "prior_verdict": "MEASURE_STILL",
+      "seeds_was": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "selection_v2": "joint 0.7*HN+0.3*overall with overall>=0.85 eligibility gate (fixes HN-primary under-propagation abort)",
+      "selection_was": "joint 0.5*HN+0.5*overall @ T16 ID-val"
+    }
+  },
+  "hparams": {
+    "T_train": 6,
+    "adaptive_halt": false,
+    "batch_size": 32,
+    "d": 64,
+    "epochs": 90,
+    "ff_baseline": 121218,
+    "grad_clip": 2.5,
+    "hn_weight": 0.7,
+    "lr_max": 0.0015,
+    "lr_min": 0.0001,
+    "lr_schedule": "cosine",
+    "matched_to": "sealed CYCLE_STALK_LOCALIZATION + PR#12/#14 floors",
+    "mlp_expansion": 10,
+    "overall_gate": 0.85,
+    "overall_weight": 0.3
+  },
+  "mandelbrot_analogy": "Mandelbrot-style boundary re-injection is an aspirational analogy for local stalk/probe potentials; scientific claims require metrics artifacts only.",
+  "mean_std": {
+    "T16_K12": {
+      "mean": 0.795,
+      "n": 5,
+      "std": 0.396232255123179,
+      "values": [
+        0.9625,
+        0.9375,
+        1.0,
+        0.0875,
+        0.9875
+      ]
+    },
+    "T16_K16": {
+      "mean": 0.42250000000000004,
+      "n": 5,
+      "std": 0.4769204598253256,
+      "values": [
+        0.0625,
+        0.075,
+        0.9,
+        0.0875,
+        0.9875
+      ]
+    },
+    "T16_K8": {
+      "mean": 0.7975,
+      "n": 5,
+      "std": 0.3518255959989267,
+      "values": [
+        1.0,
+        0.8,
+        1.0,
+        0.1875,
+        1.0
+      ]
+    },
+    "T16_hard_neg": {
+      "mean": 0.9550000000000001,
+      "n": 5,
+      "std": 0.10062305898749054,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.775
+      ]
+    },
+    "T16_overall": {
+      "mean": 0.8133333333333332,
+      "n": 5,
+      "std": 0.15690556917741602,
+      "values": [
+        0.8375,
+        0.8020833333333334,
+        0.9833333333333333,
+        0.5604166666666667,
+        0.8833333333333333
+      ]
+    },
+    "best_sel_hard_neg_val": {
+      "mean": 0.97,
+      "n": 5,
+      "std": 0.023452078799117128,
+      "values": [
+        1.0,
+        0.975,
+        0.965,
+        0.975,
+        0.935
+      ]
+    },
+    "degbal_T16_K16": {
+      "mean": 0.42250000000000004,
+      "n": 5,
+      "std": 0.4769204598253256,
+      "values": [
+        0.0625,
+        0.075,
+        0.9,
+        0.0875,
+        0.9875
+      ]
+    },
+    "degbal_T16_hard_neg": {
+      "mean": 0.9350210970464135,
+      "n": 5,
+      "std": 0.1452972441075813,
+      "values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.6751054852320675
+      ]
+    },
+    "degbal_T16_overall": {
+      "mean": 0.8025157232704402,
+      "n": 5,
+      "std": 0.15393751827916913,
+      "values": [
+        0.8364779874213837,
+        0.80083857442348,
+        0.9832285115303984,
+        0.5576519916142557,
+        0.8343815513626834
+      ]
+    },
+    "untrained_T16_hard_neg": {
+      "mean": 0.5766666666666667,
+      "n": 5,
+      "std": 0.23490172294907596,
+      "values": [
+        0.6,
+        0.8833333333333333,
+        0.2708333333333333,
+        0.6916666666666667,
+        0.4375
+      ]
+    },
+    "untrained_T16_overall": {
+      "mean": 0.4883333333333333,
+      "n": 5,
+      "std": 0.1936749406580234,
+      "values": [
+        0.6333333333333333,
+        0.6083333333333333,
+        0.6354166666666666,
+        0.3458333333333333,
+        0.21875
+      ]
+    },
+    "untrained_vs_trained_agree_T16": {
+      "mean": 0.587499988079071,
+      "n": 5,
+      "std": 0.22047928002879585,
+      "values": [
+        0.4833333194255829,
+        0.7854166626930237,
+        0.6187499761581421,
+        0.7854166626930237,
+        0.2645833194255829
+      ]
+    }
+  },
+  "mode": "MEASURE",
+  "n_prereg_pass_individual": 1,
+  "n_seeds": 5,
+  "open_status": "MEASURE_STOP_FRAGILE",
+  "per_seed": [
+    {
+      "T16": {
+        "K12": 0.9625,
+        "K16": 0.0625,
+        "K8": 1.0,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.8375
+      },
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_v2_seed0_best.pt",
+      "degbal_T16": {
+        "K16": 0.0625,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.8364779874213837
+      },
+      "degree_balanced_ood_by_T": {
+        "12": {
+          "K12": 0.05,
+          "K16": 0.0375,
+          "K8": 0.9875,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 237,
+              "loss_mean": 0.0022655438256861627,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 7.987321914590575,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0375,
+              "correct": 3,
+              "loss_mean": 6.514609186609595,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.9875,
+              "correct": 79,
+              "loss_mean": 0.09905031139824132,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.6771488469601677
+        },
+        "16": {
+          "K12": 0.9625,
+          "K16": 0.0625,
+          "K8": 1.0,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 237,
+              "loss_mean": 0.008313397068580915,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.9625,
+              "correct": 77,
+              "loss_mean": 0.31850485803915946,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0625,
+              "correct": 5,
+              "loss_mean": 5.028823509827634,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.0018025387751549715,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.8364779874213837
+        },
+        "6": {
+          "K12": 0.025,
+          "K16": 0.0,
+          "K8": 0.05,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9746835443037974,
+              "correct": 231,
+              "loss_mean": 0.056679325560176595,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 5.517414360780094,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 6.763634234666824,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 2.9191537654911373,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9746835443037974,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.4968553459119497
+        },
+        "8": {
+          "K12": 0.025,
+          "K16": 0.0125,
+          "K8": 0.95,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 237,
+              "loss_mean": 0.0027108380383367844,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 7.582968847660231,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 7.266133350436576,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.95,
+              "correct": 76,
+              "loss_mean": 0.30701950559487157,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.6624737945492662
+        }
+      },
+      "matched_ood_by_T": {
+        "12": {
+          "K12": 0.05,
+          "K16": 0.0375,
+          "K8": 0.9875,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.0016990425892193647,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 7.987321914590575,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0375,
+              "correct": 3,
+              "loss_mean": 6.514609186609595,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.9875,
+              "correct": 79,
+              "loss_mean": 0.09905031139824132,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.6791666666666667
+        },
+        "16": {
+          "K12": 0.9625,
+          "K16": 0.0625,
+          "K8": 1.0,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.0054262111093824695,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.9625,
+              "correct": 77,
+              "loss_mean": 0.31850485803915946,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0625,
+              "correct": 5,
+              "loss_mean": 5.028823509827634,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.0018025387751549715,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.8375
+        },
+        "6": {
+          "K12": 0.025,
+          "K16": 0.0,
+          "K8": 0.05,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9833333333333333,
+              "correct": 236,
+              "loss_mean": 0.053988432974316915,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 5.517414360780094,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 6.763634234666824,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 2.9191537654911373,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9833333333333333,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.5041666666666667
+        },
+        "8": {
+          "K12": 0.025,
+          "K16": 0.0125,
+          "K8": 0.95,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.0022358968357972723,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 7.582968847660231,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 7.266133350436576,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.95,
+              "correct": 76,
+              "loss_mean": 0.30701950559487157,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.6645833333333333
+        }
+      },
+      "param_count": 117506,
+      "param_parity": {
+        "ff_baseline_params": 121218,
+        "fractal_over_ff_ratio": 0.9693774851919682,
+        "fractal_param_count": 117506,
+        "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+        "science_open": false,
+        "tolerance": 0.05,
+        "window": [
+          115157,
+          127279
+        ],
+        "within_5pct": true
+      },
+      "prereg": {
+        "K16_ok": false,
+        "hard_neg_ok": true,
+        "observed_K16_T16": 0.0625,
+        "observed_hard_neg_T16": 1.0,
+        "observed_overall_T16": 0.8375,
+        "pass": false
+      },
+      "science_open": false,
+      "seed": 0,
+      "train": {
+        "T": 6,
+        "adaptive_halt": false,
+        "arm": "fractal-stalk-stabilize-v2-T6-d64-mlp10",
+        "best_epoch": 53,
+        "best_sel_hard_neg_T16_val": 1.0,
+        "best_sel_joint_T16_val": 0.9984999999999999,
+        "best_sel_overall_T16_val": 0.995,
+        "best_val_acc": 0.995,
+        "broadcast_c": false,
+        "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_v2_seed0_best.pt",
+        "d": 64,
+        "epochs": 90,
+        "epochs_run": 90,
+        "final_epoch_sel": {
+          "eligible": true,
+          "epoch": 90,
+          "lr": 0.0001,
+          "sel_hard_neg_T16": 1.0,
+          "sel_joint_T16": 0.9977499999999999,
+          "sel_overall_T16": 0.9925,
+          "selected": false,
+          "selection_mode": "gated",
+          "train_acc": 0.998125,
+          "train_loss": 0.005932043626380619,
+          "val_acc_T_train": 0.995
+        },
+        "grad_clip": 2.5,
+        "grad_clip_sat_rate": 0.008666666666666666,
+        "hn_weight": 0.7,
+        "local_potential": true,
+        "lr_max": 0.0015,
+        "lr_min": 0.0001,
+        "lr_schedule": "cosine",
+        "max_nodes": 64,
+        "mlp_expansion": 10,
+        "n_eligible_epochs": 76,
+        "overall_gate": 0.85,
+        "overall_weight": 0.3,
+        "param_count": 117506,
+        "param_parity": {
+          "ff_baseline_params": 121218,
+          "fractal_over_ff_ratio": 0.9693774851919682,
+          "fractal_param_count": 117506,
+          "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+          "science_open": false,
+          "tolerance": 0.05,
+          "window": [
+            115157,
+            127279
+          ],
+          "within_5pct": true
+        },
+        "science_open": false,
+        "selection_fallback": false,
+        "selection_rule": "gated lexicographic (0.7*HN+0.3*overall @ T16 ID-val, HN, overall, -epoch) among overall>=0.85; fallback=argmax(overall, HN, -epoch) if never eligible; matched-OOD never used for selection",
+        "train_history_len": 90
+      },
+      "untrained_T16": {
+        "K12": 0.0,
+        "K16": 1.0,
+        "K8": 1.0,
+        "delta_hard_neg": 0.4,
+        "delta_overall": 0.20416666666666672,
+        "fnr": 0.3333333432674408,
+        "fpr": 0.4000000059604645,
+        "hard_neg_acc": 0.6,
+        "overall_acc": 0.6333333333333333,
+        "prediction_agreement": 0.4833333194255829,
+        "trained_hard_neg_acc": 1.0,
+        "trained_overall_acc": 0.8375
+      },
+      "untrained_control": {
+        "by_T": {
+          "12": {
+            "K12": 0.0,
+            "K16": 1.0,
+            "K8": 1.0,
+            "delta_hard_neg": 0.3916666666666667,
+            "delta_overall": 0.04166666666666674,
+            "fnr": 0.3333333432674408,
+            "fpr": 0.3916666805744171,
+            "hard_neg_acc": 0.6083333333333333,
+            "overall_acc": 0.6375,
+            "prediction_agreement": 0.6333333253860474,
+            "trained_hard_neg_acc": 1.0,
+            "trained_overall_acc": 0.6791666666666667
+          },
+          "16": {
+            "K12": 0.0,
+            "K16": 1.0,
+            "K8": 1.0,
+            "delta_hard_neg": 0.4,
+            "delta_overall": 0.20416666666666672,
+            "fnr": 0.3333333432674408,
+            "fpr": 0.4000000059604645,
+            "hard_neg_acc": 0.6,
+            "overall_acc": 0.6333333333333333,
+            "prediction_agreement": 0.4833333194255829,
+            "trained_hard_neg_acc": 1.0,
+            "trained_overall_acc": 0.8375
+          },
+          "6": {
+            "K12": 0.0,
+            "K16": 1.0,
+            "K8": 1.0,
+            "delta_hard_neg": 0.3833333333333333,
+            "delta_overall": -0.12916666666666665,
+            "fnr": 0.3333333432674408,
+            "fpr": 0.4000000059604645,
+            "hard_neg_acc": 0.6,
+            "overall_acc": 0.6333333333333333,
+            "prediction_agreement": 0.4791666567325592,
+            "trained_hard_neg_acc": 0.9833333333333333,
+            "trained_overall_acc": 0.5041666666666667
+          },
+          "8": {
+            "K12": 1.0,
+            "K16": 1.0,
+            "K8": 1.0,
+            "delta_hard_neg": 0.6,
+            "delta_overall": -0.03541666666666665,
+            "fnr": 0.0,
+            "fpr": 0.6000000238418579,
+            "hard_neg_acc": 0.4,
+            "overall_acc": 0.7,
+            "prediction_agreement": 0.3645833432674408,
+            "trained_hard_neg_acc": 1.0,
+            "trained_overall_acc": 0.6645833333333333
+          }
+        },
+        "focus_T16": {
+          "K12": 0.0,
+          "K16": 1.0,
+          "K8": 1.0,
+          "delta_hard_neg": 0.4,
+          "delta_overall": 0.20416666666666672,
+          "fnr": 0.3333333432674408,
+          "fpr": 0.4000000059604645,
+          "hard_neg_acc": 0.6,
+          "overall_acc": 0.6333333333333333,
+          "prediction_agreement": 0.4833333194255829,
+          "trained_hard_neg_acc": 1.0,
+          "trained_overall_acc": 0.8375
+        },
+        "init_doc": {
+          "architecture": {
+            "broadcast_c": false,
+            "discrete_T_values": [
+              6,
+              8,
+              12,
+              16
+            ],
+            "hard_A_ij_mask": true,
+            "intermediates": 0,
+            "local_potential": true,
+            "probe_slot": "t",
+            "soft_ACT": false,
+            "stalk_slot": "s"
+          },
+          "head_bias": [
+            0.008623257279396057,
+            0.022051900625228882
+          ],
+          "head_weight_norm": 0.821713924407959,
+          "mechanism": "Stalk-local FractalCore: hard adjacency mask + stalk@s / probe@t potentials (eye init), intermediates=0, no c broadcast, no soft ACT. Unlike SheafInferCore, there is no listed-edge gate bias / energy readout oracle at init \u2014 untrained performance is NOT expected to reproduce sealed Gate1 ceilings unless a hidden bake-in exists.",
+          "probe_proj_eye": true,
+          "residual_alpha": 0.5,
+          "science_open": false,
+          "stalk_proj_eye": true
+        },
+        "science_open": false,
+        "seed": 0
+      }
+    },
+    {
+      "T16": {
+        "K12": 0.9375,
+        "K16": 0.075,
+        "K8": 0.8,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.8020833333333334
+      },
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_v2_seed1_best.pt",
+      "degbal_T16": {
+        "K16": 0.075,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.80083857442348
+      },
+      "degree_balanced_ood_by_T": {
+        "12": {
+          "K12": 0.075,
+          "K16": 0.05,
+          "K8": 0.9625,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 237,
+              "loss_mean": 0.005862787007334552,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.075,
+              "correct": 6,
+              "loss_mean": 4.845135600515642,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 5.389110440178774,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.9625,
+              "correct": 77,
+              "loss_mean": 0.2277579124784097,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.6792452830188679
+        },
+        "16": {
+          "K12": 0.9375,
+          "K16": 0.075,
+          "K8": 0.8,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 237,
+              "loss_mean": 0.0020065183799423056,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.9375,
+              "correct": 75,
+              "loss_mean": 0.271166681102477,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.075,
+              "correct": 6,
+              "loss_mean": 6.263821256393567,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.8,
+              "correct": 64,
+              "loss_mean": 0.5971844714367762,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.80083857442348
+        },
+        "6": {
+          "K12": 0.025,
+          "K16": 0.0,
+          "K8": 0.05,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 237,
+              "loss_mean": 0.036701644904408526,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 1.8477955097157974,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 3.4145650029182435,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 2.061633340269327,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.5094339622641509
+        },
+        "8": {
+          "K12": 0.025,
+          "K16": 0.0125,
+          "K8": 0.05,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 237,
+              "loss_mean": 0.012027718404795235,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 3.265194896410685,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 4.648985552601516,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 3.7907234212267213,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.5115303983228512
+        }
+      },
+      "matched_ood_by_T": {
+        "12": {
+          "K12": 0.075,
+          "K16": 0.05,
+          "K8": 0.9625,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.003644747720682062,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.075,
+              "correct": 6,
+              "loss_mean": 4.845135600515642,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 5.389110440178774,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.9625,
+              "correct": 77,
+              "loss_mean": 0.2277579124784097,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.68125
+        },
+        "16": {
+          "K12": 0.9375,
+          "K16": 0.075,
+          "K8": 0.8,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.0015299282070676175,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.9375,
+              "correct": 75,
+              "loss_mean": 0.271166681102477,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.075,
+              "correct": 6,
+              "loss_mean": 6.263821256393567,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.8,
+              "correct": 64,
+              "loss_mean": 0.5971844714367762,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.8020833333333334
+        },
+        "6": {
+          "K12": 0.025,
+          "K16": 0.0,
+          "K8": 0.05,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.02440069233707618,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 1.8477955097157974,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 3.4145650029182435,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 2.061633340269327,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.5125
+        },
+        "8": {
+          "K12": 0.025,
+          "K16": 0.0125,
+          "K8": 0.05,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.007389471196802333,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 3.265194896410685,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 4.648985552601516,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 3.7907234212267213,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.5145833333333333
+        }
+      },
+      "param_count": 117506,
+      "param_parity": {
+        "ff_baseline_params": 121218,
+        "fractal_over_ff_ratio": 0.9693774851919682,
+        "fractal_param_count": 117506,
+        "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+        "science_open": false,
+        "tolerance": 0.05,
+        "window": [
+          115157,
+          127279
+        ],
+        "within_5pct": true
+      },
+      "prereg": {
+        "K16_ok": false,
+        "hard_neg_ok": true,
+        "observed_K16_T16": 0.075,
+        "observed_hard_neg_T16": 1.0,
+        "observed_overall_T16": 0.8020833333333334,
+        "pass": false
+      },
+      "science_open": false,
+      "seed": 1,
+      "train": {
+        "T": 6,
+        "adaptive_halt": false,
+        "arm": "fractal-stalk-stabilize-v2-T6-d64-mlp10",
+        "best_epoch": 25,
+        "best_sel_hard_neg_T16_val": 0.975,
+        "best_sel_joint_T16_val": 0.97275,
+        "best_sel_overall_T16_val": 0.9675,
+        "best_val_acc": 0.9675,
+        "broadcast_c": false,
+        "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_v2_seed1_best.pt",
+        "d": 64,
+        "epochs": 90,
+        "epochs_run": 90,
+        "final_epoch_sel": {
+          "eligible": false,
+          "epoch": 90,
+          "lr": 0.0001,
+          "sel_hard_neg_T16": 0.99,
+          "sel_joint_T16": 0.9404999999999999,
+          "sel_overall_T16": 0.825,
+          "selected": false,
+          "selection_mode": "ineligible",
+          "train_acc": 0.980625,
+          "train_loss": 0.05365856527350843,
+          "val_acc_T_train": 0.9675
+        },
+        "grad_clip": 2.5,
+        "grad_clip_sat_rate": 0.011555555555555555,
+        "hn_weight": 0.7,
+        "local_potential": true,
+        "lr_max": 0.0015,
+        "lr_min": 0.0001,
+        "lr_schedule": "cosine",
+        "max_nodes": 64,
+        "mlp_expansion": 10,
+        "n_eligible_epochs": 41,
+        "overall_gate": 0.85,
+        "overall_weight": 0.3,
+        "param_count": 117506,
+        "param_parity": {
+          "ff_baseline_params": 121218,
+          "fractal_over_ff_ratio": 0.9693774851919682,
+          "fractal_param_count": 117506,
+          "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+          "science_open": false,
+          "tolerance": 0.05,
+          "window": [
+            115157,
+            127279
+          ],
+          "within_5pct": true
+        },
+        "science_open": false,
+        "selection_fallback": false,
+        "selection_rule": "gated lexicographic (0.7*HN+0.3*overall @ T16 ID-val, HN, overall, -epoch) among overall>=0.85; fallback=argmax(overall, HN, -epoch) if never eligible; matched-OOD never used for selection",
+        "train_history_len": 90
+      },
+      "untrained_T16": {
+        "K12": 1.0,
+        "K16": 0.0,
+        "K8": 0.0,
+        "delta_hard_neg": 0.1166666666666667,
+        "delta_overall": 0.1937500000000001,
+        "fnr": 0.6666666865348816,
+        "fpr": 0.11666666716337204,
+        "hard_neg_acc": 0.8833333333333333,
+        "overall_acc": 0.6083333333333333,
+        "prediction_agreement": 0.7854166626930237,
+        "trained_hard_neg_acc": 1.0,
+        "trained_overall_acc": 0.8020833333333334
+      },
+      "untrained_control": {
+        "by_T": {
+          "12": {
+            "K12": 1.0,
+            "K16": 0.0,
+            "K8": 0.0,
+            "delta_hard_neg": 0.4541666666666667,
+            "delta_overall": 0.2416666666666667,
+            "fnr": 0.6666666865348816,
+            "fpr": 0.4541666805744171,
+            "hard_neg_acc": 0.5458333333333333,
+            "overall_acc": 0.4395833333333333,
+            "prediction_agreement": 0.44999998807907104,
+            "trained_hard_neg_acc": 1.0,
+            "trained_overall_acc": 0.68125
+          },
+          "16": {
+            "K12": 1.0,
+            "K16": 0.0,
+            "K8": 0.0,
+            "delta_hard_neg": 0.1166666666666667,
+            "delta_overall": 0.1937500000000001,
+            "fnr": 0.6666666865348816,
+            "fpr": 0.11666666716337204,
+            "hard_neg_acc": 0.8833333333333333,
+            "overall_acc": 0.6083333333333333,
+            "prediction_agreement": 0.7854166626930237,
+            "trained_hard_neg_acc": 1.0,
+            "trained_overall_acc": 0.8020833333333334
+          },
+          "6": {
+            "K12": 1.0,
+            "K16": 1.0,
+            "K8": 0.0,
+            "delta_hard_neg": 0.5333333333333333,
+            "delta_overall": -0.054166666666666696,
+            "fnr": 0.3333333432674408,
+            "fpr": 0.5333333611488342,
+            "hard_neg_acc": 0.4666666666666667,
+            "overall_acc": 0.5666666666666667,
+            "prediction_agreement": 0.3958333432674408,
+            "trained_hard_neg_acc": 1.0,
+            "trained_overall_acc": 0.5125
+          },
+          "8": {
+            "K12": 1.0,
+            "K16": 1.0,
+            "K8": 0.0,
+            "delta_hard_neg": 0.47916666666666663,
+            "delta_overall": -0.07916666666666672,
+            "fnr": 0.3333333432674408,
+            "fpr": 0.4791666567325592,
+            "hard_neg_acc": 0.5208333333333334,
+            "overall_acc": 0.59375,
+            "prediction_agreement": 0.42500001192092896,
+            "trained_hard_neg_acc": 1.0,
+            "trained_overall_acc": 0.5145833333333333
+          }
+        },
+        "focus_T16": {
+          "K12": 1.0,
+          "K16": 0.0,
+          "K8": 0.0,
+          "delta_hard_neg": 0.1166666666666667,
+          "delta_overall": 0.1937500000000001,
+          "fnr": 0.6666666865348816,
+          "fpr": 0.11666666716337204,
+          "hard_neg_acc": 0.8833333333333333,
+          "overall_acc": 0.6083333333333333,
+          "prediction_agreement": 0.7854166626930237,
+          "trained_hard_neg_acc": 1.0,
+          "trained_overall_acc": 0.8020833333333334
+        },
+        "init_doc": {
+          "architecture": {
+            "broadcast_c": false,
+            "discrete_T_values": [
+              6,
+              8,
+              12,
+              16
+            ],
+            "hard_A_ij_mask": true,
+            "intermediates": 0,
+            "local_potential": true,
+            "probe_slot": "t",
+            "soft_ACT": false,
+            "stalk_slot": "s"
+          },
+          "head_bias": [
+            -0.12167447805404663,
+            -0.11819088459014893
+          ],
+          "head_weight_norm": 0.819119393825531,
+          "mechanism": "Stalk-local FractalCore: hard adjacency mask + stalk@s / probe@t potentials (eye init), intermediates=0, no c broadcast, no soft ACT. Unlike SheafInferCore, there is no listed-edge gate bias / energy readout oracle at init \u2014 untrained performance is NOT expected to reproduce sealed Gate1 ceilings unless a hidden bake-in exists.",
+          "probe_proj_eye": true,
+          "residual_alpha": 0.5,
+          "science_open": false,
+          "stalk_proj_eye": true
+        },
+        "science_open": false,
+        "seed": 1
+      }
+    },
+    {
+      "T16": {
+        "K12": 1.0,
+        "K16": 0.9,
+        "K8": 1.0,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.9833333333333333
+      },
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_v2_seed2_best.pt",
+      "degbal_T16": {
+        "K16": 0.9,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.9832285115303984
+      },
+      "degree_balanced_ood_by_T": {
+        "12": {
+          "K12": 0.875,
+          "K16": 0.875,
+          "K8": 0.975,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9620253164556962,
+              "correct": 228,
+              "loss_mean": 0.1909839400966585,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.875,
+              "correct": 70,
+              "loss_mean": 0.1382443478156347,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.875,
+              "correct": 70,
+              "loss_mean": 0.11461757824290544,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.975,
+              "correct": 78,
+              "loss_mean": 0.09963109304371756,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9620253164556962,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.9350104821802935
+        },
+        "16": {
+          "K12": 1.0,
+          "K16": 0.9,
+          "K8": 1.0,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 237,
+              "loss_mean": 0.07065647915162869,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.007202840998070314,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.9,
+              "correct": 72,
+              "loss_mean": 0.1332722885068506,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.01536076734191738,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.9832285115303984
+        },
+        "6": {
+          "K12": 0.8,
+          "K16": 0.0,
+          "K8": 0.2,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9662447257383966,
+              "correct": 229,
+              "loss_mean": 0.1771251801322784,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.8,
+              "correct": 64,
+              "loss_mean": 0.32100823376677,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 1.6232791811227798,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.2,
+              "correct": 16,
+              "loss_mean": 2.959102224446542,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9662447257383966,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.6477987421383647
+        },
+        "8": {
+          "K12": 0.975,
+          "K16": 0.025,
+          "K8": 0.2125,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.8776371308016878,
+              "correct": 208,
+              "loss_mean": 0.28514896628725883,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.975,
+              "correct": 78,
+              "loss_mean": 0.09244927177205682,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 1.0484274065122008,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.2125,
+              "correct": 17,
+              "loss_mean": 2.5306433372286845,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.8776371308016878,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.639412997903564
+        }
+      },
+      "matched_ood_by_T": {
+        "12": {
+          "K12": 0.875,
+          "K16": 0.875,
+          "K8": 0.975,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9916666666666667,
+              "correct": 238,
+              "loss_mean": 0.08179821362621927,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.875,
+              "correct": 70,
+              "loss_mean": 0.1382443478156347,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.875,
+              "correct": 70,
+              "loss_mean": 0.11461757824290544,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.975,
+              "correct": 78,
+              "loss_mean": 0.09963109304371756,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9916666666666667,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.95
+        },
+        "16": {
+          "K12": 1.0,
+          "K16": 0.9,
+          "K8": 1.0,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.030540793429827316,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.007202840998070314,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.9,
+              "correct": 72,
+              "loss_mean": 0.1332722885068506,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.01536076734191738,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.9833333333333333
+        },
+        "6": {
+          "K12": 0.8,
+          "K16": 0.0,
+          "K8": 0.2,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9833333333333333,
+              "correct": 236,
+              "loss_mean": 0.08348675372835715,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.8,
+              "correct": 64,
+              "loss_mean": 0.32100823376677,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 1.6232791811227798,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.2,
+              "correct": 16,
+              "loss_mean": 2.959102224446542,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9833333333333333,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.6583333333333333
+        },
+        "8": {
+          "K12": 0.975,
+          "K16": 0.025,
+          "K8": 0.2125,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9583333333333334,
+              "correct": 230,
+              "loss_mean": 0.12904983071299891,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.975,
+              "correct": 78,
+              "loss_mean": 0.09244927177205682,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 1.0484274065122008,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.2125,
+              "correct": 17,
+              "loss_mean": 2.5306433372286845,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9583333333333334,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.68125
+        }
+      },
+      "param_count": 117506,
+      "param_parity": {
+        "ff_baseline_params": 121218,
+        "fractal_over_ff_ratio": 0.9693774851919682,
+        "fractal_param_count": 117506,
+        "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+        "science_open": false,
+        "tolerance": 0.05,
+        "window": [
+          115157,
+          127279
+        ],
+        "within_5pct": true
+      },
+      "prereg": {
+        "K16_ok": true,
+        "hard_neg_ok": true,
+        "observed_K16_T16": 0.9,
+        "observed_hard_neg_T16": 1.0,
+        "observed_overall_T16": 0.9833333333333333,
+        "pass": true
+      },
+      "science_open": false,
+      "seed": 2,
+      "train": {
+        "T": 6,
+        "adaptive_halt": false,
+        "arm": "fractal-stalk-stabilize-v2-T6-d64-mlp10",
+        "best_epoch": 39,
+        "best_sel_hard_neg_T16_val": 0.965,
+        "best_sel_joint_T16_val": 0.96425,
+        "best_sel_overall_T16_val": 0.9625,
+        "best_val_acc": 0.9625,
+        "broadcast_c": false,
+        "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_v2_seed2_best.pt",
+        "d": 64,
+        "epochs": 90,
+        "epochs_run": 90,
+        "final_epoch_sel": {
+          "eligible": false,
+          "epoch": 90,
+          "lr": 0.0001,
+          "sel_hard_neg_T16": 0.99,
+          "sel_joint_T16": 0.9045,
+          "sel_overall_T16": 0.705,
+          "selected": false,
+          "selection_mode": "ineligible",
+          "train_acc": 0.9725,
+          "train_loss": 0.06292685822583735,
+          "val_acc_T_train": 0.9575
+        },
+        "grad_clip": 2.5,
+        "grad_clip_sat_rate": 0.0071111111111111115,
+        "hn_weight": 0.7,
+        "local_potential": true,
+        "lr_max": 0.0015,
+        "lr_min": 0.0001,
+        "lr_schedule": "cosine",
+        "max_nodes": 64,
+        "mlp_expansion": 10,
+        "n_eligible_epochs": 48,
+        "overall_gate": 0.85,
+        "overall_weight": 0.3,
+        "param_count": 117506,
+        "param_parity": {
+          "ff_baseline_params": 121218,
+          "fractal_over_ff_ratio": 0.9693774851919682,
+          "fractal_param_count": 117506,
+          "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+          "science_open": false,
+          "tolerance": 0.05,
+          "window": [
+            115157,
+            127279
+          ],
+          "within_5pct": true
+        },
+        "science_open": false,
+        "selection_fallback": false,
+        "selection_rule": "gated lexicographic (0.7*HN+0.3*overall @ T16 ID-val, HN, overall, -epoch) among overall>=0.85; fallback=argmax(overall, HN, -epoch) if never eligible; matched-OOD never used for selection",
+        "train_history_len": 90
+      },
+      "untrained_T16": {
+        "K12": 1.0,
+        "K16": 1.0,
+        "K8": 1.0,
+        "delta_hard_neg": 0.7291666666666667,
+        "delta_overall": 0.34791666666666665,
+        "fnr": 0.0,
+        "fpr": 0.7291666865348816,
+        "hard_neg_acc": 0.2708333333333333,
+        "overall_acc": 0.6354166666666666,
+        "prediction_agreement": 0.6187499761581421,
+        "trained_hard_neg_acc": 1.0,
+        "trained_overall_acc": 0.9833333333333333
+      },
+      "untrained_control": {
+        "by_T": {
+          "12": {
+            "K12": 1.0,
+            "K16": 1.0,
+            "K8": 1.0,
+            "delta_hard_neg": 0.8833333333333333,
+            "delta_overall": 0.39583333333333326,
+            "fnr": 0.0,
+            "fpr": 0.8916666507720947,
+            "hard_neg_acc": 0.10833333333333334,
+            "overall_acc": 0.5541666666666667,
+            "prediction_agreement": 0.512499988079071,
+            "trained_hard_neg_acc": 0.9916666666666667,
+            "trained_overall_acc": 0.95
+          },
+          "16": {
+            "K12": 1.0,
+            "K16": 1.0,
+            "K8": 1.0,
+            "delta_hard_neg": 0.7291666666666667,
+            "delta_overall": 0.34791666666666665,
+            "fnr": 0.0,
+            "fpr": 0.7291666865348816,
+            "hard_neg_acc": 0.2708333333333333,
+            "overall_acc": 0.6354166666666666,
+            "prediction_agreement": 0.6187499761581421,
+            "trained_hard_neg_acc": 1.0,
+            "trained_overall_acc": 0.9833333333333333
+          },
+          "6": {
+            "K12": 1.0,
+            "K16": 1.0,
+            "K8": 1.0,
+            "delta_hard_neg": 0.6208333333333333,
+            "delta_overall": -0.022916666666666696,
+            "fnr": 0.0,
+            "fpr": 0.637499988079071,
+            "hard_neg_acc": 0.3625,
+            "overall_acc": 0.68125,
+            "prediction_agreement": 0.35624998807907104,
+            "trained_hard_neg_acc": 0.9833333333333333,
+            "trained_overall_acc": 0.6583333333333333
+          },
+          "8": {
+            "K12": 1.0,
+            "K16": 1.0,
+            "K8": 1.0,
+            "delta_hard_neg": 0.7,
+            "delta_overall": 0.05208333333333337,
+            "fnr": 0.0,
+            "fpr": 0.7416666746139526,
+            "hard_neg_acc": 0.25833333333333336,
+            "overall_acc": 0.6291666666666667,
+            "prediction_agreement": 0.35208332538604736,
+            "trained_hard_neg_acc": 0.9583333333333334,
+            "trained_overall_acc": 0.68125
+          }
+        },
+        "focus_T16": {
+          "K12": 1.0,
+          "K16": 1.0,
+          "K8": 1.0,
+          "delta_hard_neg": 0.7291666666666667,
+          "delta_overall": 0.34791666666666665,
+          "fnr": 0.0,
+          "fpr": 0.7291666865348816,
+          "hard_neg_acc": 0.2708333333333333,
+          "overall_acc": 0.6354166666666666,
+          "prediction_agreement": 0.6187499761581421,
+          "trained_hard_neg_acc": 1.0,
+          "trained_overall_acc": 0.9833333333333333
+        },
+        "init_doc": {
+          "architecture": {
+            "broadcast_c": false,
+            "discrete_T_values": [
+              6,
+              8,
+              12,
+              16
+            ],
+            "hard_A_ij_mask": true,
+            "intermediates": 0,
+            "local_potential": true,
+            "probe_slot": "t",
+            "soft_ACT": false,
+            "stalk_slot": "s"
+          },
+          "head_bias": [
+            -0.017262622714042664,
+            0.10071207582950592
+          ],
+          "head_weight_norm": 0.8510176539421082,
+          "mechanism": "Stalk-local FractalCore: hard adjacency mask + stalk@s / probe@t potentials (eye init), intermediates=0, no c broadcast, no soft ACT. Unlike SheafInferCore, there is no listed-edge gate bias / energy readout oracle at init \u2014 untrained performance is NOT expected to reproduce sealed Gate1 ceilings unless a hidden bake-in exists.",
+          "probe_proj_eye": true,
+          "residual_alpha": 0.5,
+          "science_open": false,
+          "stalk_proj_eye": true
+        },
+        "science_open": false,
+        "seed": 2
+      }
+    },
+    {
+      "T16": {
+        "K12": 0.0875,
+        "K16": 0.0875,
+        "K8": 0.1875,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.5604166666666667
+      },
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_v2_seed3_best.pt",
+      "degbal_T16": {
+        "K16": 0.0875,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.5576519916142557
+      },
+      "degree_balanced_ood_by_T": {
+        "12": {
+          "K12": 0.05,
+          "K16": 0.0125,
+          "K8": 0.1625,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 237,
+              "loss_mean": 0.011812976223538446,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 4.902102477615699,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 5.04476677950006,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.1625,
+              "correct": 13,
+              "loss_mean": 3.8343442316749132,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.5345911949685535
+        },
+        "16": {
+          "K12": 0.0875,
+          "K16": 0.0875,
+          "K8": 0.1875,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 237,
+              "loss_mean": 0.021825943937925977,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.0875,
+              "correct": 7,
+              "loss_mean": 3.8426370019093157,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0875,
+              "correct": 7,
+              "loss_mean": 4.128302730130963,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.1875,
+              "correct": 15,
+              "loss_mean": 3.1655533187498803,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.5576519916142557
+        },
+        "6": {
+          "K12": 0.0625,
+          "K16": 0.0,
+          "K8": 0.2375,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9282700421940928,
+              "correct": 220,
+              "loss_mean": 0.1593758273292097,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.0625,
+              "correct": 5,
+              "loss_mean": 1.6074998793657869,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 4.759026271104813,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.2375,
+              "correct": 19,
+              "loss_mean": 1.7350038698816206,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9282700421940928,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.5115303983228512
+        },
+        "8": {
+          "K12": 0.0875,
+          "K16": 0.0,
+          "K8": 0.3875,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9451476793248945,
+              "correct": 224,
+              "loss_mean": 0.17896145046197412,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.0875,
+              "correct": 7,
+              "loss_mean": 1.7901467700954528,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 4.529598499834537,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.3875,
+              "correct": 31,
+              "loss_mean": 1.2260022890521214,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9451476793248945,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.549266247379455
+        }
+      },
+      "matched_ood_by_T": {
+        "12": {
+          "K12": 0.05,
+          "K16": 0.0125,
+          "K8": 0.1625,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.009006271341543954,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 4.902102477615699,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 5.04476677950006,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.1625,
+              "correct": 13,
+              "loss_mean": 3.8343442316749132,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.5375
+        },
+        "16": {
+          "K12": 0.0875,
+          "K16": 0.0875,
+          "K8": 0.1875,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.015438959146073709,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.0875,
+              "correct": 7,
+              "loss_mean": 3.8426370019093157,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0875,
+              "correct": 7,
+              "loss_mean": 4.128302730130963,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.1875,
+              "correct": 15,
+              "loss_mean": 3.1655533187498803,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.5604166666666667
+        },
+        "6": {
+          "K12": 0.0625,
+          "K16": 0.0,
+          "K8": 0.2375,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9666666666666667,
+              "correct": 232,
+              "loss_mean": 0.099134411206857,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.0625,
+              "correct": 5,
+              "loss_mean": 1.6074998793657869,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 4.759026271104813,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.2375,
+              "correct": 19,
+              "loss_mean": 1.7350038698816206,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9666666666666667,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.5333333333333333
+        },
+        "8": {
+          "K12": 0.0875,
+          "K16": 0.0,
+          "K8": 0.3875,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9666666666666667,
+              "correct": 232,
+              "loss_mean": 0.11035133895541852,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.0875,
+              "correct": 7,
+              "loss_mean": 1.7901467700954528,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 4.529598499834537,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.3875,
+              "correct": 31,
+              "loss_mean": 1.2260022890521214,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9666666666666667,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.5625
+        }
+      },
+      "param_count": 117506,
+      "param_parity": {
+        "ff_baseline_params": 121218,
+        "fractal_over_ff_ratio": 0.9693774851919682,
+        "fractal_param_count": 117506,
+        "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+        "science_open": false,
+        "tolerance": 0.05,
+        "window": [
+          115157,
+          127279
+        ],
+        "within_5pct": true
+      },
+      "prereg": {
+        "K16_ok": false,
+        "hard_neg_ok": true,
+        "observed_K16_T16": 0.0875,
+        "observed_hard_neg_T16": 1.0,
+        "observed_overall_T16": 0.5604166666666667,
+        "pass": false
+      },
+      "science_open": false,
+      "seed": 3,
+      "train": {
+        "T": 6,
+        "adaptive_halt": false,
+        "arm": "fractal-stalk-stabilize-v2-T6-d64-mlp10",
+        "best_epoch": 16,
+        "best_sel_hard_neg_T16_val": 0.975,
+        "best_sel_joint_T16_val": 0.966,
+        "best_sel_overall_T16_val": 0.945,
+        "best_val_acc": 0.945,
+        "broadcast_c": false,
+        "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_v2_seed3_best.pt",
+        "d": 64,
+        "epochs": 90,
+        "epochs_run": 90,
+        "final_epoch_sel": {
+          "eligible": false,
+          "epoch": 90,
+          "lr": 0.0001,
+          "sel_hard_neg_T16": 0.995,
+          "sel_joint_T16": 0.93575,
+          "sel_overall_T16": 0.7975,
+          "selected": false,
+          "selection_mode": "ineligible",
+          "train_acc": 0.969375,
+          "train_loss": 0.07468652825802564,
+          "val_acc_T_train": 0.9475
+        },
+        "grad_clip": 2.5,
+        "grad_clip_sat_rate": 0.009111111111111111,
+        "hn_weight": 0.7,
+        "local_potential": true,
+        "lr_max": 0.0015,
+        "lr_min": 0.0001,
+        "lr_schedule": "cosine",
+        "max_nodes": 64,
+        "mlp_expansion": 10,
+        "n_eligible_epochs": 61,
+        "overall_gate": 0.85,
+        "overall_weight": 0.3,
+        "param_count": 117506,
+        "param_parity": {
+          "ff_baseline_params": 121218,
+          "fractal_over_ff_ratio": 0.9693774851919682,
+          "fractal_param_count": 117506,
+          "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+          "science_open": false,
+          "tolerance": 0.05,
+          "window": [
+            115157,
+            127279
+          ],
+          "within_5pct": true
+        },
+        "science_open": false,
+        "selection_fallback": false,
+        "selection_rule": "gated lexicographic (0.7*HN+0.3*overall @ T16 ID-val, HN, overall, -epoch) among overall>=0.85; fallback=argmax(overall, HN, -epoch) if never eligible; matched-OOD never used for selection",
+        "train_history_len": 90
+      },
+      "untrained_T16": {
+        "K12": 0.0,
+        "K16": 0.0,
+        "K8": 0.0,
+        "delta_hard_neg": 0.30833333333333335,
+        "delta_overall": 0.21458333333333335,
+        "fnr": 1.0,
+        "fpr": 0.3083333373069763,
+        "hard_neg_acc": 0.6916666666666667,
+        "overall_acc": 0.3458333333333333,
+        "prediction_agreement": 0.7854166626930237,
+        "trained_hard_neg_acc": 1.0,
+        "trained_overall_acc": 0.5604166666666667
+      },
+      "untrained_control": {
+        "by_T": {
+          "12": {
+            "K12": 0.0,
+            "K16": 0.0,
+            "K8": 0.8125,
+            "delta_hard_neg": 0.5791666666666666,
+            "delta_overall": 0.19166666666666665,
+            "fnr": 0.7291666865348816,
+            "fpr": 0.5791666507720947,
+            "hard_neg_acc": 0.42083333333333334,
+            "overall_acc": 0.3458333333333333,
+            "prediction_agreement": 0.5666666626930237,
+            "trained_hard_neg_acc": 1.0,
+            "trained_overall_acc": 0.5375
+          },
+          "16": {
+            "K12": 0.0,
+            "K16": 0.0,
+            "K8": 0.0,
+            "delta_hard_neg": 0.30833333333333335,
+            "delta_overall": 0.21458333333333335,
+            "fnr": 1.0,
+            "fpr": 0.3083333373069763,
+            "hard_neg_acc": 0.6916666666666667,
+            "overall_acc": 0.3458333333333333,
+            "prediction_agreement": 0.7854166626930237,
+            "trained_hard_neg_acc": 1.0,
+            "trained_overall_acc": 0.5604166666666667
+          },
+          "6": {
+            "K12": 0.0,
+            "K16": 0.0,
+            "K8": 0.0,
+            "delta_hard_neg": 0.275,
+            "delta_overall": 0.1875,
+            "fnr": 1.0,
+            "fpr": 0.3083333373069763,
+            "hard_neg_acc": 0.6916666666666667,
+            "overall_acc": 0.3458333333333333,
+            "prediction_agreement": 0.7791666388511658,
+            "trained_hard_neg_acc": 0.9666666666666667,
+            "trained_overall_acc": 0.5333333333333333
+          },
+          "8": {
+            "K12": 0.0,
+            "K16": 0.0,
+            "K8": 0.0,
+            "delta_hard_neg": 0.029166666666666674,
+            "delta_overall": 0.09375,
+            "fnr": 1.0,
+            "fpr": 0.0625,
+            "hard_neg_acc": 0.9375,
+            "overall_acc": 0.46875,
+            "prediction_agreement": 0.8729166388511658,
+            "trained_hard_neg_acc": 0.9666666666666667,
+            "trained_overall_acc": 0.5625
+          }
+        },
+        "focus_T16": {
+          "K12": 0.0,
+          "K16": 0.0,
+          "K8": 0.0,
+          "delta_hard_neg": 0.30833333333333335,
+          "delta_overall": 0.21458333333333335,
+          "fnr": 1.0,
+          "fpr": 0.3083333373069763,
+          "hard_neg_acc": 0.6916666666666667,
+          "overall_acc": 0.3458333333333333,
+          "prediction_agreement": 0.7854166626930237,
+          "trained_hard_neg_acc": 1.0,
+          "trained_overall_acc": 0.5604166666666667
+        },
+        "init_doc": {
+          "architecture": {
+            "broadcast_c": false,
+            "discrete_T_values": [
+              6,
+              8,
+              12,
+              16
+            ],
+            "hard_A_ij_mask": true,
+            "intermediates": 0,
+            "local_potential": true,
+            "probe_slot": "t",
+            "soft_ACT": false,
+            "stalk_slot": "s"
+          },
+          "head_bias": [
+            -0.001560211181640625,
+            0.0651392936706543
+          ],
+          "head_weight_norm": 0.9065046906471252,
+          "mechanism": "Stalk-local FractalCore: hard adjacency mask + stalk@s / probe@t potentials (eye init), intermediates=0, no c broadcast, no soft ACT. Unlike SheafInferCore, there is no listed-edge gate bias / energy readout oracle at init \u2014 untrained performance is NOT expected to reproduce sealed Gate1 ceilings unless a hidden bake-in exists.",
+          "probe_proj_eye": true,
+          "residual_alpha": 0.5,
+          "science_open": false,
+          "stalk_proj_eye": true
+        },
+        "science_open": false,
+        "seed": 3
+      }
+    },
+    {
+      "T16": {
+        "K12": 0.9875,
+        "K16": 0.9875,
+        "K8": 1.0,
+        "hard_neg_acc": 0.775,
+        "overall_acc": 0.8833333333333333
+      },
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_v2_seed4_best.pt",
+      "degbal_T16": {
+        "K16": 0.9875,
+        "hard_neg_acc": 0.6751054852320675,
+        "overall_acc": 0.8343815513626834
+      },
+      "degree_balanced_ood_by_T": {
+        "12": {
+          "K12": 0.9875,
+          "K16": 0.075,
+          "K8": 1.0,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.729957805907173,
+              "correct": 173,
+              "loss_mean": 1.1577143607973535,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.9875,
+              "correct": 79,
+              "loss_mean": 0.02330935712088831,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.075,
+              "correct": 6,
+              "loss_mean": 2.27420555842109,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.006282455293694511,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.729957805907173,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.7085953878406709
+        },
+        "16": {
+          "K12": 0.9875,
+          "K16": 0.9875,
+          "K8": 1.0,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.6751054852320675,
+              "correct": 160,
+              "loss_mean": 1.4606784362599394,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.9875,
+              "correct": 79,
+              "loss_mean": 0.019914607278769834,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.9875,
+              "correct": 79,
+              "loss_mean": 0.09057971057482064,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.03704581867204979,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.6751054852320675,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.8343815513626834
+        },
+        "6": {
+          "K12": 0.125,
+          "K16": 0.0125,
+          "K8": 0.225,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.810126582278481,
+              "correct": 192,
+              "loss_mean": 0.8951509836255592,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.125,
+              "correct": 10,
+              "loss_mean": 1.5278236712678335,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 4.1850542049855,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.225,
+              "correct": 18,
+              "loss_mean": 3.190293672942789,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.810126582278481,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.46331236897274636
+        },
+        "8": {
+          "K12": 0.725,
+          "K16": 0.05,
+          "K8": 0.7375,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.7932489451476793,
+              "correct": 188,
+              "loss_mean": 0.9719325338012857,
+              "n": 237
+            },
+            "12": {
+              "acc_mean": 0.725,
+              "correct": 58,
+              "loss_mean": 1.035880238492973,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 3.9420402257470415,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.7375,
+              "correct": 59,
+              "loss_mean": 1.049223069861182,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.7932489451476793,
+          "hard_neg_n": 237,
+          "n": 477,
+          "overall_acc": 0.6477987421383647
+        }
+      },
+      "matched_ood_by_T": {
+        "12": {
+          "K12": 0.9875,
+          "K16": 0.075,
+          "K8": 1.0,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.8291666666666667,
+              "correct": 199,
+              "loss_mean": 0.7351738362243244,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.9875,
+              "correct": 79,
+              "loss_mean": 0.02330935712088831,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.075,
+              "correct": 6,
+              "loss_mean": 2.27420555842109,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.006282455293694511,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.8291666666666667,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.7583333333333333
+        },
+        "16": {
+          "K12": 0.9875,
+          "K16": 0.9875,
+          "K8": 1.0,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.775,
+              "correct": 186,
+              "loss_mean": 0.9403217943171815,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.9875,
+              "correct": 79,
+              "loss_mean": 0.019914607278769834,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.9875,
+              "correct": 79,
+              "loss_mean": 0.09057971057482064,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.03704581867204979,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.775,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.8833333333333333
+        },
+        "6": {
+          "K12": 0.125,
+          "K16": 0.0125,
+          "K8": 0.225,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.8666666666666667,
+              "correct": 208,
+              "loss_mean": 0.6218832227406286,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.125,
+              "correct": 10,
+              "loss_mean": 1.5278236712678335,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 4.1850542049855,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.225,
+              "correct": 18,
+              "loss_mean": 3.190293672942789,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.8666666666666667,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.49375
+        },
+        "8": {
+          "K12": 0.725,
+          "K16": 0.05,
+          "K8": 0.7375,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.8583333333333333,
+              "correct": 206,
+              "loss_mean": 0.674397090318962,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.725,
+              "correct": 58,
+              "loss_mean": 1.035880238492973,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 3.9420402257470415,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.7375,
+              "correct": 59,
+              "loss_mean": 1.049223069861182,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.8583333333333333,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.68125
+        }
+      },
+      "param_count": 117506,
+      "param_parity": {
+        "ff_baseline_params": 121218,
+        "fractal_over_ff_ratio": 0.9693774851919682,
+        "fractal_param_count": 117506,
+        "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+        "science_open": false,
+        "tolerance": 0.05,
+        "window": [
+          115157,
+          127279
+        ],
+        "within_5pct": true
+      },
+      "prereg": {
+        "K16_ok": true,
+        "hard_neg_ok": false,
+        "observed_K16_T16": 0.9875,
+        "observed_hard_neg_T16": 0.775,
+        "observed_overall_T16": 0.8833333333333333,
+        "pass": false
+      },
+      "science_open": false,
+      "seed": 4,
+      "train": {
+        "T": 6,
+        "adaptive_halt": false,
+        "arm": "fractal-stalk-stabilize-v2-T6-d64-mlp10",
+        "best_epoch": 24,
+        "best_sel_hard_neg_T16_val": 0.935,
+        "best_sel_joint_T16_val": 0.9312499999999999,
+        "best_sel_overall_T16_val": 0.9225,
+        "best_val_acc": 0.9225,
+        "broadcast_c": false,
+        "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_v2_seed4_best.pt",
+        "d": 64,
+        "epochs": 90,
+        "epochs_run": 90,
+        "final_epoch_sel": {
+          "eligible": true,
+          "epoch": 90,
+          "lr": 0.0001,
+          "sel_hard_neg_T16": 0.86,
+          "sel_joint_T16": 0.8667499999999999,
+          "sel_overall_T16": 0.8825,
+          "selected": false,
+          "selection_mode": "gated",
+          "train_acc": 0.978125,
+          "train_loss": 0.05359347559046,
+          "val_acc_T_train": 0.97
+        },
+        "grad_clip": 2.5,
+        "grad_clip_sat_rate": 0.010222222222222223,
+        "hn_weight": 0.7,
+        "local_potential": true,
+        "lr_max": 0.0015,
+        "lr_min": 0.0001,
+        "lr_schedule": "cosine",
+        "max_nodes": 64,
+        "mlp_expansion": 10,
+        "n_eligible_epochs": 77,
+        "overall_gate": 0.85,
+        "overall_weight": 0.3,
+        "param_count": 117506,
+        "param_parity": {
+          "ff_baseline_params": 121218,
+          "fractal_over_ff_ratio": 0.9693774851919682,
+          "fractal_param_count": 117506,
+          "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+          "science_open": false,
+          "tolerance": 0.05,
+          "window": [
+            115157,
+            127279
+          ],
+          "within_5pct": true
+        },
+        "science_open": false,
+        "selection_fallback": false,
+        "selection_rule": "gated lexicographic (0.7*HN+0.3*overall @ T16 ID-val, HN, overall, -epoch) among overall>=0.85; fallback=argmax(overall, HN, -epoch) if never eligible; matched-OOD never used for selection",
+        "train_history_len": 90
+      },
+      "untrained_T16": {
+        "K12": 0.0,
+        "K16": 0.0,
+        "K8": 0.0,
+        "delta_hard_neg": 0.3375,
+        "delta_overall": 0.6645833333333333,
+        "fnr": 1.0,
+        "fpr": 0.5625,
+        "hard_neg_acc": 0.4375,
+        "overall_acc": 0.21875,
+        "prediction_agreement": 0.2645833194255829,
+        "trained_hard_neg_acc": 0.775,
+        "trained_overall_acc": 0.8833333333333333
+      },
+      "untrained_control": {
+        "by_T": {
+          "12": {
+            "K12": 0.0,
+            "K16": 0.0,
+            "K8": 0.0,
+            "delta_hard_neg": 0.3916666666666667,
+            "delta_overall": 0.5395833333333333,
+            "fnr": 1.0,
+            "fpr": 0.5625,
+            "hard_neg_acc": 0.4375,
+            "overall_acc": 0.21875,
+            "prediction_agreement": 0.40625,
+            "trained_hard_neg_acc": 0.8291666666666667,
+            "trained_overall_acc": 0.7583333333333333
+          },
+          "16": {
+            "K12": 0.0,
+            "K16": 0.0,
+            "K8": 0.0,
+            "delta_hard_neg": 0.3375,
+            "delta_overall": 0.6645833333333333,
+            "fnr": 1.0,
+            "fpr": 0.5625,
+            "hard_neg_acc": 0.4375,
+            "overall_acc": 0.21875,
+            "prediction_agreement": 0.2645833194255829,
+            "trained_hard_neg_acc": 0.775,
+            "trained_overall_acc": 0.8833333333333333
+          },
+          "6": {
+            "K12": 0.0,
+            "K16": 0.0,
+            "K8": 0.0,
+            "delta_hard_neg": 0.30833333333333335,
+            "delta_overall": 0.21458333333333335,
+            "fnr": 1.0,
+            "fpr": 0.4416666626930237,
+            "hard_neg_acc": 0.5583333333333333,
+            "overall_acc": 0.2791666666666667,
+            "prediction_agreement": 0.731249988079071,
+            "trained_hard_neg_acc": 0.8666666666666667,
+            "trained_overall_acc": 0.49375
+          },
+          "8": {
+            "K12": 0.0,
+            "K16": 0.0,
+            "K8": 0.0,
+            "delta_hard_neg": 0.3791666666666666,
+            "delta_overall": 0.44166666666666665,
+            "fnr": 1.0,
+            "fpr": 0.5208333134651184,
+            "hard_neg_acc": 0.4791666666666667,
+            "overall_acc": 0.23958333333333334,
+            "prediction_agreement": 0.5083333253860474,
+            "trained_hard_neg_acc": 0.8583333333333333,
+            "trained_overall_acc": 0.68125
+          }
+        },
+        "focus_T16": {
+          "K12": 0.0,
+          "K16": 0.0,
+          "K8": 0.0,
+          "delta_hard_neg": 0.3375,
+          "delta_overall": 0.6645833333333333,
+          "fnr": 1.0,
+          "fpr": 0.5625,
+          "hard_neg_acc": 0.4375,
+          "overall_acc": 0.21875,
+          "prediction_agreement": 0.2645833194255829,
+          "trained_hard_neg_acc": 0.775,
+          "trained_overall_acc": 0.8833333333333333
+        },
+        "init_doc": {
+          "architecture": {
+            "broadcast_c": false,
+            "discrete_T_values": [
+              6,
+              8,
+              12,
+              16
+            ],
+            "hard_A_ij_mask": true,
+            "intermediates": 0,
+            "local_potential": true,
+            "probe_slot": "t",
+            "soft_ACT": false,
+            "stalk_slot": "s"
+          },
+          "head_bias": [
+            0.0987178385257721,
+            -0.023650556802749634
+          ],
+          "head_weight_norm": 0.8116774559020996,
+          "mechanism": "Stalk-local FractalCore: hard adjacency mask + stalk@s / probe@t potentials (eye init), intermediates=0, no c broadcast, no soft ACT. Unlike SheafInferCore, there is no listed-edge gate bias / energy readout oracle at init \u2014 untrained performance is NOT expected to reproduce sealed Gate1 ceilings unless a hidden bake-in exists.",
+          "probe_proj_eye": true,
+          "residual_alpha": 0.5,
+          "science_open": false,
+          "stalk_proj_eye": true
+        },
+        "science_open": false,
+        "seed": 4
+      }
+    }
+  ],
+  "policy": "PASS_CANDIDATE_FOR_OPEN \u2192 flag human; do NOT set science_open=true. MEASURE_STILL / STOP_FRAGILE \u2192 append ledger. Sheaf unsupervised path ignored this cycle. science_open=human only.",
+  "prereg": {
+    "K16_at_T16_mean_ge": 0.75,
+    "hard_neg_mean_ge": 0.95,
+    "n_seeds": 5,
+    "note": "Mean floors match PR #12. science_open never self-stamped; PASS_CANDIDATE_FOR_OPEN still leaves science_open=false.",
+    "seed_pass_goal_ge": 4,
+    "seed_pass_stretch": 5,
+    "selection_rule": "Before any OOD look: among ID-val @ T16 with overall>=0.85, best ckpt = argmax (0.7*HN+0.3*overall, HN, overall, -epoch). If never eligible: fallback argmax(overall, HN, -epoch). K16 unavailable on ID. Floors evaluated only on matched-OOD after train."
+  },
+  "prereg_mean_pass": false,
+  "prereg_seed_goal_pass": false,
+  "residue": "Stabilize V2 STOP_FRAGILE: hard-neg=0.9550, K16=0.4225; 1/5 seeds pass. Multi-seed corridor remains fragile under V2 harden. science_open=false; do not widen.",
+  "science_open": false,
+  "sealed_single_seed_OPEN": {
+    "T16_K16": 0.925,
+    "T16_hard_neg": 1.0,
+    "T16_overall": 0.9770833333333333,
+    "by_T": {
+      "12": {
+        "K12": 1.0,
+        "K16": 0.0,
+        "K8": 1.0,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.8333333333333334
+      },
+      "16": {
+        "K12": 1.0,
+        "K16": 0.925,
+        "K8": 0.9375,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.9770833333333333
+      },
+      "6": {
+        "K12": 0.0125,
+        "K16": 0.0,
+        "K8": 0.0,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.5020833333333333
+      },
+      "8": {
+        "K12": 0.05,
+        "K16": 0.0,
+        "K8": 1.0,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.675
+      }
+    },
+    "cycle": "CYCLE_STALK_LOCALIZATION",
+    "note": "Single-seed sealed OPEN Gate1 (PR #2). Contigent until multi-seed reconfirm; science_open human-only.",
+    "path": "artifacts/fractal_core_stalk_gate1_matched_ood.json",
+    "prereg_sealed": {
+      "K16_at_T16_ge": 0.8,
+      "K16_ok": true,
+      "fail_closed": false,
+      "hard_neg_at_T16_ge": 0.98,
+      "hard_neg_ok": true,
+      "note": "Report honestly if miss. science_open=false regardless.",
+      "observed_K16_T16": 0.925,
+      "observed_hard_neg_T16": 1.0,
+      "pass": true
+    },
+    "present": true,
+    "science_open_harness": false,
+    "train_best_epoch": 29,
+    "train_best_val_acc": 0.985
+  },
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "verdict": "STOP_FRAGILE",
+  "vs_sealed_OPEN": {
+    "pr12_reconfirm_mean_K16": 0.654,
+    "pr12_reconfirm_mean_hard_neg": 0.918,
+    "pr12_reconfirm_mean_overall": 0.803,
+    "pr14_seed_pass": "2/5",
+    "pr14_stabilize_mean_K16": 0.863,
+    "pr14_stabilize_mean_hard_neg": 0.957,
+    "pr14_stabilize_mean_overall": 0.929,
+    "sealed_T16_K16": 0.925,
+    "sealed_T16_hard_neg": 1.0,
+    "sealed_T16_overall": 0.9770833333333333,
+    "stabilize_v2_mean_T16_K16": 0.42250000000000004,
+    "stabilize_v2_mean_T16_hard_neg": 0.9550000000000001,
+    "stabilize_v2_mean_T16_overall": 0.8133333333333332,
+    "stabilize_v2_std_T16_K16": 0.4769204598253256,
+    "stabilize_v2_std_T16_hard_neg": 0.10062305898749054,
+    "stabilize_v2_std_T16_overall": 0.15690556917741602,
+    "this_cycle_prereg_thresholds": {
+      "K16_mean": 0.75,
+      "hard_neg_mean": 0.95,
+      "seed_pass_goal": 4
+    }
+  }
+}
