@@ -390,6 +390,18 @@ python -m reachability_gen.run_stalk_stabilize_multi_seed
 
 Artifact: `artifacts/stalk_stabilize_multi_seed.json`. See `docs/CYCLE_STALK_STABILIZE_MULTI_SEED.md`.
 
+## Cycle: STALK_STABILIZE_V2 (MEASURE)
+
+Continue from PR #14 MEASURE_STILL. Same hard-Â stalk; knobs: 90 ep, cosine
+1.5e-3→1.0e-4, gated joint **0.7·HN+0.3·overall** @ T16 ID-val (overall≥0.85
+eligibility). Prereg floors unchanged; seed goal ≥4/5. `science_open=false`.
+
+```bash
+python -m reachability_gen.run_stalk_stabilize_v2
+```
+
+Artifact: `artifacts/stalk_stabilize_v2.json`. See `docs/CYCLE_STALK_STABILIZE_V2.md`.
+
 ## Cycle: STALK_LOCALIZATION (MEASURE)
 
 Follow-on to FRACTAL_CORE_GENESIS. Kills global `(s,t)` broadcast `+c` and soft
