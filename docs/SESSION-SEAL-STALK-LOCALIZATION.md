@@ -12,7 +12,7 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25) — pairwise disagree **0.431 ≥ #22 0.162** but HN floor miss; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
+**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**); §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
 
 Fail-closed outside the live scoped claim in **§22** (hist. §6 demoted). Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
@@ -606,3 +606,28 @@ overlay. Distill STOP; SWA MEASURE; multi-hyp STOP; select/curriculum CLOSED.
 Prior seal body + §13–§24 are **not** rewritten. This §25 is append-only
 MEASURE_LIFT (`science_open=false`).
 
+## 26. Competent dissonance — MEASURE audit (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_COMPETENT_DISSONANCE` |
+| **Artifact** | `artifacts/stalk_competent_dissonance.json` |
+| **Cycle note** | `docs/CYCLE_STALK_COMPETENT_DISSONANCE.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_competent_dissonance` |
+| **Base** | `main` `07401f0` (after PR #27 bag diversity) |
+| **Prereg / results** | `3e20a4d` / `9c4e8f9` |
+| **Cycle verdict** | **`COMPETENT_vs_CHAOS`** |
+| **#22 / #27** | **`COMPETENT`** (CD **0.811**) / **`CHAOS`** (CD **0.658**) |
+| **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
+| **Recipe** | Eval-only; no train / no bag noise; CD = μ_acc · min(D_hard, 0.25)/0.25; D_hard = 0.5·(D_HN+D_K16) |
+| **Matched-OOD T16** | #22 global pair **0.162**, D_hard **0.225** (K16 **0.337**); #27 global **0.431**, D_hard **0.466**; disagree-set member ov **0.817** vs **0.585** |
+| **ood_hops stress** | #22 ens HN **1.000→0.067** shatter residue (K16 holds); do **not** widen §22 |
+
+### 26.1 Reading
+
+#22 is **competent dissonance** on sealed matched-OOD — low global disagree ≠ echo when lift is disagreement-localized (§24) and hard-slice D_hard is material. #27 is **chaos** (weak members + over-dispersion). Prefer #14 + #22 overlay; do not train bag noise. Select/curriculum CLOSED.
+
+### 26.2 Non-rewrite rule
+
+Prior seal body + §13–§25 are **not** rewritten. This §26 is append-only MEASURE
+(`science_open=false`).
