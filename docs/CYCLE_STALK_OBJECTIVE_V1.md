@@ -120,15 +120,81 @@ PASS definition identical to #14/#15/#16.
 | Train objective | uniform ID | uniform ID | uniform ID | **HN×2 + hop≥5×2 curriculum + weighted CE** |
 | Architecture | sealed stalk | sealed | sealed | **unchanged** |
 
-## Results (filled after runs)
+## Results (this run — cite artifact)
 
 | Field | Value |
 |-------|-------|
 | **Artifact** | `artifacts/stalk_objective_v1.json` |
 | **Log** | `artifacts/stalk_objective_v1_run.log` |
 | **Ckpts** | `artifacts/fractal_core_stalk_objective_v1_seed{0..4}_best.pt` |
-| **Verdict** | _(pending)_ |
-| **science_open** | **false** |
+| **Verdict** | **`STOP_FRAGILE`** (seed **0/5**; mean HN **0.927** fails ≥0.95; K16 **0.845** PASS) |
+| **science_open** | **false** (not widened) |
+| **Elapsed** | ~746 s (~12.4 min CDT) |
+| **Individual prereg** | **0/5** seeds PASS |
+| **Mean floors** | HN **0.927≥0.95 FAIL**; K16 **0.845≥0.75 PASS** |
+| **Prereg SHA** | `68a147a` (committed before runs) |
+
+### Per-seed matched-OOD T16
+
+| Seed | best_ep | sel HN/ov | overall | hard-neg | K8 | K12 | K16 | prereg |
+|------|---------|-----------|---------|----------|----|-----|-----|--------|
+| 0 | 32 | 0.945 / 0.965 | **0.954** | 0.912 | 0.988 | 1.000 | **1.000** | FAIL (HN) |
+| 1 | 11 | 0.970 / 0.917 | 0.835 | **1.000** | 0.650 | 0.725 | 0.637 | FAIL (K16) |
+| 2 | 29 | 0.970 / 0.980 | 0.904 | 0.938 | 0.900 | 1.000 | 0.713 | FAIL (HN+K16) |
+| 3 | 16 | 0.960 / 0.938 | 0.925 | 0.917 | 0.887 | 0.912 | **1.000** | FAIL (HN) |
+| 4 | 25 | 0.975 / 0.895 | 0.875 | 0.867 | 0.787 | 0.988 | 0.875 | FAIL (HN) |
+| **mean±std** | — | — | **0.899±0.046** | **0.927±0.048** | 0.842±0.129 | 0.925±0.118 | **0.845±0.166** | **0/5** |
+
+### Untrained control (per seed, T16)
+
+| Seed | u overall | u hard-neg | u K16 | agree vs trained |
+|------|-----------|------------|-------|------------------|
+| 0 | 0.633 | 0.600 | 1.000 | 0.650 |
+| 1 | 0.608 | 0.883 | 0.000 | 0.681 |
+| 2 | 0.635 | 0.271 | 1.000 | 0.577 |
+| 3 | 0.346 | 0.692 | 0.000 | 0.346 |
+| 4 | 0.219 | 0.438 | 0.000 | 0.302 |
+| **mean±std** | **0.488±0.194** | 0.577±0.235 | — | **0.511±0.176** |
+
+Untrained remains mid/low vs trained; bake-in still **not** proven.
+
+### Degree-balanced T16 (secondary)
+
+| Seed | overall | hard-neg | K16 |
+|------|---------|----------|-----|
+| 0 | 0.895 | 0.793 | 1.000 |
+| 1 | 0.834 | 1.000 | 0.637 |
+| 2 | 0.870 | 0.869 | 0.713 |
+| 3 | 0.895 | 0.857 | 1.000 |
+| 4 | 0.839 | 0.793 | 0.875 |
+| **mean±std** | 0.867±0.029 | 0.862±0.085 | 0.845±0.166 |
+
+### Causal horizon mean±std (matched-OOD)
+
+| T | overall | hard-neg | K16 |
+|---|---------|----------|-----|
+| 6 | 0.647±0.095 | 0.890±0.088 | 0.205±0.438 |
+| 8 | 0.696±0.135 | 0.878±0.132 | 0.265±0.418 |
+| 12 | 0.860±0.089 | 0.922±0.053 | 0.700±0.378 |
+| **16** | **0.899±0.046** | **0.927±0.048** | **0.845±0.166** |
+
+### vs PR #14 / #15 / #16
+
+| Metric @ T16 | PR #14 (n=5) | PR #15 V2 | PR #16 V3 | **This OBJECTIVE_V1** |
+|--------------|--------------|-----------|-----------|------------------------|
+| overall | **0.929±0.035** | 0.813±0.157 | 0.890±0.067 | 0.899±0.046 |
+| hard-neg | **0.957±0.061 PASS** | 0.955±0.101 | 0.838±0.142 | **0.927±0.048 FAIL** |
+| K16 | **0.863±0.143 PASS** | 0.423±0.477 | **0.968±0.046** | **0.845±0.166 PASS** |
+| seed PASS | **2/5** | 1/5 | 1/5 | **0/5** |
+
+### Reading (fail-closed)
+
+ID-only HN×2 + hop≥5×2 curriculum + weighted CE with **#14 select locked** did
+**not** clear seed goal (0/5) and **missed** mean HN floor (0.927 &lt; 0.95).
+K16 mean still PASS but seed-wise fragile. vs #14: HN↓, K16≈, seed PASS 2/5→0/5.
+Prefer honesty: **STOP_FRAGILE** this objective upsample line; retain **#14**
+`MEASURE_STILL` as best stabilize evidence. Select-weight chase remains closed;
+this train-curriculum easy-$ also fails. `science_open=false`.
 
 ## Explicit non-goals
 
