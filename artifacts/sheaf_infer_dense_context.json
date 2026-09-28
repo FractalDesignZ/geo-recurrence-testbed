@@ -1,0 +1,585 @@
+{
+  "attribution": {
+    "label": "measure_pass",
+    "mode": "PASS",
+    "note": "Both cells pass all floors \u2014 MEASURE PASS. Do not widen science_open / K\u226416 claim.",
+    "science_open_widen": false
+  },
+  "baseline_sheaf_seal": "af8e49f",
+  "cell1": {
+    "A_hat_vs_gold": {
+      "FNR": 0.0,
+      "FPR": 0.0,
+      "comparable": "offdiag_real_nodes_vs_gold_A",
+      "compiler_clean": true,
+      "fn": 0,
+      "fp": 0,
+      "n_examples": 128,
+      "n_offdiag_cells": 30720,
+      "note": "\u00c2 = hard gate(\u03c3(E_hat)>\u03b8) vs gold adjacency from edge tokens; diagonal excluded; pad excluded. Not an eval oracle for reachability.",
+      "tn": 26249,
+      "tp": 4471
+    },
+    "cell": "cell1_dense",
+    "dataset_path": "data/sheaf_dense_context_cell1.jsonl",
+    "floors": {
+      "A_hat_fail": false,
+      "FNR": 0.0,
+      "FPR": 0.0,
+      "compiler_ok": true,
+      "hard_neg_T12": 1.0,
+      "hard_neg_T8": 1.0,
+      "hard_neg_ok": true,
+      "pass_all": true,
+      "pos_ok": true,
+      "positive_K8_T12": 1.0,
+      "positive_K8_T8": 1.0,
+      "reach_ok": true
+    },
+    "hard_neg_discipline": {
+      "R_out_bfs_dfs_assert": true,
+      "n_hard_neg_checked": 64,
+      "ok": true
+    },
+    "n_examples": 128,
+    "n_neg": 64,
+    "n_pos": 64,
+    "p_empirical_mean": 0.14554036458333333,
+    "reachability": {
+      "T12": {
+        "K8_acc": 1.0,
+        "K8_n": 64,
+        "T": 12,
+        "adaptive_halt": false,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 1.0,
+            "correct": 64,
+            "n": 64
+          },
+          "8": {
+            "acc_mean": 1.0,
+            "correct": 64,
+            "n": 64
+          }
+        },
+        "discrete_T": true,
+        "hard_A_oracle": false,
+        "hard_neg_acc": 1.0,
+        "hard_neg_n": 64,
+        "n": 128,
+        "overall_acc": 1.0,
+        "positive_acc": 1.0,
+        "positive_n": 64
+      },
+      "T8": {
+        "K8_acc": 1.0,
+        "K8_n": 64,
+        "T": 8,
+        "adaptive_halt": false,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 1.0,
+            "correct": 64,
+            "n": 64
+          },
+          "8": {
+            "acc_mean": 1.0,
+            "correct": 64,
+            "n": 64
+          }
+        },
+        "discrete_T": true,
+        "hard_A_oracle": false,
+        "hard_neg_acc": 1.0,
+        "hard_neg_n": 64,
+        "n": 128,
+        "overall_acc": 1.0,
+        "positive_acc": 1.0,
+        "positive_n": 64
+      }
+    },
+    "seq_len_stats": {
+      "band": [
+        100,
+        140
+      ],
+      "edge_count_max": 50,
+      "edge_count_mean": 34.9296875,
+      "edge_count_min": 25,
+      "max": 156,
+      "mean": 110.7890625,
+      "mean_in_band": true,
+      "min": 81,
+      "n": 128,
+      "target_mean": [
+        110.0,
+        120.0
+      ]
+    },
+    "spec": {
+      "K": 8,
+      "construction": "true_er_digraph",
+      "label": "dense",
+      "n": 16,
+      "p_requested": 0.15
+    },
+    "table": {
+      "T12": {
+        "K8": 1.0,
+        "hard_neg": 1.0,
+        "overall": 1.0
+      },
+      "T8": {
+        "K8": 1.0,
+        "hard_neg": 1.0,
+        "overall": 1.0
+      }
+    }
+  },
+  "cell2": {
+    "A_hat_vs_gold": {
+      "FNR": 0.0,
+      "FPR": 0.0,
+      "comparable": "offdiag_real_nodes_vs_gold_A",
+      "compiler_clean": true,
+      "fn": 0,
+      "fp": 0,
+      "n_examples": 128,
+      "n_offdiag_cells": 126976,
+      "note": "\u00c2 = hard gate(\u03c3(E_hat)>\u03b8) vs gold adjacency from edge tokens; diagonal excluded; pad excluded. Not an eval oracle for reachability.",
+      "tn": 122276,
+      "tp": 4700
+    },
+    "cell": "cell2_matched_sparse",
+    "dataset_path": "data/sheaf_dense_context_cell2.jsonl",
+    "floors": {
+      "A_hat_fail": false,
+      "FNR": 0.0,
+      "FPR": 0.0,
+      "compiler_ok": true,
+      "hard_neg_T12": 1.0,
+      "hard_neg_T8": 1.0,
+      "hard_neg_ok": true,
+      "pass_all": true,
+      "pos_ok": true,
+      "positive_K8_T12": 1.0,
+      "positive_K8_T8": 1.0,
+      "reach_ok": true
+    },
+    "hard_neg_discipline": {
+      "R_out_bfs_dfs_assert": true,
+      "n_hard_neg_checked": 64,
+      "ok": true
+    },
+    "n_examples": 128,
+    "n_neg": 64,
+    "n_pos": 64,
+    "p_empirical_mean": 0.037014868951612906,
+    "reachability": {
+      "T12": {
+        "K8_acc": 1.0,
+        "K8_n": 64,
+        "T": 12,
+        "adaptive_halt": false,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 1.0,
+            "correct": 64,
+            "n": 64
+          },
+          "8": {
+            "acc_mean": 1.0,
+            "correct": 64,
+            "n": 64
+          }
+        },
+        "discrete_T": true,
+        "hard_A_oracle": false,
+        "hard_neg_acc": 1.0,
+        "hard_neg_n": 64,
+        "n": 128,
+        "overall_acc": 1.0,
+        "positive_acc": 1.0,
+        "positive_n": 64
+      },
+      "T8": {
+        "K8_acc": 1.0,
+        "K8_n": 64,
+        "T": 8,
+        "adaptive_halt": false,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 1.0,
+            "correct": 64,
+            "n": 64
+          },
+          "8": {
+            "acc_mean": 1.0,
+            "correct": 64,
+            "n": 64
+          }
+        },
+        "discrete_T": true,
+        "hard_A_oracle": false,
+        "hard_neg_acc": 1.0,
+        "hard_neg_n": 64,
+        "n": 128,
+        "overall_acc": 1.0,
+        "positive_acc": 1.0,
+        "positive_n": 64
+      }
+    },
+    "seq_len_stats": {
+      "band": [
+        100,
+        140
+      ],
+      "edge_count_max": 52,
+      "edge_count_mean": 36.71875,
+      "edge_count_min": 23,
+      "max": 162,
+      "mean": 116.15625,
+      "mean_in_band": true,
+      "min": 75,
+      "n": 128,
+      "target_mean": [
+        110.0,
+        120.0
+      ]
+    },
+    "spec": {
+      "K": 8,
+      "construction": "true_er_digraph",
+      "label": "matched_sparse_control",
+      "n": 32,
+      "p_requested": 0.0352,
+      "p_tune": {
+        "best_err": 1.037630625000002,
+        "p_from_edge_match": 0.035211378528225805,
+        "p_init": 0.036,
+        "p_tuned": 0.0352,
+        "probes": [
+          {
+            "E_expected": 28.9664,
+            "err": 17.333555625000006,
+            "p": 0.0292,
+            "seq_len_probe_mean": 94.35
+          },
+          {
+            "E_expected": 29.759999999999998,
+            "err": 16.164515624999993,
+            "p": 0.03,
+            "seq_len_probe_mean": 95.4
+          },
+          {
+            "E_expected": 30.9504,
+            "err": 10.660955625000007,
+            "p": 0.0312,
+            "seq_len_probe_mean": 100.725
+          },
+          {
+            "E_expected": 31.744,
+            "err": 10.466915625000002,
+            "p": 0.032,
+            "seq_len_probe_mean": 100.8
+          },
+          {
+            "E_expected": 32.934400000000004,
+            "err": 2.863355625000005,
+            "p": 0.0332,
+            "seq_len_probe_mean": 108.225
+          },
+          {
+            "E_expected": 33.728,
+            "err": 4.769315624999997,
+            "p": 0.034,
+            "seq_len_probe_mean": 106.2
+          },
+          {
+            "E_expected": 34.918400000000005,
+            "err": 1.037630625000002,
+            "p": 0.0352,
+            "seq_len_probe_mean": 111.825
+          },
+          {
+            "E_expected": 35.711999999999996,
+            "err": 3.6564093749999995,
+            "p": 0.036,
+            "seq_len_probe_mean": 107.25
+          },
+          {
+            "E_expected": 36.9024,
+            "err": 2.2318443749999943,
+            "p": 0.0372,
+            "seq_len_probe_mean": 112.725
+          },
+          {
+            "E_expected": 37.696,
+            "err": 9.175884374999997,
+            "p": 0.038,
+            "seq_len_probe_mean": 119.55
+          },
+          {
+            "E_expected": 38.8864,
+            "err": 10.254444375000004,
+            "p": 0.0392,
+            "seq_len_probe_mean": 120.45
+          },
+          {
+            "E_expected": 39.68,
+            "err": 10.898484374999994,
+            "p": 0.04,
+            "seq_len_probe_mean": 120.975
+          },
+          {
+            "E_expected": 40.870400000000004,
+            "err": 21.80204437499999,
+            "p": 0.0412,
+            "seq_len_probe_mean": 131.7
+          }
+        ],
+        "target_edge_mean": 34.9296875,
+        "target_seq_mean": 110.7890625
+      }
+    },
+    "table": {
+      "T12": {
+        "K8": 1.0,
+        "hard_neg": 1.0,
+        "overall": 1.0
+      },
+      "T8": {
+        "K8": 1.0,
+        "hard_neg": 1.0,
+        "overall": 1.0
+      }
+    }
+  },
+  "cells": {
+    "cell1_dense": {
+      "K": 8,
+      "T_values": [
+        8,
+        12
+      ],
+      "n": 16,
+      "n_neg": 64,
+      "n_per_cell": 128,
+      "n_pos": 64,
+      "p_requested": 0.15
+    },
+    "cell2_matched_sparse": {
+      "K": 8,
+      "T_values": [
+        8,
+        12
+      ],
+      "matched_to": "cell1 |E| and seq_len",
+      "n": 32,
+      "n_neg": 64,
+      "n_per_cell": 128,
+      "n_pos": 64,
+      "p_requested": 0.0352
+    }
+  },
+  "checkpoint": {
+    "ckpt_arm": "sheaf-infer-T6-d64-mlp12",
+    "ckpt_epoch": 1,
+    "ckpt_val_acc": 1.0,
+    "expected_param_count": 123206,
+    "frozen": true,
+    "gate_detach_diffusion": true,
+    "hard_A_oracle_eval": false,
+    "param_count": 123206,
+    "param_parity": {
+      "ff_baseline_params": 121218,
+      "fractal_over_ff_ratio": 1.0164002045900773,
+      "fractal_param_count": 123206,
+      "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+      "science_open": false,
+      "tolerance": 0.05,
+      "window": [
+        115157,
+        127279
+      ],
+      "within_5pct": true
+    },
+    "path": "artifacts/sheaf_infer_gate1_best.pt",
+    "retrain": false,
+    "verified_exists": true
+  },
+  "cycle": "CYCLE_SHEAF_DENSE_CONTEXT",
+  "elapsed_sec": 1.9048593044281006,
+  "generation_report": "artifacts/sheaf_dense_context_generation_report.json",
+  "generation_report_summary": {
+    "both_seq_len_in_band": true,
+    "cell1_token_len_mean": 110.7890625,
+    "cell2_p_requested": 0.0352,
+    "cell2_token_len_mean": 116.15625,
+    "p_tune": {
+      "best_err": 1.037630625000002,
+      "p_from_edge_match": 0.035211378528225805,
+      "p_init": 0.036,
+      "p_tuned": 0.0352,
+      "probes": [
+        {
+          "E_expected": 28.9664,
+          "err": 17.333555625000006,
+          "p": 0.0292,
+          "seq_len_probe_mean": 94.35
+        },
+        {
+          "E_expected": 29.759999999999998,
+          "err": 16.164515624999993,
+          "p": 0.03,
+          "seq_len_probe_mean": 95.4
+        },
+        {
+          "E_expected": 30.9504,
+          "err": 10.660955625000007,
+          "p": 0.0312,
+          "seq_len_probe_mean": 100.725
+        },
+        {
+          "E_expected": 31.744,
+          "err": 10.466915625000002,
+          "p": 0.032,
+          "seq_len_probe_mean": 100.8
+        },
+        {
+          "E_expected": 32.934400000000004,
+          "err": 2.863355625000005,
+          "p": 0.0332,
+          "seq_len_probe_mean": 108.225
+        },
+        {
+          "E_expected": 33.728,
+          "err": 4.769315624999997,
+          "p": 0.034,
+          "seq_len_probe_mean": 106.2
+        },
+        {
+          "E_expected": 34.918400000000005,
+          "err": 1.037630625000002,
+          "p": 0.0352,
+          "seq_len_probe_mean": 111.825
+        },
+        {
+          "E_expected": 35.711999999999996,
+          "err": 3.6564093749999995,
+          "p": 0.036,
+          "seq_len_probe_mean": 107.25
+        },
+        {
+          "E_expected": 36.9024,
+          "err": 2.2318443749999943,
+          "p": 0.0372,
+          "seq_len_probe_mean": 112.725
+        },
+        {
+          "E_expected": 37.696,
+          "err": 9.175884374999997,
+          "p": 0.038,
+          "seq_len_probe_mean": 119.55
+        },
+        {
+          "E_expected": 38.8864,
+          "err": 10.254444375000004,
+          "p": 0.0392,
+          "seq_len_probe_mean": 120.45
+        },
+        {
+          "E_expected": 39.68,
+          "err": 10.898484374999994,
+          "p": 0.04,
+          "seq_len_probe_mean": 120.975
+        },
+        {
+          "E_expected": 40.870400000000004,
+          "err": 21.80204437499999,
+          "p": 0.0412,
+          "seq_len_probe_mean": 131.7
+        }
+      ],
+      "target_edge_mean": 34.9296875,
+      "target_seq_mean": 110.7890625
+    }
+  },
+  "invalid_reason": null,
+  "mode": "MEASURE",
+  "prereg": {
+    "fail_closed": false,
+    "floors": {
+      "compiler_clean": {
+        "FNR_A_hat_le": 0.02,
+        "FPR_A_hat_le": 0.02
+      },
+      "hard_neg_ge": 0.95,
+      "modes": {
+        "A": "Cell1 \u00c2 fail + Cell2 \u00c2 pass \u2192 dense hallucination",
+        "C": "\u00c2 both clean, Cell1 reachability drops below floors",
+        "Encoder_Context_Ceiling": "Both \u00c2 fail \u2014 zero-shot 110+ tokens; do NOT claim architecture cannot learn; note retrain as next cycle",
+        "INVALID": "seq_len mean \u2209 [100,140] for either cell",
+        "PASS": "both cells pass all floors (MEASURE PASS; no science_open widen)"
+      },
+      "note": "Prereg floors locked before metric interpretation. Report PASS/FAIL/INVALID honestly. science_open=false regardless.",
+      "positive_reachability_ge": {
+        "T12": 0.95,
+        "T8": 0.95
+      },
+      "written_before_interpret": true
+    },
+    "invalid": false,
+    "observed": {
+      "cell1_FNR": 0.0,
+      "cell1_FPR": 0.0,
+      "cell1_hard_neg_T12": 1.0,
+      "cell1_hard_neg_T8": 1.0,
+      "cell1_pos_T12": 1.0,
+      "cell1_pos_T8": 1.0,
+      "cell2_FNR": 0.0,
+      "cell2_FPR": 0.0,
+      "cell2_hard_neg_T12": 1.0,
+      "cell2_hard_neg_T8": 1.0,
+      "cell2_pos_T12": 1.0,
+      "cell2_pos_T8": 1.0,
+      "seq_len_cell1": 110.7890625,
+      "seq_len_cell2": 116.15625
+    },
+    "pass": true,
+    "run_valid": true
+  },
+  "prereg_floors": {
+    "compiler_clean": {
+      "FNR_A_hat_le": 0.02,
+      "FPR_A_hat_le": 0.02
+    },
+    "hard_neg_ge": 0.95,
+    "modes": {
+      "A": "Cell1 \u00c2 fail + Cell2 \u00c2 pass \u2192 dense hallucination",
+      "C": "\u00c2 both clean, Cell1 reachability drops below floors",
+      "Encoder_Context_Ceiling": "Both \u00c2 fail \u2014 zero-shot 110+ tokens; do NOT claim architecture cannot learn; note retrain as next cycle",
+      "INVALID": "seq_len mean \u2209 [100,140] for either cell",
+      "PASS": "both cells pass all floors (MEASURE PASS; no science_open widen)"
+    },
+    "note": "Prereg floors locked before metric interpretation. Report PASS/FAIL/INVALID honestly. science_open=false regardless.",
+    "positive_reachability_ge": {
+      "T12": 0.95,
+      "T8": 0.95
+    },
+    "written_before_interpret": true
+  },
+  "prior_density_stress_merge": "a6665bc",
+  "run_id": "sheaf-dense-context-a5751135e8",
+  "run_valid": true,
+  "science_open": false,
+  "seq_len_band": [
+    100,
+    140
+  ],
+  "seq_len_target_mean": [
+    110.0,
+    120.0
+  ]
+}

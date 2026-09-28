@@ -197,3 +197,35 @@ Stub: `docs/CYCLE_SHEAF_STRESS_TEST.md`.
 | **science_open claim** | **Unchanged** — §6 remains **K≤16 only**. Do **not** widen OPEN. |
 | **Note** | Prior seal body (§1–§12) is **not** rewritten. Fail-closed elsewhere. |
 | **Next MEASURE** | `CYCLE_SHEAF_DENSE_CONTEXT` — band [100,140]; dense vs matched-sparse control |
+
+---
+
+## 14. MEASURE residue — CYCLE_SHEAF_DENSE_CONTEXT (append-only)
+
+| Field | Value |
+|-------|-------|
+| **Label** | MEASURE residue (not science OPEN) |
+| **Date** | 2026-09-27 |
+| **Slice** | `CYCLE_SHEAF_DENSE_CONTEXT` — band [100,140]; Cell1 dense n=16 p=0.15 vs Cell2 matched-sparse n=32 p≈0.0352; frozen Gate1 |
+| **Result** | Prereg **PASS** / attribution **PASS** (cite `artifacts/sheaf_infer_dense_context.json`) |
+| **seq_len** | Cell1 **110.79** / Cell2 **116.16** (both ∈ [100,140]) |
+| **science_open claim** | **Unchanged** — §6 remains **K≤16 only**. Do **not** widen OPEN from this MEASURE PASS. |
+| **Note** | Prior seal body (§1–§13) is **not** rewritten. Fail-closed elsewhere. Feasibility wall under sealed [45,70] remains INVALID (PR #5 / §13). |
+
+---
+
+## 15. SESSION SEAL pointer — CYCLE_SHEAF_DENSE_CONTEXT (append-only)
+
+| Field | Value |
+|-------|-------|
+| **Label** | SESSION SEAL pointer (append-only; body §1–§14 **not** rewritten) |
+| **Date** | 2026-09-27 |
+| **Slice** | `CYCLE_SHEAF_DENSE_CONTEXT` — band [100,140]; Cell1 dense n=16 p=0.15 K=8 vs Cell2 matched-sparse; frozen Gate1 |
+| **Seal** | `docs/SESSION-SEAL-SHEAF-DENSE-CONTEXT.md` |
+| **Artifact** | `artifacts/sheaf_infer_dense_context.json` |
+| **PR** | [#6](https://github.com/FractalDesignZ/geo-recurrence-testbed/pull/6) tip `e145113` → `main` |
+| **science_open (dense-context seal)** | **true** — scoped claim on that seal §6 only (dense K=8 @ [100,140] vs matched-sparse) |
+| **This seal §6 (sparse [45,70] K≤16)** | **Unchanged** — do **not** widen from dense-context OPEN |
+| **NON-claims carried** | not dense K≥16; not NL/CoT; PR #4 K20 remains MEASURE; PR #5 INVALID stands |
+| **Residue next** | Depth × Density frontier |
+| **Note** | Prior seal body (§1–§14) is **not** rewritten. Fail-closed elsewhere. |
