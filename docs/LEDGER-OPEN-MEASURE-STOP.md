@@ -4,7 +4,7 @@
 |-------|-------|
 | **Date** | 2026-09-27 (CDT) |
 | **Repo** | https://github.com/FractalDesignZ/geo-recurrence-testbed |
-| **Base after PR #11** | `7f1037a750cb078d66521dd2ca867010f0d85f7e` |
+| **Base after PR #12** | `69d61a9701b30d05af1c1b146c3d42a738c36297` |
 | **Hygiene** | PR #12 demotes stalk §6 OPEN → **MEASURE** (multi-seed fragility; not INVALID) |
 | **science_open policy** | Fail-closed. Harness never self-stamps `true`. Human seal only. |
 | **Purpose** | Single dimensional table of seals/PRs and **clear next cells**. |
@@ -30,7 +30,7 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | **PR #9** `2834256` | `CYCLE_SHEAF_NO_AUX_EDGE_RECON` | **STOP** residue | **false** | **neutral** | **OFF** (w=0) | **True** | [45,70] T16 | `STOP_LEARNING_FAIL` | `artifacts/sheaf_no_aux_edge_recon.json` |
 | **PR #10** `af152bd` | `CYCLE_SHEAF_STE_NO_AUX` | **STOP** residue | **false** | **neutral** | **OFF** | **False** (STE) | [45,70] T16; 60 ep | `STOP_LEARNING_FAIL` (unstable **1/3** seeds) | `artifacts/sheaf_ste_no_aux.json` |
 | **PR #11** `7f1037a` | Stalk untrained control | was OPEN contingent → superseded | was true §6 → demoted via PR #12 | sealed stalk | n/a | n/a | matched-OOD T∈{6,8,12,16} | `OPEN_STILL_CONTINGENT_NEEDS_MULTI_SEED` (u≈0.63; **not** bake-in) | `artifacts/stalk_untrained_control_audit.json` |
-| **PR #12** (→merge) | `CYCLE_STALK_MULTI_SEED_RECONFIRM` | **MEASURE** (demoted from OPEN) | **false** (demoted; not widened) | hard-A stalk | n/a | n/a | matched-OOD T∈{6,8,12,16}; ≥3 seeds | `OPEN_CONTINGENT_AT_RISK` → **DEMOTION MEASURE** (1/3; mean HN 0.918 / K16 0.654) | `artifacts/stalk_multi_seed_reconfirm.json` / seal §13 |
+| **PR #12** `69d61a9` | `CYCLE_STALK_MULTI_SEED_RECONFIRM` | **MEASURE** (demoted from OPEN) | **false** (demoted; not widened) | hard-A stalk | n/a | n/a | matched-OOD T∈{6,8,12,16}; ≥3 seeds | `OPEN_CONTINGENT_AT_RISK` → **DEMOTION MEASURE** (1/3; mean HN 0.918 / K16 0.654) | `artifacts/stalk_multi_seed_reconfirm.json` / seal §13 |
 
 ### 1.1 Status legend
 
