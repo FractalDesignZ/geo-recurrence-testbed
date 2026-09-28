@@ -1,0 +1,121 @@
+{
+  "cells": {
+    "DENSE_K16": {
+      "K": 16,
+      "extra_edges": [
+        16,
+        20,
+        24,
+        28,
+        32,
+        40,
+        48
+      ],
+      "intent": "empirical p \u226b ood_hops K16 sparse (\u22640.025)",
+      "n_support": [
+        20,
+        22,
+        24,
+        26,
+        28
+      ]
+    },
+    "LONG_K20": {
+      "K": 20,
+      "extra_edges": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        8
+      ],
+      "intent": "K=20 outside train and ADR OOD_HOP_VALUES",
+      "n_support": [
+        28,
+        32,
+        36,
+        40,
+        48
+      ]
+    }
+  },
+  "construction": "path_backbone",
+  "cycle": "CYCLE_STALK_RED_COMPETENT_DISSONANCE",
+  "graph_draws": 141,
+  "hop_counts": {
+    "-1": 128,
+    "16": 64,
+    "20": 64
+  },
+  "n_total": 256,
+  "n_values_used": {
+    "20": 14,
+    "22": 46,
+    "24": 11,
+    "26": 45,
+    "28": 25,
+    "32": 46,
+    "36": 13,
+    "40": 49,
+    "48": 7
+  },
+  "p_empirical": {
+    "K16": {
+      "harder_density": true,
+      "max": 0.16842105263157894,
+      "mean": 0.08414817543250037,
+      "min": 0.042328042328042326,
+      "vs_ood_hops_K16_support_max": 0.025
+    },
+    "K20": {
+      "max": 0.037037037037037035,
+      "mean": 0.020478017903565904,
+      "min": 0.00975177304964539
+    },
+    "all": {
+      "max": 0.16842105263157894,
+      "mean": 0.046789846487476014,
+      "min": 0.00975177304964539
+    }
+  },
+  "quotas": {
+    "hops": [
+      16,
+      20
+    ],
+    "n_neg": 128,
+    "n_pos_total": 128,
+    "pos_per_cell": 64
+  },
+  "reject_reasons": {
+    "dup_pos": 13
+  },
+  "science_open": false,
+  "seed": 210000,
+  "split": "stalk_red_competent_dissonance",
+  "token_len": {
+    "bound30_max_len": 257,
+    "max": 198,
+    "max_tokens_accept": 250,
+    "mean": 99.1171875,
+    "min": 66,
+    "note": "RED substrate \u2014 not matched-OOD [45,70] band"
+  },
+  "train_priors_pushed": {
+    "ADR_OOD_HOP_VALUES": [
+      8,
+      12,
+      16
+    ],
+    "K16_denser_than_ood_hops": true,
+    "K20_outside_ADR_OOD": true,
+    "K_train_max": 6
+  },
+  "verify_ok": true,
+  "y_counts": {
+    "0": 128,
+    "1": 128
+  }
+}
