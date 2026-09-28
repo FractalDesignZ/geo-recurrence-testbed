@@ -223,7 +223,7 @@ Stub: `docs/CYCLE_SHEAF_STRESS_TEST.md`.
 | **Slice** | `CYCLE_SHEAF_DENSE_CONTEXT` — band [100,140]; Cell1 dense n=16 p=0.15 K=8 vs Cell2 matched-sparse; frozen Gate1 |
 | **Seal** | `docs/SESSION-SEAL-SHEAF-DENSE-CONTEXT.md` |
 | **Artifact** | `artifacts/sheaf_infer_dense_context.json` |
-| **PR** | [#6](https://github.com/FractalDesignZ/geo-recurrence-testbed/pull/6) tip `e145113` → `main` |
+| **PR** | [#6](https://github.com/FractalDesignZ/geo-recurrence-testbed/pull/6) tip `e145113`; merge `353bd61` → `main` |
 | **science_open (dense-context seal)** | **true** — scoped claim on that seal §6 only (dense K=8 @ [100,140] vs matched-sparse) |
 | **This seal §6 (sparse [45,70] K≤16)** | **Unchanged** — do **not** widen from dense-context OPEN |
 | **NON-claims carried** | not dense K≥16; not NL/CoT; PR #4 K20 remains MEASURE; PR #5 INVALID stands |

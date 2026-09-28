@@ -10,7 +10,7 @@
 | **Branch** | `cycle/sheaf-dense-context` |
 | **MEASURE SHA (pre-merge tip)** | `e145113` (`e14511360f4039fb4425e0fe873a171ed158db3d`) |
 | **Merge target** | PR #6 → `main` |
-| **Merge SHA (post-merge)** | _stamp after merge_ |
+| **Merge SHA (post-merge)** | `353bd61` (`353bd6197fb61e0eed8475d9d13e1fcd5648cb6d`) |
 | **Prior** | PR #5 merge `a6665bc` (DENSITY_STRESS INVALID); sheaf §6 sparse [45,70] K≤16 OPEN unchanged |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
@@ -118,7 +118,7 @@ Cite: `artifacts/sheaf_infer_dense_context.json` → `prereg` / `attribution` / 
 | **Claim** | Learned cellular sheaf inference + discrete stalk diffusion show zero-shot generalization to seq_len∈[100,140] and dense directed ER (p=0.15, n=16, K=8) vs sequence-matched sparse control, with Â FPR=0, FNR=0, hard-neg=1.000, K8=1.000 at T∈{8,12} on frozen Gate1 ckpt. |
 | **Substrate** | Band [100,140]; Cell1 true ER digraph n=16 p=0.15 K=8; Cell2 matched-sparse n=32 p=0.0352; discrete T∈{8,12}; frozen `artifacts/sheaf_infer_gate1_best.pt`; no hard A at eval |
 | **Evidence** | §2 tables; `artifacts/sheaf_infer_dense_context.json` |
-| **SHAs** | MEASURE pre-merge tip `e145113`; merge via PR [#6](https://github.com/FractalDesignZ/geo-recurrence-testbed/pull/6) → `main` (stamp post-merge) |
+| **SHAs** | MEASURE pre-merge tip `e145113`; merge commit `353bd61` via PR [#6](https://github.com/FractalDesignZ/geo-recurrence-testbed/pull/6) → `main` |
 
 Do **not** generalize this OPEN beyond the cited cells, K=8, band [100,140], and frozen Gate1 architecture. Does **not** widen the sparse [45,70] K≤16 OPEN.
 
@@ -128,7 +128,7 @@ Do **not** generalize this OPEN beyond the cited cells, K=8, band [100,140], and
 
 - Artifact harness `science_open: false`; human seal opens **only** §6.
 - No A oracle at eval; gold edges for Â FPR/FNR comparison only (compiler hygiene).
-- Evidence = cited artifact paths; tip `e145113` / PR #6 → `main`.
+- Evidence = cited artifact paths; tip `e145113` / merge `353bd61` / PR #6 → `main`.
 - Outside §6 claim: **fail-closed**.
 - Do **not** rewrite sheaf seal §1–§14 body; append-only pointer only.
 - PR #5 INVALID stands; PR #4 K20 remains MEASURE.
