@@ -167,18 +167,38 @@ pytest -q tests/test_stalk_sheaf_energy_fo_probe.py
 - No tropical / orientation reopen
 - No `science_open=true`
 
-## Results (fill after run)
+## Results (after run)
 
 | Field | Value |
 |-------|-------|
 | **Artifact** | `artifacts/stalk_sheaf_energy_fo_probe.json` |
-| **Cycle verdict** | *(pending)* |
+| **Log** | `artifacts/stalk_sheaf_energy_fo_probe_run.log` |
+| **Cycle verdict** | **`ENERGY_NULL`** |
 | **science_open** | **false** |
-| **E formula** | `E_cob = mean_m Σ_{(u→v)} ‖H_m[u]−H_m[v]‖₂² / \|E\|` (Id restriction) |
-| **AUROC E_cob→FO** | *(pending)* |
-| **FO concentration** | *(pending)* |
-| **energy_refuse FO/rem22** | *(pending)* |
-| **Matched-OOD Δ** | *(pending)* |
-| **vs #35 cert** | *(pending)* |
+| **E formula** | `E_cob = mean_m sum_(u->v) ||H_m[u]-H_m[v]||_2^2 / max(|E|,1)` (Id restriction; A2) |
+| **Secondary** | `E_dir` mass-field Dirichlet; `E_align` target-cos Dirichlet (A4) |
+| **AUROC E_cob->FO vs OK U FC** | **0.3173** (primary) |
+| **AUROC E_cob->FO vs OK_HN** | **0.7958** (secondary; FO>OK but FC dominates) |
+| **AUROC rem22 vs OK U FC** | **0.2242** |
+| **FO concentration** | refused intersect FO **0/45**; FO_cap_refused **0.000**; r(E_cob, FO-proxy) **-0.210** |
+| **energy_refuse FO/rem22** | **0/45** / **0/22**; n_refused=1; tau(matched q90)=**56.955** |
+| **Matched-OOD Delta** | overall **-0.0062**; HN **+0.0000**; K16 **+0.0000** |
+| **vs #35 cert** | cert FO_cap_dirty=1.0 / 45/45; energy != cert -> **ENERGY_NULL** |
+| **Prereg SHA** | `3dd450a7592c6e5296e0eaca45fe1b3e6386685b` |
 | **Base SHA** | `73a458a` |
+| **Elapsed** | 24.1s |
 | **Train / sheaf** | **none** |
+
+### Stratum medians `E_cob` (ens-mean Id coboundary)
+
+| Stratum | n | median E_cob |
+|---------|---|--------------|
+| OK_HN | 16 | **17.162** |
+| FO_HN | 45 | **18.871** |
+| rem-22 | 22 | **18.478** |
+| FO_KILLED | 23 | **19.108** |
+| FC_HN | 179 | **19.928** |
+
+### Reading
+
+Identity-restriction coboundary energy on sealed stalk `final_states` does **not** concentrate on hop-OOD FAIL_OPEN the way #35 dirty certificates do. Primary AUROC(E_cob->FO vs OK U FC)=**0.317** is **below chance** (FC median E_cob **19.93** > FO **18.87**). Matched-OOD q90 refuse (tau~57.0) fires on almost no FO (0/45; 0/22 rem-22). Matched collateral ~0 under this sparse refuse is vacuous, not CERT_FO_CATCH. FO vs OK alone AUROC~0.80 is a small-N OK contrast and does **not** override the OK U FC primary or the refuse null. Prefer #14+#22 `prob_mean` on matched-OOD; keep #35 certificates for FO catch. Do **not** open sheaf unsupervised / restriction-map learning from this null. Do **not** widen section 22. Still **MEASURE**.
