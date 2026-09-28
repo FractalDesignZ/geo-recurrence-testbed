@@ -143,7 +143,7 @@ Priority: if collateral harm fires → verdict **`COLLATERAL_HARM`**. Still **ME
 | **Log** | `artifacts/stalk_tropical_attention_probe_run.log` |
 | **Prereg SHA** | `30f57de` |
 | **Harness SHA** | `ffd1990` |
-| **Results SHA** | _(stamp on results commit)_ |
+| **Results SHA** | `698112f54951a47d53e0a859cf3c64039281aac0` |
 | **Cycle verdict** | **`COLLATERAL_HARM`** |
 | **science_open** | **false** (not widened; §22 unchanged) |
 | **Tropical definition used** | scoped ens **`logit_max`** (primary) + **`beta_inf_member`** (secondary); **not** in-attn rewrite |

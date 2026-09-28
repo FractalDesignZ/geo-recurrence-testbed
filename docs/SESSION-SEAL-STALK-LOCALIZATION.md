@@ -832,7 +832,7 @@ Prior seal body + §13–§32 are **not** rewritten. This §33 is append-only ME
 | **Cycle note** | `docs/CYCLE_STALK_TROPICAL_ATTENTION_PROBE.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_tropical_attention_probe` |
 | **Base** | `main` `86d1ff0` (after PR #35) |
-| **Prereg / harness / results** | `30f57de` / `ffd1990` / _(results SHA stamp)_ |
+| **Prereg / harness / results** | `30f57de` / `ffd1990` / `698112f54951a47d53e0a859cf3c64039281aac0` |
 | **Cycle verdict** | **`COLLATERAL_HARM`** |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
 | **Tropical definition** | scoped ens **`logit_max`** (`score_c = max_m L[m,c]`) + **`beta_inf_member`**; **not** in-attn MHA rewrite |
