@@ -453,6 +453,24 @@ python -m reachability_gen.run_stalk_swa_persist
 
 Artifact: `artifacts/stalk_swa_persist.json`. See `docs/CYCLE_STALK_SWA_PERSIST.md`.
 
+
+## Cycle: STALK_BAG_DIVERSITY (MEASURE_LIFT)
+
+After #26 multi-hyp STOP (heads collapsed) and audit showing #22 lift rides on
+disagreement: train **DGE-style independent** hard-Â stalk bag (separate params;
+bootstrap + EDGE_KEEP_P=0.75 graph-subspace; members **0..4**). Eval `prob_mean`.
+Bag ens HN **0.821** FAIL / K16 **0.788** PASS; lifts vs bag singles
+(ΔHN/K16 **+0.101 / +0.250**) → **`MEASURE_LIFT`**. Pairwise disagree **0.431**
+≥ #22 **0.162** (`DISAGREE_GE_REF`) but far below #22/#14 accuracy. Not multi-hyp,
+not soft distill, not SWA-only. §22 **not** widened. `science_open=false`.
+
+```bash
+python -m reachability_gen.run_stalk_bag_diversity
+# or: reachability-stalk-bag-diversity
+```
+
+Artifact: `artifacts/stalk_bag_diversity.json`. See `docs/CYCLE_STALK_BAG_DIVERSITY.md`.
+
 ## Cycle: STALK_EPISTEMIC_DISAGREEMENT (MEASURE → STOP)
 
 After #22/#24 ens OPEN and #25 SWA MEASURE: (1) audit whether #22 lift rides on
