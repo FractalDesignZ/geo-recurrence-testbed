@@ -776,6 +776,7 @@ Prior seal body + §13–§30 are **not** rewritten. This §31 is append-only ME
 |-------|-------|
 | **Cycle** | `CYCLE_STALK_HOP_OOD_OVERLAY_PARK` |
 | **Cycle note** | `docs/CYCLE_STALK_HOP_OOD_OVERLAY_PARK.md` |
+| **PR** | **#34** |
 | **Base** | `main` `a50894d` (after PR #33) |
 | **Verdict** | **`PARK_HOP_OOD_OVERLAY`** after `LOCAL_SOUND_WALL` |
 | **science_open** | **false** for this cycle; no widening; existing scoped §22 ensemble OPEN unchanged |
