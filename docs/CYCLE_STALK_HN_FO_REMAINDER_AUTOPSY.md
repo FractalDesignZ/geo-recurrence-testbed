@@ -162,4 +162,46 @@ Priority: collateral harm → `COLLATERAL_HARM`. Still **MEASURE**, never OPEN.
 
 ## Results (this run — cite artifact)
 
-_Pending harness run._
+| Field | Value |
+|-------|-------|
+| **Artifact** | `artifacts/stalk_hn_fo_remainder_autopsy.json` |
+| **Log** | `artifacts/stalk_hn_fo_remainder_autopsy_run.log` |
+| **Prereg SHA** | `bd7e440` |
+| **Harness SHA** | `a098584` |
+| **Results SHA** | _(stamped after results commit)_ |
+| **Cycle verdict** | **`LOCAL_SOUND_WALL`** |
+| **science_open** | **false** (not widened; §22 unchanged) |
+| **Residue update** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL/LOCAL_SOUND_WALL`** |
+| **Gate overlay** | **not run** (best sound coverage 5/22 < 8) |
+| **Elapsed** | ~0.09 s CDT |
+| **Cite #32 replicate** | rem=22 / kil=23 / union=45 exact |
+
+### Contrast medians (ood_hops T16)
+
+| Feature | FO_REMAINDER (22) | FO_KILLED (23) | OK_HN (16) | FC_HN (179) |
+|---------|-------------------|----------------|------------|-------------|
+| **outdeg_s** | **1.5** | **0** | 2 | 1 |
+| **indeg_t** | 1 | 2 | **0** | 1 |
+| **n_reach_from_s** | **19** | **1** | **19** | **19** |
+| **max_dist_from_s** | **6** | **0** | 6 | 6 |
+| **n_reach_to_t** | 2 | **27** | 1 | 6 |
+| frac_reach_from_s | 0.594 | 0.031 | 0.594 | 0.594 |
+
+Remainder is **not** the isolated-source cluster (that was FO_KILLED). Remainder out-closure overlaps OK_HN/FC_HN (multi-hop unpaid hard-negs). Characterization tag: `DIFFUSE_MULTI_HOP_LIKE_OK_FC`.
+
+### Local-sound cut search (gate features only)
+
+| Cut | Sound (viol=0)? | Remainder coverage | Actionable (≥8/22)? |
+|-----|-----------------|--------------------|---------------------|
+| `C_outdeg0` | yes (59 trig) | **0/22** (already applied) | no |
+| `C_indeg_t0` | yes (56 trig) | **0/22** | no |
+| `C_deadend_nbrs` | yes (15 trig) | **5/22** | no |
+| `C_outdeg1_deadend` | yes (15 trig) | **5/22** | no |
+
+Best sound coverage **5/22 < 8** → **no overlay**. `indeg(t)==0` covers 16/16 OK_HN but **0** remainder (remainder have indeg_t≥1).
+
+### Reading (fail-closed)
+
+1. **LOCAL_SOUND_WALL:** no local-sound constraint computable from Â without full-graph BFS covers ≥8/22 of the outdeg>0 FO remainder.
+2. The #32 outdeg0 gate already extracted the local-incidence half of the #31 isolated-source cluster. Remaining 22 require **multi-hop** reasoning (median `|R_out(s)|=19`, `max_dist=6`).
+3. **Stop overlay chase** for this FO core. Prefer #14 + #22 on matched-OOD only. Do **not** widen §22. Do **not** claim hop-OOD OPEN. Do **not** BFS-gate. No train. Corridor not parked — MEASURE wall only.

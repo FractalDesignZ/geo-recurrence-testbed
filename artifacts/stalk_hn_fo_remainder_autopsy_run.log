@@ -1,0 +1,4 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[fo-remainder-autopsy] offline on 480 ood_hops; rem=22 kil=23 OK=16 FC=179
+[fo-remainder-autopsy] verdict=LOCAL_SOUND_WALL residue=HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL/LOCAL_SOUND_WALL elapsed=0.09s -> artifacts/stalk_hn_fo_remainder_autopsy.json
