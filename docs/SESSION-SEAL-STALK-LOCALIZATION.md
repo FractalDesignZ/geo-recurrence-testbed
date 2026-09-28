@@ -12,7 +12,7 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-27 CDT):** live claim = **`MEASURE` / demoted** (see **§13**). Header/`§6` `science_open=true` is **historical** single-seed seal only — not a live OPEN. Measurement §12 = `OPEN_CONTINGENT_AT_RISK`; demotion prefers honesty over lonely OPEN. **Not INVALID** (PR #11 untrained mid).
+**Current status (2026-09-28 CDT):** live claim = **`MEASURE` / demoted** (see **§13**); best corridor = **PR #14 MEASURE_STILL** accepted (**§19 PARK_ACCEPT_MEASURE**). Header/`§6` `science_open=true` is **historical** single-seed seal only — not a live OPEN. Select/curriculum chase **CLOSED**. **Not INVALID** (PR #11 untrained mid). `science_open=false`.
 
 Fail-closed outside the single claim in §6. Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
@@ -395,3 +395,26 @@ Wider seed panel under frozen #14 dips mean HN below floor and widens K16 std (s
 
 Prior seal body + §13 DEMOTION + §14 MEASURE_STILL + §15/§16/§17 STOP_FRAGILE are **not** rewritten. This §18 is append-only MEASURE_ENVELOPE.
 
+
+## 19. PARK — accept #14 MEASURE close (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_PARK_ACCEPT_MEASURE` |
+| **Spec** | `docs/AUDIT-STALK-STABILIZE-V3.md` §3 |
+| **Note** | `docs/CYCLE_STALK_PARK_ACCEPT_MEASURE.md` |
+| **Base** | `main` `0a69b3f` (after PR #19) |
+| **Verdict** | **`PARK_ACCEPT_MEASURE`** |
+| **science_open** | **false** (not widened) |
+| **Accepted corridor** | PR #14 `61314a0` hard-Â stalk **0.5·HN+0.5·overall** — **MEASURE_STILL** (HN **0.957±0.061** / K16 **0.863±0.143** PASS; seed **2/5**) |
+| **Seed-fragile** | Cite #14 **2/5** + #18 envelope **3/10** (mean HN 0.935 FAIL) |
+| **Closed** | V2/V3/ObjV1 **STOP_FRAGILE**; select / curriculum / seed-panel chase **PARKED** |
+| **Training** | **None** this cycle |
+
+### 19.1 Walk-away claim
+
+Hard-Â stalk **#14** remains the best stabilize MEASURE corridor. Means cleared floors; seed fraction did not (≥4/5). Later select mixes and train curriculum inverted or missed floors. Wider seed panel under frozen #14 confirms fragility. Prefer honesty: **accept MEASURE_STILL**, park further stalk harden until an **orthogonal** cell. Do **not** reopen V4 select. `science_open=false`.
+
+### 19.2 Non-rewrite rule
+
+Prior seal body + §13 DEMOTION + §14 MEASURE_STILL + §15/§16/§17 STOP_FRAGILE + §18 MEASURE_ENVELOPE are **not** rewritten. This §19 is append-only PARK_ACCEPT_MEASURE.

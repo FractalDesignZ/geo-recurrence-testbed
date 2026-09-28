@@ -404,6 +404,17 @@ python -m reachability_gen.run_stalk_stabilize_v2
 Artifact: `artifacts/stalk_stabilize_v2.json`. See `docs/CYCLE_STALK_STABILIZE_V2.md`.
 
 
+## Cycle: STALK_PARK_ACCEPT_MEASURE (MEASURE close)
+
+Honest park after AUDIT V3 (PR #19). **No new training.** Accept hard-Â stalk
+**PR #14** recipe (0.5·HN+0.5·overall, 60ep, uniform ID) as best MEASURE
+corridor — **MEASURE_STILL** (HN 0.957 / K16 0.863 PASS; seed **2/5**).
+Seed-fragile (#14 2/5; #18 envelope 3/10). V2/V3/ObjV1 **STOP_FRAGILE**.
+Select / curriculum / seed-panel chase **CLOSED**. `science_open=false`.
+
+See `docs/CYCLE_STALK_PARK_ACCEPT_MEASURE.md` / seal §19 / ledger priority 5 done.
+Next active = orthogonal aux ablation (ledger priority 6) — not V4 select.
+
 ## Cycle: STALK_SEED_STABILITY (MEASURE → MEASURE_ENVELOPE)
 
 Freeze PR #14 recipe exactly (0.5/0.5 select, 60ep, hard-Â, uniform ID). **NO**
