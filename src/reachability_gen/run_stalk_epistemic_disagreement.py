@@ -632,9 +632,28 @@ def _audit_bag(
             bins["low_disagreement"]["delta"]["K16"],
         ),
     }
+    # When median disagreement is 0, high-bin includes everyone → fall back to any vs none
+    lift_gap_any_none = {
+        "overall": _safe_sub(
+            bins["any_disagreement"]["delta"]["overall"],
+            bins["no_disagreement"]["delta"]["overall"],
+        ),
+        "hard_neg": _safe_sub(
+            bins["any_disagreement"]["delta"]["hard_neg"],
+            bins["no_disagreement"]["delta"]["hard_neg"],
+        ),
+        "K16": _safe_sub(
+            bins["any_disagreement"]["delta"]["K16"],
+            bins["no_disagreement"]["delta"]["K16"],
+        ),
+    }
+    use_any_none = bins["low_disagreement"]["n"] == 0 or (
+        med == med and med == 0.0
+    )
+    gap_for_verdict = lift_gap_any_none if use_any_none else lift_gap
 
     rides = any(
-        lift_gap[k] == lift_gap[k] and lift_gap[k] >= AUDIT_DELTA_EPS
+        gap_for_verdict[k] == gap_for_verdict[k] and gap_for_verdict[k] >= AUDIT_DELTA_EPS
         for k in ("overall", "hard_neg", "K16")
     )
 
@@ -680,6 +699,8 @@ def _audit_bag(
         "deltas_ens_minus_singles_mean": deltas,
         "bins": bins,
         "lift_gap_high_minus_low": lift_gap,
+        "lift_gap_any_minus_none": lift_gap_any_none,
+        "rides_split": "any_vs_none" if use_any_none else "median_high_vs_low",
         "rides_on_disagreement": rides,
         "audit_delta_eps": AUDIT_DELTA_EPS,
         "pairwise_disagreement_matrix": pair_matrix,
@@ -874,8 +895,8 @@ def run_cycle(
     hyp_matched_by_T: dict[str, list[dict[str, float]]] = {str(T): [] for T in T_VALUES}
     for i, model in enumerate(hyp_models):
         seed = train_seeds[i] if i < len(train_seeds) else i
-        matched = _eval_all_T(model, ood_rows, max_nodes=max_nodes, T_values=T_VALUES)
-        deg = _eval_all_T(model, deg_rows, max_nodes=max_nodes, T_values=T_VALUES)
+        matched = _eval_all_T(model, ood_rows, max_nodes=max_nodes)
+        deg = _eval_all_T(model, deg_rows, max_nodes=max_nodes)
         t16 = matched[str(FOCUS_T)]
         cell = {
             "seed": seed,
@@ -958,7 +979,7 @@ def run_cycle(
 
     # References: #14 seed0 + ensemble (already audited)
     ref_pr14, _ = _load_model_from_ckpt(_ckpt_for_seed(PR14_REF_SEED), max_nodes)
-    ref_matched = _eval_all_T(ref_pr14, ood_rows, max_nodes=max_nodes, T_values=T_VALUES)
+    ref_matched = _eval_all_T(ref_pr14, ood_rows, max_nodes=max_nodes)
     ref_t16 = ref_matched[str(FOCUS_T)]
     pr14_ref = {
         "seed": PR14_REF_SEED,

@@ -12,7 +12,7 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25) — not single-model OPEN; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
+**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24) — #22 lift rides on disagreement; structured heads collapsed; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
 
 Fail-closed outside the live scoped claim in **§22** (hist. §6 demoted). Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
@@ -549,4 +549,31 @@ Select/curriculum stay CLOSED. Distill remains STOP.
 
 Prior seal body + §13–§22 are **not** rewritten. This §23 is append-only MEASURE
 (`science_open=false`).
+
+## 24. Epistemic disagreement — MEASURE/STOP (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_EPISTEMIC_DISAGREEMENT` |
+| **Artifact** | `artifacts/stalk_epistemic_disagreement.json` |
+| **Cycle note** | `docs/CYCLE_STALK_EPISTEMIC_DISAGREEMENT.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_epistemic_disagreement` |
+| **Base** | `main` `b051e15` (after PR #25 SWA) |
+| **Prereg / results** | `daaeb21` / *(this merge)* |
+| **Audit verdict** | **`AUDIT_LIFTS_ON_DISAGREEMENT`** |
+| **Train verdict** | **`STOP`** |
+| **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
+| **Audit** | #14/#18 ens T16 pairwise disagree **0.162**; epistemic H **0.192** > aleatoric **0.080**; median lift_gap Δov/HN/K16 **+0.175 / +0.164 / +0.221** |
+| **Multi-hyp** | H=3; CE−λ·JS (λ=0.5); seeds **0,1,2**; mean HN **0.942 FAIL** / K16 **0.712 FAIL**; within-head disagree **~0.009** (collapsed); 0/3 |
+
+### 24.1 Reading
+
+#22 lift **rides on disagreement**. Multi-hyp structured diversity did **not**
+persist (heads collapsed; both floors miss vs #14 seed0). Prefer #14 + #22
+overlay. Distill STOP; SWA MEASURE; select/curriculum CLOSED.
+
+### 24.2 Non-rewrite rule
+
+Prior seal body + §13–§23 are **not** rewritten. This §24 is append-only
+MEASURE/STOP (`science_open=false`).
 

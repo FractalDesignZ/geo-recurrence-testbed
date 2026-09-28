@@ -135,4 +135,59 @@ Writes per seed:
 
 ## Results (this run — cite artifact)
 
-*(filled after MEASURE)*
+| Field | Value |
+|-------|-------|
+| **Artifact** | `artifacts/stalk_epistemic_disagreement.json` |
+| **Log** | `artifacts/stalk_epistemic_disagreement_run.log` |
+| **Ckpts** | `fractal_core_stalk_epistemic_disagreement_seed{0,1,2}_best.pt` |
+| **Audit verdict** | **`AUDIT_LIFTS_ON_DISAGREEMENT`** |
+| **Train verdict** | **`STOP`** |
+| **science_open** | **false** (not widened; §22 ensemble scope unchanged) |
+| **Elapsed** | ~440 s train+audit (~7.3 min CDT); re-eval ~38 s |
+| **Prereg SHA** | `daaeb21` (committed before runs) |
+| **Floors (multi-hyp mean)** | HN **0.942 FAIL** (≥0.95); K16 **0.712 FAIL** (≥0.75); seed PASS **0/3** |
+
+### Part A — Matched-OOD T16 disagreement audit
+
+| Arm | pair disagree | epistemic H | aleatoric H | ens ov/HN/K16 | singles mean ov/HN/K16 | Δ ens−sing | rides? |
+|-----|---------------|-------------|-------------|---------------|------------------------|------------|--------|
+| **#14/#18 ens (n=10)** | **0.162** | **0.192** | 0.080 | **0.996 / 1.000 / 1.000** | 0.903 / 0.935 / 0.792 | +0.093 / +0.065 / +0.208 | **YES** (median) |
+| SWA bag (n=5) | 0.162 | 0.157 | 0.054 | 0.952 / 0.938 / 0.975 | 0.893 / 0.867 / 0.910 | +0.059 / +0.071 / +0.065 | **YES** (any↔none; med=0) |
+| Multi-hyp within-head (mean) | **0.009** | ~0.000 | ~0.12 | — | — | — | collapsed |
+
+**Lift × disagreement (#14/#18 ens; median split):**
+
+| Bin | n | ens overall | singles mean overall | Δ overall | Δ HN | Δ K16 |
+|-----|---|-------------|----------------------|-----------|------|-------|
+| High disagreement | 254 | **0.992** | 0.817 | **+0.175** | **+0.164** | **+0.221** |
+| Low disagreement | 226 | 1.000 | 1.000 | 0.000 | 0.000 | 0.000 |
+| **lift_gap (high−low)** | — | — | — | **+0.175** | **+0.164** | **+0.221** |
+
+All gaps ≫ 0.02 → **#22 lift rides on disagreement**. On zero-disagreement examples, singles already perfect; ens adds nothing. On disagreeing examples, ens recovers ~17–22 pts vs singles mean.
+
+Disagreement-by-T (ens): T6 0.305 / T8 0.278 / T12 0.244 / T16 0.162 (falls as horizon opens).
+
+### Part B — Multi-hyp train @ matched-OOD T16
+
+| Arm | overall | hard-neg | K16 |
+|-----|---------|----------|-----|
+| Multi-hyp mean±std (n=3) | 0.812±0.149 | **0.942±0.058** | **0.712±0.383** |
+| #14 seed0 (re-eval) | **0.975** | **1.000** | **0.863** |
+| Ensemble `prob_mean` | **0.996** | **1.000** | **1.000** |
+| SWA bag `prob_mean` | 0.952 | 0.938 | 0.975 |
+| Δ multi-hyp − #14 seed0 | −0.162 | **−0.058** | **−0.150** |
+
+| Seed | ov / HN / K16 | within-head disagree | prereg |
+|------|---------------|----------------------|--------|
+| 0 | 0.846 / 0.883 / 0.875 | 0.017 | FAIL (HN) |
+| 1 | 0.650 / **1.000** / 0.275 | 0.001 | FAIL (K16) |
+| 2 | 0.942 / 0.942 / **0.988** | 0.010 | FAIL (HN) |
+| **mean** | **0.812 / 0.942 / 0.712** | **0.009** | **0/3** |
+
+Cross-seed bag of the 3 multi-hyp ckpts (secondary): ov 0.902 / HN 0.988 / K16 0.912 — again lifts via **across-seed** disagreement (pair rate 0.301), not within-head structure.
+
+### Reading (fail-closed)
+
+1. **Audit:** #22 `prob_mean` lift is **disagreement-dominated**. Epistemic-style entropy (0.192) exceeds aleatoric (0.080). Median-split lift gaps +0.16–0.22. SWA bag shows the same any↔none pattern but does not clear HN floors as a bag.
+2. **Train:** Multi-hyp H=3 + λ·JS **collapsed** (within-head disagree ≈0.009; train JS→0). Mean misses both floors and loses to #14 seed0 on HN and K16 → **`STOP`**. Structured head diversity did **not** become a durable single-location substitute for the ensemble map.
+3. Prefer #14 MEASURE_STILL + #22 ens overlay. Distill STOP; SWA MEASURE; select/curriculum CLOSED; **§22 not widened**. `science_open=false`.
