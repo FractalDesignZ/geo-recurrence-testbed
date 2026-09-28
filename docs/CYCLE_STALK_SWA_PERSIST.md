@@ -104,12 +104,47 @@ Writes per seed:
 - No `science_open=true` from harness
 - No claim that SWA alone upgrades MEASURE → OPEN or widens §22
 
-## Results (fill after runs)
+## Results (this run — cite artifact)
 
 | Field | Value |
 |-------|-------|
 | **Artifact** | `artifacts/stalk_swa_persist.json` |
 | **Log** | `artifacts/stalk_swa_persist_run.log` |
-| **Verdict** | *(pending)* |
-| **science_open** | **false** |
-| **Prereg SHA** | *(pending — commit before runs)* |
+| **Ckpts** | `fractal_core_stalk_swa_persist_seed{i}_{swa,select}.pt` (i=0..4) |
+| **Verdict** | **`MEASURE`** |
+| **science_open** | **false** (not widened; §22 ensemble scope unchanged) |
+| **Elapsed** | ~722 s (~12.0 min CDT) |
+| **Prereg SHA** | `6089d31` (committed before runs) |
+| **Floors (SWA mean)** | HN **0.867 FAIL** (≥0.95); K16 **0.910 PASS** (≥0.75); seed PASS **2/5** |
+
+### Matched-OOD T16 — SWA vs within-run select vs ensemble vs #14
+
+| Arm | overall | hard-neg | K16 |
+|-----|---------|----------|-----|
+| SWA mean±std (n=5) | 0.893±0.050 | **0.867±0.141** | **0.910±0.085** |
+| Within-run #14 select mean±std | 0.929±0.035 | **0.957±0.061** | 0.863±0.143 |
+| Ensemble `prob_mean` (re-eval) | **0.996** | **1.000** | **1.000** |
+| #14 seed0 (re-eval) | **0.975** | **1.000** | **0.863** |
+| Δ SWA − select | −0.036 | **−0.090** | **+0.047** |
+| Δ SWA − ensemble | −0.103 | −0.133 | −0.090 |
+
+### Per-seed SWA vs select matched-OOD T16
+
+| Seed | SWA ov / HN / K16 | select ov / HN / K16 | SWA prereg |
+|------|-------------------|----------------------|------------|
+| 0 | 0.840 / 0.758 / 0.813 | 0.975 / **1.000** / 0.863 | FAIL (HN) |
+| 1 | 0.940 / **1.000** / 0.863 | 0.919 / **1.000** / 0.875 | **PASS** |
+| 2 | 0.838 / 0.688 / **1.000** | 0.915 / 0.871 / 0.975 | FAIL (HN) |
+| 3 | 0.927 / **1.000** / 0.875 | 0.885 / **1.000** / 0.625 | **PASS** |
+| 4 | 0.923 / 0.888 / **1.000** | 0.952 / 0.913 / 0.975 | FAIL (HN) |
+| **mean±std** | **0.893±0.050 / 0.867±0.141 / 0.910±0.085** | **0.929±0.035 / 0.957±0.061 / 0.863±0.143** | **2/5** |
+
+### Reading (fail-closed)
+
+SWA (Polyak from ep31) **raises K16** vs within-run #14 select (+0.047) but
+**drops HN** (−0.090) — same HN↔K16 trade class as V2/V3 inverted fragility.
+Floors miss on HN → not PASS_CANDIDATE. K16 ≥ select mean → verdict **`MEASURE`**
+(partial persist). Ensemble overlay still dominates (HN/K16=1.000). Soft distill
+remains STOP; select/curriculum stay CLOSED; §22 ensemble-at-eval scope **not**
+widened. Prefer honesty: one-train SWA is not a single-model substitute for the
+ensemble map. `science_open=false`.

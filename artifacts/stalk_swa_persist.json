@@ -1,0 +1,2182 @@
+{
+  "architecture": {
+    "broadcast_c": false,
+    "discrete_T_values": [
+      6,
+      8,
+      12,
+      16
+    ],
+    "hard_A_ij_mask": true,
+    "intermediates": 0,
+    "local_potential": true,
+    "probe_slot": "t",
+    "soft_ACT": false,
+    "stalk_slot": "s"
+  },
+  "base_sha": "6089d313f3f57674aeee41920050fe05e00a0120",
+  "by_T_swa_mean_std": {
+    "12": {
+      "K16": {
+        "mean": 0.54,
+        "std": 0.47569028789749324
+      },
+      "hard_neg": {
+        "mean": 0.8733333333333334,
+        "std": 0.13983497217951038
+      },
+      "overall": {
+        "mean": 0.8266666666666668,
+        "std": 0.10218319945079037
+      }
+    },
+    "16": {
+      "K16": {
+        "mean": 0.9099999999999999,
+        "std": 0.08542174781634944
+      },
+      "hard_neg": {
+        "mean": 0.8666666666666666,
+        "std": 0.14126782090137238
+      },
+      "overall": {
+        "mean": 0.8933333333333333,
+        "std": 0.05039772371402855
+      }
+    },
+    "6": {
+      "K16": {
+        "mean": 0.2,
+        "std": 0.44025915663390813
+      },
+      "hard_neg": {
+        "mean": 0.9033333333333333,
+        "std": 0.10372405967544636
+      },
+      "overall": {
+        "mean": 0.6295833333333334,
+        "std": 0.09681785949227892
+      }
+    },
+    "8": {
+      "K16": {
+        "mean": 0.21000000000000002,
+        "std": 0.44171186875609314
+      },
+      "hard_neg": {
+        "mean": 0.8783333333333333,
+        "std": 0.1408801697266944
+      },
+      "overall": {
+        "mean": 0.6637500000000001,
+        "std": 0.10379726165837795
+      }
+    }
+  },
+  "compare_T16": {
+    "deltas_swa_minus_ensemble": {
+      "K16": -0.09000000000000008,
+      "hard_neg": -0.13333333333333341,
+      "overall": -0.10250000000000004
+    },
+    "deltas_swa_minus_pr14_seed0": {
+      "K16": 0.047499999999999876,
+      "hard_neg": -0.13333333333333341,
+      "overall": -0.08166666666666667
+    },
+    "deltas_swa_minus_select": {
+      "K16": 0.047499999999999876,
+      "hard_neg": -0.09000000000000008,
+      "overall": -0.03583333333333327
+    },
+    "ensemble_prob_mean": {
+      "K12": 1.0,
+      "K16": 1.0,
+      "K8": 0.975,
+      "hard_neg_acc": 1.0,
+      "overall_acc": 0.9958333333333333
+    },
+    "pr14_seed0": {
+      "K12": 1.0,
+      "K16": 0.8625,
+      "K8": 0.9875,
+      "hard_neg_acc": 1.0,
+      "overall_acc": 0.975
+    },
+    "select_mean": {
+      "K16": 0.8625,
+      "hard_neg_acc": 0.9566666666666667,
+      "n": 5,
+      "n_prereg_pass": 2,
+      "overall_acc": 0.9291666666666666,
+      "std_K16": 0.14306903927824496,
+      "std_hard_neg": 0.06113793603174891,
+      "std_overall": 0.03486083443891982
+    },
+    "swa_mean": {
+      "K16": 0.9099999999999999,
+      "hard_neg_acc": 0.8666666666666666,
+      "n": 5,
+      "n_prereg_pass": 2,
+      "overall_acc": 0.8933333333333333,
+      "std_K16": 0.08542174781634944,
+      "std_hard_neg": 0.14126782090137238,
+      "std_overall": 0.05039772371402855
+    }
+  },
+  "cycle": "CYCLE_STALK_SWA_PERSIST",
+  "datasets": {
+    "id": "data/id_2k.jsonl",
+    "matched_ood": "data/covariate_matched_ood.jsonl"
+  },
+  "degree_balanced_construction": {
+    "bins": [
+      {
+        "bin": [
+          1,
+          1
+        ],
+        "n_neg_available": 26,
+        "n_neg_taken": 188,
+        "n_pos": 188,
+        "with_replacement": true
+      },
+      {
+        "bin": [
+          1,
+          2
+        ],
+        "n_neg_available": 12,
+        "n_neg_taken": 26,
+        "n_pos": 26,
+        "with_replacement": true
+      },
+      {
+        "bin": [
+          1,
+          3
+        ],
+        "n_neg_available": 3,
+        "n_neg_taken": 1,
+        "n_pos": 1,
+        "with_replacement": false
+      },
+      {
+        "bin": [
+          2,
+          1
+        ],
+        "n_neg_available": 4,
+        "n_neg_taken": 22,
+        "n_pos": 22,
+        "with_replacement": true
+      },
+      {
+        "bin": [
+          2,
+          2
+        ],
+        "n_neg_available": 0,
+        "n_neg_taken": 0,
+        "n_pos": 3
+      }
+    ],
+    "n": 477,
+    "n_neg": 237,
+    "n_pos": 240,
+    "science_open": false,
+    "seed": 0,
+    "shortfall_unmatched_pos": 3
+  },
+  "elapsed_sec": 721.4712302684784,
+  "frozen_recipe": "SWA Polyak on frozen #14 harden (hard-A stalk); NO new select/upsample; select=#14 0.5/0.5 ID-val T16 as paired baseline; NOT soft distill",
+  "hparams": {
+    "T_train": 6,
+    "batch_size": 32,
+    "d": 64,
+    "ff_baseline": 121218,
+    "matched_to": "PR#14 freeze + PR#12 floors; compare #22 ens",
+    "mlp_expansion": 10
+  },
+  "mandelbrot_analogy": "Mandelbrot-style boundary re-injection is an aspirational analogy for local stalk/probe potentials; scientific claims require metrics artifacts only.",
+  "metaphor": {
+    "map_ne_location": "Ensemble is a multi-seed map; SWA asks whether trajectory diversity inside one train collapses to a durable location.",
+    "negatives_eq_mirror": "Hard-neg @ T16 mirrors whether the SWA location kept the reject boundary."
+  },
+  "mode": "MEASURE",
+  "open_status": "MEASURE_PARTIAL_PERSIST",
+  "per_seed": [
+    {
+      "delta_swa_minus_select_T16": {
+        "K16": -0.050000000000000044,
+        "hard_neg": -0.2416666666666667,
+        "overall": -0.13541666666666663
+      },
+      "prereg_pass": false,
+      "seed": 0,
+      "select_T16": {
+        "K12": 1.0,
+        "K16": 0.8625,
+        "K8": 0.9875,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.975
+      },
+      "select_checkpoint_path": "artifacts/fractal_core_stalk_swa_persist_seed0_select.pt",
+      "select_degbal_T16": {
+        "K12": 1.0,
+        "K16": 0.8625,
+        "K8": 0.9875,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.9748427672955975
+      },
+      "select_matched_ood_by_T": {
+        "12": {
+          "K12": 0.9625,
+          "K16": 0.0375,
+          "K8": 1.0,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.007235943550585944,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.9625,
+              "correct": 77,
+              "loss_mean": 0.240760879346999,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0375,
+              "correct": 3,
+              "loss_mean": 3.615413799721864,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.00853492945097969,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.8333333333333334
+        },
+        "16": {
+          "K12": 1.0,
+          "K16": 0.8625,
+          "K8": 0.9875,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.059897749288271976,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.0005228187088505365,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.8625,
+              "correct": 69,
+              "loss_mean": 0.3614064480556408,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.9875,
+              "correct": 79,
+              "loss_mean": 0.05329885064784321,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.975
+        },
+        "6": {
+          "K12": 0.0375,
+          "K16": 0.0,
+          "K8": 0.0125,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.010895665828987452,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.0375,
+              "correct": 3,
+              "loss_mean": 5.899812509276671,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 4.338192242383957,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 8.299390455544927,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.5083333333333333
+        },
+        "8": {
+          "K12": 0.0375,
+          "K16": 0.0125,
+          "K8": 0.9375,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.008198507618847847,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.0375,
+              "correct": 3,
+              "loss_mean": 6.2864430413814265,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 4.235651129484177,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.9375,
+              "correct": 75,
+              "loss_mean": 0.2175160048987891,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.6645833333333333
+        }
+      },
+      "swa_T16": {
+        "K12": 1.0,
+        "K16": 0.8125,
+        "K8": 0.95,
+        "hard_neg_acc": 0.7583333333333333,
+        "overall_acc": 0.8395833333333333
+      },
+      "swa_checkpoint_path": "artifacts/fractal_core_stalk_swa_persist_seed0_swa.pt",
+      "swa_degbal_T16": {
+        "K12": 1.0,
+        "K16": 0.8125,
+        "K8": 0.95,
+        "hard_neg_acc": 0.6835443037974683,
+        "overall_acc": 0.8029350104821803
+      },
+      "swa_matched_ood_by_T": {
+        "12": {
+          "K12": 0.6875,
+          "K16": 0.0125,
+          "K8": 1.0,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.7666666666666667,
+              "correct": 184,
+              "loss_mean": 1.353295812478488,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.6875,
+              "correct": 55,
+              "loss_mean": 2.163090631645173,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 2.128177803149447,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.01281576945912093,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.7666666666666667,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.6666666666666666
+        },
+        "16": {
+          "K12": 1.0,
+          "K16": 0.8125,
+          "K8": 0.95,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.7583333333333333,
+              "correct": 182,
+              "loss_mean": 1.3221953269060274,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.0018013092209002934,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.8125,
+              "correct": 65,
+              "loss_mean": 0.3005154256476089,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.95,
+              "correct": 76,
+              "loss_mean": 0.1506868891956401,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.7583333333333333,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.8395833333333333
+        },
+        "6": {
+          "K12": 0.0125,
+          "K16": 0.0,
+          "K8": 0.5125,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.8125,
+              "correct": 195,
+              "loss_mean": 1.0633307052195353,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 3.503436561935814,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 2.4179752498865126,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.5125,
+              "correct": 41,
+              "loss_mean": 3.4630827181390487,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.8125,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.49375
+        },
+        "8": {
+          "K12": 0.0125,
+          "K16": 0.0,
+          "K8": 0.6,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.7958333333333333,
+              "correct": 191,
+              "loss_mean": 1.118727166230868,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 4.7430262207519265,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 2.55978068113327,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.6,
+              "correct": 48,
+              "loss_mean": 1.081494714137807,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.7958333333333333,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.5
+        }
+      },
+      "train": {
+        "best_epoch": 58,
+        "best_sel_hard_neg_T16_val": 0.99,
+        "best_sel_joint_T16_val": 0.9924999999999999,
+        "best_sel_overall_T16_val": 0.995,
+        "grad_clip_sat_rate": 0.014,
+        "n_swa": 30,
+        "param_count": 117506,
+        "param_parity": {
+          "ff_baseline_params": 121218,
+          "fractal_over_ff_ratio": 0.9693774851919682,
+          "fractal_param_count": 117506,
+          "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+          "science_open": false,
+          "tolerance": 0.05,
+          "window": [
+            115157,
+            127279
+          ],
+          "within_5pct": true
+        },
+        "swa_sel_hard_neg_T16_val": 0.965,
+        "swa_sel_joint_T16_val": 0.97125,
+        "swa_sel_overall_T16_val": 0.9775,
+        "swa_start": 31
+      }
+    },
+    {
+      "delta_swa_minus_select_T16": {
+        "K16": -0.012499999999999956,
+        "hard_neg": 0.0,
+        "overall": 0.02083333333333337
+      },
+      "prereg_pass": true,
+      "seed": 1,
+      "select_T16": {
+        "K12": 0.8125,
+        "K16": 0.875,
+        "K8": 0.825,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.91875
+      },
+      "select_checkpoint_path": "artifacts/fractal_core_stalk_swa_persist_seed1_select.pt",
+      "select_degbal_T16": {
+        "K12": 0.8125,
+        "K16": 0.875,
+        "K8": 0.825,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.9182389937106918
+      },
+      "select_matched_ood_by_T": {
+        "12": {
+          "K12": 0.7125,
+          "K16": 0.0875,
+          "K8": 0.675,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9916666666666667,
+              "correct": 238,
+              "loss_mean": 0.045689580598264,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.7125,
+              "correct": 57,
+              "loss_mean": 1.778523315739585,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0875,
+              "correct": 7,
+              "loss_mean": 4.579287137780921,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.675,
+              "correct": 54,
+              "loss_mean": 1.7420440887013684,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9916666666666667,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.7416666666666667
+        },
+        "16": {
+          "K12": 0.8125,
+          "K16": 0.875,
+          "K8": 0.825,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.0011738545346209625,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.8125,
+              "correct": 65,
+              "loss_mean": 1.137422512518242,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.875,
+              "correct": 70,
+              "loss_mean": 0.7722205889644101,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.825,
+              "correct": 66,
+              "loss_mean": 0.9778357082628645,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.91875
+        },
+        "6": {
+          "K12": 0.8125,
+          "K16": 0.0,
+          "K8": 0.8375,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9541666666666667,
+              "correct": 229,
+              "loss_mean": 0.18733617943750383,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.8125,
+              "correct": 65,
+              "loss_mean": 0.6804872058048204,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 4.713067209720611,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.8375,
+              "correct": 67,
+              "loss_mean": 0.819902442876628,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9541666666666667,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.7520833333333333
+        },
+        "8": {
+          "K12": 0.6375,
+          "K16": 0.025,
+          "K8": 0.7875,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9875,
+              "correct": 237,
+              "loss_mean": 0.038213350788282696,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.6375,
+              "correct": 51,
+              "loss_mean": 1.5709372003911994,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 5.648626148630865,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.7875,
+              "correct": 63,
+              "loss_mean": 0.8867887097934727,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9875,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.7354166666666667
+        }
+      },
+      "swa_T16": {
+        "K12": 0.9125,
+        "K16": 0.8625,
+        "K8": 0.8625,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.9395833333333333
+      },
+      "swa_checkpoint_path": "artifacts/fractal_core_stalk_swa_persist_seed1_swa.pt",
+      "swa_degbal_T16": {
+        "K12": 0.9125,
+        "K16": 0.8625,
+        "K8": 0.8625,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.939203354297694
+      },
+      "swa_matched_ood_by_T": {
+        "12": {
+          "K12": 0.9375,
+          "K16": 0.0375,
+          "K8": 0.85,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9916666666666667,
+              "correct": 238,
+              "loss_mean": 0.05590986459950121,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.9375,
+              "correct": 75,
+              "loss_mean": 0.4983774022352009,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0375,
+              "correct": 3,
+              "loss_mean": 6.77791928001534,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.85,
+              "correct": 68,
+              "loss_mean": 0.6515248532625264,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9916666666666667,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.8
+        },
+        "16": {
+          "K12": 0.9125,
+          "K16": 0.8625,
+          "K8": 0.8625,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.0006150102442916249,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.9125,
+              "correct": 73,
+              "loss_mean": 0.3026663158583688,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.8625,
+              "correct": 69,
+              "loss_mean": 1.0461111504817382,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.8625,
+              "correct": 69,
+              "loss_mean": 0.8519901714535081,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.9395833333333333
+        },
+        "6": {
+          "K12": 0.025,
+          "K16": 0.0,
+          "K8": 0.8375,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9916666666666667,
+              "correct": 238,
+              "loss_mean": 0.0833715552034846,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 3.114646102306142,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 5.407553857564926,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.8375,
+              "correct": 67,
+              "loss_mean": 0.972646677307057,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9916666666666667,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.6395833333333333
+        },
+        "8": {
+          "K12": 0.025,
+          "K16": 0.0125,
+          "K8": 0.85,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.003055439251572049,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 6.914509128179634,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 6.359596418918954,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.85,
+              "correct": 68,
+              "loss_mean": 0.9230571354462882,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.6479166666666667
+        }
+      },
+      "train": {
+        "best_epoch": 25,
+        "best_sel_hard_neg_T16_val": 0.99,
+        "best_sel_joint_T16_val": 0.93875,
+        "best_sel_overall_T16_val": 0.8875,
+        "grad_clip_sat_rate": 0.010666666666666666,
+        "n_swa": 30,
+        "param_count": 117506,
+        "param_parity": {
+          "ff_baseline_params": 121218,
+          "fractal_over_ff_ratio": 0.9693774851919682,
+          "fractal_param_count": 117506,
+          "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+          "science_open": false,
+          "tolerance": 0.05,
+          "window": [
+            115157,
+            127279
+          ],
+          "within_5pct": true
+        },
+        "swa_sel_hard_neg_T16_val": 1.0,
+        "swa_sel_joint_T16_val": 0.9075,
+        "swa_sel_overall_T16_val": 0.815,
+        "swa_start": 31
+      }
+    },
+    {
+      "delta_swa_minus_select_T16": {
+        "K16": 0.025000000000000022,
+        "hard_neg": -0.18333333333333335,
+        "overall": -0.07708333333333328
+      },
+      "prereg_pass": false,
+      "seed": 2,
+      "select_T16": {
+        "K12": 1.0,
+        "K16": 0.975,
+        "K8": 0.9,
+        "hard_neg_acc": 0.8708333333333333,
+        "overall_acc": 0.9145833333333333
+      },
+      "select_checkpoint_path": "artifacts/fractal_core_stalk_swa_persist_seed2_select.pt",
+      "select_degbal_T16": {
+        "K12": 1.0,
+        "K16": 0.975,
+        "K8": 0.9,
+        "hard_neg_acc": 0.8818565400843882,
+        "overall_acc": 0.9203354297693921
+      },
+      "select_matched_ood_by_T": {
+        "12": {
+          "K12": 0.9625,
+          "K16": 0.975,
+          "K8": 0.9375,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9083333333333333,
+              "correct": 218,
+              "loss_mean": 0.43251062656151285,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.9625,
+              "correct": 77,
+              "loss_mean": 0.13820537502178923,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.975,
+              "correct": 78,
+              "loss_mean": 0.05344940241193399,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.9375,
+              "correct": 75,
+              "loss_mean": 0.20996878833393567,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9083333333333333,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.9333333333333333
+        },
+        "16": {
+          "K12": 1.0,
+          "K16": 0.975,
+          "K8": 0.9,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.8708333333333333,
+              "correct": 209,
+              "loss_mean": 0.43527707629691575,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.0064583001309074465,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.975,
+              "correct": 78,
+              "loss_mean": 0.042037907801568505,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.9,
+              "correct": 72,
+              "loss_mean": 0.3048966430098517,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.8708333333333333,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.9145833333333333
+        },
+        "6": {
+          "K12": 0.9875,
+          "K16": 1.0,
+          "K8": 0.35,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.85,
+              "correct": 204,
+              "loss_mean": 0.43384080500691197,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.9875,
+              "correct": 79,
+              "loss_mean": 0.04827910844469443,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.06218915851786733,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.35,
+              "correct": 28,
+              "loss_mean": 3.2150307869684185,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.85,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.8145833333333333
+        },
+        "8": {
+          "K12": 0.9875,
+          "K16": 1.0,
+          "K8": 0.3625,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.8791666666666667,
+              "correct": 211,
+              "loss_mean": 0.4374912687431788,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.9875,
+              "correct": 79,
+              "loss_mean": 0.03356756962602958,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.03729327765759081,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.3625,
+              "correct": 29,
+              "loss_mean": 3.394949507919955,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.8791666666666667,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.83125
+        }
+      },
+      "swa_T16": {
+        "K12": 1.0,
+        "K16": 1.0,
+        "K8": 0.9625,
+        "hard_neg_acc": 0.6875,
+        "overall_acc": 0.8375
+      },
+      "swa_checkpoint_path": "artifacts/fractal_core_stalk_swa_persist_seed2_swa.pt",
+      "swa_degbal_T16": {
+        "K12": 1.0,
+        "K16": 1.0,
+        "K8": 0.9625,
+        "hard_neg_acc": 0.6497890295358649,
+        "overall_acc": 0.8197064989517819
+      },
+      "swa_matched_ood_by_T": {
+        "12": {
+          "K12": 1.0,
+          "K16": 1.0,
+          "K8": 1.0,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.6875,
+              "correct": 165,
+              "loss_mean": 1.6550875473554092,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.002530971309170127,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.003913739207200706,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.012180920032551511,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.6875,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.84375
+        },
+        "16": {
+          "K12": 1.0,
+          "K16": 1.0,
+          "K8": 0.9625,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.6875,
+              "correct": 165,
+              "loss_mean": 1.5077469720614318,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.003165179032657761,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.01012103515677154,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.9625,
+              "correct": 77,
+              "loss_mean": 0.07707272914776694,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.6875,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.8375
+        },
+        "6": {
+          "K12": 0.9375,
+          "K16": 0.9875,
+          "K8": 0.3,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.775,
+              "correct": 186,
+              "loss_mean": 0.7688407868487653,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.9375,
+              "correct": 75,
+              "loss_mean": 0.12862954055599402,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.9875,
+              "correct": 79,
+              "loss_mean": 0.0708571738563478,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.3,
+              "correct": 24,
+              "loss_mean": 1.9200910437939456,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.775,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.7583333333333333
+        },
+        "8": {
+          "K12": 1.0,
+          "K16": 1.0,
+          "K8": 0.475,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.6708333333333333,
+              "correct": 161,
+              "loss_mean": 1.3373599548149893,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.012989986252796371,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.054237914457917216,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.475,
+              "correct": 38,
+              "loss_mean": 1.1450471297823241,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.6708333333333333,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.7479166666666667
+        }
+      },
+      "train": {
+        "best_epoch": 26,
+        "best_sel_hard_neg_T16_val": 0.945,
+        "best_sel_joint_T16_val": 0.9524999999999999,
+        "best_sel_overall_T16_val": 0.96,
+        "grad_clip_sat_rate": 0.006,
+        "n_swa": 30,
+        "param_count": 117506,
+        "param_parity": {
+          "ff_baseline_params": 121218,
+          "fractal_over_ff_ratio": 0.9693774851919682,
+          "fractal_param_count": 117506,
+          "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+          "science_open": false,
+          "tolerance": 0.05,
+          "window": [
+            115157,
+            127279
+          ],
+          "within_5pct": true
+        },
+        "swa_sel_hard_neg_T16_val": 0.9,
+        "swa_sel_joint_T16_val": 0.91875,
+        "swa_sel_overall_T16_val": 0.9375,
+        "swa_start": 31
+      }
+    },
+    {
+      "delta_swa_minus_select_T16": {
+        "K16": 0.25,
+        "hard_neg": 0.0,
+        "overall": 0.04166666666666674
+      },
+      "prereg_pass": true,
+      "seed": 3,
+      "select_T16": {
+        "K12": 0.9375,
+        "K16": 0.625,
+        "K8": 0.75,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.8854166666666666
+      },
+      "select_checkpoint_path": "artifacts/fractal_core_stalk_swa_persist_seed3_select.pt",
+      "select_degbal_T16": {
+        "K12": 0.9375,
+        "K16": 0.625,
+        "K8": 0.75,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.8846960167714885
+      },
+      "select_matched_ood_by_T": {
+        "12": {
+          "K12": 0.4875,
+          "K16": 0.075,
+          "K8": 0.775,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.0014895816251131084,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.4875,
+              "correct": 39,
+              "loss_mean": 3.688644723026664,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.075,
+              "correct": 6,
+              "loss_mean": 6.108057218248723,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.775,
+              "correct": 62,
+              "loss_mean": 0.8004790716106072,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.7229166666666667
+        },
+        "16": {
+          "K12": 0.9375,
+          "K16": 0.625,
+          "K8": 0.75,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.004485909944681528,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.9375,
+              "correct": 75,
+              "loss_mean": 0.07290870440483559,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.625,
+              "correct": 50,
+              "loss_mean": 1.7435259016172495,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.75,
+              "correct": 60,
+              "loss_mean": 0.4291131429228699,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.8854166666666666
+        },
+        "6": {
+          "K12": 0.025,
+          "K16": 0.0,
+          "K8": 0.675,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9916666666666667,
+              "correct": 238,
+              "loss_mean": 0.042905453483156934,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 7.0405708051112015,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 5.4249184966087345,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.675,
+              "correct": 54,
+              "loss_mean": 1.67186284881318,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9916666666666667,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.6125
+        },
+        "8": {
+          "K12": 0.05,
+          "K16": 0.0,
+          "K8": 0.675,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.975,
+              "correct": 234,
+              "loss_mean": 0.04760435235560483,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.05,
+              "correct": 4,
+              "loss_mean": 6.380003757652593,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 4.718385967612266,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.675,
+              "correct": 54,
+              "loss_mean": 1.1958052836649586,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.975,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.6083333333333333
+        }
+      },
+      "swa_T16": {
+        "K12": 0.95,
+        "K16": 0.875,
+        "K8": 0.7375,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.9270833333333334
+      },
+      "swa_checkpoint_path": "artifacts/fractal_core_stalk_swa_persist_seed3_swa.pt",
+      "swa_degbal_T16": {
+        "K12": 0.95,
+        "K16": 0.875,
+        "K8": 0.7375,
+        "hard_neg_acc": 1.0,
+        "overall_acc": 0.9266247379454927
+      },
+      "swa_matched_ood_by_T": {
+        "12": {
+          "K12": 0.725,
+          "K16": 0.8125,
+          "K8": 0.8125,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.0012715466490287022,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.725,
+              "correct": 58,
+              "loss_mean": 1.9015391617940622,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.8125,
+              "correct": 65,
+              "loss_mean": 1.2157010225753766,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.8125,
+              "correct": 65,
+              "loss_mean": 0.7834485784478602,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.8916666666666667
+        },
+        "16": {
+          "K12": 0.95,
+          "K16": 0.875,
+          "K8": 0.7375,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.002783667022595182,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.95,
+              "correct": 76,
+              "loss_mean": 0.07791952130792197,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.875,
+              "correct": 70,
+              "loss_mean": 0.6994280392362271,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.7375,
+              "correct": 59,
+              "loss_mean": 0.536473940272117,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.9270833333333334
+        },
+        "6": {
+          "K12": 0.1125,
+          "K16": 0.0,
+          "K8": 0.6375,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9375,
+              "correct": 225,
+              "loss_mean": 0.0925102476918255,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.1125,
+              "correct": 9,
+              "loss_mean": 3.8960597393510397,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0,
+              "correct": 0,
+              "loss_mean": 5.197591525316239,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.6375,
+              "correct": 51,
+              "loss_mean": 1.6461345622992667,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9375,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.59375
+        },
+        "8": {
+          "K12": 0.675,
+          "K16": 0.025,
+          "K8": 0.45,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9458333333333333,
+              "correct": 227,
+              "loss_mean": 0.0927296455934993,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.675,
+              "correct": 54,
+              "loss_mean": 2.0039780377526766,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.025,
+              "correct": 2,
+              "loss_mean": 4.512673703022301,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.45,
+              "correct": 36,
+              "loss_mean": 1.4967268453314317,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9458333333333333,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.6645833333333333
+        }
+      },
+      "train": {
+        "best_epoch": 43,
+        "best_sel_hard_neg_T16_val": 0.975,
+        "best_sel_joint_T16_val": 0.9512499999999999,
+        "best_sel_overall_T16_val": 0.9275,
+        "grad_clip_sat_rate": 0.007666666666666666,
+        "n_swa": 30,
+        "param_count": 117506,
+        "param_parity": {
+          "ff_baseline_params": 121218,
+          "fractal_over_ff_ratio": 0.9693774851919682,
+          "fractal_param_count": 117506,
+          "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+          "science_open": false,
+          "tolerance": 0.05,
+          "window": [
+            115157,
+            127279
+          ],
+          "within_5pct": true
+        },
+        "swa_sel_hard_neg_T16_val": 0.96,
+        "swa_sel_joint_T16_val": 0.9199999999999999,
+        "swa_sel_overall_T16_val": 0.88,
+        "swa_start": 31
+      }
+    },
+    {
+      "delta_swa_minus_select_T16": {
+        "K16": 0.025000000000000022,
+        "hard_neg": -0.025000000000000022,
+        "overall": -0.029166666666666563
+      },
+      "prereg_pass": false,
+      "seed": 4,
+      "select_T16": {
+        "K12": 1.0,
+        "K16": 0.975,
+        "K8": 1.0,
+        "hard_neg_acc": 0.9125,
+        "overall_acc": 0.9520833333333333
+      },
+      "select_checkpoint_path": "artifacts/fractal_core_stalk_swa_persist_seed4_select.pt",
+      "select_degbal_T16": {
+        "K12": 1.0,
+        "K16": 0.975,
+        "K8": 1.0,
+        "hard_neg_acc": 0.7932489451476793,
+        "overall_acc": 0.8930817610062893
+      },
+      "select_matched_ood_by_T": {
+        "12": {
+          "K12": 1.0,
+          "K16": 0.625,
+          "K8": 0.9875,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9541666666666667,
+              "correct": 229,
+              "loss_mean": 0.32756164387901665,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.000783606487311772,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.625,
+              "correct": 50,
+              "loss_mean": 2.478980068258534,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.9875,
+              "correct": 79,
+              "loss_mean": 0.018865524287684822,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9541666666666667,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.9125
+        },
+        "16": {
+          "K12": 1.0,
+          "K16": 0.975,
+          "K8": 1.0,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9125,
+              "correct": 219,
+              "loss_mean": 0.5815567569152336,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.0006073559921787819,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.975,
+              "correct": 78,
+              "loss_mean": 0.1869152888233657,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.015823537013420718,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9125,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.9520833333333333
+        },
+        "6": {
+          "K12": 0.7,
+          "K16": 0.0125,
+          "K8": 0.0375,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.014424928382201567,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.7,
+              "correct": 56,
+              "loss_mean": 1.0667462133624213,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 7.826609849405941,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.0375,
+              "correct": 3,
+              "loss_mean": 6.471356749631741,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.625
+        },
+        "8": {
+          "K12": 0.8625,
+          "K16": 0.0125,
+          "K8": 0.675,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9833333333333333,
+              "correct": 236,
+              "loss_mean": 0.028003731420600766,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.8625,
+              "correct": 69,
+              "loss_mean": 0.6166824401647318,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 7.459426550667558,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.675,
+              "correct": 54,
+              "loss_mean": 2.0601656486673163,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9833333333333333,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.75
+        }
+      },
+      "swa_T16": {
+        "K12": 1.0,
+        "K16": 1.0,
+        "K8": 0.875,
+        "hard_neg_acc": 0.8875,
+        "overall_acc": 0.9229166666666667
+      },
+      "swa_checkpoint_path": "artifacts/fractal_core_stalk_swa_persist_seed4_swa.pt",
+      "swa_degbal_T16": {
+        "K12": 1.0,
+        "K16": 1.0,
+        "K8": 0.875,
+        "hard_neg_acc": 0.7890295358649789,
+        "overall_acc": 0.8742138364779874
+      },
+      "swa_matched_ood_by_T": {
+        "12": {
+          "K12": 1.0,
+          "K16": 0.8375,
+          "K8": 0.9875,
+          "T": 12,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9208333333333333,
+              "correct": 221,
+              "loss_mean": 0.48405836720909673,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.000331470774654008,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.8375,
+              "correct": 67,
+              "loss_mean": 1.1668604060687358,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.9875,
+              "correct": 79,
+              "loss_mean": 0.051044920830827324,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9208333333333333,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.93125
+        },
+        "16": {
+          "K12": 1.0,
+          "K16": 1.0,
+          "K8": 0.875,
+          "T": 16,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.8875,
+              "correct": 213,
+              "loss_mean": 0.7567386873467815,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.0005766015980043449,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 1.0,
+              "correct": 80,
+              "loss_mean": 0.0011904393664735834,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.875,
+              "correct": 70,
+              "loss_mean": 0.1257191977714683,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.8875,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.9229166666666667
+        },
+        "6": {
+          "K12": 0.875,
+          "K16": 0.0125,
+          "K8": 0.0875,
+          "T": 6,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 1.0,
+              "correct": 240,
+              "loss_mean": 0.024738577908707763,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.875,
+              "correct": 70,
+              "loss_mean": 0.5211005398214184,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 8.269301934892429,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.0875,
+              "correct": 7,
+              "loss_mean": 6.675389962935332,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 1.0,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.6625
+        },
+        "8": {
+          "K12": 0.925,
+          "K16": 0.0125,
+          "K8": 0.675,
+          "T": 8,
+          "by_hop": {
+            "-1": {
+              "acc_mean": 0.9791666666666666,
+              "correct": 235,
+              "loss_mean": 0.0509065132152197,
+              "n": 240
+            },
+            "12": {
+              "acc_mean": 0.925,
+              "correct": 74,
+              "loss_mean": 0.44952947455112735,
+              "n": 80
+            },
+            "16": {
+              "acc_mean": 0.0125,
+              "correct": 1,
+              "loss_mean": 7.823384137223911,
+              "n": 80
+            },
+            "8": {
+              "acc_mean": 0.675,
+              "correct": 54,
+              "loss_mean": 2.248122739569408,
+              "n": 80
+            }
+          },
+          "hard_neg_acc": 0.9791666666666666,
+          "hard_neg_n": 240,
+          "n": 480,
+          "overall_acc": 0.7583333333333333
+        }
+      },
+      "train": {
+        "best_epoch": 37,
+        "best_sel_hard_neg_T16_val": 1.0,
+        "best_sel_joint_T16_val": 0.99875,
+        "best_sel_overall_T16_val": 0.9975,
+        "grad_clip_sat_rate": 0.012666666666666666,
+        "n_swa": 30,
+        "param_count": 117506,
+        "param_parity": {
+          "ff_baseline_params": 121218,
+          "fractal_over_ff_ratio": 0.9693774851919682,
+          "fractal_param_count": 117506,
+          "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+          "science_open": false,
+          "tolerance": 0.05,
+          "window": [
+            115157,
+            127279
+          ],
+          "within_5pct": true
+        },
+        "swa_sel_hard_neg_T16_val": 0.975,
+        "swa_sel_joint_T16_val": 0.98,
+        "swa_sel_overall_T16_val": 0.985,
+        "swa_start": 31
+      }
+    }
+  ],
+  "policy": "PASS_CANDIDATE \u2192 SWA mean floors; science_open=false; do not widen \u00a722. MEASURE \u2192 miss floor but SWA \u2265 within-run select on HN or K16. STOP \u2192 both HN and K16 < within-run select. Sheaf unsupervised ignored. Not soft distill (#23 STOP).",
+  "pr14_seed0_matched_ood_by_T": {
+    "12": {
+      "K12": 0.9625,
+      "K16": 0.0375,
+      "K8": 1.0,
+      "T": 12,
+      "by_hop": {
+        "-1": {
+          "acc_mean": 1.0,
+          "correct": 240,
+          "loss_mean": 0.007235943550585944,
+          "n": 240
+        },
+        "12": {
+          "acc_mean": 0.9625,
+          "correct": 77,
+          "loss_mean": 0.240760879346999,
+          "n": 80
+        },
+        "16": {
+          "acc_mean": 0.0375,
+          "correct": 3,
+          "loss_mean": 3.615413799721864,
+          "n": 80
+        },
+        "8": {
+          "acc_mean": 1.0,
+          "correct": 80,
+          "loss_mean": 0.00853492945097969,
+          "n": 80
+        }
+      },
+      "hard_neg_acc": 1.0,
+      "hard_neg_n": 240,
+      "n": 480,
+      "overall_acc": 0.8333333333333334
+    },
+    "16": {
+      "K12": 1.0,
+      "K16": 0.8625,
+      "K8": 0.9875,
+      "T": 16,
+      "by_hop": {
+        "-1": {
+          "acc_mean": 1.0,
+          "correct": 240,
+          "loss_mean": 0.059897749288271976,
+          "n": 240
+        },
+        "12": {
+          "acc_mean": 1.0,
+          "correct": 80,
+          "loss_mean": 0.0005228187088505365,
+          "n": 80
+        },
+        "16": {
+          "acc_mean": 0.8625,
+          "correct": 69,
+          "loss_mean": 0.3614064480556408,
+          "n": 80
+        },
+        "8": {
+          "acc_mean": 0.9875,
+          "correct": 79,
+          "loss_mean": 0.05329885064784321,
+          "n": 80
+        }
+      },
+      "hard_neg_acc": 1.0,
+      "hard_neg_n": 240,
+      "n": 480,
+      "overall_acc": 0.975
+    },
+    "6": {
+      "K12": 0.0375,
+      "K16": 0.0,
+      "K8": 0.0125,
+      "T": 6,
+      "by_hop": {
+        "-1": {
+          "acc_mean": 1.0,
+          "correct": 240,
+          "loss_mean": 0.010895665828987452,
+          "n": 240
+        },
+        "12": {
+          "acc_mean": 0.0375,
+          "correct": 3,
+          "loss_mean": 5.899812509276671,
+          "n": 80
+        },
+        "16": {
+          "acc_mean": 0.0,
+          "correct": 0,
+          "loss_mean": 4.338192242383957,
+          "n": 80
+        },
+        "8": {
+          "acc_mean": 0.0125,
+          "correct": 1,
+          "loss_mean": 8.299390455544927,
+          "n": 80
+        }
+      },
+      "hard_neg_acc": 1.0,
+      "hard_neg_n": 240,
+      "n": 480,
+      "overall_acc": 0.5083333333333333
+    },
+    "8": {
+      "K12": 0.0375,
+      "K16": 0.0125,
+      "K8": 0.9375,
+      "T": 8,
+      "by_hop": {
+        "-1": {
+          "acc_mean": 1.0,
+          "correct": 240,
+          "loss_mean": 0.008198507618847847,
+          "n": 240
+        },
+        "12": {
+          "acc_mean": 0.0375,
+          "correct": 3,
+          "loss_mean": 6.2864430413814265,
+          "n": 80
+        },
+        "16": {
+          "acc_mean": 0.0125,
+          "correct": 1,
+          "loss_mean": 4.235651129484177,
+          "n": 80
+        },
+        "8": {
+          "acc_mean": 0.9375,
+          "correct": 75,
+          "loss_mean": 0.2175160048987891,
+          "n": 80
+        }
+      },
+      "hard_neg_acc": 1.0,
+      "hard_neg_n": 240,
+      "n": 480,
+      "overall_acc": 0.6645833333333333
+    }
+  },
+  "prefer_corridor": "PR#14 MEASURE_STILL singles + #22/#24 ens overlay; SWA tests single-model persistence without soft distill",
+  "prereg": {
+    "K16_at_T16_swa_mean_ge": 0.75,
+    "hard_neg_swa_mean_ge": 0.95,
+    "note": "science_open never self-stamped; PASS_CANDIDATE still leaves science_open=false. Do not widen \u00a722 ensemble scope. Select/curriculum remain CLOSED. Not soft distill.",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "selection_rule": "Paired #14 lex select on ID-val T16. Floors on matched-OOD SWA mean after train. No OOD peek.",
+    "swa_start": 31
+  },
+  "prereg_floors_pass": false,
+  "residue": "SWA mean MEASURE (partial persist vs select): T16 HN=0.8667 K16=0.9100 (floors_pass=False); \u2265 within-run select on K16 (select HN=0.9567 K16=0.8625). ens HN=1.0000 K16=1.0000. science_open=false.",
+  "science_open": false,
+  "swa_knobs": {
+    "T_train": 6,
+    "bn_update": false,
+    "epochs": 60,
+    "grad_clip": 2.5,
+    "lr_max": 0.0015,
+    "lr_min": 0.00015,
+    "lr_schedule": "cosine",
+    "note": "RMSNorm only \u2014 no BN update pass",
+    "primary": "swa",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "selection_rule_paired": "frozen #14 0.5*HN+0.5*overall @ ID-val T16",
+    "swa_method": "polyak_state_dict_mean",
+    "swa_start": 31
+  },
+  "verdict": "MEASURE"
+}
