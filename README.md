@@ -404,6 +404,21 @@ python -m reachability_gen.run_stalk_stabilize_v2
 Artifact: `artifacts/stalk_stabilize_v2.json`. See `docs/CYCLE_STALK_STABILIZE_V2.md`.
 
 
+## Cycle: STALK_SEED_STABILITY (MEASURE → MEASURE_ENVELOPE)
+
+Freeze PR #14 recipe exactly (0.5/0.5 select, 60ep, hard-Â, uniform ID). **NO**
+new select/upsample. Seeds **0..9** (reconfirm 0..4 + train 5..9). Matched-OOD
+T16: mean HN **0.935±0.090** (FAIL ≥0.95), K16 **0.792±0.288** (PASS), seed
+PASS **3/10** (rate 0.30). CI95 HN [0.879, 0.991]. Verdict
+**`MEASURE_ENVELOPE`**. Prefer #14 MEASURE_STILL unchanged. `science_open=false`.
+
+```bash
+python -m reachability_gen.run_stalk_seed_stability
+# or: reachability-stalk-seed-stability
+```
+
+Artifact: `artifacts/stalk_seed_stability.json`. See `docs/CYCLE_STALK_SEED_STABILITY.md`.
+
 ## Cycle: STALK_OBJECTIVE_V1 (MEASURE → STOP_FRAGILE)
 
 Easy $ after select-weight chase closed (V2/V3 STOP). Kept **#14 0.5/0.5**
