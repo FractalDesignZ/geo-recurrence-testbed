@@ -1,0 +1,6 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[stalk-reach-cert] loading #14/#18/#22 ens n=10
+[stalk-reach-cert] infer ood_hops T16 (#22 baseline)
+[stalk-reach-cert] infer matched-OOD T16 collateral
+[stalk-reach-cert] verdict=CERT_FO_CATCH residue=HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL/LOCAL_SOUND_WALL/CERT_FO_CATCH arm=cert FO_killed=45/45 rem22=22/22 HN 0.067→1.000 dirty_yes=224 wrote artifacts/stalk_reach_certificates.json (12.9s)

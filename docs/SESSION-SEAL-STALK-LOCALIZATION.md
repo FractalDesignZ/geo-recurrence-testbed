@@ -12,7 +12,7 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair. HN FAIL_OPEN autopsy **STRUCTURAL_CLUSTER** (§29) — isolated-source / hub-target; residue **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`**. Sound outdeg gate **FO_PARTIAL** (§30) — **23/45** FO killed; HN **0.067→0.304**; matched-OOD Δ=0; residue **`…/OUTDEG0_PARTIAL`**. FO remainder autopsy **LOCAL_SOUND_WALL** (§31) — best local cut **5/22**; stop overlay chase; residue **`…/LOCAL_SOUND_WALL`**; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
+**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair. HN FAIL_OPEN autopsy **STRUCTURAL_CLUSTER** (§29) — isolated-source / hub-target; residue **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`**. Sound outdeg gate **FO_PARTIAL** (§30) — **23/45** FO killed; HN **0.067→0.304**; matched-OOD Δ=0; residue **`…/OUTDEG0_PARTIAL`**. FO remainder autopsy **LOCAL_SOUND_WALL** (§31) — best local cut **5/22**; stop overlay chase; residue **`…/LOCAL_SOUND_WALL`**. Hop-OOD overlay **PARK** (§32). Reach certificates **CERT_FO_CATCH** (§33) — **45/45** FO + **22/22** rem-22; HN **0.067→1.000**; matched-OOD Δ=0; checker BFS post-hoc only; tropical Phase 2 **not** started; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
 
 Fail-closed outside the live scoped claim in **§22** (hist. §6 demoted). Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
@@ -792,3 +792,32 @@ The #30–#33 hop-OOD overlay chase is frozen at `LOCAL_SOUND_WALL`. Stop furthe
 ### 32.2 Non-rewrite rule
 
 Prior seal body + §13–§31 are **not** rewritten. This §32 is append-only documentation PARK (`science_open=false` for this cycle).
+
+## 33. Reach certificates — CERT_FO_CATCH (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_REACH_CERTIFICATES` |
+| **Artifact** | `artifacts/stalk_reach_certificates.json` |
+| **Log** | `artifacts/stalk_reach_certificates_run.log` |
+| **Cycle note** | `docs/CYCLE_STALK_REACH_CERTIFICATES.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_reach_certificates` |
+| **Base** | `main` `3730558` (after PR #34) |
+| **Prereg / harness / results** | `759357f` / `b856104` / `1abd8904194bcc5eb72fa036328d543a4cb542b2` |
+| **Cycle verdict** | **`CERT_FO_CATCH`** |
+| **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
+| **Tropical Phase 2** | **not started** |
+| **Recipe** | Post-hoc path-witness / checker-BFS certificates on frozen #14/#18/#22 ens; dirty YES → force-closed; dirty NO kept; arms baseline / outdeg0 / cert / outdeg0+cert; **no** train; BFS **checker post-hoc only** |
+| **Cite #30/#32** | FO **45** exact; rem22 **22** exact; matched Δ=#32 shape |
+| **FO catch** | **45/45** (cert); rem-22 **22/22**; HN **0.067→1.000**; K16 holds |
+| **Matched-OOD Δ** | **0.000** (dirty_rate **0.004**) |
+| **Residue** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL/LOCAL_SOUND_WALL/CERT_FO_CATCH`** |
+
+### 33.1 Reading
+
+Post-hoc certificates (path-witness validation / checker BFS) force-close dirty YES claims without a validating path on Â. Catches the full hop-OOD FAIL_OPEN core including the #33 rem-22 multi-hop remainder. Matched-OOD competence untouched (Δ=0). Checker BFS is **not** a model feature / train target / init. Prefer #14 + #22 on matched-OOD only. Do **not** widen §22. Do **not** claim hop-OOD OPEN. Tropical Phase 2 **not** started. Still **MEASURE**.
+
+### 33.2 Non-rewrite rule
+
+Prior seal body + §13–§32 are **not** rewritten. This §33 is append-only MEASURE
+(`science_open=false`).
