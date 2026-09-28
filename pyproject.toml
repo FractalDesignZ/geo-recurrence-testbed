@@ -48,6 +48,8 @@ reachability-stalk-swa-persist = "reachability_gen.run_stalk_swa_persist:main"
 reachability-stalk-epistemic-disagreement = "reachability_gen.run_stalk_epistemic_disagreement:main"
 reachability-stalk-bag-diversity = "reachability_gen.run_stalk_bag_diversity:main"
 reachability-stalk-competent-dissonance = "reachability_gen.run_stalk_competent_dissonance:main"
+reachability-gen-stalk-red-cd = "reachability_gen.gen_stalk_red_competent_dissonance:main"
+reachability-stalk-red-competent-dissonance = "reachability_gen.run_stalk_red_competent_dissonance:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
