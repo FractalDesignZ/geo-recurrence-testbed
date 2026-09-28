@@ -669,7 +669,7 @@ Prior seal body + §13–§26 are **not** rewritten. This §27 is append-only ME
 | **Cycle note** | `docs/CYCLE_STALK_HOP_OOD_HN.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_hop_ood_hn` |
 | **Base** | `main` `5c5006a` (after PR #29) |
-| **Prereg / harness / results** | `a40abb6` / `051743c` / _(results SHA)_ |
+| **Prereg / harness / results** | `a40abb6` / `051743c` / `4da28fc7ac42a798d00f7fe200c81b2dd6e6f950` |
 | **Cycle verdict** | **`FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED`** |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
 | **Recipe** | Eval-only #22 ens on `ood_hops`@T16; FAIL_OPEN/CLOSED + CD; gate abstain + majority_vote; **no** train / bag / select |

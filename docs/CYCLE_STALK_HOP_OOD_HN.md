@@ -166,7 +166,7 @@ On accepted (non-abstained) set report: coverage; ens overall/HN/K16; FAIL_OPEN/
 | **Log** | `artifacts/stalk_hop_ood_hn_run.log` |
 | **Prereg SHA** | `a40abb6` (committed before runs) |
 | **Harness SHA** | `051743c` |
-| **Results SHA** | _(stamped on results commit)_ |
+| **Results SHA** | `4da28fc7ac42a798d00f7fe200c81b2dd6e6f950` |
 | **Cycle verdict** | **`FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED`** |
 | **CD arm** | **CHAOS** (μ_acc 0.553 < 0.85 — expected under hop-OOD) |
 | **science_open** | **false** (not widened; §22 unchanged) |
