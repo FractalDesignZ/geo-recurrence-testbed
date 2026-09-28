@@ -140,3 +140,18 @@ Do **not** generalize this OPEN beyond the cited cells, K=8, band [100,140], and
 **Residue:** Depth×Density frontier (joint stress: longer hops **and** dense ER under an admissible band) — MEASURE plan only until measured; `science_open=false` until a later human seal.
 
 Prior sparse K=20 MEASURE and this dense K=8 OPEN remain separate envelopes; combining them is the next cycle, not this seal.
+
+---
+
+## 8. INVALIDATION — inherited Gate1 init bake-in (append-only)
+
+| Field | Value |
+|-------|-------|
+| **Label** | **INVALIDATION** / RESTRICT |
+| **Date** | 2026-09-27 |
+| **Cause** | Frozen Gate1 ckpt is an untrained reachability oracle (edge bias=+4; energy readout). See sheaf inference seal §16 + `artifacts/sheaf_untrained_control_audit.json` |
+| **Dense-context numbers** | Cell1/Cell2 T∈{8,12}: untrained overall/hard-neg/K8 = **1.000**, prediction agreement vs sealed ckpt = **1.000**, Â FPR/FNR = **0** (same as trained) |
+| **§6 science_open** | **INVALIDATED** as evidence of *learned* dense-band generalization — metrics are init+architecture on listed tokens |
+| **Allowed residual** | Architecture can run reachability at seq_len∈[100,140] when T≥K **given** bake-in gates; not a learned-sheaf OPEN |
+| **Next** | Neutral-init retrain RED_TEST (`docs/CYCLE_SHEAF_NEUTRAL_INIT_RETRAIN.md`); standing `run_sheaf_untrained_control` |
+| **Note** | Prior body (§1–§7) not rewritten. Fail-closed. Prefer truth over prior OPEN. |

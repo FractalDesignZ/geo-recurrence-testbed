@@ -229,3 +229,78 @@ Stub: `docs/CYCLE_SHEAF_STRESS_TEST.md`.
 | **NON-claims carried** | not dense K≥16; not NL/CoT; PR #4 K20 remains MEASURE; PR #5 INVALID stands |
 | **Residue next** | Depth × Density frontier |
 | **Note** | Prior seal body (§1–§14) is **not** rewritten. Fail-closed elsewhere. |
+
+---
+
+## 16. INVALIDATION — untrained init bake-in (append-only; FAIL-CLOSED)
+
+| Field | Value |
+|-------|-------|
+| **Label** | **INVALIDATION** / RESTRICT (not a rewrite of §1–§15 body text) |
+| **Date** | 2026-09-27 |
+| **Trigger** | External Opus probe (GammaHunter sister) + local reproduction |
+| **Audit artifact** | `artifacts/sheaf_untrained_control_audit.json` |
+| **Harness** | `python -m reachability_gen.run_sheaf_untrained_control` (standing) |
+| **Base SHA audited** | `4083d43` (main after PR #6 merge `353bd61`) |
+| **Verdict** | **`SEALS_COMPROMISED_INIT_BAKE_IN`** |
+
+### 16.1 Init that bakes reachability (`SheafInferCore._init_specials`)
+
+| Knob | Init | Effect at eval (θ=0.5) |
+|------|------|-------------------------|
+| `edge_encoder` last Linear | **W=0, bias=+4.0** | Listed edge tokens → logit 4 → σ≈0.982 → **gate ON** |
+| `absent_bias` | **−4.0** | Non-listed cells → **gate OFF** |
+| Diagonal self logit | **+8.0** (hardcoded in `encode_edge_logits`) | Self always gated on |
+| `residual_alpha` | **1.0** | Full φ replace |
+| `SheafDiffusionPhi` | **W_msg=I, W_out=I, MLP=0** | Pure diffusion along gated Â from step 0 |
+| `stalk_proj` | **I** | Local stalk@s nonzero |
+| Readout head | **[z_t; ‖z_t‖]**; energy col (−1,+1); bias **(+5,−5)** | ‖z_t‖=0 → y=0; ‖z_t‖>0 → y=1 |
+
+Untrained model = discrete BFS/diffusion reachability oracle on listed edge tokens. Training is not required for sealed metrics.
+
+### 16.2 Reproduction tables (untrained vs sealed ckpt)
+
+Cite: `artifacts/sheaf_untrained_control_audit.json`. Prediction agreement = fraction of identical argmax preds.
+
+**matched-OOD** (`data/covariate_matched_ood.jsonl`, n=480):
+
+| T | U overall | U hard-neg | U K8 / K12 / K16 | Trained overall | Agree | U FPR / FNR |
+|---|-----------|------------|------------------|-----------------|-------|-------------|
+| 6 | 0.500 | **1.000** | 0 / 0 / 0 | 0.500 | **1.000** | 0 / 1.000 |
+| 8 | 0.667 | **1.000** | 1 / 0 / 0 | 0.667 | **1.000** | 0 / 0.667 |
+| 12 | 0.833 | **1.000** | 1 / 1 / 0 | 0.833 | **1.000** | 0 / 0.333 |
+| **16** | **1.000** | **1.000** | **1 / 1 / 1** | **1.000** | **1.000** | **0 / 0** |
+
+**RED_TEST K20** (`data/sheaf_red_test_k20.jsonl`, n=128): T∈{20,24} — untrained overall/hard-neg/K20 = **1.000**; agree **1.000**; FPR/FNR **0**.
+
+**Dense-context** Cell1 + Cell2: T∈{8,12} — untrained overall/hard-neg/K8 = **1.000**; agree **1.000**; FPR/FNR **0**.
+
+Sealed Gate1 best epoch was **1** with train_acc=1.000 from epoch 1 (`artifacts/sheaf_infer_gate1_run.log`) — consistent with bake-in.
+
+### 16.3 Science status — REVOKE / NARROW
+
+| Prior | Status now |
+|-------|------------|
+| §6 `science_open=true` claim: "**Learned** directed restriction maps …" | **INVALIDATED** as a *learned* claim |
+| Allowed residual claim (if any) | **init+architecture** implements discrete reachability on listed edge tokens under T≥K; **not** evidence of learned Â from data |
+| Prereg numeric PASS (§4) | Numbers remain true of the *system*; attribution to learning is false |
+| RED_TEST / dense-context MEASURE PASS using frozen Gate1 | Same contamination — metrics = untrained oracle |
+
+**Do not silently defend prior OPEN.** Prefer truth: revoke learned OPEN; narrow to architecture/init demonstration only pending neutral-init retrain.
+
+### 16.4 Stalk seal note
+
+`FractalCore` stalk (`docs/SESSION-SEAL-STALK-LOCALIZATION.md`) uses hard A oracle + `Linear(d,2)` head **without** this energy-bias / edge-bias=+4 pattern. **Not the same classifier bake-in.** Stalk claim is orthogonal; not auto-invalidated by this audit. Still require standing untrained controls on future sheaf variants.
+
+### 16.5 Required next MEASURE — neutral-init RED_TEST
+
+Propose `CYCLE_SHEAF_NEUTRAL_INIT_RETRAIN` (see `docs/CYCLE_SHEAF_NEUTRAL_INIT_RETRAIN.md`):
+
+- Neutralize bake-in: edge last bias ~0 (or small negative); absent_bias kept or symmetric; head Xavier/zeros **without** energy±5 oracle; optionally random W_msg.
+- Retrain Gate1 protocol on `id_2k`; re-eval matched-OOD / RED_TEST / dense-context.
+- Fail-closed: `science_open=false` until untrained_control shows untrained ≪ trained and trained meets prereg floors.
+- Standing harness must remain in CI / MEASURE checklist.
+
+### 16.6 Non-rewrite rule
+
+Prior seal body (§1–§15) is **not** rewritten. This §16 is append-only INVALIDATION. Downstream dense-context seal §6 learned OPEN is likewise invalidated by pointer — see that seal's INVALIDATION appendix.
