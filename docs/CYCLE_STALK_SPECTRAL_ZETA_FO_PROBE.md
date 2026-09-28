@@ -199,4 +199,39 @@ pytest -q tests/test_stalk_spectral_zeta_fo_probe.py
 
 ## Results (after run)
 
-_Pending run._
+| Field | Value |
+|-------|-------|
+| **Artifact** | `artifacts/stalk_spectral_zeta_fo_probe.json` |
+| **Log** | `artifacts/stalk_spectral_zeta_fo_probe_run.log` |
+| **Cycle verdict** | **`COLLATERAL_HARM`** |
+| **science_open** | **false** |
+| **L / ζ formula** | `A_sym` undirected skeleton of hard Â; `L=D−A_sym`; `ζ(2)=Σ_{λ>1e-8} λ^{−2}`; ρ=Id primary |
+| **Secondary** | ζ_norm; ζ_ρ_outdeg; ζ_edge_mass; H(t=0.5), H(t=1.0) |
+| **AUROC ζ_comb→FO vs OK∪FC** | **0.5000** (complete stratum tie — all FO/OK/FC share ζ=**10.681**) |
+| **AUROC FO vs OK alone** | **0.5000** (same tie) |
+| **AUROC rem22 vs OK∪FC** | **0.5000** |
+| **FO concentration** | refused ∩ FO **0/45**; FO_cap_refused **0.000**; r(ζ, FO-proxy) **nan** (degenerate) |
+| **zeta_refuse FO/rem22** | **0/45** / **0/22**; n_refused(hops)=3; tau(matched q90)=**295.130** |
+| **Matched-OOD Delta** | overall **−0.1000**; HN **+0.0000**; K16 **−0.3500** → COLLATERAL_HARM |
+| **vs #35 cert** | cert FO_cap_dirty=1.0 / 45/45; zeta ≢ cert (0/45 refuse ∩ FO) |
+| **vs #40 energy** | energy AUROC 0.317 / ENERGY_NULL; zeta AUROC 0.500 / COLLATERAL_HARM — neither tracks cert |
+| **Prereg SHA** | `7a242254d6095552ebefa3dc7d782d6c817d531a` |
+| **Base SHA** | `34d059b` |
+| **Elapsed** | 12.8s |
+| **Train / sheaf / ens-agg** | **none** / closed / `prob_mean` unchanged |
+
+### Stratum medians `ζ_comb` (ρ=Id, s=2)
+
+| Stratum | n | median ζ_comb |
+|---------|---|---------------|
+| OK_HN | 16 | **10.681** |
+| FO_HN | 45 | **10.681** |
+| rem-22 | 22 | **10.681** |
+| FO_KILLED | 23 | **10.681** |
+| FC_HN | 179 | **10.681** |
+
+All listed HN strata share one spectral mode (also identical medians for ζ_norm / ζ_ρ / heat). Separation AUROC is vacuous chance.
+
+### Reading
+
+Finite spectral zeta / heat of the symmetrized combinatorial Laplacian on hard Â does **not** concentrate on hop-OOD FAIL_OPEN. Within the #30/#33 HN strata every FO/OK/FC example shares the same ζ_comb (and secondary spectra), so AUROC→FO is **0.50** by tie. Matched-OOD q90 refuse (tau≈295) fires on high-ζ matched graphs and **harms** matched K16 (**1.000→0.650**, Δ=−0.35) and overall (Δ=−0.10) without killing any FO (0/45; 0/22 rem-22). Instrument ≢ #35 dirty certificates. Prefer #14+#22 `prob_mean` on matched-OOD; keep #35 certificates for FO catch. Do **not** open sheaf unsupervised / invent learned ρ from this harm. Do **not** widen §22. Still **MEASURE**.
