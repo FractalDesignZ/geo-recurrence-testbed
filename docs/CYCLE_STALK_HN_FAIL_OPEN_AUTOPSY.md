@@ -162,15 +162,60 @@ Cycle composite: `{autopsy_verdict}` e.g. `STRUCTURAL_CLUSTER`. Residue update m
 
 ## Results (this run — cite artifact)
 
-_Pending — fill after MEASURE run._
-
 | Field | Value |
 |-------|-------|
 | **Artifact** | `artifacts/stalk_hn_fail_open_autopsy.json` |
 | **Log** | `artifacts/stalk_hn_fail_open_autopsy_run.log` |
-| **Prereg SHA** | _(commit before run)_ |
-| **Harness SHA** | _(commit before run)_ |
-| **Results SHA** | _(after results commit)_ |
-| **Cycle verdict** | _(STRUCTURAL_CLUSTER \| DIFFUSE \| DATA_ARTIFACT \| INCONCLUSIVE)_ |
+| **Prereg SHA** | `931bd78` |
+| **Harness SHA** | `3980451` |
+| **Results SHA** | _(this commit)_ |
+| **Cycle verdict** | **`STRUCTURAL_CLUSTER`** |
 | **science_open** | **false** (not widened; §22 unchanged) |
-| **Residue update** | _(refine HN_FAIL_OPEN_CORE)_ |
+| **Residue update** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`** — isolated-source / hub-target false-reachability |
+| **Elapsed** | ~6.7 s (~0.1 min CDT) |
+| **Cite #30 replicate** | **exact** (FO=45 / FC=190 / ens HN=0.067) |
+
+### Cohorts (ood_hops T16; #22 ens)
+
+| Cohort | n | notes |
+|--------|---|-------|
+| **FO_HN** | **45** | all FAIL_OPEN; all hop=-1; pred=1 label=0 |
+| **FC_HN** | **179** | FAIL_CLOSED hard-neg wrongs |
+| **FC_wrong** | **190** | all FAIL_CLOSED (incl. 11 non-HN) |
+| **OK_HN** | **16** | ens-correct hard-neg |
+
+### Key structural contrasts (medians)
+
+| Feature | FO_HN | OK_HN | FC_HN |
+|---------|-------|-------|-------|
+| n / p / \|E\| / token_len | 32 / 0.06 / 61 / 189 | **same** (fixed across all HN) | same |
+| **n_reach_from_s** | **1** | **19** | 19 |
+| **frac_reach_from_s** | **0.031** | **0.594** | 0.594 |
+| **n_reach_to_t** | **27** | **1** | 6 |
+| **frac_reach_to_t** | **0.844** | **0.031** | 0.188 |
+| **max_dist_from_s** | **0** | **6** | 6 |
+| deg_t | **4** | **1** | 3 |
+| near_miss_bridges (missing) | 27 | 19 | 114 |
+
+Construction tags: all `arm_id`/`arm_meta` = None (no DATA_ARTIFACT). `n`/`p` fixed for all HN — not discriminative. `frontier_exits`≡0 by out-closure definition.
+
+### Concentration
+
+FO dominant bin **`frac_reach_s<0.25`** (28/45) vs OK_HN dominant **`frac_reach_s≥0.25`** (14/16). Cluster = **isolated-source / hub-target**: s out-closure trivial (often only s), t in-closure large — ens unifies confident false-reachability. OK_HN is the **inverse** (large R_out(s), tiny R_in(t)).
+
+### Member logits (FO_HN)
+
+| Tag | count |
+|-----|-------|
+| **HARD_UNANIMOUS** | **34** |
+| **SOFT_AGREE** | **11** |
+| MIXED_PRED | 0 |
+
+Mostly all-10 members wrong+confident; 11 soft-agree (all pred=1, some conf<0.80).
+
+### Reading (fail-closed)
+
+1. **STRUCTURAL_CLUSTER confirmed:** HN_FAIL_OPEN_CORE is not diffuse — it is the isolated-source / hub-target hard-neg pattern.
+2. **Not a data artifact:** labels/encoding consistent; no construction tags.
+3. **Member geometry:** predominantly HARD_UNANIMOUS — unified confident false-reachability, not soft thresholding.
+4. Residue refined to **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`**. Prefer #14 + #22 on matched-OOD only. Do **not** widen §22. No train. Do not park whole stalk corridor — this autopsy only.

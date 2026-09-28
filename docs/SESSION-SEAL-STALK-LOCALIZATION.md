@@ -12,7 +12,7 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
+**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair. HN FAIL_OPEN autopsy **STRUCTURAL_CLUSTER** (§29) — isolated-source / hub-target; residue **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`**; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
 
 Fail-closed outside the live scoped claim in **§22** (hist. §6 demoted). Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
@@ -684,4 +684,32 @@ Prior seal body + §13–§26 are **not** rewritten. This §27 is append-only ME
 ### 28.2 Non-rewrite rule
 
 Prior seal body + §13–§27 are **not** rewritten. This §28 is append-only MEASURE
+(`science_open=false`).
+
+## 29. HN FAIL_OPEN autopsy — MEASURE (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_HN_FAIL_OPEN_AUTOPSY` |
+| **Artifact** | `artifacts/stalk_hn_fail_open_autopsy.json` |
+| **Log** | `artifacts/stalk_hn_fail_open_autopsy_run.log` |
+| **Cycle note** | `docs/CYCLE_STALK_HN_FAIL_OPEN_AUTOPSY.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_hn_fail_open_autopsy` |
+| **Base** | `main` `dd18ff8` (after PR #30) |
+| **Prereg / harness / results** | `931bd78` / `3980451` / _(results SHA)_ |
+| **Cycle verdict** | **`STRUCTURAL_CLUSTER`** |
+| **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
+| **Recipe** | Eval-only structural autopsy of #30 FO=45 @ T=16; FO vs FC_HN vs OK_HN; member logits; **no** train |
+| **Cite #30 replicate** | exact (FO **45** / FC **190** / ens HN **0.067**) |
+| **Cluster** | isolated-source / hub-target (FO med R_out(s)=**1**, R_in(t)=**27**; OK inverse) |
+| **Members** | HARD_UNANIMOUS **34** / SOFT_AGREE **11** |
+| **Residue** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`** |
+
+### 29.1 Reading
+
+#30 HN_FAIL_OPEN_CORE is a **structural cluster**, not diffuse: ens unifies confident false-reachability when s is out-isolated and t is an in-hub. Prefer #14 + #22 on matched-OOD only. Do **not** widen §22. No bag train. Corridor not parked — autopsy only.
+
+### 29.2 Non-rewrite rule
+
+Prior seal body + §13–§28 are **not** rewritten. This §29 is append-only MEASURE
 (`science_open=false`).

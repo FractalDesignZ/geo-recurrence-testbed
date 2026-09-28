@@ -1,0 +1,5 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[stalk-hn-fo-autopsy] loading #14/#18/#22 ens n=10
+[stalk-hn-fo-autopsy] infer ood_hops T16 for full FAIL_OPEN + members
+[stalk-hn-fo-autopsy] verdict=STRUCTURAL_CLUSTER residue=HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER FO_HN=45 FC_HN=179 OK_HN=16 member_tags={'HARD_UNANIMOUS': 34, 'SOFT_AGREE': 11} wrote artifacts/stalk_hn_fail_open_autopsy.json (6.7s)
