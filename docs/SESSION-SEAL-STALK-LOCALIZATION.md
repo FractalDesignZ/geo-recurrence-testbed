@@ -752,7 +752,7 @@ Prior seal body + §13–§29 are **not** rewritten. This §30 is append-only ME
 | **Cycle note** | `docs/CYCLE_STALK_HN_FO_REMAINDER_AUTOPSY.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_hn_fo_remainder_autopsy` |
 | **Base** | `main` `db8c2b1` (after PR #32) |
-| **Prereg / harness / results** | `bd7e440` / `a098584` / _(stamped)_ |
+| **Prereg / harness / results** | `bd7e440` / `a098584` / `c8b034631c31d86daf4a575c88b40a7f0a14e3b0` |
 | **Cycle verdict** | **`LOCAL_SOUND_WALL`** |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
 | **Recipe** | Offline autopsy of **22** FO remainder (outdeg>0) vs killed/OK/FC; local-sound cut hunt (indeg_t0 / deadend-nbrs); coverage ≥8/22 required for overlay; **no** train; **no** BFS gate |

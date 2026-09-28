@@ -168,7 +168,7 @@ Priority: collateral harm → `COLLATERAL_HARM`. Still **MEASURE**, never OPEN.
 | **Log** | `artifacts/stalk_hn_fo_remainder_autopsy_run.log` |
 | **Prereg SHA** | `bd7e440` |
 | **Harness SHA** | `a098584` |
-| **Results SHA** | _(stamped after results commit)_ |
+| **Results SHA** | `c8b034631c31d86daf4a575c88b40a7f0a14e3b0` |
 | **Cycle verdict** | **`LOCAL_SOUND_WALL`** |
 | **science_open** | **false** (not widened; §22 unchanged) |
 | **Residue update** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL/LOCAL_SOUND_WALL`** |
