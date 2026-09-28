@@ -51,6 +51,7 @@ reachability-stalk-competent-dissonance = "reachability_gen.run_stalk_competent_
 reachability-gen-stalk-red-cd = "reachability_gen.gen_stalk_red_competent_dissonance:main"
 reachability-stalk-red-competent-dissonance = "reachability_gen.run_stalk_red_competent_dissonance:main"
 reachability-stalk-hop-ood-hn = "reachability_gen.run_stalk_hop_ood_hn:main"
+reachability-stalk-hn-fail-open-autopsy = "reachability_gen.run_stalk_hn_fail_open_autopsy:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
