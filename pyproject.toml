@@ -55,6 +55,7 @@ reachability-stalk-hn-fail-open-autopsy = "reachability_gen.run_stalk_hn_fail_op
 reachability-stalk-sound-outdeg-gate = "reachability_gen.run_stalk_sound_outdeg_gate:main"
 reachability-stalk-hn-fo-remainder-autopsy = "reachability_gen.run_stalk_hn_fo_remainder_autopsy:main"
 reachability-stalk-reach-certificates = "reachability_gen.run_stalk_reach_certificates:main"
+reachability-stalk-tropical-attention-probe = "reachability_gen.run_stalk_tropical_attention_probe:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

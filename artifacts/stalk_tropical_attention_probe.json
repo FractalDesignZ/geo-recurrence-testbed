@@ -1,0 +1,573 @@
+{
+  "architecture": {
+    "d": 64,
+    "frozen_ckpts": "#14/#18/#22 ens",
+    "in_attention_rewrite": false,
+    "no_beta_anneal": true,
+    "no_dear": true,
+    "no_train": true,
+    "probe_scope": "ensemble_aggregation_logit_mix",
+    "tropical_defs": {
+      "baseline_contrast": "prob_mean: argmax_c mean_m softmax(L_m)_c",
+      "in_attention_rewrite": false,
+      "in_attention_rewrite_reason": "Frozen #14/#18/#22 members use softmax MultiheadAttention; replacing attn mix with max-plus on QK scores trained under sum-product is not a fair port test and would invent an untrained tropical operator. Scoped probe = ens aggregation.",
+      "primary": {
+        "formula": "score_c = max_m L[m,c]; pred = argmax_c score_c",
+        "name": "logit_max",
+        "semiring": "max-plus (tropical \u2295 = max over members)"
+      },
+      "scope": "ensemble_aggregation_logit_mix",
+      "secondary": {
+        "formula": "m* = argmax_m max_c softmax(L_m)_c; pred = argmax_c L[m*,c]",
+        "name": "beta_inf_member",
+        "note": "\u03b2\u2192\u221e softmax over members by confidence; hard routing"
+      }
+    }
+  },
+  "arms": {
+    "baseline_prob_mean": {
+      "CD": {
+        "CD": 0.553125,
+        "CD_raw": 0.1574869782909324,
+        "D_SAT": 0.25,
+        "D_clip": 1.0,
+        "D_hard": 0.28472222063897384,
+        "mu_acc": 0.553125
+      },
+      "D_hard": 0.28472222063897384,
+      "ensemble": {
+        "K12": 0.9750000238418579,
+        "K16": 0.987500011920929,
+        "K8": 0.8999999761581421,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 0.06666666666666667,
+            "correct": 16,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 0.975,
+            "correct": 78,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.9875,
+            "correct": 79,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 0.9,
+            "correct": 72,
+            "n": 80
+          }
+        },
+        "hard_neg_acc": 0.06666666666666667,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.5104166666666666
+      },
+      "fail_mode": {
+        "FAIL_AMBIG": 0,
+        "FAIL_CLOSED": 190,
+        "FAIL_OPEN": 45,
+        "ens_overall_acc": 0.5104166666666666,
+        "n_wrong": 235,
+        "verdict": "FAIL_CLOSED_DOMINANT"
+      }
+    },
+    "beta_inf_member": {
+      "CD": {
+        "CD": 0.553125,
+        "CD_raw": 0.1574869782909324,
+        "D_SAT": 0.25,
+        "D_clip": 1.0,
+        "D_hard": 0.28472222063897384,
+        "mu_acc": 0.553125
+      },
+      "D_hard": 0.28472222063897384,
+      "arm_own_FO_count": 45,
+      "ensemble": {
+        "K12": 0.8999999761581421,
+        "K16": 0.887499988079071,
+        "K8": 0.887499988079071,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 0.15,
+            "correct": 36,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 0.9,
+            "correct": 72,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.8875,
+            "correct": 71,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 0.8875,
+            "correct": 71,
+            "n": 80
+          }
+        },
+        "hard_neg_acc": 0.15,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.5208333333333334
+      },
+      "fail_mode": {
+        "FAIL_AMBIG": 0,
+        "FAIL_CLOSED": 185,
+        "FAIL_OPEN": 45,
+        "ens_overall_acc": 0.5208333333333334,
+        "n_wrong": 230,
+        "verdict": "FAIL_CLOSED_DOMINANT"
+      },
+      "fo_killed_ids": [],
+      "fo_killed_of_baseline45": 0,
+      "member_routing_unique": 6,
+      "rem22_killed": 0,
+      "rem22_killed_ids": []
+    },
+    "cert_ref_#35": {
+      "FO": 0,
+      "FO_killed_of_45": 45,
+      "HN": 1.0,
+      "K16": 0.987500011920929,
+      "available": true,
+      "note": "Sealed #35 CERT_FO_CATCH reference only; tropical \u2262 certificate",
+      "overall": 0.9770833333333333,
+      "rem22_killed": 22,
+      "source": "artifacts/stalk_reach_certificates.json",
+      "verdict": "CERT_FO_CATCH"
+    },
+    "logit_max": {
+      "CD": {
+        "CD": 0.553125,
+        "CD_raw": 0.1574869782909324,
+        "D_SAT": 0.25,
+        "D_clip": 1.0,
+        "D_hard": 0.28472222063897384,
+        "mu_acc": 0.553125
+      },
+      "D_hard": 0.28472222063897384,
+      "arm_own_FO_count": 45,
+      "ensemble": {
+        "K12": 0.8999999761581421,
+        "K16": 0.8500000238418579,
+        "K8": 0.862500011920929,
+        "by_hop": {
+          "-1": {
+            "acc_mean": 0.15,
+            "correct": 36,
+            "n": 240
+          },
+          "12": {
+            "acc_mean": 0.9,
+            "correct": 72,
+            "n": 80
+          },
+          "16": {
+            "acc_mean": 0.85,
+            "correct": 68,
+            "n": 80
+          },
+          "8": {
+            "acc_mean": 0.8625,
+            "correct": 69,
+            "n": 80
+          }
+        },
+        "hard_neg_acc": 0.15,
+        "hard_neg_n": 240,
+        "n": 480,
+        "overall_acc": 0.5104166666666666
+      },
+      "fail_mode": {
+        "FAIL_AMBIG": 0,
+        "FAIL_CLOSED": 190,
+        "FAIL_OPEN": 45,
+        "ens_overall_acc": 0.5104166666666666,
+        "n_wrong": 235,
+        "verdict": "FAIL_CLOSED_DOMINANT"
+      },
+      "fo_killed_ids": [],
+      "fo_killed_of_baseline45": 0,
+      "rem22_killed": 0,
+      "rem22_killed_ids": []
+    }
+  },
+  "collateral": {
+    "T": 16,
+    "baseline_prob_mean": {
+      "K12": 1.0,
+      "K16": 1.0,
+      "K8": 0.9750000238418579,
+      "by_hop": {
+        "-1": {
+          "acc_mean": 1.0,
+          "correct": 240,
+          "n": 240
+        },
+        "12": {
+          "acc_mean": 1.0,
+          "correct": 80,
+          "n": 80
+        },
+        "16": {
+          "acc_mean": 1.0,
+          "correct": 80,
+          "n": 80
+        },
+        "8": {
+          "acc_mean": 0.975,
+          "correct": 78,
+          "n": 80
+        }
+      },
+      "hard_neg_acc": 1.0,
+      "hard_neg_n": 240,
+      "n": 480,
+      "overall_acc": 0.9958333333333333
+    },
+    "beta_inf_member": {
+      "K12": 0.9750000238418579,
+      "K16": 0.5375000238418579,
+      "K8": 0.887499988079071,
+      "by_hop": {
+        "-1": {
+          "acc_mean": 0.9833333333333333,
+          "correct": 236,
+          "n": 240
+        },
+        "12": {
+          "acc_mean": 0.975,
+          "correct": 78,
+          "n": 80
+        },
+        "16": {
+          "acc_mean": 0.5375,
+          "correct": 43,
+          "n": 80
+        },
+        "8": {
+          "acc_mean": 0.8875,
+          "correct": 71,
+          "n": 80
+        }
+      },
+      "hard_neg_acc": 0.9833333333333333,
+      "hard_neg_n": 240,
+      "n": 480,
+      "overall_acc": 0.8916666666666667
+    },
+    "deltas_vs_baseline": {
+      "beta_inf_member": {
+        "K16": -0.4624999761581421,
+        "hard_neg_acc": -0.01666666666666672,
+        "overall_acc": -0.10416666666666663
+      },
+      "logit_max": {
+        "K16": -0.48750001192092896,
+        "hard_neg_acc": -0.008333333333333304,
+        "overall_acc": -0.10416666666666663
+      }
+    },
+    "logit_max": {
+      "K12": 0.987500011920929,
+      "K16": 0.512499988079071,
+      "K8": 0.875,
+      "by_hop": {
+        "-1": {
+          "acc_mean": 0.9916666666666667,
+          "correct": 238,
+          "n": 240
+        },
+        "12": {
+          "acc_mean": 0.9875,
+          "correct": 79,
+          "n": 80
+        },
+        "16": {
+          "acc_mean": 0.5125,
+          "correct": 41,
+          "n": 80
+        },
+        "8": {
+          "acc_mean": 0.875,
+          "correct": 70,
+          "n": 80
+        }
+      },
+      "hard_neg_acc": 0.9916666666666667,
+      "hard_neg_n": 240,
+      "n": 480,
+      "overall_acc": 0.8916666666666667
+    },
+    "n": 480,
+    "skipped": false
+  },
+  "comparison_table": {
+    "baseline": {
+      "FC": 190,
+      "FO": 45,
+      "HN": 0.06666666666666667,
+      "K16": 0.987500011920929,
+      "overall": 0.5104166666666666,
+      "rem22_FO": 22
+    },
+    "beta_inf_member": {
+      "FC": 185,
+      "FO": 45,
+      "FO_killed_of_45": 0,
+      "HN": 0.15,
+      "K16": 0.887499988079071,
+      "delta_HN": 0.08333333333333333,
+      "overall": 0.5208333333333334,
+      "rem22_killed": 0
+    },
+    "cert_ref_#35": {
+      "FO": 0,
+      "FO_killed_of_45": 45,
+      "HN": 1.0,
+      "K16": 0.987500011920929,
+      "note": "reference only; not a tropical arm",
+      "overall": 0.9770833333333333,
+      "rem22_killed": 22
+    },
+    "logit_max": {
+      "FC": 190,
+      "FO": 45,
+      "FO_killed_of_45": 0,
+      "HN": 0.15,
+      "K16": 0.8500000238418579,
+      "delta_HN": 0.08333333333333333,
+      "overall": 0.5104166666666666,
+      "rem22_killed": 0
+    }
+  },
+  "cycle": "CYCLE_STALK_TROPICAL_ATTENTION_PROBE",
+  "datasets": {
+    "T": 16,
+    "matched_ood": "data/covariate_matched_ood.jsonl",
+    "n_ood_hops": 480,
+    "ood_hops": "data/ood_hops.jsonl"
+  },
+  "decision": {
+    "delta_hn_abs": 0.08333333333333333,
+    "fo_killed": 0,
+    "fo_total": 45,
+    "primary_arm": "logit_max",
+    "reasons": [
+      "matched_logit_max_overall_acc_drop=0.1042>=0.05",
+      "matched_logit_max_K16_drop=0.4875>=0.05",
+      "matched_beta_inf_member_overall_acc_drop=0.1042>=0.05",
+      "matched_beta_inf_member_K16_drop=0.4625>=0.05"
+    ],
+    "rem22_killed": 0,
+    "rem22_total": 22,
+    "secondary_arm_decision": {
+      "delta_hn_abs": 0.08333333333333333,
+      "fo_killed": 0,
+      "fo_total": 45,
+      "reasons": [
+        "matched_logit_max_overall_acc_drop=0.1042>=0.05",
+        "matched_logit_max_K16_drop=0.4875>=0.05",
+        "matched_beta_inf_member_overall_acc_drop=0.1042>=0.05",
+        "matched_beta_inf_member_K16_drop=0.4625>=0.05"
+      ],
+      "rem22_killed": 0,
+      "rem22_total": 22,
+      "verdict": "COLLATERAL_HARM"
+    },
+    "verdict": "COLLATERAL_HARM"
+  },
+  "elapsed_sec": 16.40980076789856,
+  "fo_ids_baseline": [
+    5,
+    30,
+    36,
+    52,
+    59,
+    71,
+    112,
+    122,
+    127,
+    142,
+    172,
+    176,
+    180,
+    188,
+    190,
+    202,
+    205,
+    215,
+    217,
+    223,
+    225,
+    236,
+    238,
+    242,
+    243,
+    249,
+    259,
+    260,
+    264,
+    265,
+    282,
+    294,
+    302,
+    312,
+    335,
+    336,
+    347,
+    352,
+    353,
+    373,
+    381,
+    405,
+    417,
+    436,
+    441
+  ],
+  "git_sha": "ffd199052599f48c7ecc8713b104f6d7d3808fde",
+  "hop_ood_remains_measure_residue": true,
+  "members_pr22": [
+    {
+      "best_epoch": 58,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed0_best.pt",
+      "seed": 0,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 25,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed1_best.pt",
+      "seed": 1,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 26,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed2_best.pt",
+      "seed": 2,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 43,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed3_best.pt",
+      "seed": 3,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 37,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed4_best.pt",
+      "seed": 4,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 51,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed5_best.pt",
+      "seed": 5,
+      "source": "pr18"
+    },
+    {
+      "best_epoch": 31,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed6_best.pt",
+      "seed": 6,
+      "source": "pr18"
+    },
+    {
+      "best_epoch": 2,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed7_best.pt",
+      "seed": 7,
+      "source": "pr18"
+    },
+    {
+      "best_epoch": 28,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed8_best.pt",
+      "seed": 8,
+      "source": "pr18"
+    },
+    {
+      "best_epoch": 50,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed9_best.pt",
+      "seed": 9,
+      "source": "pr18"
+    }
+  ],
+  "mode": "MEASURE",
+  "open_status": {
+    "claim_hop_ood_open": false,
+    "science_open": false,
+    "section22_widened": false,
+    "tropical_equals_certificate": false
+  },
+  "prereg": {
+    "COLLATERAL_DROP": 0.05,
+    "CONF_THRESH": 0.8,
+    "D_CLOSED_MIN": 0.1,
+    "EPI_CLOSED_MIN": 0.15,
+    "FO_LIFT_MIN": 16,
+    "FO_NULL_MAX": 2,
+    "HN_NULL_DELTA": 0.05,
+    "REM22_LIFT_MIN": 8,
+    "arms": [
+      "baseline_prob_mean",
+      "logit_max",
+      "beta_inf_member",
+      "cert_ref_#35"
+    ],
+    "primary_tropical_arm": "logit_max",
+    "verdicts": [
+      "TROPICAL_FO_LIFT",
+      "TROPICAL_PARTIAL",
+      "TROPICAL_NULL",
+      "COLLATERAL_HARM"
+    ]
+  },
+  "reading": [
+    "Primary tropical arm logit_max: FO killed 0/45; rem22 killed 0/22; HN 0.067\u21920.150 (\u0394=+0.083).",
+    "Secondary beta_inf_member: FO killed 0/45; rem22 killed 0/22.",
+    "Scoped probe = ens aggregation only (in-attn rewrite impractical on frozen softmax MHA). Tropical \u2262 certificate (#35 reference).",
+    "Verdict=COLLATERAL_HARM. science_open=false; \u00a722 not widened; no hop-OOD OPEN claim."
+  ],
+  "rem22_ids": [
+    5,
+    30,
+    36,
+    52,
+    122,
+    142,
+    180,
+    188,
+    190,
+    205,
+    215,
+    217,
+    225,
+    249,
+    259,
+    260,
+    265,
+    294,
+    302,
+    347,
+    352,
+    381
+  ],
+  "replicate_cite30": {
+    "FO": 45,
+    "HN": 0.06666666666666667,
+    "K16": 0.987500011920929,
+    "cite30_path": "artifacts/stalk_hop_ood_hn.json",
+    "expected_FO": 45,
+    "expected_HN": 0.06666666666666667,
+    "ok": true,
+    "overall": 0.5104166666666666
+  },
+  "residue": "HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL/LOCAL_SOUND_WALL/CERT_FO_CATCH/COLLATERAL_HARM",
+  "science_open": false,
+  "section22_unchanged": true,
+  "verdict": "COLLATERAL_HARM"
+}

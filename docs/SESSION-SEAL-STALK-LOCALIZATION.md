@@ -12,7 +12,7 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair. HN FAIL_OPEN autopsy **STRUCTURAL_CLUSTER** (§29) — isolated-source / hub-target; residue **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`**. Sound outdeg gate **FO_PARTIAL** (§30) — **23/45** FO killed; HN **0.067→0.304**; matched-OOD Δ=0; residue **`…/OUTDEG0_PARTIAL`**. FO remainder autopsy **LOCAL_SOUND_WALL** (§31) — best local cut **5/22**; stop overlay chase; residue **`…/LOCAL_SOUND_WALL`**. Hop-OOD overlay **PARK** (§32). Reach certificates **CERT_FO_CATCH** (§33) — **45/45** FO + **22/22** rem-22; HN **0.067→1.000**; matched-OOD Δ=0; checker BFS post-hoc only; tropical Phase 2 **not** started; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
+**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair. HN FAIL_OPEN autopsy **STRUCTURAL_CLUSTER** (§29) — isolated-source / hub-target; residue **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`**. Sound outdeg gate **FO_PARTIAL** (§30) — **23/45** FO killed; HN **0.067→0.304**; matched-OOD Δ=0; residue **`…/OUTDEG0_PARTIAL`**. FO remainder autopsy **LOCAL_SOUND_WALL** (§31) — best local cut **5/22**; stop overlay chase; residue **`…/LOCAL_SOUND_WALL`**. Hop-OOD overlay **PARK** (§32). Reach certificates **CERT_FO_CATCH** (§33) — **45/45** FO + **22/22** rem-22; HN **0.067→1.000**; matched-OOD Δ=0; checker BFS post-hoc only. Tropical ens probe **COLLATERAL_HARM** (§34) — FO **0**/45 + rem22 **0**/22; matched K16 **1.000→0.512**; ens-layer max-plus falsified as FO repair; tropical ≢ cert; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
 
 Fail-closed outside the live scoped claim in **§22** (hist. §6 demoted). Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
@@ -821,3 +821,33 @@ Post-hoc certificates (path-witness validation / checker BFS) force-close dirty 
 
 Prior seal body + §13–§32 are **not** rewritten. This §33 is append-only MEASURE
 (`science_open=false`).
+
+## 34. Tropical ens aggregation probe — COLLATERAL_HARM (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_TROPICAL_ATTENTION_PROBE` |
+| **Artifact** | `artifacts/stalk_tropical_attention_probe.json` |
+| **Log** | `artifacts/stalk_tropical_attention_probe_run.log` |
+| **Cycle note** | `docs/CYCLE_STALK_TROPICAL_ATTENTION_PROBE.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_tropical_attention_probe` |
+| **Base** | `main` `86d1ff0` (after PR #35) |
+| **Prereg / harness / results** | `30f57de` / `ffd1990` / `698112f54951a47d53e0a859cf3c64039281aac0` |
+| **Cycle verdict** | **`COLLATERAL_HARM`** |
+| **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
+| **Tropical definition** | scoped ens **`logit_max`** (`score_c = max_m L[m,c]`) + **`beta_inf_member`**; **not** in-attn MHA rewrite |
+| **Recipe** | Eval-only on frozen #14/#18/#22 ens; ood_hops@T16 + matched-OOD collateral; **no** train / anneal / DEAR |
+| **FO catch** | **0/45** baseline FO; rem-22 **0/22**; HN 0.067→0.150 (FO core untouched) |
+| **Matched-OOD Δ** | overall **−0.104**; K16 **−0.488** (COLLATERAL_HARM) |
+| **Cert reference** | #35 CERT_FO_CATCH (45/45) — tropical ≢ certificate |
+| **Residue** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL/LOCAL_SOUND_WALL/CERT_FO_CATCH/COLLATERAL_HARM`** |
+
+### 34.1 Reading
+
+Tropical ens aggregation does not move the hop-OOD FAIL_OPEN core and harms matched-OOD K16 competence that `prob_mean` carries. The ens-layer "sum-product bleed → rem-22 FO" hypothesis is falsified as a repair lever under this scoped probe. Prefer #14 + #22 `prob_mean` on matched-OOD; keep #35 post-hoc certificates for FO catch. Do **not** widen §22. Do **not** claim hop-OOD OPEN. Do **not** equate tropical with certificates. Still **MEASURE**.
+
+### 34.2 Non-rewrite rule
+
+Prior seal body + §13–§33 are **not** rewritten. This §34 is append-only MEASURE
+(`science_open=false`).
+
