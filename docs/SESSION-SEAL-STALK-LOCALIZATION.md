@@ -559,7 +559,7 @@ Prior seal body + §13–§22 are **not** rewritten. This §23 is append-only ME
 | **Cycle note** | `docs/CYCLE_STALK_EPISTEMIC_DISAGREEMENT.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_epistemic_disagreement` |
 | **Base** | `main` `b051e15` (after PR #25 SWA) |
-| **Prereg / results** | `daaeb21` / *(this merge)* |
+| **Prereg / results** | `daaeb21` / `9f1ee3e` |
 | **Audit verdict** | **`AUDIT_LIFTS_ON_DISAGREEMENT`** |
 | **Train verdict** | **`STOP`** |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
