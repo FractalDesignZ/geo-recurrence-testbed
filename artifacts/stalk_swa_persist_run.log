@@ -1,0 +1,390 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[stalk-swa] === seed 0 train (SWA persist) ===
+[stalk-swa] params=117506 parity_ok=True d=64 mlp=10 T=6 lr=0.0015→0.00015 cosine clip=2.5 swa_start=31
+[stalk-swa] epoch 1/60 lr=0.0015 train_acc=0.7206 val@T6=0.8475 sel@T16 HN=0.7500 ov=0.8525 (best@ep1 joint=0.8013)
+[stalk-swa] epoch 2/60 lr=0.001499 train_acc=0.8594 val@T6=0.8700 sel@T16 HN=0.7950 ov=0.8350 (best@ep2 joint=0.8150)
+[stalk-swa] epoch 3/60 lr=0.0014962 train_acc=0.8875 val@T6=0.8775 sel@T16 HN=0.8350 ov=0.8525 (best@ep3 joint=0.8438)
+[stalk-swa] epoch 4/60 lr=0.0014914 train_acc=0.8906 val@T6=0.8875 sel@T16 HN=0.8700 ov=0.8525 (best@ep4 joint=0.8613)
+[stalk-swa] epoch 5/60 lr=0.0014847 train_acc=0.8888 val@T6=0.8775 sel@T16 HN=0.9850 ov=0.6725 (best@ep4 joint=0.8613)
+[stalk-swa] epoch 6/60 lr=0.0014762 train_acc=0.9062 val@T6=0.8825 sel@T16 HN=0.9250 ov=0.8325 (best@ep6 joint=0.8788)
+[stalk-swa] epoch 7/60 lr=0.0014658 train_acc=0.8981 val@T6=0.8675 sel@T16 HN=1.0000 ov=0.6150 (best@ep6 joint=0.8788)
+[stalk-swa] epoch 8/60 lr=0.0014537 train_acc=0.9062 val@T6=0.8700 sel@T16 HN=0.9450 ov=0.8875 (best@ep8 joint=0.9163)
+[stalk-swa] epoch 9/60 lr=0.0014397 train_acc=0.8944 val@T6=0.8775 sel@T16 HN=1.0000 ov=0.6925 (best@ep8 joint=0.9163)
+[stalk-swa] epoch 10/60 lr=0.001424 train_acc=0.9200 val@T6=0.8800 sel@T16 HN=1.0000 ov=0.7775 (best@ep8 joint=0.9163)
+[stalk-swa] epoch 11/60 lr=0.0014065 train_acc=0.9237 val@T6=0.9000 sel@T16 HN=0.9350 ov=0.7350 (best@ep8 joint=0.9163)
+[stalk-swa] epoch 12/60 lr=0.0013875 train_acc=0.9369 val@T6=0.9300 sel@T16 HN=0.9950 ov=0.7900 (best@ep8 joint=0.9163)
+[stalk-swa] epoch 13/60 lr=0.0013668 train_acc=0.9487 val@T6=0.9400 sel@T16 HN=0.9800 ov=0.8000 (best@ep8 joint=0.9163)
+[stalk-swa] epoch 14/60 lr=0.0013446 train_acc=0.9481 val@T6=0.9425 sel@T16 HN=0.9350 ov=0.8025 (best@ep8 joint=0.9163)
+[stalk-swa] epoch 15/60 lr=0.001321 train_acc=0.9550 val@T6=0.9325 sel@T16 HN=1.0000 ov=0.7775 (best@ep8 joint=0.9163)
+[stalk-swa] epoch 16/60 lr=0.0012959 train_acc=0.9406 val@T6=0.9475 sel@T16 HN=0.9600 ov=0.8750 (best@ep16 joint=0.9175)
+[stalk-swa] epoch 17/60 lr=0.0012695 train_acc=0.9600 val@T6=0.9425 sel@T16 HN=0.9250 ov=0.9300 (best@ep17 joint=0.9275)
+[stalk-swa] epoch 18/60 lr=0.0012418 train_acc=0.9706 val@T6=0.9500 sel@T16 HN=0.9650 ov=0.9225 (best@ep18 joint=0.9437)
+[stalk-swa] epoch 19/60 lr=0.001213 train_acc=0.9650 val@T6=0.9525 sel@T16 HN=0.9600 ov=0.9725 (best@ep19 joint=0.9663)
+[stalk-swa] epoch 20/60 lr=0.001183 train_acc=0.9731 val@T6=0.9575 sel@T16 HN=0.9600 ov=0.9700 (best@ep19 joint=0.9663)
+[stalk-swa] epoch 21/60 lr=0.0011521 train_acc=0.9731 val@T6=0.9625 sel@T16 HN=0.9600 ov=0.9775 (best@ep21 joint=0.9688)
+[stalk-swa] epoch 22/60 lr=0.0011202 train_acc=0.9738 val@T6=0.9525 sel@T16 HN=0.9600 ov=0.9625 (best@ep21 joint=0.9688)
+[stalk-swa] epoch 23/60 lr=0.0010875 train_acc=0.9738 val@T6=0.9650 sel@T16 HN=0.9600 ov=0.9700 (best@ep21 joint=0.9688)
+[stalk-swa] epoch 24/60 lr=0.001054 train_acc=0.9762 val@T6=0.9600 sel@T16 HN=0.9600 ov=0.9650 (best@ep21 joint=0.9688)
+[stalk-swa] epoch 25/60 lr=0.0010199 train_acc=0.9744 val@T6=0.9700 sel@T16 HN=0.9600 ov=0.9775 (best@ep21 joint=0.9688)
+[stalk-swa] epoch 26/60 lr=0.0009852 train_acc=0.9750 val@T6=0.9675 sel@T16 HN=0.9600 ov=0.9775 (best@ep21 joint=0.9688)
+[stalk-swa] epoch 27/60 lr=0.00095007 train_acc=0.9775 val@T6=0.9650 sel@T16 HN=0.9600 ov=0.9800 (best@ep27 joint=0.9700)
+[stalk-swa] epoch 28/60 lr=0.00091459 train_acc=0.9775 val@T6=0.9700 sel@T16 HN=0.9600 ov=0.9800 (best@ep27 joint=0.9700)
+[stalk-swa] epoch 29/60 lr=0.00087886 train_acc=0.9781 val@T6=0.9650 sel@T16 HN=0.9500 ov=0.9750 (best@ep27 joint=0.9700)
+[stalk-swa] epoch 30/60 lr=0.00084297 train_acc=0.9769 val@T6=0.9675 sel@T16 HN=0.9300 ov=0.9650 (best@ep27 joint=0.9700)
+[stalk-swa] epoch 31/60 lr=0.00080703 train_acc=0.9781 val@T6=0.9725 sel@T16 HN=0.9550 ov=0.9775 (best@ep27 joint=0.9700; swa_n=1)
+[stalk-swa] epoch 32/60 lr=0.00077114 train_acc=0.9769 val@T6=0.9725 sel@T16 HN=0.9600 ov=0.9600 (best@ep27 joint=0.9700; swa_n=2)
+[stalk-swa] epoch 33/60 lr=0.00073541 train_acc=0.9800 val@T6=0.9625 sel@T16 HN=0.9550 ov=0.9625 (best@ep27 joint=0.9700; swa_n=3)
+[stalk-swa] epoch 34/60 lr=0.00069993 train_acc=0.9819 val@T6=0.9750 sel@T16 HN=0.9650 ov=0.9425 (best@ep27 joint=0.9700; swa_n=4)
+[stalk-swa] epoch 35/60 lr=0.0006648 train_acc=0.9762 val@T6=0.9725 sel@T16 HN=0.9650 ov=0.9550 (best@ep27 joint=0.9700; swa_n=5)
+[stalk-swa] epoch 36/60 lr=0.00063013 train_acc=0.9806 val@T6=0.9700 sel@T16 HN=0.9650 ov=0.9600 (best@ep27 joint=0.9700; swa_n=6)
+[stalk-swa] epoch 37/60 lr=0.00059601 train_acc=0.9806 val@T6=0.9725 sel@T16 HN=0.9700 ov=0.9350 (best@ep27 joint=0.9700; swa_n=7)
+[stalk-swa] epoch 38/60 lr=0.00056254 train_acc=0.9812 val@T6=0.9700 sel@T16 HN=0.9650 ov=0.9625 (best@ep27 joint=0.9700; swa_n=8)
+[stalk-swa] epoch 39/60 lr=0.00052982 train_acc=0.9831 val@T6=0.9700 sel@T16 HN=0.9600 ov=0.9725 (best@ep27 joint=0.9700; swa_n=9)
+[stalk-swa] epoch 40/60 lr=0.00049793 train_acc=0.9856 val@T6=0.9800 sel@T16 HN=0.9900 ov=0.9900 (best@ep40 joint=0.9900; swa_n=10)
+[stalk-swa] epoch 41/60 lr=0.00046697 train_acc=0.9912 val@T6=0.9775 sel@T16 HN=0.9900 ov=0.9850 (best@ep40 joint=0.9900; swa_n=11)
+[stalk-swa] epoch 42/60 lr=0.00043702 train_acc=0.9919 val@T6=0.9875 sel@T16 HN=0.9900 ov=0.9875 (best@ep40 joint=0.9900; swa_n=12)
+[stalk-swa] epoch 43/60 lr=0.00040817 train_acc=0.9925 val@T6=0.9875 sel@T16 HN=0.9900 ov=0.9875 (best@ep40 joint=0.9900; swa_n=13)
+[stalk-swa] epoch 44/60 lr=0.0003805 train_acc=0.9912 val@T6=0.9900 sel@T16 HN=0.9900 ov=0.9900 (best@ep40 joint=0.9900; swa_n=14)
+[stalk-swa] epoch 45/60 lr=0.0003541 train_acc=0.9944 val@T6=0.9850 sel@T16 HN=0.9900 ov=0.9925 (best@ep45 joint=0.9912; swa_n=15)
+[stalk-swa] epoch 46/60 lr=0.00032903 train_acc=0.9925 val@T6=0.9900 sel@T16 HN=0.9900 ov=0.9925 (best@ep45 joint=0.9912; swa_n=16)
+[stalk-swa] epoch 47/60 lr=0.00030536 train_acc=0.9944 val@T6=0.9900 sel@T16 HN=0.9900 ov=0.9900 (best@ep45 joint=0.9912; swa_n=17)
+[stalk-swa] epoch 48/60 lr=0.00028317 train_acc=0.9950 val@T6=0.9900 sel@T16 HN=0.9900 ov=0.9925 (best@ep45 joint=0.9912; swa_n=18)
+[stalk-swa] epoch 49/60 lr=0.00026251 train_acc=0.9944 val@T6=0.9850 sel@T16 HN=0.9900 ov=0.9925 (best@ep45 joint=0.9912; swa_n=19)
+[stalk-swa] epoch 50/60 lr=0.00024345 train_acc=0.9944 val@T6=0.9800 sel@T16 HN=0.9900 ov=0.9925 (best@ep45 joint=0.9912; swa_n=20)
+[stalk-swa] epoch 51/60 lr=0.00022604 train_acc=0.9944 val@T6=0.9825 sel@T16 HN=0.9700 ov=0.9825 (best@ep45 joint=0.9912; swa_n=21)
+[stalk-swa] epoch 52/60 lr=0.00021032 train_acc=0.9938 val@T6=0.9850 sel@T16 HN=0.9900 ov=0.9925 (best@ep45 joint=0.9912; swa_n=22)
+[stalk-swa] epoch 53/60 lr=0.00019635 train_acc=0.9944 val@T6=0.9850 sel@T16 HN=0.9900 ov=0.9925 (best@ep45 joint=0.9912; swa_n=23)
+[stalk-swa] epoch 54/60 lr=0.00018416 train_acc=0.9938 val@T6=0.9850 sel@T16 HN=0.9900 ov=0.9925 (best@ep45 joint=0.9912; swa_n=24)
+[stalk-swa] epoch 55/60 lr=0.00017378 train_acc=0.9950 val@T6=0.9850 sel@T16 HN=0.9900 ov=0.9925 (best@ep45 joint=0.9912; swa_n=25)
+[stalk-swa] epoch 56/60 lr=0.00016525 train_acc=0.9956 val@T6=0.9875 sel@T16 HN=0.9900 ov=0.9925 (best@ep45 joint=0.9912; swa_n=26)
+[stalk-swa] epoch 57/60 lr=0.00015859 train_acc=0.9956 val@T6=0.9850 sel@T16 HN=0.9900 ov=0.9925 (best@ep45 joint=0.9912; swa_n=27)
+[stalk-swa] epoch 58/60 lr=0.00015382 train_acc=0.9950 val@T6=0.9800 sel@T16 HN=0.9900 ov=0.9950 (best@ep58 joint=0.9925; swa_n=28)
+[stalk-swa] epoch 59/60 lr=0.00015096 train_acc=0.9950 val@T6=0.9850 sel@T16 HN=0.9900 ov=0.9950 (best@ep58 joint=0.9925; swa_n=29)
+[stalk-swa] epoch 60/60 lr=0.00015 train_acc=0.9950 val@T6=0.9800 sel@T16 HN=0.9700 ov=0.9850 (best@ep58 joint=0.9925; swa_n=30)
+[stalk-swa] seed=0 OOD eval SWA + select
+[stalk-swa] seed=0 SWA T16 ov=0.8396 HN=0.7583 K16=0.8125 pass=False | select HN=1.0000 K16=0.8625
+[stalk-swa] === seed 1 train (SWA persist) ===
+[stalk-swa] params=117506 parity_ok=True d=64 mlp=10 T=6 lr=0.0015→0.00015 cosine clip=2.5 swa_start=31
+[stalk-swa] epoch 1/60 lr=0.0015 train_acc=0.7163 val@T6=0.8300 sel@T16 HN=0.8900 ov=0.8025 (best@ep1 joint=0.8462)
+[stalk-swa] epoch 2/60 lr=0.001499 train_acc=0.8375 val@T6=0.8525 sel@T16 HN=0.7900 ov=0.8325 (best@ep1 joint=0.8462)
+[stalk-swa] epoch 3/60 lr=0.0014962 train_acc=0.8631 val@T6=0.8550 sel@T16 HN=0.9300 ov=0.7800 (best@ep3 joint=0.8550)
+[stalk-swa] epoch 4/60 lr=0.0014914 train_acc=0.8762 val@T6=0.8650 sel@T16 HN=0.9500 ov=0.7800 (best@ep4 joint=0.8650)
+[stalk-swa] epoch 5/60 lr=0.0014847 train_acc=0.8769 val@T6=0.8675 sel@T16 HN=0.9700 ov=0.7750 (best@ep5 joint=0.8725)
+[stalk-swa] epoch 6/60 lr=0.0014762 train_acc=0.8881 val@T6=0.8825 sel@T16 HN=0.9750 ov=0.7750 (best@ep6 joint=0.8750)
+[stalk-swa] epoch 7/60 lr=0.0014658 train_acc=0.8906 val@T6=0.8675 sel@T16 HN=0.9950 ov=0.6875 (best@ep6 joint=0.8750)
+[stalk-swa] epoch 8/60 lr=0.0014537 train_acc=0.8938 val@T6=0.8725 sel@T16 HN=0.9950 ov=0.7075 (best@ep6 joint=0.8750)
+[stalk-swa] epoch 9/60 lr=0.0014397 train_acc=0.8962 val@T6=0.8925 sel@T16 HN=0.9950 ov=0.7350 (best@ep6 joint=0.8750)
+[stalk-swa] epoch 10/60 lr=0.001424 train_acc=0.9106 val@T6=0.8850 sel@T16 HN=1.0000 ov=0.7175 (best@ep6 joint=0.8750)
+[stalk-swa] epoch 11/60 lr=0.0014065 train_acc=0.9050 val@T6=0.9150 sel@T16 HN=0.9800 ov=0.8150 (best@ep11 joint=0.8975)
+[stalk-swa] epoch 12/60 lr=0.0013875 train_acc=0.9344 val@T6=0.8875 sel@T16 HN=0.9250 ov=0.7350 (best@ep11 joint=0.8975)
+[stalk-swa] epoch 13/60 lr=0.0013668 train_acc=0.9269 val@T6=0.9275 sel@T16 HN=1.0000 ov=0.7225 (best@ep11 joint=0.8975)
+[stalk-swa] epoch 14/60 lr=0.0013446 train_acc=0.9469 val@T6=0.9350 sel@T16 HN=1.0000 ov=0.7325 (best@ep11 joint=0.8975)
+[stalk-swa] epoch 15/60 lr=0.001321 train_acc=0.9563 val@T6=0.9500 sel@T16 HN=1.0000 ov=0.6775 (best@ep11 joint=0.8975)
+[stalk-swa] epoch 16/60 lr=0.0012959 train_acc=0.9631 val@T6=0.9575 sel@T16 HN=1.0000 ov=0.6750 (best@ep11 joint=0.8975)
+[stalk-swa] epoch 17/60 lr=0.0012695 train_acc=0.9650 val@T6=0.9400 sel@T16 HN=1.0000 ov=0.6775 (best@ep11 joint=0.8975)
+[stalk-swa] epoch 18/60 lr=0.0012418 train_acc=0.9600 val@T6=0.9550 sel@T16 HN=1.0000 ov=0.6750 (best@ep11 joint=0.8975)
+[stalk-swa] epoch 19/60 lr=0.001213 train_acc=0.9644 val@T6=0.9475 sel@T16 HN=1.0000 ov=0.6675 (best@ep11 joint=0.8975)
+[stalk-swa] epoch 20/60 lr=0.001183 train_acc=0.9431 val@T6=0.9500 sel@T16 HN=1.0000 ov=0.7050 (best@ep11 joint=0.8975)
+[stalk-swa] epoch 21/60 lr=0.0011521 train_acc=0.9706 val@T6=0.9650 sel@T16 HN=1.0000 ov=0.8100 (best@ep21 joint=0.9050)
+[stalk-swa] epoch 22/60 lr=0.0011202 train_acc=0.9731 val@T6=0.9725 sel@T16 HN=0.9850 ov=0.8750 (best@ep22 joint=0.9300)
+[stalk-swa] epoch 23/60 lr=0.0010875 train_acc=0.9762 val@T6=0.9575 sel@T16 HN=1.0000 ov=0.8575 (best@ep22 joint=0.9300)
+[stalk-swa] epoch 24/60 lr=0.001054 train_acc=0.9806 val@T6=0.9675 sel@T16 HN=1.0000 ov=0.8450 (best@ep22 joint=0.9300)
+[stalk-swa] epoch 25/60 lr=0.0010199 train_acc=0.9806 val@T6=0.9600 sel@T16 HN=0.9900 ov=0.8875 (best@ep25 joint=0.9387)
+[stalk-swa] epoch 26/60 lr=0.0009852 train_acc=0.9819 val@T6=0.9550 sel@T16 HN=1.0000 ov=0.8725 (best@ep25 joint=0.9387)
+[stalk-swa] epoch 27/60 lr=0.00095007 train_acc=0.9788 val@T6=0.9525 sel@T16 HN=1.0000 ov=0.8250 (best@ep25 joint=0.9387)
+[stalk-swa] epoch 28/60 lr=0.00091459 train_acc=0.9788 val@T6=0.9600 sel@T16 HN=1.0000 ov=0.8525 (best@ep25 joint=0.9387)
+[stalk-swa] epoch 29/60 lr=0.00087886 train_acc=0.9838 val@T6=0.9700 sel@T16 HN=1.0000 ov=0.8550 (best@ep25 joint=0.9387)
+[stalk-swa] epoch 30/60 lr=0.00084297 train_acc=0.9825 val@T6=0.9675 sel@T16 HN=1.0000 ov=0.8125 (best@ep25 joint=0.9387)
+[stalk-swa] epoch 31/60 lr=0.00080703 train_acc=0.9775 val@T6=0.9675 sel@T16 HN=1.0000 ov=0.8325 (best@ep25 joint=0.9387; swa_n=1)
+[stalk-swa] epoch 32/60 lr=0.00077114 train_acc=0.9806 val@T6=0.9625 sel@T16 HN=1.0000 ov=0.8125 (best@ep25 joint=0.9387; swa_n=2)
+[stalk-swa] epoch 33/60 lr=0.00073541 train_acc=0.9825 val@T6=0.9625 sel@T16 HN=1.0000 ov=0.8525 (best@ep25 joint=0.9387; swa_n=3)
+[stalk-swa] epoch 34/60 lr=0.00069993 train_acc=0.9844 val@T6=0.9675 sel@T16 HN=1.0000 ov=0.8725 (best@ep25 joint=0.9387; swa_n=4)
+[stalk-swa] epoch 35/60 lr=0.0006648 train_acc=0.9825 val@T6=0.9675 sel@T16 HN=1.0000 ov=0.8450 (best@ep25 joint=0.9387; swa_n=5)
+[stalk-swa] epoch 36/60 lr=0.00063013 train_acc=0.9819 val@T6=0.9575 sel@T16 HN=1.0000 ov=0.8000 (best@ep25 joint=0.9387; swa_n=6)
+[stalk-swa] epoch 37/60 lr=0.00059601 train_acc=0.9838 val@T6=0.9600 sel@T16 HN=1.0000 ov=0.8150 (best@ep25 joint=0.9387; swa_n=7)
+[stalk-swa] epoch 38/60 lr=0.00056254 train_acc=0.9850 val@T6=0.9600 sel@T16 HN=1.0000 ov=0.8225 (best@ep25 joint=0.9387; swa_n=8)
+[stalk-swa] epoch 39/60 lr=0.00052982 train_acc=0.9844 val@T6=0.9600 sel@T16 HN=1.0000 ov=0.8175 (best@ep25 joint=0.9387; swa_n=9)
+[stalk-swa] epoch 40/60 lr=0.00049793 train_acc=0.9869 val@T6=0.9675 sel@T16 HN=1.0000 ov=0.8425 (best@ep25 joint=0.9387; swa_n=10)
+[stalk-swa] epoch 41/60 lr=0.00046697 train_acc=0.9844 val@T6=0.9600 sel@T16 HN=1.0000 ov=0.8025 (best@ep25 joint=0.9387; swa_n=11)
+[stalk-swa] epoch 42/60 lr=0.00043702 train_acc=0.9838 val@T6=0.9600 sel@T16 HN=1.0000 ov=0.8050 (best@ep25 joint=0.9387; swa_n=12)
+[stalk-swa] epoch 43/60 lr=0.00040817 train_acc=0.9850 val@T6=0.9650 sel@T16 HN=1.0000 ov=0.8225 (best@ep25 joint=0.9387; swa_n=13)
+[stalk-swa] epoch 44/60 lr=0.0003805 train_acc=0.9844 val@T6=0.9650 sel@T16 HN=1.0000 ov=0.8150 (best@ep25 joint=0.9387; swa_n=14)
+[stalk-swa] epoch 45/60 lr=0.0003541 train_acc=0.9856 val@T6=0.9600 sel@T16 HN=1.0000 ov=0.8225 (best@ep25 joint=0.9387; swa_n=15)
+[stalk-swa] epoch 46/60 lr=0.00032903 train_acc=0.9862 val@T6=0.9600 sel@T16 HN=1.0000 ov=0.8150 (best@ep25 joint=0.9387; swa_n=16)
+[stalk-swa] epoch 47/60 lr=0.00030536 train_acc=0.9850 val@T6=0.9600 sel@T16 HN=1.0000 ov=0.8125 (best@ep25 joint=0.9387; swa_n=17)
+[stalk-swa] epoch 48/60 lr=0.00028317 train_acc=0.9875 val@T6=0.9650 sel@T16 HN=1.0000 ov=0.8325 (best@ep25 joint=0.9387; swa_n=18)
+[stalk-swa] epoch 49/60 lr=0.00026251 train_acc=0.9875 val@T6=0.9650 sel@T16 HN=1.0000 ov=0.8250 (best@ep25 joint=0.9387; swa_n=19)
+[stalk-swa] epoch 50/60 lr=0.00024345 train_acc=0.9869 val@T6=0.9650 sel@T16 HN=1.0000 ov=0.8150 (best@ep25 joint=0.9387; swa_n=20)
+[stalk-swa] epoch 51/60 lr=0.00022604 train_acc=0.9869 val@T6=0.9650 sel@T16 HN=1.0000 ov=0.7950 (best@ep25 joint=0.9387; swa_n=21)
+[stalk-swa] epoch 52/60 lr=0.00021032 train_acc=0.9881 val@T6=0.9650 sel@T16 HN=1.0000 ov=0.8025 (best@ep25 joint=0.9387; swa_n=22)
+[stalk-swa] epoch 53/60 lr=0.00019635 train_acc=0.9862 val@T6=0.9575 sel@T16 HN=1.0000 ov=0.7900 (best@ep25 joint=0.9387; swa_n=23)
+[stalk-swa] epoch 54/60 lr=0.00018416 train_acc=0.9894 val@T6=0.9650 sel@T16 HN=1.0000 ov=0.8275 (best@ep25 joint=0.9387; swa_n=24)
+[stalk-swa] epoch 55/60 lr=0.00017378 train_acc=0.9875 val@T6=0.9650 sel@T16 HN=1.0000 ov=0.8225 (best@ep25 joint=0.9387; swa_n=25)
+[stalk-swa] epoch 56/60 lr=0.00016525 train_acc=0.9900 val@T6=0.9600 sel@T16 HN=1.0000 ov=0.8100 (best@ep25 joint=0.9387; swa_n=26)
+[stalk-swa] epoch 57/60 lr=0.00015859 train_acc=0.9881 val@T6=0.9650 sel@T16 HN=1.0000 ov=0.8225 (best@ep25 joint=0.9387; swa_n=27)
+[stalk-swa] epoch 58/60 lr=0.00015382 train_acc=0.9888 val@T6=0.9650 sel@T16 HN=1.0000 ov=0.8200 (best@ep25 joint=0.9387; swa_n=28)
+[stalk-swa] epoch 59/60 lr=0.00015096 train_acc=0.9875 val@T6=0.9650 sel@T16 HN=1.0000 ov=0.8225 (best@ep25 joint=0.9387; swa_n=29)
+[stalk-swa] epoch 60/60 lr=0.00015 train_acc=0.9881 val@T6=0.9600 sel@T16 HN=1.0000 ov=0.8125 (best@ep25 joint=0.9387; swa_n=30)
+[stalk-swa] seed=1 OOD eval SWA + select
+[stalk-swa] seed=1 SWA T16 ov=0.9396 HN=1.0000 K16=0.8625 pass=True | select HN=1.0000 K16=0.8750
+[stalk-swa] === seed 2 train (SWA persist) ===
+[stalk-swa] params=117506 parity_ok=True d=64 mlp=10 T=6 lr=0.0015→0.00015 cosine clip=2.5 swa_start=31
+[stalk-swa] epoch 1/60 lr=0.0015 train_acc=0.7262 val@T6=0.8225 sel@T16 HN=0.7100 ov=0.8175 (best@ep1 joint=0.7637)
+[stalk-swa] epoch 2/60 lr=0.001499 train_acc=0.8475 val@T6=0.8500 sel@T16 HN=0.6700 ov=0.8300 (best@ep1 joint=0.7637)
+[stalk-swa] epoch 3/60 lr=0.0014962 train_acc=0.8575 val@T6=0.8525 sel@T16 HN=0.7150 ov=0.8350 (best@ep3 joint=0.7750)
+[stalk-swa] epoch 4/60 lr=0.0014914 train_acc=0.8769 val@T6=0.8775 sel@T16 HN=0.8500 ov=0.8450 (best@ep4 joint=0.8475)
+[stalk-swa] epoch 5/60 lr=0.0014847 train_acc=0.8875 val@T6=0.8900 sel@T16 HN=0.7250 ov=0.8475 (best@ep4 joint=0.8475)
+[stalk-swa] epoch 6/60 lr=0.0014762 train_acc=0.8994 val@T6=0.8675 sel@T16 HN=0.8300 ov=0.8775 (best@ep6 joint=0.8538)
+[stalk-swa] epoch 7/60 lr=0.0014658 train_acc=0.8981 val@T6=0.8825 sel@T16 HN=0.7850 ov=0.8650 (best@ep6 joint=0.8538)
+[stalk-swa] epoch 8/60 lr=0.0014537 train_acc=0.9100 val@T6=0.8900 sel@T16 HN=0.9350 ov=0.8800 (best@ep8 joint=0.9075)
+[stalk-swa] epoch 9/60 lr=0.0014397 train_acc=0.9131 val@T6=0.8950 sel@T16 HN=0.9300 ov=0.8600 (best@ep8 joint=0.9075)
+[stalk-swa] epoch 10/60 lr=0.001424 train_acc=0.9175 val@T6=0.8725 sel@T16 HN=0.9550 ov=0.8125 (best@ep8 joint=0.9075)
+[stalk-swa] epoch 11/60 lr=0.0014065 train_acc=0.9187 val@T6=0.9150 sel@T16 HN=0.8950 ov=0.9250 (best@ep11 joint=0.9100)
+[stalk-swa] epoch 12/60 lr=0.0013875 train_acc=0.9387 val@T6=0.9150 sel@T16 HN=0.9000 ov=0.9400 (best@ep12 joint=0.9200)
+[stalk-swa] epoch 13/60 lr=0.0013668 train_acc=0.9419 val@T6=0.9275 sel@T16 HN=0.9350 ov=0.8875 (best@ep12 joint=0.9200)
+[stalk-swa] epoch 14/60 lr=0.0013446 train_acc=0.9519 val@T6=0.9450 sel@T16 HN=0.9200 ov=0.9550 (best@ep14 joint=0.9375)
+[stalk-swa] epoch 15/60 lr=0.001321 train_acc=0.9563 val@T6=0.9525 sel@T16 HN=0.9250 ov=0.9425 (best@ep14 joint=0.9375)
+[stalk-swa] epoch 16/60 lr=0.0012959 train_acc=0.9581 val@T6=0.9500 sel@T16 HN=0.9250 ov=0.9475 (best@ep14 joint=0.9375)
+[stalk-swa] epoch 17/60 lr=0.0012695 train_acc=0.9625 val@T6=0.9525 sel@T16 HN=0.8900 ov=0.9450 (best@ep14 joint=0.9375)
+[stalk-swa] epoch 18/60 lr=0.0012418 train_acc=0.9544 val@T6=0.9375 sel@T16 HN=0.5850 ov=0.7925 (best@ep14 joint=0.9375)
+[stalk-swa] epoch 19/60 lr=0.001213 train_acc=0.9606 val@T6=0.9525 sel@T16 HN=0.8650 ov=0.9300 (best@ep14 joint=0.9375)
+[stalk-swa] epoch 20/60 lr=0.001183 train_acc=0.9613 val@T6=0.9550 sel@T16 HN=0.9200 ov=0.9575 (best@ep20 joint=0.9387)
+[stalk-swa] epoch 21/60 lr=0.0011521 train_acc=0.9606 val@T6=0.9475 sel@T16 HN=0.4850 ov=0.7425 (best@ep20 joint=0.9387)
+[stalk-swa] epoch 22/60 lr=0.0011202 train_acc=0.9594 val@T6=0.9475 sel@T16 HN=0.9300 ov=0.9100 (best@ep20 joint=0.9387)
+[stalk-swa] epoch 23/60 lr=0.0010875 train_acc=0.9625 val@T6=0.9475 sel@T16 HN=0.8750 ov=0.9300 (best@ep20 joint=0.9387)
+[stalk-swa] epoch 24/60 lr=0.001054 train_acc=0.9650 val@T6=0.9475 sel@T16 HN=0.9250 ov=0.9550 (best@ep24 joint=0.9400)
+[stalk-swa] epoch 25/60 lr=0.0010199 train_acc=0.9650 val@T6=0.9525 sel@T16 HN=0.9250 ov=0.9475 (best@ep24 joint=0.9400)
+[stalk-swa] epoch 26/60 lr=0.0009852 train_acc=0.9675 val@T6=0.9550 sel@T16 HN=0.9450 ov=0.9600 (best@ep26 joint=0.9525)
+[stalk-swa] epoch 27/60 lr=0.00095007 train_acc=0.9669 val@T6=0.9500 sel@T16 HN=0.9250 ov=0.8975 (best@ep26 joint=0.9525)
+[stalk-swa] epoch 28/60 lr=0.00091459 train_acc=0.9656 val@T6=0.9425 sel@T16 HN=0.9350 ov=0.8975 (best@ep26 joint=0.9525)
+[stalk-swa] epoch 29/60 lr=0.00087886 train_acc=0.9619 val@T6=0.9350 sel@T16 HN=0.7900 ov=0.8800 (best@ep26 joint=0.9525)
+[stalk-swa] epoch 30/60 lr=0.00084297 train_acc=0.9625 val@T6=0.9475 sel@T16 HN=0.9150 ov=0.9575 (best@ep26 joint=0.9525)
+[stalk-swa] epoch 31/60 lr=0.00080703 train_acc=0.9637 val@T6=0.9425 sel@T16 HN=0.9500 ov=0.9050 (best@ep26 joint=0.9525; swa_n=1)
+[stalk-swa] epoch 32/60 lr=0.00077114 train_acc=0.9619 val@T6=0.9525 sel@T16 HN=0.9300 ov=0.9400 (best@ep26 joint=0.9525; swa_n=2)
+[stalk-swa] epoch 33/60 lr=0.00073541 train_acc=0.9650 val@T6=0.9475 sel@T16 HN=0.9200 ov=0.9475 (best@ep26 joint=0.9525; swa_n=3)
+[stalk-swa] epoch 34/60 lr=0.00069993 train_acc=0.9619 val@T6=0.9450 sel@T16 HN=0.9150 ov=0.9475 (best@ep26 joint=0.9525; swa_n=4)
+[stalk-swa] epoch 35/60 lr=0.0006648 train_acc=0.9637 val@T6=0.9475 sel@T16 HN=0.8800 ov=0.9400 (best@ep26 joint=0.9525; swa_n=5)
+[stalk-swa] epoch 36/60 lr=0.00063013 train_acc=0.9644 val@T6=0.9450 sel@T16 HN=0.9150 ov=0.9575 (best@ep26 joint=0.9525; swa_n=6)
+[stalk-swa] epoch 37/60 lr=0.00059601 train_acc=0.9650 val@T6=0.9475 sel@T16 HN=0.9200 ov=0.9550 (best@ep26 joint=0.9525; swa_n=7)
+[stalk-swa] epoch 38/60 lr=0.00056254 train_acc=0.9644 val@T6=0.9400 sel@T16 HN=0.9350 ov=0.9525 (best@ep26 joint=0.9525; swa_n=8)
+[stalk-swa] epoch 39/60 lr=0.00052982 train_acc=0.9656 val@T6=0.9475 sel@T16 HN=0.9300 ov=0.9525 (best@ep26 joint=0.9525; swa_n=9)
+[stalk-swa] epoch 40/60 lr=0.00049793 train_acc=0.9625 val@T6=0.9475 sel@T16 HN=0.9200 ov=0.9575 (best@ep26 joint=0.9525; swa_n=10)
+[stalk-swa] epoch 41/60 lr=0.00046697 train_acc=0.9675 val@T6=0.9450 sel@T16 HN=0.9100 ov=0.9450 (best@ep26 joint=0.9525; swa_n=11)
+[stalk-swa] epoch 42/60 lr=0.00043702 train_acc=0.9650 val@T6=0.9475 sel@T16 HN=0.9050 ov=0.9400 (best@ep26 joint=0.9525; swa_n=12)
+[stalk-swa] epoch 43/60 lr=0.00040817 train_acc=0.9631 val@T6=0.9450 sel@T16 HN=0.9300 ov=0.9550 (best@ep26 joint=0.9525; swa_n=13)
+[stalk-swa] epoch 44/60 lr=0.0003805 train_acc=0.9675 val@T6=0.9475 sel@T16 HN=0.9250 ov=0.9500 (best@ep26 joint=0.9525; swa_n=14)
+[stalk-swa] epoch 45/60 lr=0.0003541 train_acc=0.9669 val@T6=0.9475 sel@T16 HN=0.9200 ov=0.9500 (best@ep26 joint=0.9525; swa_n=15)
+[stalk-swa] epoch 46/60 lr=0.00032903 train_acc=0.9644 val@T6=0.9450 sel@T16 HN=0.9200 ov=0.9450 (best@ep26 joint=0.9525; swa_n=16)
+[stalk-swa] epoch 47/60 lr=0.00030536 train_acc=0.9656 val@T6=0.9475 sel@T16 HN=0.9150 ov=0.9425 (best@ep26 joint=0.9525; swa_n=17)
+[stalk-swa] epoch 48/60 lr=0.00028317 train_acc=0.9650 val@T6=0.9425 sel@T16 HN=0.9150 ov=0.9400 (best@ep26 joint=0.9525; swa_n=18)
+[stalk-swa] epoch 49/60 lr=0.00026251 train_acc=0.9656 val@T6=0.9425 sel@T16 HN=0.9200 ov=0.9475 (best@ep26 joint=0.9525; swa_n=19)
+[stalk-swa] epoch 50/60 lr=0.00024345 train_acc=0.9688 val@T6=0.9475 sel@T16 HN=0.9150 ov=0.9575 (best@ep26 joint=0.9525; swa_n=20)
+[stalk-swa] epoch 51/60 lr=0.00022604 train_acc=0.9656 val@T6=0.9475 sel@T16 HN=0.9200 ov=0.9550 (best@ep26 joint=0.9525; swa_n=21)
+[stalk-swa] epoch 52/60 lr=0.00021032 train_acc=0.9669 val@T6=0.9475 sel@T16 HN=0.9000 ov=0.9400 (best@ep26 joint=0.9525; swa_n=22)
+[stalk-swa] epoch 53/60 lr=0.00019635 train_acc=0.9656 val@T6=0.9475 sel@T16 HN=0.9000 ov=0.9475 (best@ep26 joint=0.9525; swa_n=23)
+[stalk-swa] epoch 54/60 lr=0.00018416 train_acc=0.9688 val@T6=0.9375 sel@T16 HN=0.9050 ov=0.9400 (best@ep26 joint=0.9525; swa_n=24)
+[stalk-swa] epoch 55/60 lr=0.00017378 train_acc=0.9663 val@T6=0.9475 sel@T16 HN=0.9000 ov=0.9450 (best@ep26 joint=0.9525; swa_n=25)
+[stalk-swa] epoch 56/60 lr=0.00016525 train_acc=0.9656 val@T6=0.9475 sel@T16 HN=0.9000 ov=0.9400 (best@ep26 joint=0.9525; swa_n=26)
+[stalk-swa] epoch 57/60 lr=0.00015859 train_acc=0.9656 val@T6=0.9425 sel@T16 HN=0.9000 ov=0.9450 (best@ep26 joint=0.9525; swa_n=27)
+[stalk-swa] epoch 58/60 lr=0.00015382 train_acc=0.9675 val@T6=0.9425 sel@T16 HN=0.9000 ov=0.9400 (best@ep26 joint=0.9525; swa_n=28)
+[stalk-swa] epoch 59/60 lr=0.00015096 train_acc=0.9675 val@T6=0.9475 sel@T16 HN=0.9000 ov=0.9425 (best@ep26 joint=0.9525; swa_n=29)
+[stalk-swa] epoch 60/60 lr=0.00015 train_acc=0.9681 val@T6=0.9425 sel@T16 HN=0.9150 ov=0.9475 (best@ep26 joint=0.9525; swa_n=30)
+[stalk-swa] seed=2 OOD eval SWA + select
+[stalk-swa] seed=2 SWA T16 ov=0.8375 HN=0.6875 K16=1.0000 pass=False | select HN=0.8708 K16=0.9750
+[stalk-swa] === seed 3 train (SWA persist) ===
+[stalk-swa] params=117506 parity_ok=True d=64 mlp=10 T=6 lr=0.0015→0.00015 cosine clip=2.5 swa_start=31
+[stalk-swa] epoch 1/60 lr=0.0015 train_acc=0.7169 val@T6=0.8250 sel@T16 HN=0.7450 ov=0.6800 (best@ep1 joint=0.7125)
+[stalk-swa] epoch 2/60 lr=0.001499 train_acc=0.8588 val@T6=0.8450 sel@T16 HN=0.9900 ov=0.5075 (best@ep2 joint=0.7488)
+[stalk-swa] epoch 3/60 lr=0.0014962 train_acc=0.8781 val@T6=0.8500 sel@T16 HN=0.9100 ov=0.8125 (best@ep3 joint=0.8613)
+[stalk-swa] epoch 4/60 lr=0.0014914 train_acc=0.8925 val@T6=0.8500 sel@T16 HN=0.9250 ov=0.7300 (best@ep3 joint=0.8613)
+[stalk-swa] epoch 5/60 lr=0.0014847 train_acc=0.8944 val@T6=0.8725 sel@T16 HN=0.6900 ov=0.5750 (best@ep3 joint=0.8613)
+[stalk-swa] epoch 6/60 lr=0.0014762 train_acc=0.9044 val@T6=0.8775 sel@T16 HN=0.8700 ov=0.8450 (best@ep3 joint=0.8613)
+[stalk-swa] epoch 7/60 lr=0.0014658 train_acc=0.9087 val@T6=0.8875 sel@T16 HN=0.9500 ov=0.8050 (best@ep7 joint=0.8775)
+[stalk-swa] epoch 8/60 lr=0.0014537 train_acc=0.9050 val@T6=0.8925 sel@T16 HN=0.8550 ov=0.8300 (best@ep7 joint=0.8775)
+[stalk-swa] epoch 9/60 lr=0.0014397 train_acc=0.9094 val@T6=0.8750 sel@T16 HN=0.8950 ov=0.8075 (best@ep7 joint=0.8775)
+[stalk-swa] epoch 10/60 lr=0.001424 train_acc=0.9294 val@T6=0.9350 sel@T16 HN=0.9550 ov=0.8200 (best@ep10 joint=0.8875)
+[stalk-swa] epoch 11/60 lr=0.0014065 train_acc=0.9456 val@T6=0.9450 sel@T16 HN=0.9700 ov=0.7875 (best@ep10 joint=0.8875)
+[stalk-swa] epoch 12/60 lr=0.0013875 train_acc=0.9500 val@T6=0.9075 sel@T16 HN=0.8350 ov=0.8200 (best@ep10 joint=0.8875)
+[stalk-swa] epoch 13/60 lr=0.0013668 train_acc=0.9437 val@T6=0.9525 sel@T16 HN=0.9650 ov=0.8925 (best@ep13 joint=0.9287)
+[stalk-swa] epoch 14/60 lr=0.0013446 train_acc=0.9519 val@T6=0.9400 sel@T16 HN=0.9650 ov=0.9100 (best@ep14 joint=0.9375)
+[stalk-swa] epoch 15/60 lr=0.001321 train_acc=0.9513 val@T6=0.9450 sel@T16 HN=0.9800 ov=0.8300 (best@ep14 joint=0.9375)
+[stalk-swa] epoch 16/60 lr=0.0012959 train_acc=0.9550 val@T6=0.9525 sel@T16 HN=0.9600 ov=0.9275 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 17/60 lr=0.0012695 train_acc=0.9606 val@T6=0.9475 sel@T16 HN=0.9550 ov=0.8850 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 18/60 lr=0.0012418 train_acc=0.9575 val@T6=0.9525 sel@T16 HN=0.9850 ov=0.7875 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 19/60 lr=0.001213 train_acc=0.9631 val@T6=0.9500 sel@T16 HN=0.9550 ov=0.8675 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 20/60 lr=0.001183 train_acc=0.9613 val@T6=0.9550 sel@T16 HN=0.9650 ov=0.8600 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 21/60 lr=0.0011521 train_acc=0.9631 val@T6=0.9550 sel@T16 HN=0.9700 ov=0.8625 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 22/60 lr=0.0011202 train_acc=0.9619 val@T6=0.9525 sel@T16 HN=0.9600 ov=0.8975 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 23/60 lr=0.0010875 train_acc=0.9613 val@T6=0.9525 sel@T16 HN=0.9650 ov=0.8850 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 24/60 lr=0.001054 train_acc=0.9600 val@T6=0.9475 sel@T16 HN=0.9800 ov=0.8775 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 25/60 lr=0.0010199 train_acc=0.9637 val@T6=0.9475 sel@T16 HN=0.9800 ov=0.9000 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 26/60 lr=0.0009852 train_acc=0.9613 val@T6=0.9475 sel@T16 HN=0.9800 ov=0.8725 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 27/60 lr=0.00095007 train_acc=0.9619 val@T6=0.9425 sel@T16 HN=0.9400 ov=0.9000 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 28/60 lr=0.00091459 train_acc=0.9631 val@T6=0.9500 sel@T16 HN=0.9800 ov=0.8775 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 29/60 lr=0.00087886 train_acc=0.9644 val@T6=0.9500 sel@T16 HN=0.9650 ov=0.8925 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 30/60 lr=0.00084297 train_acc=0.9656 val@T6=0.9500 sel@T16 HN=0.9600 ov=0.9050 (best@ep16 joint=0.9437)
+[stalk-swa] epoch 31/60 lr=0.00080703 train_acc=0.9631 val@T6=0.9475 sel@T16 HN=0.9700 ov=0.8775 (best@ep16 joint=0.9437; swa_n=1)
+[stalk-swa] epoch 32/60 lr=0.00077114 train_acc=0.9656 val@T6=0.9425 sel@T16 HN=0.9750 ov=0.8625 (best@ep16 joint=0.9437; swa_n=2)
+[stalk-swa] epoch 33/60 lr=0.00073541 train_acc=0.9675 val@T6=0.9500 sel@T16 HN=0.9750 ov=0.9025 (best@ep16 joint=0.9437; swa_n=3)
+[stalk-swa] epoch 34/60 lr=0.00069993 train_acc=0.9706 val@T6=0.9375 sel@T16 HN=0.9750 ov=0.8300 (best@ep16 joint=0.9437; swa_n=4)
+[stalk-swa] epoch 35/60 lr=0.0006648 train_acc=0.9694 val@T6=0.9450 sel@T16 HN=0.9500 ov=0.8600 (best@ep16 joint=0.9437; swa_n=5)
+[stalk-swa] epoch 36/60 lr=0.00063013 train_acc=0.9694 val@T6=0.9475 sel@T16 HN=0.9500 ov=0.8525 (best@ep16 joint=0.9437; swa_n=6)
+[stalk-swa] epoch 37/60 lr=0.00059601 train_acc=0.9744 val@T6=0.9500 sel@T16 HN=0.9600 ov=0.8925 (best@ep16 joint=0.9437; swa_n=7)
+[stalk-swa] epoch 38/60 lr=0.00056254 train_acc=0.9706 val@T6=0.9500 sel@T16 HN=0.9600 ov=0.8900 (best@ep16 joint=0.9437; swa_n=8)
+[stalk-swa] epoch 39/60 lr=0.00052982 train_acc=0.9719 val@T6=0.9475 sel@T16 HN=0.9550 ov=0.8700 (best@ep16 joint=0.9437; swa_n=9)
+[stalk-swa] epoch 40/60 lr=0.00049793 train_acc=0.9719 val@T6=0.9525 sel@T16 HN=0.9600 ov=0.9100 (best@ep16 joint=0.9437; swa_n=10)
+[stalk-swa] epoch 41/60 lr=0.00046697 train_acc=0.9725 val@T6=0.9475 sel@T16 HN=0.9650 ov=0.8725 (best@ep16 joint=0.9437; swa_n=11)
+[stalk-swa] epoch 42/60 lr=0.00043702 train_acc=0.9719 val@T6=0.9375 sel@T16 HN=0.9650 ov=0.9025 (best@ep16 joint=0.9437; swa_n=12)
+[stalk-swa] epoch 43/60 lr=0.00040817 train_acc=0.9712 val@T6=0.9500 sel@T16 HN=0.9750 ov=0.9275 (best@ep43 joint=0.9512; swa_n=13)
+[stalk-swa] epoch 44/60 lr=0.0003805 train_acc=0.9694 val@T6=0.9475 sel@T16 HN=0.9600 ov=0.9350 (best@ep43 joint=0.9512; swa_n=14)
+[stalk-swa] epoch 45/60 lr=0.0003541 train_acc=0.9700 val@T6=0.9525 sel@T16 HN=0.9650 ov=0.9050 (best@ep43 joint=0.9512; swa_n=15)
+[stalk-swa] epoch 46/60 lr=0.00032903 train_acc=0.9706 val@T6=0.9525 sel@T16 HN=0.9600 ov=0.8775 (best@ep43 joint=0.9512; swa_n=16)
+[stalk-swa] epoch 47/60 lr=0.00030536 train_acc=0.9706 val@T6=0.9475 sel@T16 HN=0.9600 ov=0.9200 (best@ep43 joint=0.9512; swa_n=17)
+[stalk-swa] epoch 48/60 lr=0.00028317 train_acc=0.9706 val@T6=0.9425 sel@T16 HN=0.9650 ov=0.9000 (best@ep43 joint=0.9512; swa_n=18)
+[stalk-swa] epoch 49/60 lr=0.00026251 train_acc=0.9719 val@T6=0.9475 sel@T16 HN=0.9550 ov=0.8700 (best@ep43 joint=0.9512; swa_n=19)
+[stalk-swa] epoch 50/60 lr=0.00024345 train_acc=0.9725 val@T6=0.9500 sel@T16 HN=0.9600 ov=0.8900 (best@ep43 joint=0.9512; swa_n=20)
+[stalk-swa] epoch 51/60 lr=0.00022604 train_acc=0.9706 val@T6=0.9500 sel@T16 HN=0.9600 ov=0.9000 (best@ep43 joint=0.9512; swa_n=21)
+[stalk-swa] epoch 52/60 lr=0.00021032 train_acc=0.9731 val@T6=0.9500 sel@T16 HN=0.9600 ov=0.9075 (best@ep43 joint=0.9512; swa_n=22)
+[stalk-swa] epoch 53/60 lr=0.00019635 train_acc=0.9719 val@T6=0.9425 sel@T16 HN=0.9600 ov=0.8925 (best@ep43 joint=0.9512; swa_n=23)
+[stalk-swa] epoch 54/60 lr=0.00018416 train_acc=0.9712 val@T6=0.9425 sel@T16 HN=0.9650 ov=0.8925 (best@ep43 joint=0.9512; swa_n=24)
+[stalk-swa] epoch 55/60 lr=0.00017378 train_acc=0.9719 val@T6=0.9425 sel@T16 HN=0.9450 ov=0.8825 (best@ep43 joint=0.9512; swa_n=25)
+[stalk-swa] epoch 56/60 lr=0.00016525 train_acc=0.9731 val@T6=0.9425 sel@T16 HN=0.9650 ov=0.8900 (best@ep43 joint=0.9512; swa_n=26)
+[stalk-swa] epoch 57/60 lr=0.00015859 train_acc=0.9688 val@T6=0.9425 sel@T16 HN=0.9550 ov=0.8775 (best@ep43 joint=0.9512; swa_n=27)
+[stalk-swa] epoch 58/60 lr=0.00015382 train_acc=0.9731 val@T6=0.9425 sel@T16 HN=0.9550 ov=0.8625 (best@ep43 joint=0.9512; swa_n=28)
+[stalk-swa] epoch 59/60 lr=0.00015096 train_acc=0.9731 val@T6=0.9475 sel@T16 HN=0.9550 ov=0.8750 (best@ep43 joint=0.9512; swa_n=29)
+[stalk-swa] epoch 60/60 lr=0.00015 train_acc=0.9719 val@T6=0.9450 sel@T16 HN=0.9600 ov=0.8750 (best@ep43 joint=0.9512; swa_n=30)
+[stalk-swa] seed=3 OOD eval SWA + select
+[stalk-swa] seed=3 SWA T16 ov=0.9271 HN=1.0000 K16=0.8750 pass=True | select HN=1.0000 K16=0.6250
+[stalk-swa] === seed 4 train (SWA persist) ===
+[stalk-swa] params=117506 parity_ok=True d=64 mlp=10 T=6 lr=0.0015→0.00015 cosine clip=2.5 swa_start=31
+[stalk-swa] epoch 1/60 lr=0.0015 train_acc=0.6956 val@T6=0.8275 sel@T16 HN=0.4350 ov=0.7175 (best@ep1 joint=0.5763)
+[stalk-swa] epoch 2/60 lr=0.001499 train_acc=0.8525 val@T6=0.8625 sel@T16 HN=0.6900 ov=0.8450 (best@ep2 joint=0.7675)
+[stalk-swa] epoch 3/60 lr=0.0014962 train_acc=0.8962 val@T6=0.8750 sel@T16 HN=0.7500 ov=0.8675 (best@ep3 joint=0.8088)
+[stalk-swa] epoch 4/60 lr=0.0014914 train_acc=0.9050 val@T6=0.8800 sel@T16 HN=0.5950 ov=0.7925 (best@ep3 joint=0.8088)
+[stalk-swa] epoch 5/60 lr=0.0014847 train_acc=0.9056 val@T6=0.8975 sel@T16 HN=0.8700 ov=0.9225 (best@ep5 joint=0.8962)
+[stalk-swa] epoch 6/60 lr=0.0014762 train_acc=0.9113 val@T6=0.9000 sel@T16 HN=0.4850 ov=0.7425 (best@ep5 joint=0.8962)
+[stalk-swa] epoch 7/60 lr=0.0014658 train_acc=0.9294 val@T6=0.8925 sel@T16 HN=0.6850 ov=0.8425 (best@ep5 joint=0.8962)
+[stalk-swa] epoch 8/60 lr=0.0014537 train_acc=0.9313 val@T6=0.9425 sel@T16 HN=0.6200 ov=0.8100 (best@ep5 joint=0.8962)
+[stalk-swa] epoch 9/60 lr=0.0014397 train_acc=0.9444 val@T6=0.9375 sel@T16 HN=0.4850 ov=0.7425 (best@ep5 joint=0.8962)
+[stalk-swa] epoch 10/60 lr=0.001424 train_acc=0.9569 val@T6=0.9450 sel@T16 HN=0.8600 ov=0.9000 (best@ep5 joint=0.8962)
+[stalk-swa] epoch 11/60 lr=0.0014065 train_acc=0.9606 val@T6=0.9575 sel@T16 HN=0.5300 ov=0.7650 (best@ep5 joint=0.8962)
+[stalk-swa] epoch 12/60 lr=0.0013875 train_acc=0.9456 val@T6=0.9525 sel@T16 HN=0.9500 ov=0.9750 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 13/60 lr=0.0013668 train_acc=0.9575 val@T6=0.9575 sel@T16 HN=0.9000 ov=0.9500 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 14/60 lr=0.0013446 train_acc=0.9631 val@T6=0.9375 sel@T16 HN=0.9200 ov=0.9425 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 15/60 lr=0.001321 train_acc=0.9581 val@T6=0.9550 sel@T16 HN=0.9200 ov=0.9500 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 16/60 lr=0.0012959 train_acc=0.9650 val@T6=0.9500 sel@T16 HN=0.8600 ov=0.9200 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 17/60 lr=0.0012695 train_acc=0.9587 val@T6=0.9450 sel@T16 HN=0.9250 ov=0.9425 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 18/60 lr=0.0012418 train_acc=0.9613 val@T6=0.9525 sel@T16 HN=0.9200 ov=0.9425 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 19/60 lr=0.001213 train_acc=0.9556 val@T6=0.9550 sel@T16 HN=0.9200 ov=0.9425 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 20/60 lr=0.001183 train_acc=0.9575 val@T6=0.9600 sel@T16 HN=0.9250 ov=0.9450 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 21/60 lr=0.0011521 train_acc=0.9656 val@T6=0.9600 sel@T16 HN=0.9350 ov=0.9500 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 22/60 lr=0.0011202 train_acc=0.9675 val@T6=0.9625 sel@T16 HN=0.9200 ov=0.9500 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 23/60 lr=0.0010875 train_acc=0.9700 val@T6=0.9625 sel@T16 HN=0.8700 ov=0.9300 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 24/60 lr=0.001054 train_acc=0.9706 val@T6=0.9475 sel@T16 HN=0.8150 ov=0.9075 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 25/60 lr=0.0010199 train_acc=0.9706 val@T6=0.9600 sel@T16 HN=0.9250 ov=0.9575 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 26/60 lr=0.0009852 train_acc=0.9644 val@T6=0.9600 sel@T16 HN=0.9300 ov=0.9650 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 27/60 lr=0.00095007 train_acc=0.9619 val@T6=0.9700 sel@T16 HN=0.9200 ov=0.9450 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 28/60 lr=0.00091459 train_acc=0.9694 val@T6=0.9725 sel@T16 HN=0.9300 ov=0.9625 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 29/60 lr=0.00087886 train_acc=0.9731 val@T6=0.9725 sel@T16 HN=0.9550 ov=0.9700 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 30/60 lr=0.00084297 train_acc=0.9812 val@T6=0.9800 sel@T16 HN=0.8950 ov=0.9475 (best@ep12 joint=0.9625)
+[stalk-swa] epoch 31/60 lr=0.00080703 train_acc=0.9888 val@T6=0.9950 sel@T16 HN=0.8800 ov=0.9400 (best@ep12 joint=0.9625; swa_n=1)
+[stalk-swa] epoch 32/60 lr=0.00077114 train_acc=0.9931 val@T6=0.9925 sel@T16 HN=0.9550 ov=0.9750 (best@ep32 joint=0.9650; swa_n=2)
+[stalk-swa] epoch 33/60 lr=0.00073541 train_acc=0.9944 val@T6=0.9825 sel@T16 HN=0.9300 ov=0.9600 (best@ep32 joint=0.9650; swa_n=3)
+[stalk-swa] epoch 34/60 lr=0.00069993 train_acc=0.9938 val@T6=0.9875 sel@T16 HN=0.9600 ov=0.9675 (best@ep32 joint=0.9650; swa_n=4)
+[stalk-swa] epoch 35/60 lr=0.0006648 train_acc=0.9956 val@T6=0.9925 sel@T16 HN=0.9550 ov=0.9650 (best@ep32 joint=0.9650; swa_n=5)
+[stalk-swa] epoch 36/60 lr=0.00063013 train_acc=0.9944 val@T6=0.9925 sel@T16 HN=0.9300 ov=0.9625 (best@ep32 joint=0.9650; swa_n=6)
+[stalk-swa] epoch 37/60 lr=0.00059601 train_acc=0.9956 val@T6=0.9925 sel@T16 HN=1.0000 ov=0.9975 (best@ep37 joint=0.9988; swa_n=7)
+[stalk-swa] epoch 38/60 lr=0.00056254 train_acc=0.9962 val@T6=0.9925 sel@T16 HN=0.9800 ov=0.9875 (best@ep37 joint=0.9988; swa_n=8)
+[stalk-swa] epoch 39/60 lr=0.00052982 train_acc=0.9962 val@T6=0.9925 sel@T16 HN=0.9800 ov=0.9875 (best@ep37 joint=0.9988; swa_n=9)
+[stalk-swa] epoch 40/60 lr=0.00049793 train_acc=0.9962 val@T6=0.9925 sel@T16 HN=0.9700 ov=0.9825 (best@ep37 joint=0.9988; swa_n=10)
+[stalk-swa] epoch 41/60 lr=0.00046697 train_acc=0.9956 val@T6=0.9925 sel@T16 HN=0.9600 ov=0.9775 (best@ep37 joint=0.9988; swa_n=11)
+[stalk-swa] epoch 42/60 lr=0.00043702 train_acc=0.9956 val@T6=0.9925 sel@T16 HN=0.9550 ov=0.9750 (best@ep37 joint=0.9988; swa_n=12)
+[stalk-swa] epoch 43/60 lr=0.00040817 train_acc=0.9956 val@T6=0.9925 sel@T16 HN=1.0000 ov=0.9975 (best@ep37 joint=0.9988; swa_n=13)
+[stalk-swa] epoch 44/60 lr=0.0003805 train_acc=0.9962 val@T6=0.9925 sel@T16 HN=0.9800 ov=0.9825 (best@ep37 joint=0.9988; swa_n=14)
+[stalk-swa] epoch 45/60 lr=0.0003541 train_acc=0.9956 val@T6=0.9925 sel@T16 HN=0.9200 ov=0.9525 (best@ep37 joint=0.9988; swa_n=15)
+[stalk-swa] epoch 46/60 lr=0.00032903 train_acc=0.9969 val@T6=0.9925 sel@T16 HN=0.9850 ov=0.9875 (best@ep37 joint=0.9988; swa_n=16)
+[stalk-swa] epoch 47/60 lr=0.00030536 train_acc=0.9956 val@T6=0.9925 sel@T16 HN=0.9450 ov=0.9700 (best@ep37 joint=0.9988; swa_n=17)
+[stalk-swa] epoch 48/60 lr=0.00028317 train_acc=0.9962 val@T6=0.9925 sel@T16 HN=0.9450 ov=0.9700 (best@ep37 joint=0.9988; swa_n=18)
+[stalk-swa] epoch 49/60 lr=0.00026251 train_acc=0.9962 val@T6=0.9925 sel@T16 HN=0.9550 ov=0.9775 (best@ep37 joint=0.9988; swa_n=19)
+[stalk-swa] epoch 50/60 lr=0.00024345 train_acc=0.9956 val@T6=0.9925 sel@T16 HN=0.9850 ov=0.9850 (best@ep37 joint=0.9988; swa_n=20)
+[stalk-swa] epoch 51/60 lr=0.00022604 train_acc=0.9969 val@T6=0.9925 sel@T16 HN=0.9850 ov=0.9900 (best@ep37 joint=0.9988; swa_n=21)
+[stalk-swa] epoch 52/60 lr=0.00021032 train_acc=0.9975 val@T6=0.9925 sel@T16 HN=0.9850 ov=0.9825 (best@ep37 joint=0.9988; swa_n=22)
+[stalk-swa] epoch 53/60 lr=0.00019635 train_acc=0.9975 val@T6=0.9925 sel@T16 HN=0.9850 ov=0.9825 (best@ep37 joint=0.9988; swa_n=23)
+[stalk-swa] epoch 54/60 lr=0.00018416 train_acc=0.9969 val@T6=0.9925 sel@T16 HN=0.9850 ov=0.9775 (best@ep37 joint=0.9988; swa_n=24)
+[stalk-swa] epoch 55/60 lr=0.00017378 train_acc=0.9962 val@T6=0.9925 sel@T16 HN=0.9850 ov=0.9800 (best@ep37 joint=0.9988; swa_n=25)
+[stalk-swa] epoch 56/60 lr=0.00016525 train_acc=0.9975 val@T6=0.9925 sel@T16 HN=0.9950 ov=0.9850 (best@ep37 joint=0.9988; swa_n=26)
+[stalk-swa] epoch 57/60 lr=0.00015859 train_acc=0.9975 val@T6=0.9925 sel@T16 HN=0.9950 ov=0.9850 (best@ep37 joint=0.9988; swa_n=27)
+[stalk-swa] epoch 58/60 lr=0.00015382 train_acc=0.9969 val@T6=0.9925 sel@T16 HN=0.9800 ov=0.9775 (best@ep37 joint=0.9988; swa_n=28)
+[stalk-swa] epoch 59/60 lr=0.00015096 train_acc=0.9969 val@T6=0.9925 sel@T16 HN=0.9950 ov=0.9825 (best@ep37 joint=0.9988; swa_n=29)
+[stalk-swa] epoch 60/60 lr=0.00015 train_acc=0.9981 val@T6=0.9925 sel@T16 HN=0.9900 ov=0.9825 (best@ep37 joint=0.9988; swa_n=30)
+[stalk-swa] seed=4 OOD eval SWA + select
+[stalk-swa] seed=4 SWA T16 ov=0.9229 HN=0.8875 K16=1.0000 pass=False | select HN=0.9125 K16=0.9750
+[stalk-swa] re-eval frozen #14/#18 ensemble + #14 seed0
+[stalk-swa] wrote artifacts/stalk_swa_persist.json
+[stalk-swa] verdict=MEASURE science_open=False swa_mean T16 ov=0.8933 HN=0.8667 K16=0.9100 select HN=0.9567 K16=0.8625 ens HN=1.0000 K16=1.0000
+{
+  "verdict": "MEASURE",
+  "open_status": "MEASURE_PARTIAL_PERSIST",
+  "science_open": false,
+  "prereg_floors_pass": false,
+  "compare_T16": {
+    "swa_mean": {
+      "overall_acc": 0.8933333333333333,
+      "hard_neg_acc": 0.8666666666666666,
+      "K16": 0.9099999999999999,
+      "std_overall": 0.05039772371402855,
+      "std_hard_neg": 0.14126782090137238,
+      "std_K16": 0.08542174781634944,
+      "n": 5,
+      "n_prereg_pass": 2
+    },
+    "select_mean": {
+      "overall_acc": 0.9291666666666666,
+      "hard_neg_acc": 0.9566666666666667,
+      "K16": 0.8625,
+      "std_overall": 0.03486083443891982,
+      "std_hard_neg": 0.06113793603174891,
+      "std_K16": 0.14306903927824496,
+      "n": 5,
+      "n_prereg_pass": 2
+    },
+    "ensemble_prob_mean": {
+      "overall_acc": 0.9958333333333333,
+      "hard_neg_acc": 1.0,
+      "K16": 1.0,
+      "K8": 0.975,
+      "K12": 1.0
+    },
+    "pr14_seed0": {
+      "overall_acc": 0.975,
+      "hard_neg_acc": 1.0,
+      "K8": 0.9875,
+      "K12": 1.0,
+      "K16": 0.8625
+    },
+    "deltas_swa_minus_select": {
+      "overall": -0.03583333333333327,
+      "hard_neg": -0.09000000000000008,
+      "K16": 0.047499999999999876
+    },
+    "deltas_swa_minus_ensemble": {
+      "overall": -0.10250000000000004,
+      "hard_neg": -0.13333333333333341,
+      "K16": -0.09000000000000008
+    },
+    "deltas_swa_minus_pr14_seed0": {
+      "overall": -0.08166666666666667,
+      "hard_neg": -0.13333333333333341,
+      "K16": 0.047499999999999876
+    }
+  },
+  "n_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "out": "artifacts/stalk_swa_persist.json"
+}

@@ -435,6 +435,24 @@ python -m reachability_gen.run_stalk_seed_ensemble
 Artifact: `artifacts/stalk_seed_ensemble.json`. See `docs/CYCLE_STALK_SEED_ENSEMBLE.md` /
 `docs/CYCLE_STALK_SEED_ENSEMBLE_SEAL.md` / seal §22.
 
+
+## Cycle: STALK_SWA_PERSIST (MEASURE)
+
+After #22/#24 ensemble **OPEN** (map only) and #23 soft distill **STOP**, try
+**single-model persistence** via Polyak **SWA** on frozen #14 harden (ep≥31;
+seeds **0..4**). Primary = SWA weights; paired #14 lex select. Matched-OOD T16:
+SWA mean HN **0.867** FAIL / K16 **0.910** PASS (seed **2/5**); vs select
+ΔHN **−0.090** / ΔK16 **+0.047** → **`MEASURE`** (partial; HN↔K16 trade).
+Ensemble still dominates (1.000/1.000). §22 scope **not** widened.
+`science_open=false`.
+
+```bash
+python -m reachability_gen.run_stalk_swa_persist
+# or: reachability-stalk-swa-persist
+```
+
+Artifact: `artifacts/stalk_swa_persist.json`. See `docs/CYCLE_STALK_SWA_PERSIST.md`.
+
 ## Cycle: STALK_ENSEMBLE_DISTILL (MEASURE → STOP)
 
 After #22 ensemble **PASS_CANDIDATE** (map), distill frozen #14/#18

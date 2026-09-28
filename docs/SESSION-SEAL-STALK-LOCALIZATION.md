@@ -12,7 +12,7 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
+**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25) — not single-model OPEN; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
 
 Fail-closed outside the live scoped claim in **§22** (hist. §6 demoted). Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
@@ -521,3 +521,32 @@ Prior seal body + §13–§20 are **not** rewritten. This §21 is append-only ST
 ### 22.3 Non-rewrite rule
 
 Prior seal body + §13 DEMOTION + §14–§21 are **not** rewritten. This §22 is append-only scoped science_open (ensemble-at-eval only).
+
+## 23. SWA persist — MEASURE (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_SWA_PERSIST` |
+| **Artifact** | `artifacts/stalk_swa_persist.json` |
+| **Cycle note** | `docs/CYCLE_STALK_SWA_PERSIST.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_swa_persist` |
+| **Base** | `main` `ecd0489` (after PR #24 ensemble seal) |
+| **Prereg / results** | `6089d31` / `7767bca` |
+| **Harness verdict** | **`MEASURE`** |
+| **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
+| **Recipe** | Frozen #14 harden + Polyak SWA `ep≥31`; primary=SWA; paired #14 lex select; seeds **0..4**. **Not** soft distill. |
+| **SWA mean floors** | hard-neg **0.867 FAIL** (≥0.95); K16 **0.910 PASS** (≥0.75); seed PASS **2/5** |
+| **vs within-run select** | ΔHN **−0.090**; ΔK16 **+0.047** (HN↔K16 trade) |
+| **vs ensemble** | far below (ens HN/K16 **1.000**) |
+
+### 23.1 Reading
+
+One-train SWA is **not** a single-model substitute for the §22 ensemble map.
+Partial K16 persist vs select; HN regresses. Prefer #14 select + #22 overlay.
+Select/curriculum stay CLOSED. Distill remains STOP.
+
+### 23.2 Non-rewrite rule
+
+Prior seal body + §13–§22 are **not** rewritten. This §23 is append-only MEASURE
+(`science_open=false`).
+
