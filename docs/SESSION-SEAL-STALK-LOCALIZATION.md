@@ -724,7 +724,7 @@ Prior seal body + §13–§28 are **not** rewritten. This §29 is append-only ME
 | **Cycle note** | `docs/CYCLE_STALK_SOUND_OUTDEG_GATE.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_sound_outdeg_gate` |
 | **Base** | `main` `c909d1b` (after PR #31) |
-| **Prereg / harness / results** | `3f4d791` / `6a75b1f` / _(stamp after results commit)_ |
+| **Prereg / harness / results** | `3f4d791` / `6a75b1f` / `32420d09bf3d141ec137a511c1034645d5304bb5` |
 | **Cycle verdict** | **`FO_PARTIAL`** |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
 | **Recipe** | Eval-only sound local `outdeg(s)==0 ∧ t≠s` → force ens pred=0 on #22 `prob_mean` @ T=16; matched-OOD collateral; **no** train; **no** BFS oracle |

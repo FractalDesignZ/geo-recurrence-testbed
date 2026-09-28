@@ -144,7 +144,7 @@ Priority: if collateral harm fires → verdict **`COLLATERAL_HARM`** (still MEAS
 | **Log** | `artifacts/stalk_sound_outdeg_gate_run.log` |
 | **Prereg SHA** | `3f4d791` |
 | **Harness SHA** | `6a75b1f` |
-| **Results SHA** | _(stamp after results commit)_ |
+| **Results SHA** | `32420d09bf3d141ec137a511c1034645d5304bb5` |
 | **Cycle verdict** | **`FO_PARTIAL`** |
 | **science_open** | **false** (not widened; §22 unchanged) |
 | **Residue update** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL`** |
