@@ -1,0 +1,90 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[stalk-seed-ens] loading 10 members
+[stalk-seed-ens] matched-OOD ensemble T=6
+[stalk-seed-ens] deg-bal ensemble T=6
+[stalk-seed-ens] matched-OOD ensemble T=8
+[stalk-seed-ens] deg-bal ensemble T=8
+[stalk-seed-ens] matched-OOD ensemble T=12
+[stalk-seed-ens] deg-bal ensemble T=12
+[stalk-seed-ens] matched-OOD ensemble T=16
+[stalk-seed-ens] deg-bal ensemble T=16
+[stalk-seed-ens] LOO hold seed=0 n=9 T=16
+[stalk-seed-ens] LOO hold seed=1 n=9 T=16
+[stalk-seed-ens] LOO hold seed=2 n=9 T=16
+[stalk-seed-ens] LOO hold seed=3 n=9 T=16
+[stalk-seed-ens] LOO hold seed=4 n=9 T=16
+[stalk-seed-ens] LOO hold seed=5 n=9 T=16
+[stalk-seed-ens] LOO hold seed=6 n=9 T=16
+[stalk-seed-ens] LOO hold seed=7 n=9 T=16
+[stalk-seed-ens] LOO hold seed=8 n=9 T=16
+[stalk-seed-ens] LOO hold seed=9 n=9 T=16
+[stalk-seed-ens] wrote artifacts/stalk_seed_ensemble.json
+[stalk-seed-ens] verdict=PASS_CANDIDATE science_open=False primary=prob_mean T16 ov=0.9958 HN=1.0000 K16=1.0000 ΔHN=+0.0650 ΔK16=+0.2075
+{
+  "verdict": "PASS_CANDIDATE",
+  "open_status": "PASS_CANDIDATE_SCIENCE_OPEN_FALSE",
+  "science_open": false,
+  "prereg_floors_pass": true,
+  "T16_primary": {
+    "method": "prob_mean",
+    "overall_acc": 0.9958333333333333,
+    "hard_neg_acc": 1.0,
+    "K8": 0.975,
+    "K12": 1.0,
+    "K16": 1.0
+  },
+  "T16_singles_mean": {
+    "overall_acc": 0.903125,
+    "hard_neg_acc": 0.9349999999999999,
+    "K16": 0.7925,
+    "std_overall": 0.053044374185355875,
+    "std_hard_neg": 0.09007884063898801,
+    "std_K16": 0.28832610780927287
+  },
+  "T16_deltas_vs_singles_mean": {
+    "overall": 0.09270833333333339,
+    "hard_neg": 0.06500000000000006,
+    "K16": 0.20750000000000002,
+    "K8": 0.11249999999999993,
+    "K12": 0.04125000000000001
+  },
+  "T16_secondary": {
+    "logit_mean": {
+      "overall_acc": 0.9895833333333334,
+      "hard_neg_acc": 1.0,
+      "K16": 0.975,
+      "delta_vs_singles_mean": {
+        "overall": 0.08645833333333341,
+        "hard_neg": 0.06500000000000006,
+        "K16": 0.1825
+      }
+    },
+    "majority_vote": {
+      "overall_acc": 0.9895833333333334,
+      "hard_neg_acc": 1.0,
+      "K16": 0.975,
+      "delta_vs_singles_mean": {
+        "overall": 0.08645833333333341,
+        "hard_neg": 0.06500000000000006,
+        "K16": 0.1825
+      }
+    }
+  },
+  "leave_one_out_mean_std": {
+    "overall": {
+      "mean": 0.9954166666666667,
+      "std": 0.0036483126490454583
+    },
+    "hard_neg": {
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "K16": {
+      "mean": 0.99125,
+      "std": 0.008436856971381905
+    }
+  },
+  "n_trained_fill_missing": 0,
+  "out": "artifacts/stalk_seed_ensemble.json"
+}

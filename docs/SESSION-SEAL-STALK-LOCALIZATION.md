@@ -418,3 +418,34 @@ Hard-Â stalk **#14** remains the best stabilize MEASURE corridor. Means cleared
 ### 19.2 Non-rewrite rule
 
 Prior seal body + §13 DEMOTION + §14 MEASURE_STILL + §15/§16/§17 STOP_FRAGILE + §18 MEASURE_ENVELOPE are **not** rewritten. This §19 is append-only PARK_ACCEPT_MEASURE.
+
+## 20. Seed ensemble — PASS_CANDIDATE (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_SEED_ENSEMBLE` |
+| **Artifact** | `artifacts/stalk_seed_ensemble.json` |
+| **Harness** | `python -m reachability_gen.run_stalk_seed_ensemble` |
+| **Base** | `main` `00b844b` (after PR #21) + prereg `e040270` |
+| **Verdict** | **`PASS_CANDIDATE`** |
+| **science_open** | **false** (not widened; FLAG human) |
+| **Recipe** | Inference ensemble of **frozen #14/#18** hard-Â stalk singles (seeds 0..9). Primary **`prob_mean`**; secondary logit_mean / majority_vote. **No** new select/upsample; **0** fill-trains. |
+| **Prereg ensemble floors** | hard-neg≥0.95 **PASS** (1.000); K16≥0.75 **PASS** (1.000) |
+| **Lift vs singles mean** | Δoverall **+0.093**; ΔHN **+0.065**; ΔK16 **+0.208** |
+| **LOO** | HN **1.000±0.000**; K16 **0.991±0.008**; overall 0.995±0.004 |
+
+### 20.1 Matched-OOD T16
+
+| Arm | overall | hard-neg | K16 |
+|-----|---------|----------|-----|
+| Singles mean±std (n=10) | 0.903±0.053 | 0.935±0.090 | 0.792±0.288 |
+| **Ensemble `prob_mean`** | **0.996** | **1.000** | **1.000** |
+| logit_mean / majority_vote | 0.990 | 1.000 | 0.975 |
+| LOO mean±std | 0.995±0.004 | 1.000±0.000 | 0.991±0.008 |
+
+Seed-fragile singles (3/10) do **not** top out the corridor under inference ensembling.
+Select/curriculum remain **CLOSED**. Cite `docs/CYCLE_STALK_SEED_ENSEMBLE.md`.
+
+### 20.2 Non-rewrite rule
+
+Prior seal body + §13 DEMOTION + §14 MEASURE_STILL + §15/§16/§17 STOP_FRAGILE + §18 MEASURE_ENVELOPE + §19 PARK_ACCEPT_MEASURE are **not** rewritten. This §20 is append-only PASS_CANDIDATE (science_open=false).
