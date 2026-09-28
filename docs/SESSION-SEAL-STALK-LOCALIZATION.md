@@ -12,7 +12,7 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24) — #22 lift rides on disagreement; structured heads collapsed; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
+**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25) — pairwise disagree **0.431 ≥ #22 0.162** but HN floor miss; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
 
 Fail-closed outside the live scoped claim in **§22** (hist. §6 demoted). Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
@@ -576,4 +576,33 @@ overlay. Distill STOP; SWA MEASURE; select/curriculum CLOSED.
 
 Prior seal body + §13–§23 are **not** rewritten. This §24 is append-only
 MEASURE/STOP (`science_open=false`).
+
+## 25. Bag diversity — MEASURE_LIFT (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_BAG_DIVERSITY` |
+| **Artifact** | `artifacts/stalk_bag_diversity.json` |
+| **Cycle note** | `docs/CYCLE_STALK_BAG_DIVERSITY.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_bag_diversity` |
+| **Base** | `main` `f210d0c` (after PR #26 epistemic disagreement) |
+| **Prereg / results** | `c58ab73` / *(this commit)* |
+| **Harness verdict** | **`MEASURE_LIFT`** |
+| **Disagreement diagnostic** | **`DISAGREE_GE_REF`** (bag pair **0.431** ≥ #22 **0.162**) |
+| **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
+| **Recipe** | Frozen #14 harden + **bootstrap** ID train + **graph-subspace** EDGE_KEEP_P=0.75; **separate params** per member (DGE-style); NOT multi-hyp / soft distill / SWA-only |
+| **Bag ens floors** | hard-neg **0.821 FAIL** (≥0.95); K16 **0.788 PASS** (≥0.75); member PASS **0/5** |
+| **vs bag singles** | ΔHN **+0.101**; ΔK16 **+0.250**; Δoverall **+0.102** |
+| **vs ensemble #22** | far below (ens HN/K16 **1.000**) |
+
+### 25.1 Reading
+
+Induced bag diversity raises pairwise disagreement above the #22 seed map but
+does **not** clear HN floors — weak singles + over-dispersion. Prefer #14 + #22
+overlay. Distill STOP; SWA MEASURE; multi-hyp STOP; select/curriculum CLOSED.
+
+### 25.2 Non-rewrite rule
+
+Prior seal body + §13–§24 are **not** rewritten. This §25 is append-only
+MEASURE_LIFT (`science_open=false`).
 

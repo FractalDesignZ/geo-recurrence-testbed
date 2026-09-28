@@ -124,7 +124,66 @@ re-eval pairwise disagree on the same OOD T16. Label note
 | **Artifact** | `artifacts/stalk_bag_diversity.json` |
 | **Log** | `artifacts/stalk_bag_diversity_run.log` |
 | **Ckpts** | `fractal_core_stalk_bag_diversity_seed{0..4}_best.pt` |
-| **Verdict** | *(pending run)* |
+| **Verdict** | **`MEASURE_LIFT`** |
+| **Disagreement diagnostic** | **`DISAGREE_GE_REF`** (bag pair **0.431** ≥ #22 **0.162**) |
 | **science_open** | **false** (not widened; §22 ensemble scope unchanged) |
-| **Prereg SHA** | *(commit before runs)* |
+| **Elapsed** | ~767 s (~12.8 min CDT) |
+| **Prereg SHA** | `c58ab73` (committed before runs) |
+| **Floors (bag ens)** | HN **0.821 FAIL** (≥0.95); K16 **0.788 PASS** (≥0.75); member PASS **0/5** |
+
+### Matched-OOD T16 — bag ens vs bag singles vs #22 vs #14
+
+| Arm | overall | hard-neg | K16 |
+|-----|---------|----------|-----|
+| Bag singles mean±std (n=5) | 0.658±0.122 | 0.720±0.192 | 0.538±0.486 |
+| **Bag ens `prob_mean` (primary)** | **0.760** | **0.821 FAIL** | **0.788 PASS** |
+| Bag `logit_mean` (secondary) | 0.769 | 0.867 | 0.812 |
+| Bag `majority_vote` (secondary) | 0.804 | 0.842 | 0.775 |
+| #22 ens `prob_mean` (re-eval) | **0.996** | **1.000** | **1.000** |
+| #14 seed0 (re-eval) | **0.975** | **1.000** | **0.863** |
+| Δ bag ens − bag singles | **+0.102** | **+0.101** | **+0.250** |
+| Δ bag ens − #22 | −0.236 | −0.179 | −0.212 |
+
+### Pairwise disagreement @ T16 (vs #22)
+
+| Bag | pair disagree | n members | vs #22 |
+|-----|---------------|-----------|--------|
+| **DGE bag (this)** | **0.431** | 5 | **≥ #22** → `DISAGREE_GE_REF` |
+| #14/#18 ens (#22 map) | **0.162** | 10 | ref |
+
+Induced bootstrap+subspace diversity **increases** disagreement vs seed-only #22, but
+accuracy does **not** follow — HN floor miss; far below #22/#14.
+
+### Per-member matched-OOD T16
+
+| Seed | ov / HN / K16 | prereg |
+|------|---------------|--------|
+| 0 | 0.550 / 0.575 / 0.012 | FAIL |
+| 1 | 0.506 / **1.000** / 0.000 | FAIL (K16) |
+| 2 | 0.717 / 0.742 / 0.888 | FAIL (HN) |
+| 3 | 0.779 / 0.775 / 0.850 | FAIL (HN) |
+| 4 | 0.740 / 0.508 / 0.938 | FAIL (HN) |
+| **mean** | **0.658 / 0.720 / 0.538** | **0/5** |
+
+### Causal horizon (matched-OOD; bag ens vs singles mean)
+
+| T | ens overall | ens HN | ens K16 | sing overall | sing HN | sing K16 |
+|---|-------------|--------|---------|--------------|---------|----------|
+| 6 | 0.535 | 0.704 | 0.013 | 0.597 | 0.673 | 0.410 |
+| 8 | 0.794 | 0.658 | 0.950 | 0.637 | 0.618 | 0.583 |
+| 12 | 0.650 | 0.738 | 0.087 | 0.607 | 0.647 | 0.425 |
+| **16** | **0.760** | **0.821** | **0.788** | **0.658** | **0.720** | **0.538** |
+
+### Reading (fail-closed)
+
+1. **Diversity without competence:** Bootstrap + graph-subspace (EDGE_KEEP_P=0.75)
+   with **separate params** yields pairwise disagree **0.431 ≫ #22 0.162**, and
+   lifts vs own fragile singles (ΔHN/K16 **+0.10 / +0.25**) → **`MEASURE_LIFT`**.
+2. **Floors miss:** Bag ens HN **0.821** fails ≥0.95; K16 **0.788** clears ≥0.75.
+   Member PASS **0/5**. Far below #22 ens (1.000/1.000) and #14 seed0.
+3. Disagreement alone is **not** sufficient — #22's seed-diversity map couples
+   disagreement with accurate members; induced bag diversity over-dispersed into
+   weak singles. Prefer #14 MEASURE_STILL + #22 ens overlay. Distill STOP; SWA
+   MEASURE; multi-hyp STOP; select/curriculum CLOSED; **§22 not widened**.
+   `science_open=false`.
 
