@@ -531,7 +531,7 @@ Prior seal body + §13 DEMOTION + §14–§21 are **not** rewritten. This §22 i
 | **Cycle note** | `docs/CYCLE_STALK_SWA_PERSIST.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_swa_persist` |
 | **Base** | `main` `ecd0489` (after PR #24 ensemble seal) |
-| **Prereg / results** | `6089d31` / `ae395ab` |
+| **Prereg / results** | `6089d31` / `7767bca` |
 | **Harness verdict** | **`MEASURE`** |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
 | **Recipe** | Frozen #14 harden + Polyak SWA `ep≥31`; primary=SWA; paired #14 lex select; seeds **0..4**. **Not** soft distill. |
