@@ -615,7 +615,7 @@ MEASURE_LIFT (`science_open=false`).
 | **Cycle note** | `docs/CYCLE_STALK_COMPETENT_DISSONANCE.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_competent_dissonance` |
 | **Base** | `main` `07401f0` (after PR #27 bag diversity) |
-| **Prereg / results** | `3e20a4d` / *(results SHA)* |
+| **Prereg / results** | `3e20a4d` / `9c4e8f9` |
 | **Cycle verdict** | **`COMPETENT_vs_CHAOS`** |
 | **#22 / #27** | **`COMPETENT`** (CD **0.811**) / **`CHAOS`** (CD **0.658**) |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
