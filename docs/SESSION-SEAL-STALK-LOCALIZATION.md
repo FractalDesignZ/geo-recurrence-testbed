@@ -12,7 +12,7 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
+**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
 
 Fail-closed outside the live scoped claim in **§22** (hist. §6 demoted). Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
@@ -659,3 +659,29 @@ Prior seal body + §13–§25 are **not** rewritten. This §26 is append-only ME
 Prior seal body + §13–§26 are **not** rewritten. This §27 is append-only MEASURE
 (`science_open=false`).
 
+## 28. Hop-OOD HN overlay stress — MEASURE audit (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_HOP_OOD_HN` |
+| **Artifact** | `artifacts/stalk_hop_ood_hn.json` |
+| **Log** | `artifacts/stalk_hop_ood_hn_run.log` |
+| **Cycle note** | `docs/CYCLE_STALK_HOP_OOD_HN.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_hop_ood_hn` |
+| **Base** | `main` `5c5006a` (after PR #29) |
+| **Prereg / harness / results** | `a40abb6` / `051743c` / _(results SHA)_ |
+| **Cycle verdict** | **`FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED`** |
+| **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
+| **Recipe** | Eval-only #22 ens on `ood_hops`@T16; FAIL_OPEN/CLOSED + CD; gate abstain + majority_vote; **no** train / bag / select |
+| **Cite #28 replicate** | exact (ens HN **0.067** / K16 **0.988** / CD **0.553**) |
+| **FAIL mode** | **45** FAIL_OPEN / **190** FAIL_CLOSED (all OPEN = HN unified confident wrong) |
+| **Overlays** | vote HN **0.067** (no lift); gate accepted HN **0.000** (concentrates FAIL_OPEN core) |
+
+### 28.1 Reading
+
+#28 hop-OOD HN shatter **confirmed**. Cheap inference overlays do **not** repair HN; the prereg gate keeps the agree/high-conf FAIL_OPEN hard-neg core. Residue: **`HN_FAIL_OPEN_CORE`** (45). Prefer #14 + #22 on matched-OOD only. Do **not** widen §22. No bag train.
+
+### 28.2 Non-rewrite rule
+
+Prior seal body + §13–§27 are **not** rewritten. This §28 is append-only MEASURE
+(`science_open=false`).

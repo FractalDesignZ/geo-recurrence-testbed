@@ -164,10 +164,58 @@ On accepted (non-abstained) set report: coverage; ens overall/HN/K16; FAIL_OPEN/
 |-------|-------|
 | **Artifact** | `artifacts/stalk_hop_ood_hn.json` |
 | **Log** | `artifacts/stalk_hop_ood_hn_run.log` |
-| **Prereg SHA** | _(fill after first commit)_ |
-| **Results SHA** | _(fill after results commit)_ |
-| **Cycle verdict** | _(fill after run)_ |
+| **Prereg SHA** | `a40abb6` (committed before runs) |
+| **Harness SHA** | `051743c` |
+| **Results SHA** | _(stamped on results commit)_ |
+| **Cycle verdict** | **`FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED`** |
+| **CD arm** | **CHAOS** (μ_acc 0.553 < 0.85 — expected under hop-OOD) |
 | **science_open** | **false** (not widened; §22 unchanged) |
-| **Elapsed** | _(fill)_ |
+| **Elapsed** | ~12.7 s (~0.2 min CDT) |
+| **Cite #28 replicate** | **exact match** (Δ=0 within float) |
 
-_(tables filled after MEASURE run)_
+### Baseline vs overlays — ood_hops T16 (#22 ens)
+
+| Arm | overall | HN | K16 | FAIL_OPEN | FAIL_CLOSED | CD | notes |
+|-----|---------|----|----|-----------|-------------|-----|-------|
+| **baseline `prob_mean`** | **0.510** | **0.067** | **0.988** | **45** | **190** | **0.553** | shatter replicate |
+| **majority_vote** | 0.498 | **0.067** | 0.962 | 45 | 196 | 0.553† | no HN lift |
+| **gate accepted** (cov **0.279**) | 0.664 | **0.000** | 1.000 | **45** | **0** | n/a | concentrates FAIL_OPEN HN |
+
+† CD/D from member geometry identical across aggregators (same hard argmaxes).
+
+Gate rule: abstain if `D_ex ≥ 0.10` OR `ens_max_prob < 0.80`. Accepted n=134 / 480; HN accept 45/240 (all 45 are unified confident wrong — predict reachable on unreachable).
+
+### Disagreement + CD (baseline; = #28 cite)
+
+| Metric | Value |
+|--------|-------|
+| global pair | **0.286** |
+| D_HN | **0.358** |
+| D_K16 | **0.211** |
+| D_hard | **0.285** |
+| μ_acc | **0.553** |
+| CD | **0.553** |
+
+### Agree-set vs disagree-set ens acc @ T16
+
+| Set | n | ens ov | ens HN | ens K16 |
+|-----|---|--------|--------|---------|
+| agree | 134 | 0.664 | **0.000** (45 HN) | 1.000 |
+| disagree | 346 | 0.451 | 0.082 (195 HN) | 0.978 |
+
+### FAIL_OPEN vs FAIL_CLOSED (ens-wrong; n_wrong=235)
+
+| Tag | count | rate |
+|-----|-------|------|
+| **FAIL_OPEN** | **45** | **0.191** |
+| **FAIL_CLOSED** | **190** | **0.809** |
+| FAIL_AMBIG | 0 | 0.000 |
+
+**All 45 FAIL_OPEN are hard-neg** (D_ex=0, ens_max_prob≥0.80, pred=1 / label=0). Bulk errors FAIL_CLOSED → cycle fail-mode **FAIL_CLOSED_DOMINANT**, but HN shatter has a **FAIL_OPEN core**.
+
+### Reading (fail-closed)
+
+1. **Shatter confirmed:** #28 ood_hops numbers replicate exactly; ens HN **0.067**, K16 holds **0.988**.
+2. **Overlays do not repair HN:** vote HN unchanged; prereg gate **worsens** HN (0.000 on accepted) by keeping the agree/high-conf FAIL_OPEN hard-negs and dropping disagreeing mass.
+3. **Residue named:** `HN_FAIL_OPEN_CORE` — 45 hop-OOD hard-neg unified confident wrongs. Distinct from #29 RED (0 FAIL_OPEN).
+4. Prefer #14 + #22 ens on **matched-OOD only**. Do **not** widen §22. `science_open=false`. No train.
