@@ -12,7 +12,7 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair. HN FAIL_OPEN autopsy **STRUCTURAL_CLUSTER** (§29) — isolated-source / hub-target; residue **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`**. Sound outdeg gate **FO_PARTIAL** (§30) — **23/45** FO killed; HN **0.067→0.304**; matched-OOD Δ=0; residue **`…/OUTDEG0_PARTIAL`**. FO remainder autopsy **LOCAL_SOUND_WALL** (§31) — best local cut **5/22**; stop overlay chase; residue **`…/LOCAL_SOUND_WALL`**. Hop-OOD overlay **PARK** (§32). Reach certificates **CERT_FO_CATCH** (§33) — **45/45** FO + **22/22** rem-22; HN **0.067→1.000**; matched-OOD Δ=0; checker BFS post-hoc only. Tropical ens probe **COLLATERAL_HARM** (§34) — FO **0**/45 + rem22 **0**/22; matched K16 **1.000→0.512**; ens-layer max-plus falsified as FO repair; tropical ≢ cert; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
+**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair. HN FAIL_OPEN autopsy **STRUCTURAL_CLUSTER** (§29) — isolated-source / hub-target; residue **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`**. Sound outdeg gate **FO_PARTIAL** (§30) — **23/45** FO killed; HN **0.067→0.304**; matched-OOD Δ=0; residue **`…/OUTDEG0_PARTIAL`**. FO remainder autopsy **LOCAL_SOUND_WALL** (§31) — best local cut **5/22**; stop overlay chase; residue **`…/LOCAL_SOUND_WALL`**. Hop-OOD overlay **PARK** (§32). Reach certificates **CERT_FO_CATCH** (§33) — **45/45** FO + **22/22** rem-22; HN **0.067→1.000**; matched-OOD Δ=0; checker BFS post-hoc only. Tropical ens probe **COLLATERAL_HARM** (§34) — FO **0**/45 + rem22 **0**/22; matched K16 **1.000→0.512**; ens-layer max-plus falsified as FO repair; tropical ≢ cert; §22 **not** widened. Orientation collapse probe **INCONCLUSIVE_ARCH** (§35) — OK_HN cos nan_rate **1.0** (empty_in_t); cos AUROC undefined; (−l2) confounded; Phase4 **not** started; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
 
 Fail-closed outside the live scoped claim in **§22** (hist. §6 demoted). Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
@@ -851,3 +851,30 @@ Tropical ens aggregation does not move the hop-OOD FAIL_OPEN core and harms matc
 Prior seal body + §13–§33 are **not** rewritten. This §34 is append-only MEASURE
 (`science_open=false`).
 
+## 35. Orientation collapse probe — INCONCLUSIVE_ARCH (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_ORIENTATION_COLLAPSE_PROBE` |
+| **Artifact** | `artifacts/stalk_orientation_collapse_probe.json` |
+| **Log** | `artifacts/stalk_orientation_collapse_probe_run.log` |
+| **Cycle note** | `docs/CYCLE_STALK_ORIENTATION_COLLAPSE_PROBE.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_orientation_collapse_probe` |
+| **Base** | `main` `3198371` (after PR #36) |
+| **Prereg / harness / results** | `a422eef` / `5d6c1a8` / `de5d1f5f4b7468960fa241274f1523e935708179` |
+| **Cycle verdict** | **`INCONCLUSIVE_ARCH`** |
+| **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
+| **Proxy** | directed incidence × final hidden; **no** explicit Dir-GNN in/out channels; attn weights unused |
+| **Recipe** | Eval-only on frozen #14/#18/#22 ens; ood_hops@T16 strata OK_HN/FO_HN/rem-22/FO_KILLED/FC_HN; **no** train / Phase4 / tropical retrain |
+| **Key numbers** | OK_HN cos nan_rate **1.00** (empty_in_t=1.0); FO/rem cos_t ≈ **0.91**; (−l2_t) AUROC **1.000** confounded |
+| **rem-22 separates?** | cos **no** (OK control unusable); l2 **yes but confounded** by empty-in |
+| **Residue** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL/LOCAL_SOUND_WALL/CERT_FO_CATCH/COLLATERAL_HARM/INCONCLUSIVE_ARCH`** |
+
+### 35.1 Reading
+
+Dir-GNN-style orientation proxy is **inconclusive** on this architecture/strata: OK_HN targets are all in-empty, so cos(h_in,h_out) cannot score FO vs OK. FO/rem-22 live in bidirectional target cones (high cos≈0.91) but that alone does not seal orientation collapse as the rem-22 lever. l2 gaps vs OK are structural empty-in confounds. Do **not** widen §22. Do **not** claim hop-OOD OPEN. Do **not** start Phase 4 from this probe. Prefer #14 + #22 `prob_mean` on matched-OOD; keep #35 certificates for FO catch. Still **MEASURE**.
+
+### 35.2 Non-rewrite rule
+
+Prior seal body + §13–§34 are **not** rewritten. This §35 is append-only MEASURE
+(`science_open=false`).
