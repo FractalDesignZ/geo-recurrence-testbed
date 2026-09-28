@@ -127,15 +127,70 @@ Cycle RED verdict:
 - No `science_open=true` / §22 widen from RED PASS or FAIL
 - No claim that RED metrics extend §22 OPEN
 
-## Results (fill after run)
+## Results (this run — cite artifact)
 
 | Field | Value |
 |-------|-------|
 | **Artifact** | `artifacts/stalk_red_competent_dissonance.json` |
 | **Gen report** | `artifacts/stalk_red_competent_dissonance_generation_report.json` |
-| **Data** | `data/stalk_red_competent_dissonance.jsonl` |
-| **Prereg SHA** | _(commit before runs)_ |
-| **Results SHA** | _(commit after runs)_ |
-| **Boundary refresh** | _(cite)_ |
-| **RED verdict** | _(fill)_ |
-| **science_open** | **false** (not widened) |
+| **Data** | `data/stalk_red_competent_dissonance.jsonl` (n=256; K16=64, K20=64, HN=128) |
+| **Log** | `artifacts/stalk_red_competent_dissonance_run.log` |
+| **Prereg SHA** | `8d83560` (committed before runs) |
+| **Results SHA** | _(this commit)_ |
+| **Boundary refresh** | **exact match** to #28 (Δ=0 within float) |
+| **RED verdict** | **`FAIL_CLOSED_DOMINANT`** (61/61 ens-wrong = FAIL_CLOSED; 0 FAIL_OPEN) |
+| **CD arm on RED** | **CHAOS** (μ_acc 0.774 < 0.85 — expected under RED; not COMPETENT claim) |
+| **science_open** | **false** (not widened; §22 unchanged) |
+| **Elapsed** | ~18 s (~0.3 min CDT) |
+
+### (0) Boundary strip-easy — #22 ens matched-OOD T16 (#28 cite + refresh)
+
+| Source | global pair | D_HN | D_K16 | D_easy(K8) | D_hard | μ_acc | CD | verdict |
+|--------|-------------|------|-------|------------|--------|-------|-----|---------|
+| **#28 cite** | **0.162** | **0.112** | **0.337** | 0.225 | **0.225** | **0.903** | **0.811** | **COMPETENT** |
+| **refresh** | **0.162** | **0.112** | **0.337** | 0.225 | **0.225** | **0.903** | **0.811** | **COMPETENT** |
+
+Easy mass (K8) stripped from D_hard. Refresh Δ abs = 0 vs cite (ok).
+
+### RED T16 — (a)(b)(d) disagree + CD (#22 ens only; no #27)
+
+| Arm | global pair | D_HN | D_K16 | D_K20 | D_long | D_hard | μ_acc | CD | CD arm |
+|-----|-------------|------|-------|-------|--------|--------|-------|-----|--------|
+| **#22 ens** | **0.277** | 0.195 | 0.276 | **0.443** | **0.360** | **0.277** | 0.774 | **0.774** | CHAOS (RED) |
+
+`D_long = 0.5·(D_K16+D_K20)`; `D_hard = 0.5·(D_HN+D_long)`. K16 denser than ood_hops (p_emp mean **0.084** ≫ 0.025); K20 outside ADR OOD hops.
+
+### Ens accuracy @ RED T16
+
+| Slice | ens `prob_mean` | singles mean |
+|-------|-----------------|--------------|
+| overall | **0.762** | 0.774 |
+| hard-neg | **0.898** | 0.851 |
+| K16 (dense) | **0.812** | 0.769 |
+| K20 (long) | **0.438** | 0.627 |
+
+K20 under T=16 causal horizon collapses (expected). Dense K16 holds better than ood_hops HN shatter residue (#28: ens HN 0.067 on ood_hops).
+
+### (c) Agree-set vs disagree-set ens acc @ RED T16
+
+| Set | n | member ov | ens ov | ens HN | ens K16 | ens K20 |
+|-----|---|-----------|--------|--------|---------|---------|
+| agree | 84 | **1.000** | **1.000** | 1.000 | 1.000 | 1.000 |
+| disagree | 172 | 0.664 | **0.645** | 0.817 | 0.714 | 0.390 |
+
+### FAIL_OPEN vs FAIL_CLOSED (ens-wrong; n_wrong=61)
+
+| Tag | count | rate |
+|-----|-------|------|
+| **FAIL_OPEN** | **0** | **0.000** |
+| **FAIL_CLOSED** | **61** | **1.000** |
+| FAIL_AMBIG | 0 | 0.000 |
+
+Uncertainty means: epistemic **0.319** > aleatoric **0.086**. **No unified confident wrongs** — errors carry disagreement and/or low confidence / high epi.
+
+### Reading (fail-closed)
+
+1. **Boundary confirmed:** #28 strip-easy table stands; #22 COMPETENT on matched-OOD unchanged.
+2. **RED = FAIL_CLOSED_DOMINANT:** when p/K leave train priors (denser K16 + K20), ens errs **without** FAIL_OPEN — dissonance/uncertainty signal present. Prefer this over echo-chamber failure mode.
+3. K20@T16 under-horizon residue (ens 0.438) is expected; do **not** widen §22. Dense K16 holds (0.812) better than ood_hops HN shatter.
+4. No #27 bag train. `science_open=false`. Select/curriculum CLOSED.

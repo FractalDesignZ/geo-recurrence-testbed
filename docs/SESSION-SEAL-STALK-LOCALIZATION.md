@@ -12,7 +12,7 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**); §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
+**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
 
 Fail-closed outside the live scoped claim in **§22** (hist. §6 demoted). Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
@@ -631,3 +631,31 @@ MEASURE_LIFT (`science_open=false`).
 
 Prior seal body + §13–§25 are **not** rewritten. This §26 is append-only MEASURE
 (`science_open=false`).
+
+## 27. RED competent dissonance — MEASURE audit (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_RED_COMPETENT_DISSONANCE` |
+| **Artifact** | `artifacts/stalk_red_competent_dissonance.json` |
+| **Gen report** | `artifacts/stalk_red_competent_dissonance_generation_report.json` |
+| **Data** | `data/stalk_red_competent_dissonance.jsonl` |
+| **Cycle note** | `docs/CYCLE_STALK_RED_COMPETENT_DISSONANCE.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_red_competent_dissonance` |
+| **Base** | `main` `0a5890a` (after PR #28) |
+| **Prereg / results** | `8d83560` / _(results SHA)_ |
+| **Cycle verdict** | **`FAIL_CLOSED_DOMINANT`** |
+| **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
+| **Recipe** | Eval-only #22 ens; cite#28 strip-easy boundary + refresh; RED denser-K16 (p_emp≫ood_hops) + LONG_K20; FAIL_OPEN vs FAIL_CLOSED; **no** #27 bag train |
+| **Boundary** | refresh Δ=0 vs #28 (D_HN **0.112** / D_K16 **0.337** / CD **0.811** COMPETENT) |
+| **RED T16** | ens ov **0.762** / HN **0.898** / K16 **0.812** / K20 **0.438**; D_hard **0.277**; CD **0.774**; **0** FAIL_OPEN / **61** FAIL_CLOSED |
+
+### 27.1 Reading
+
+#22 COMPETENT map on matched-OOD **fails closed** under RED (denser K16 + K20 outside train/ADR-OOD priors): ens-wrong examples carry disagreement and/or uncertainty — **not** unified confident wrongs. K20@T16 under-horizon residue expected; do **not** widen §22. Prefer #14 + #22 overlay; no bag train.
+
+### 27.2 Non-rewrite rule
+
+Prior seal body + §13–§26 are **not** rewritten. This §27 is append-only MEASURE
+(`science_open=false`).
+

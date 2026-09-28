@@ -454,13 +454,13 @@ python -m reachability_gen.run_stalk_swa_persist
 Artifact: `artifacts/stalk_swa_persist.json`. See `docs/CYCLE_STALK_SWA_PERSIST.md`.
 
 
-## Cycle: STALK_RED_COMPETENT_DISSONANCE (FAIL_OPEN vs FAIL_CLOSED)
+## Cycle: STALK_RED_COMPETENT_DISSONANCE (FAIL_CLOSED_DOMINANT)
 
 After #28 COMPETENT_vs_CHAOS (#22 COMPETENT on matched-OOD; strip-easy D_HN/D_K16/CD locked):
 re-report boundary table, generate held-out RED OOD pushing **p/K outside train priors**
 (DENSE_K16 denser than `ood_hops`; LONG_K20 not in ADR OOD hops), eval frozen **#14+#22** ens only
-(no #27 bag). Classify **FAIL_OPEN** (unified confident wrong) vs **FAIL_CLOSED** (high D /
-uncertainty). `science_open=false`; §22 **not** widened.
+(no #27 bag). Verdict **`FAIL_CLOSED_DOMINANT`**: 0 FAIL_OPEN / 61 FAIL_CLOSED on ens-wrong;
+ens ov **0.762** / K20 **0.438**. `science_open=false`; §22 **not** widened.
 
 ```bash
 python -m reachability_gen.gen_stalk_red_competent_dissonance

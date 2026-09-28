@@ -1,0 +1,6 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[stalk-red-cd] loading #14/#18/#22 ens n=10
+[stalk-red-cd] boundary refresh matched-OOD T16 #22
+[stalk-red-cd] AUDIT RED T16 #22 ens
+[stalk-red-cd] verdict=FAIL_CLOSED_DOMINANT ens_acc=0.76171875 D_hard=0.2772569444444445 CD=0.77421875 wrote artifacts/stalk_red_competent_dissonance.json (18.0s)
