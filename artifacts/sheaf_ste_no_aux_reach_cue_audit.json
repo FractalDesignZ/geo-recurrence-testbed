@@ -1,0 +1,399 @@
+{
+  "aux_edge_recon": false,
+  "cycle": "CYCLE_SHEAF_STE_NO_AUX",
+  "degree_balanced_construction": {
+    "bins": [
+      {
+        "bin": [
+          1,
+          1
+        ],
+        "n_neg_available": 26,
+        "n_neg_taken": 188,
+        "n_pos": 188,
+        "with_replacement": true
+      },
+      {
+        "bin": [
+          1,
+          2
+        ],
+        "n_neg_available": 12,
+        "n_neg_taken": 26,
+        "n_pos": 26,
+        "with_replacement": true
+      },
+      {
+        "bin": [
+          1,
+          3
+        ],
+        "n_neg_available": 3,
+        "n_neg_taken": 1,
+        "n_pos": 1,
+        "with_replacement": false
+      },
+      {
+        "bin": [
+          2,
+          1
+        ],
+        "n_neg_available": 4,
+        "n_neg_taken": 22,
+        "n_pos": 22,
+        "with_replacement": true
+      },
+      {
+        "bin": [
+          2,
+          2
+        ],
+        "n_neg_available": 0,
+        "n_neg_taken": 0,
+        "n_pos": 3
+      }
+    ],
+    "n": 477,
+    "n_neg": 237,
+    "n_pos": 240,
+    "science_open": false,
+    "seed": 0,
+    "shortfall_unmatched_pos": 3
+  },
+  "degree_balanced_ood_cue": {
+    "ceiling": 0.52,
+    "max_acc": 0.5031446540880503,
+    "max_degree_reach_acc": 0.5031446540880503,
+    "max_degree_reach_rule": "out_s",
+    "max_rule": "out_s",
+    "n": 477,
+    "note": "Gate C ceiling: single-feature degree/reach rules \u2264 0.52 on this set. Covariates (n, |E|) and 2-feature bin majority are documented only. science_open=false.",
+    "pass_ceiling": true,
+    "rules": [
+      {
+        "acc": 0.5031446540880503,
+        "feature": "out_s",
+        "frac_y1": 0.5031446540880503,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5031446540880503,
+        "n": 477,
+        "rule_class": "degree_reach",
+        "side": "gt",
+        "threshold": 1.0
+      },
+      {
+        "acc": 0.5031446540880503,
+        "feature": "in_t",
+        "frac_y1": 0.5031446540880503,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5031446540880503,
+        "n": 477,
+        "rule_class": "degree_reach",
+        "side": "gt",
+        "threshold": 1.0
+      },
+      {
+        "acc": 0.5031446540880503,
+        "feature": "tot_s",
+        "frac_y1": 0.5031446540880503,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5031446540880503,
+        "n": 477,
+        "rule_class": "degree_reach",
+        "side": "ge",
+        "threshold": 1.0
+      },
+      {
+        "acc": 0.5031446540880503,
+        "feature": "tot_t",
+        "frac_y1": 0.5031446540880503,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5031446540880503,
+        "n": 477,
+        "rule_class": "degree_reach",
+        "side": "ge",
+        "threshold": 1.0
+      },
+      {
+        "acc": 0.5031446540880503,
+        "feature": "out_s_plus_in_t",
+        "frac_y1": 0.5031446540880503,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5031446540880503,
+        "n": 477,
+        "rule_class": "degree_reach",
+        "side": "gt",
+        "threshold": 2.0
+      },
+      {
+        "acc": 0.5031446540880503,
+        "feature": "n_edges",
+        "frac_y1": 0.5031446540880503,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5031446540880503,
+        "n": 477,
+        "rule_class": "covariate_document_only",
+        "side": "ge",
+        "threshold": 13.0
+      },
+      {
+        "acc": 0.6750524109014675,
+        "feature": "n",
+        "frac_y1": 0.5031446540880503,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5031446540880503,
+        "n": 477,
+        "rule_class": "covariate_document_only",
+        "side": "gt",
+        "threshold": 18.0
+      },
+      {
+        "acc": 0.4968553459119497,
+        "feature": "constant_0",
+        "n": 477,
+        "rule_class": "baseline_document_only",
+        "threshold": null
+      },
+      {
+        "acc": 0.5031446540880503,
+        "feature": "constant_1",
+        "n": 477,
+        "rule_class": "baseline_document_only",
+        "threshold": null
+      },
+      {
+        "acc": 0.5031446540880503,
+        "feature": "out_s_x_in_t_bin_majority",
+        "n": 477,
+        "n_bins": 5,
+        "rule_class": "two_feature_document_only"
+      }
+    ],
+    "science_open": false
+  },
+  "gate_detach_diffusion": false,
+  "gate_mode": "ste",
+  "id_2k": {
+    "ceiling": 0.52,
+    "max_acc": 0.766,
+    "max_degree_reach_acc": 0.766,
+    "max_degree_reach_rule": "out_s_plus_in_t",
+    "max_rule": "out_s_plus_in_t",
+    "n": 2000,
+    "note": "Gate C ceiling: single-feature degree/reach rules \u2264 0.52 on this set. Covariates (n, |E|) and 2-feature bin majority are documented only. science_open=false.",
+    "pass_ceiling": false,
+    "rules": [
+      {
+        "acc": 0.6645,
+        "feature": "out_s",
+        "frac_y1": 0.5,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5,
+        "n": 2000,
+        "rule_class": "degree_reach",
+        "side": "gt",
+        "threshold": 1.0
+      },
+      {
+        "acc": 0.7375,
+        "feature": "in_t",
+        "frac_y1": 0.5,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5,
+        "n": 2000,
+        "rule_class": "degree_reach",
+        "side": "gt",
+        "threshold": 1.0
+      },
+      {
+        "acc": 0.643,
+        "feature": "tot_s",
+        "frac_y1": 0.5,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5,
+        "n": 2000,
+        "rule_class": "degree_reach",
+        "side": "gt",
+        "threshold": 4.0
+      },
+      {
+        "acc": 0.724,
+        "feature": "tot_t",
+        "frac_y1": 0.5,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5,
+        "n": 2000,
+        "rule_class": "degree_reach",
+        "side": "gt",
+        "threshold": 3.0
+      },
+      {
+        "acc": 0.766,
+        "feature": "out_s_plus_in_t",
+        "frac_y1": 0.5,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5,
+        "n": 2000,
+        "rule_class": "degree_reach",
+        "side": "gt",
+        "threshold": 3.0
+      },
+      {
+        "acc": 0.754,
+        "feature": "n_edges",
+        "frac_y1": 0.5,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5,
+        "n": 2000,
+        "rule_class": "covariate_document_only",
+        "side": "gt",
+        "threshold": 47.0
+      },
+      {
+        "acc": 0.5645,
+        "feature": "n",
+        "frac_y1": 0.5,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5,
+        "n": 2000,
+        "rule_class": "covariate_document_only",
+        "side": "gt",
+        "threshold": 20.0
+      },
+      {
+        "acc": 0.5,
+        "feature": "constant_0",
+        "n": 2000,
+        "rule_class": "baseline_document_only",
+        "threshold": null
+      },
+      {
+        "acc": 0.5,
+        "feature": "constant_1",
+        "n": 2000,
+        "rule_class": "baseline_document_only",
+        "threshold": null
+      },
+      {
+        "acc": 0.8245,
+        "feature": "out_s_x_in_t_bin_majority",
+        "n": 2000,
+        "n_bins": 76,
+        "rule_class": "two_feature_document_only"
+      }
+    ],
+    "science_open": false
+  },
+  "matched_ood": {
+    "ceiling": 0.52,
+    "max_acc": 0.7375,
+    "max_degree_reach_acc": 0.7375,
+    "max_degree_reach_rule": "in_t",
+    "max_rule": "in_t",
+    "n": 480,
+    "note": "Gate C ceiling: single-feature degree/reach rules \u2264 0.52 on this set. Covariates (n, |E|) and 2-feature bin majority are documented only. science_open=false.",
+    "pass_ceiling": false,
+    "rules": [
+      {
+        "acc": 0.7020833333333333,
+        "feature": "out_s",
+        "frac_y1": 0.5,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5,
+        "n": 480,
+        "rule_class": "degree_reach",
+        "side": "gt",
+        "threshold": 0.0
+      },
+      {
+        "acc": 0.7375,
+        "feature": "in_t",
+        "frac_y1": 0.5,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5,
+        "n": 480,
+        "rule_class": "degree_reach",
+        "side": "gt",
+        "threshold": 0.0
+      },
+      {
+        "acc": 0.5020833333333333,
+        "feature": "tot_s",
+        "frac_y1": 0.5,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5,
+        "n": 480,
+        "rule_class": "degree_reach",
+        "side": "gt",
+        "threshold": 5.0
+      },
+      {
+        "acc": 0.5020833333333333,
+        "feature": "tot_t",
+        "frac_y1": 0.5,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5,
+        "n": 480,
+        "rule_class": "degree_reach",
+        "side": "gt",
+        "threshold": 5.0
+      },
+      {
+        "acc": 0.7270833333333333,
+        "feature": "out_s_plus_in_t",
+        "frac_y1": 0.5,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5,
+        "n": 480,
+        "rule_class": "degree_reach",
+        "side": "gt",
+        "threshold": 1.0
+      },
+      {
+        "acc": 0.5,
+        "feature": "n_edges",
+        "frac_y1": 0.5,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5,
+        "n": 480,
+        "rule_class": "covariate_document_only",
+        "side": "ge",
+        "threshold": 13.0
+      },
+      {
+        "acc": 0.6770833333333334,
+        "feature": "n",
+        "frac_y1": 0.5,
+        "greater_means_pos": true,
+        "majority_baseline": 0.5,
+        "n": 480,
+        "rule_class": "covariate_document_only",
+        "side": "gt",
+        "threshold": 18.0
+      },
+      {
+        "acc": 0.5,
+        "feature": "constant_0",
+        "n": 480,
+        "rule_class": "baseline_document_only",
+        "threshold": null
+      },
+      {
+        "acc": 0.5,
+        "feature": "constant_1",
+        "n": 480,
+        "rule_class": "baseline_document_only",
+        "threshold": null
+      },
+      {
+        "acc": 0.9104166666666667,
+        "feature": "out_s_x_in_t_bin_majority",
+        "n": 480,
+        "n_bins": 14,
+        "rule_class": "two_feature_document_only"
+      }
+    ],
+    "science_open": false
+  },
+  "science_open": false
+}

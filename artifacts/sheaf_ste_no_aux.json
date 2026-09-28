@@ -1,0 +1,861 @@
+{
+  "aux_edge_recon": false,
+  "base_sha": "2834256a12a7a1d9ff826738cd860051f71e19ac",
+  "comparison_to_pr8_with_aux": {
+    "available": true,
+    "deltas": {
+      "T16_K16": {
+        "delta_no_aux_minus_with_aux": -0.1958333333333333,
+        "no_aux_mean": 0.8041666666666667,
+        "with_aux_mean": 1.0
+      },
+      "T16_K8": {
+        "delta_no_aux_minus_with_aux": -0.09583333333333333,
+        "no_aux_mean": 0.9041666666666667,
+        "with_aux_mean": 1.0
+      },
+      "T16_fnr": {
+        "delta_no_aux_minus_with_aux": 0.14722222089767456,
+        "no_aux_mean": 0.14722222089767456,
+        "with_aux_mean": 0.0
+      },
+      "T16_fpr": {
+        "delta_no_aux_minus_with_aux": 0.32083332538604736,
+        "no_aux_mean": 0.32083332538604736,
+        "with_aux_mean": 0.0
+      },
+      "T16_hard_neg": {
+        "delta_no_aux_minus_with_aux": -0.3208333333333333,
+        "no_aux_mean": 0.6791666666666667,
+        "with_aux_mean": 1.0
+      },
+      "T16_overall": {
+        "delta_no_aux_minus_with_aux": -0.23402777777777783,
+        "no_aux_mean": 0.7659722222222222,
+        "with_aux_mean": 1.0
+      },
+      "ahat_fnr": {
+        "delta_no_aux_minus_with_aux": 0.38117898775269293,
+        "no_aux_mean": 0.38117898775269293,
+        "with_aux_mean": 0.0
+      },
+      "ahat_fpr": {
+        "delta_no_aux_minus_with_aux": 0.6666666666666666,
+        "no_aux_mean": 0.6666666666666666,
+        "with_aux_mean": 0.0
+      },
+      "val_acc": {
+        "delta_no_aux_minus_with_aux": -0.31166666666666665,
+        "no_aux_mean": 0.6883333333333334,
+        "with_aux_mean": 1.0
+      }
+    },
+    "pr8_merge_sha": "e0877ebf52a16efd81df1c80ca6fb3f1c3289a31",
+    "science_open": false,
+    "with_aux_verdict": "MEASURE_CANDIDATE_PASS_FLOORS"
+  },
+  "cycle": "CYCLE_SHEAF_STE_NO_AUX",
+  "edge_recon_weight": 0.0,
+  "elapsed_s": 500.9881417751312,
+  "gate0_overfit": {
+    "aux_edge_recon": false,
+    "balanced_note": "loaded 144 rows from data/train_tiny.jsonl; candidates y1_id=72 y0_hard=66 reject_reasons={'skipped_not_y0': 72, 'both_deg0': 1, 'ok': 66, 'deg_s0': 2, 'deg_t0': 3}; balanced batch ready: 16+16",
+    "edge_recon_weight": 0.0,
+    "last": {
+      "edge_recon_weight": 0.0,
+      "eval_acc": 0.5,
+      "eval_loss": 3.478816270828247,
+      "per_class": {
+        "y0": 1.0,
+        "y0_correct": 16.0,
+        "y0_n": 16.0,
+        "y1": 0.0,
+        "y1_correct": 0.0,
+        "y1_n": 16.0
+      },
+      "recon_offdiag": null,
+      "step": 150
+    },
+    "neutral_init": true,
+    "note": "Gate0 without recon floor (aux OFF); CE+acc+per-class only.",
+    "param_count": 123206,
+    "param_parity_ok": true,
+    "passed": false,
+    "passed_at_step": null,
+    "science_open": false
+  },
+  "gate_detach_diffusion": false,
+  "gate_mode": "ste",
+  "gates": {
+    "A": {
+      "ahat": {
+        "ahat_edge_acc": 0.964724327149203,
+        "ahat_fn": 4590.0,
+        "ahat_fnr": 0.5079681274900398,
+        "ahat_fp": 0.0,
+        "ahat_fpr": 0.0,
+        "ahat_tn": 121082.0,
+        "ahat_tp": 4446.0
+      },
+      "ahat_note": "absent_bias=0 \u21d2 hard-gate FPR\u22480 by construction (not bake-in). Gate A requires \u00c2 FNR\u2248chance (listed edges not all ON).",
+      "checks": {
+        "ahat_fnr_ok": true,
+        "ahat_not_perfect": true,
+        "bake_ok": true,
+        "reach_ok": true
+      },
+      "disqualify_above_chance": false,
+      "gate": "A",
+      "init": {
+        "absent_bias": 0.0,
+        "bake_in_removed": {
+          "no_absent_minus4": true,
+          "no_edge_bias_plus4": true,
+          "no_energy_bias_pm5": true
+        },
+        "edge_encoder_first_bias_abs_max": 0.0,
+        "edge_encoder_last_bias": 0.0,
+        "edge_encoder_last_weight_l2": 0.1503896862268448,
+        "gate_theta": 0.5,
+        "head_bias": [
+          0.0,
+          0.0
+        ],
+        "head_energy_col": [
+          -0.008760714903473854,
+          -0.013098318129777908
+        ],
+        "neutral_init": true,
+        "param_count": 123206,
+        "residual_alpha": 1.0,
+        "self_logit_hardcoded": 8.0
+      },
+      "matched_ood_T16": {
+        "T": 16,
+        "reach_acc": 0.5,
+        "reach_fnr": 1.0,
+        "reach_fpr": 0.0
+      },
+      "matched_ood_T6": {
+        "T": 6,
+        "reach_acc": 0.5,
+        "reach_fnr": 1.0,
+        "reach_fpr": 0.0
+      },
+      "passed": true,
+      "science_open": false,
+      "thresholds": {
+        "ahat_fnr_hi": 0.65,
+        "ahat_fnr_lo": 0.35,
+        "reach_acc_hi": 0.6,
+        "reach_acc_lo": 0.4
+      }
+    },
+    "B": {
+      "bake_in_removed": {
+        "no_absent_minus4": true,
+        "no_edge_bias_plus4": true,
+        "no_energy_bias_pm5": true
+      },
+      "gate": "B",
+      "init": {
+        "absent_bias": 0.0,
+        "bake_in_removed": {
+          "no_absent_minus4": true,
+          "no_edge_bias_plus4": true,
+          "no_energy_bias_pm5": true
+        },
+        "edge_encoder_first_bias_abs_max": 0.0,
+        "edge_encoder_last_bias": 0.0,
+        "edge_encoder_last_weight_l2": 0.1503896862268448,
+        "gate_theta": 0.5,
+        "head_bias": [
+          0.0,
+          0.0
+        ],
+        "head_energy_col": [
+          -0.008760714903473854,
+          -0.013098318129777908
+        ],
+        "neutral_init": true,
+        "param_count": 123206,
+        "residual_alpha": 1.0,
+        "self_logit_hardcoded": 8.0
+      },
+      "note": "neutral_init=True: Xavier/Gaussian zero-mean; biases 0; no edge+4 / absent\u22124 / energy\u00b15. STE OK for learning \u00c2. This cycle: aux OFF + gate_detach_diffusion=False \u2014 CE trains \u00c2 via STE/Gumbel into \u03a6, or remain chance.",
+      "passed": true,
+      "science_open": false
+    },
+    "C": {
+      "artifact": "artifacts/sheaf_ste_no_aux_reach_cue_audit.json",
+      "ceiling": 0.52,
+      "degree_balanced_ood": {
+        "cue_max_acc": 0.5031446540880503,
+        "cue_max_rule": "out_s",
+        "n": 477,
+        "n_neg": 237,
+        "n_pos": 240,
+        "pass_ceiling": true,
+        "shortfall_unmatched_pos": 3
+      },
+      "gate": "C",
+      "id_2k_raw": {
+        "max_acc": 0.766,
+        "max_rule": "out_s_plus_in_t",
+        "pass_ceiling": false
+      },
+      "matched_ood_raw": {
+        "max_acc": 0.7375,
+        "max_rule": "in_t",
+        "pass_ceiling": false
+      },
+      "passed": true,
+      "science_open": false
+    },
+    "D": {
+      "edge_recon_weight": 0.0,
+      "gate": "D",
+      "mean_std": {
+        "T16_K12": {
+          "mean": 0.85,
+          "n": 3,
+          "std": 0.25980762113533157,
+          "values": [
+            0.55,
+            1.0,
+            1.0
+          ]
+        },
+        "T16_K16": {
+          "mean": 0.8041666666666667,
+          "n": 3,
+          "std": 0.3391932831489051,
+          "values": [
+            0.4125,
+            1.0,
+            1.0
+          ]
+        },
+        "T16_K8": {
+          "mean": 0.9041666666666667,
+          "n": 3,
+          "std": 0.1659882023920174,
+          "values": [
+            0.7125,
+            1.0,
+            1.0
+          ]
+        },
+        "T16_fnr": {
+          "mean": 0.14722222089767456,
+          "n": 3,
+          "std": 0.25499636659790087,
+          "values": [
+            0.4416666626930237,
+            0.0,
+            0.0
+          ]
+        },
+        "T16_fpr": {
+          "mean": 0.32083332538604736,
+          "n": 3,
+          "std": 0.27785762051489854,
+          "values": [
+            0.4833333194255829,
+            0.4791666567325592,
+            0.0
+          ]
+        },
+        "T16_hard_neg": {
+          "mean": 0.6791666666666667,
+          "n": 3,
+          "std": 0.2778576274121535,
+          "values": [
+            0.5166666666666667,
+            0.5208333333333334,
+            1.0
+          ]
+        },
+        "T16_overall": {
+          "mean": 0.7659722222222222,
+          "n": 3,
+          "std": 0.23130004463498954,
+          "values": [
+            0.5375,
+            0.7604166666666666,
+            1.0
+          ]
+        },
+        "ahat_edge_acc": {
+          "mean": 0.35315892753756845,
+          "n": 3,
+          "std": 0.5604897059840527,
+          "values": [
+            0.04933983000046112,
+            0.010175379271123134,
+            0.9999615733411211
+          ]
+        },
+        "ahat_fnr": {
+          "mean": 0.38117898775269293,
+          "n": 3,
+          "std": 0.4337873032328205,
+          "values": [
+            0.28950863213811423,
+            0.8534749889331562,
+            0.0005533421868083222
+          ]
+        },
+        "ahat_fpr": {
+          "mean": 0.6666666666666666,
+          "n": 3,
+          "std": 0.5773502691896258,
+          "values": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "degbal_T16_hard_neg": {
+          "mean": 0.7355836849507735,
+          "n": 3,
+          "std": 0.23146578427196293,
+          "values": [
+            0.569620253164557,
+            0.6371308016877637,
+            1.0
+          ]
+        },
+        "degbal_T16_overall": {
+          "mean": 0.7945492662473793,
+          "n": 3,
+          "std": 0.2191151803849714,
+          "values": [
+            0.5639412997903563,
+            0.8197064989517819,
+            1.0
+          ]
+        },
+        "untrained_val_acc": {
+          "mean": 0.6033333333333334,
+          "n": 3,
+          "std": 0.0621154838452808,
+          "values": [
+            0.57,
+            0.675,
+            0.565
+          ]
+        },
+        "val_acc": {
+          "mean": 0.6883333333333334,
+          "n": 3,
+          "std": 0.2710665662403487,
+          "values": [
+            0.5075,
+            0.5575,
+            1.0
+          ]
+        }
+      },
+      "n_prereg_pass": 1,
+      "n_relaxed_K8_pass": 1,
+      "n_seeds": 3,
+      "passed": true,
+      "per_seed": [
+        {
+          "ahat_trained": {
+            "ahat_edge_acc": 0.04933983000046112,
+            "ahat_fn": 2616.0,
+            "ahat_fnr": 0.28950863213811423,
+            "ahat_fp": 121082.0,
+            "ahat_fpr": 1.0,
+            "ahat_tn": 0.0,
+            "ahat_tp": 6420.0
+          },
+          "best_epoch": 1,
+          "best_val_acc": 0.5075,
+          "checkpoint_path": "artifacts/sheaf_ste_no_aux_gate1_seed0_best.pt",
+          "degree_balanced_ood_T16": {
+            "hard_neg_acc": 0.569620253164557,
+            "n": 477,
+            "overall_acc": 0.5639412997903563
+          },
+          "edge_recon_weight": 0.0,
+          "matched_ood": {
+            "T16_K12": 0.55,
+            "T16_K16": 0.4125,
+            "T16_K8": 0.7125,
+            "T16_fnr": 0.4416666626930237,
+            "T16_fpr": 0.4833333194255829,
+            "T16_hard_neg": 0.5166666666666667,
+            "T16_overall": 0.5375,
+            "by_T": {
+              "12": {
+                "K_acc": {
+                  "12": 0.35,
+                  "16": 0.2875,
+                  "8": 0.3125
+                },
+                "hard_neg_acc": 0.3541666666666667,
+                "overall_acc": 0.33541666666666664,
+                "reach_fnr": 0.6833333373069763,
+                "reach_fpr": 0.6458333134651184
+              },
+              "16": {
+                "K_acc": {
+                  "12": 0.55,
+                  "16": 0.4125,
+                  "8": 0.7125
+                },
+                "hard_neg_acc": 0.5166666666666667,
+                "overall_acc": 0.5375,
+                "reach_fnr": 0.4416666626930237,
+                "reach_fpr": 0.4833333194255829
+              },
+              "6": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 0.5291666666666667,
+                "overall_acc": 0.26458333333333334,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.47083333134651184
+              },
+              "8": {
+                "K_acc": {
+                  "12": 0.775,
+                  "16": 0.425,
+                  "8": 0.8625
+                },
+                "hard_neg_acc": 0.3875,
+                "overall_acc": 0.5375,
+                "reach_fnr": 0.3125,
+                "reach_fpr": 0.612500011920929
+              }
+            }
+          },
+          "param_count": 123206,
+          "param_parity_ok": true,
+          "prereg": {
+            "K16_at_T16_ge": 0.75,
+            "K16_ok": false,
+            "K8_alt_ok": false,
+            "hard_neg_at_T16_ge": 0.95,
+            "hard_neg_ok": false,
+            "observed_K16_T16": 0.4125,
+            "observed_K8_T16": 0.7125,
+            "observed_hard_neg_T16": 0.5166666666666667,
+            "pass": false,
+            "pass_relaxed_K8": false
+          },
+          "science_open": false,
+          "seed": 0,
+          "train_history_tail": [
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 58,
+              "train_acc": 0.495,
+              "train_ce": 1.1841065537929536,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 1.1841065537929536,
+              "val_acc": 0.5,
+              "val_loss": 0.7493966966867447
+            },
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 59,
+              "train_acc": 0.49125,
+              "train_ce": 1.1887112855911255,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 1.1887112855911255,
+              "val_acc": 0.5,
+              "val_loss": 2.273487125057727
+            },
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 60,
+              "train_acc": 0.50375,
+              "train_ce": 1.0691931116580964,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 1.0691931116580964,
+              "val_acc": 0.5,
+              "val_loss": 0.7050650119781494
+            }
+          ],
+          "untrained_val_acc": 0.57
+        },
+        {
+          "ahat_trained": {
+            "ahat_edge_acc": 0.010175379271123134,
+            "ahat_fn": 7712.0,
+            "ahat_fnr": 0.8534749889331562,
+            "ahat_fp": 121082.0,
+            "ahat_fpr": 1.0,
+            "ahat_tn": 0.0,
+            "ahat_tp": 1324.0
+          },
+          "best_epoch": 3,
+          "best_val_acc": 0.5575,
+          "checkpoint_path": "artifacts/sheaf_ste_no_aux_gate1_seed1_best.pt",
+          "degree_balanced_ood_T16": {
+            "hard_neg_acc": 0.6371308016877637,
+            "n": 477,
+            "overall_acc": 0.8197064989517819
+          },
+          "edge_recon_weight": 0.0,
+          "matched_ood": {
+            "T16_K12": 1.0,
+            "T16_K16": 1.0,
+            "T16_K8": 1.0,
+            "T16_fnr": 0.0,
+            "T16_fpr": 0.4791666567325592,
+            "T16_hard_neg": 0.5208333333333334,
+            "T16_overall": 0.7604166666666666,
+            "by_T": {
+              "12": {
+                "K_acc": {
+                  "12": 1.0,
+                  "16": 1.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 0.5208333333333334,
+                "overall_acc": 0.7604166666666666,
+                "reach_fnr": 0.0,
+                "reach_fpr": 0.4791666567325592
+              },
+              "16": {
+                "K_acc": {
+                  "12": 1.0,
+                  "16": 1.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 0.5208333333333334,
+                "overall_acc": 0.7604166666666666,
+                "reach_fnr": 0.0,
+                "reach_fpr": 0.4791666567325592
+              },
+              "6": {
+                "K_acc": {
+                  "12": 1.0,
+                  "16": 1.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 0.31666666666666665,
+                "overall_acc": 0.6583333333333333,
+                "reach_fnr": 0.0,
+                "reach_fpr": 0.6833333373069763
+              },
+              "8": {
+                "K_acc": {
+                  "12": 1.0,
+                  "16": 1.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 0.4083333333333333,
+                "overall_acc": 0.7041666666666667,
+                "reach_fnr": 0.0,
+                "reach_fpr": 0.5916666388511658
+              }
+            }
+          },
+          "param_count": 123206,
+          "param_parity_ok": true,
+          "prereg": {
+            "K16_at_T16_ge": 0.75,
+            "K16_ok": true,
+            "K8_alt_ok": true,
+            "hard_neg_at_T16_ge": 0.95,
+            "hard_neg_ok": false,
+            "observed_K16_T16": 1.0,
+            "observed_K8_T16": 1.0,
+            "observed_hard_neg_T16": 0.5208333333333334,
+            "pass": false,
+            "pass_relaxed_K8": false
+          },
+          "science_open": false,
+          "seed": 1,
+          "train_history_tail": [
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 58,
+              "train_acc": 0.495,
+              "train_ce": 1.000125342607498,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 1.000125342607498,
+              "val_acc": 0.5,
+              "val_loss": 0.705403208732605
+            },
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 59,
+              "train_acc": 0.5175,
+              "train_ce": 0.8581061685085296,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 0.8581061685085296,
+              "val_acc": 0.5,
+              "val_loss": 0.9465681165456772
+            },
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 60,
+              "train_acc": 0.51,
+              "train_ce": 1.0440228760242463,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 1.0440228760242463,
+              "val_acc": 0.5,
+              "val_loss": 0.7058457732200623
+            }
+          ],
+          "untrained_val_acc": 0.675
+        },
+        {
+          "ahat_trained": {
+            "ahat_edge_acc": 0.9999615733411211,
+            "ahat_fn": 5.0,
+            "ahat_fnr": 0.0005533421868083222,
+            "ahat_fp": 0.0,
+            "ahat_fpr": 0.0,
+            "ahat_tn": 121082.0,
+            "ahat_tp": 9031.0
+          },
+          "best_epoch": 1,
+          "best_val_acc": 1.0,
+          "checkpoint_path": "artifacts/sheaf_ste_no_aux_gate1_seed2_best.pt",
+          "degree_balanced_ood_T16": {
+            "hard_neg_acc": 1.0,
+            "n": 477,
+            "overall_acc": 1.0
+          },
+          "edge_recon_weight": 0.0,
+          "matched_ood": {
+            "T16_K12": 1.0,
+            "T16_K16": 1.0,
+            "T16_K8": 1.0,
+            "T16_fnr": 0.0,
+            "T16_fpr": 0.0,
+            "T16_hard_neg": 1.0,
+            "T16_overall": 1.0,
+            "by_T": {
+              "12": {
+                "K_acc": {
+                  "12": 1.0,
+                  "16": 0.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.8333333333333334,
+                "reach_fnr": 0.3333333432674408,
+                "reach_fpr": 0.0
+              },
+              "16": {
+                "K_acc": {
+                  "12": 1.0,
+                  "16": 1.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 1.0,
+                "reach_fnr": 0.0,
+                "reach_fpr": 0.0
+              },
+              "6": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 0.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.5,
+                "reach_fnr": 1.0,
+                "reach_fpr": 0.0
+              },
+              "8": {
+                "K_acc": {
+                  "12": 0.0,
+                  "16": 0.0,
+                  "8": 1.0
+                },
+                "hard_neg_acc": 1.0,
+                "overall_acc": 0.6666666666666666,
+                "reach_fnr": 0.6666666865348816,
+                "reach_fpr": 0.0
+              }
+            }
+          },
+          "param_count": 123206,
+          "param_parity_ok": true,
+          "prereg": {
+            "K16_at_T16_ge": 0.75,
+            "K16_ok": true,
+            "K8_alt_ok": true,
+            "hard_neg_at_T16_ge": 0.95,
+            "hard_neg_ok": true,
+            "observed_K16_T16": 1.0,
+            "observed_K8_T16": 1.0,
+            "observed_hard_neg_T16": 1.0,
+            "pass": true,
+            "pass_relaxed_K8": true
+          },
+          "science_open": false,
+          "seed": 2,
+          "train_history_tail": [
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 58,
+              "train_acc": 1.0,
+              "train_ce": 0.0007727727154269815,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 0.0007727727154269815,
+              "val_acc": 1.0,
+              "val_loss": 0.0007519438141024182
+            },
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 59,
+              "train_acc": 1.0,
+              "train_ce": 0.0007333605288295075,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 0.0007333605288295075,
+              "val_acc": 1.0,
+              "val_loss": 0.0007146860216742823
+            },
+            {
+              "edge_recon_weight": 0.0,
+              "epoch": 60,
+              "train_acc": 1.0,
+              "train_ce": 0.0006972520571434871,
+              "train_edge_recon_acc": NaN,
+              "train_loss": 0.0006972520571434871,
+              "val_acc": 1.0,
+              "val_loss": 0.000679568292107291
+            }
+          ],
+          "untrained_val_acc": 0.565
+        }
+      ],
+      "science_open": false
+    }
+  },
+  "gumbel_temp": 1.0,
+  "hparams": {
+    "T_train": 6,
+    "aux_edge_recon": false,
+    "batch_size": 32,
+    "d": 64,
+    "edge_recon_weight": 0.0,
+    "epochs": 60,
+    "ff_baseline": 121218,
+    "gate_detach_diffusion": false,
+    "gate_mode": "ste",
+    "grad_clip": 2.5,
+    "gumbel_temp": 1.0,
+    "lr": 0.0015,
+    "mlp_expansion": 12,
+    "neutral_init": true,
+    "param_parity_window": [
+      115157,
+      127279
+    ],
+    "same_as_pr9_except": "gate_detach_diffusion=False (STE/Gumbel end-to-end into \u03a6); epochs=60 (longer budget)"
+  },
+  "mode": "MEASURE",
+  "pr8_merge_sha": "e0877ebf52a16efd81df1c80ca6fb3f1c3289a31",
+  "pr8_with_aux_baseline": {
+    "available": true,
+    "cycle": "CYCLE_SHEAF_NEUTRAL_INIT_RETRAIN",
+    "edge_recon_weight": 1.0,
+    "mean_std": {
+      "T16_K16": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "T16_K8": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "T16_fnr": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "T16_fpr": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "T16_hard_neg": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "T16_overall": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "ahat_fnr": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "ahat_fpr": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "degbal_T16_hard_neg": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "degbal_T16_overall": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "untrained_val_acc": {
+        "mean": 0.6033333333333334,
+        "std": 0.0621154838452808
+      },
+      "val_acc": {
+        "mean": 1.0,
+        "std": 0.0
+      }
+    },
+    "path": "artifacts/sheaf_neutral_init_retrain.json",
+    "pr8_merge_sha": "e0877ebf52a16efd81df1c80ca6fb3f1c3289a31",
+    "science_open": false,
+    "verdict": "MEASURE_CANDIDATE_PASS_FLOORS"
+  },
+  "pr9_merge_sha": "2834256a12a7a1d9ff826738cd860051f71e19ac",
+  "reach_cue_artifact": "artifacts/sheaf_ste_no_aux_reach_cue_audit.json",
+  "residue": "STE no-aux failed prereg floors. STOP with residue: end-to-end STE without aux still insufficient under this budget, or needs Gumbel / different coupling. science_open=false.",
+  "science_open": false,
+  "scope": {
+    "datasets": {
+      "id": "data/id_2k.jsonl",
+      "matched_ood": "data/covariate_matched_ood.jsonl"
+    },
+    "protocol": "Gates A\u2013D; neutral_init; edge_recon_weight=0; gate_detach_diffusion=False (STE). Longer budget. Prereg floors unchanged. Compare to PR#8/#9."
+  },
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "stalk_untrained_control": {
+    "arm": "fractal-stalk-untrained",
+    "matched_ood_T16": {
+      "hard_neg_acc": 0.6,
+      "overall_acc": 0.6333333333333333
+    },
+    "matched_ood_T6": {
+      "hard_neg_acc": 0.6,
+      "overall_acc": 0.6333333333333333
+    },
+    "note": "Cheap untrained FractalCore stalk control for context only \u2014 not a sheaf Gate. science_open=false.",
+    "param_count": 117506,
+    "report_only": true,
+    "science_open": false
+  },
+  "untrained_vs_trained_seed0_matched_ood_T16": {
+    "note": "\u22480.5 \u21d2 untrained\u226atrained (learning signal). \u22481.0 \u21d2 bake-in/residue.",
+    "prediction_agreement": 0.4791666666666667,
+    "science_open": false
+  },
+  "verdict": "STOP_LEARNING_FAIL"
+}

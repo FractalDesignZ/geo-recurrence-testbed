@@ -1,0 +1,426 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[gate A] neutral untrained control…
+[gate C] reach-cue audit + degree-balanced hard-negs…
+[stalk] quick untrained FractalCore control (report only)…
+[gate0] overfit balanced (aux OFF)…
+[gate D] train 3 seeds STE no-aux (detach=False, mode=ste, ep=60)…
+[ste-no-aux seed=0] ep 1/60 train=0.5106 ce=35.4677 recon_telemetry=nan val=0.5075 best=0.5075@ep1
+[ste-no-aux seed=0] ep 2/60 train=0.4919 ce=12.6378 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 3/60 train=0.5150 ce=1.2517 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 4/60 train=0.5000 ce=1.4138 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 5/60 train=0.5275 ce=1.1255 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 6/60 train=0.4788 ce=1.6787 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 7/60 train=0.5025 ce=0.9792 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 8/60 train=0.4963 ce=1.0695 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 9/60 train=0.5150 ce=1.1260 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 10/60 train=0.5138 ce=1.0498 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 11/60 train=0.5000 ce=1.1735 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 12/60 train=0.4988 ce=1.1584 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 13/60 train=0.4938 ce=1.0554 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 14/60 train=0.4775 ce=0.8311 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 15/60 train=0.5275 ce=0.9027 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 16/60 train=0.4988 ce=1.1350 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 17/60 train=0.4913 ce=1.1520 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 18/60 train=0.5175 ce=0.9335 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 19/60 train=0.5062 ce=1.0438 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 20/60 train=0.4850 ce=1.1359 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 21/60 train=0.5125 ce=0.9294 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 22/60 train=0.5112 ce=0.8239 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 23/60 train=0.5150 ce=1.7706 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 24/60 train=0.5000 ce=0.9543 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 25/60 train=0.4950 ce=0.8425 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 26/60 train=0.5062 ce=0.8307 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 27/60 train=0.5112 ce=1.0217 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 28/60 train=0.5100 ce=1.1094 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 29/60 train=0.4763 ce=0.9688 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 30/60 train=0.5200 ce=0.8985 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 31/60 train=0.5025 ce=1.0380 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 32/60 train=0.4988 ce=1.3636 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 33/60 train=0.5038 ce=1.3745 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 34/60 train=0.5025 ce=1.3898 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 35/60 train=0.5088 ce=1.3346 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 36/60 train=0.4900 ce=1.4021 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 37/60 train=0.5088 ce=1.3541 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 38/60 train=0.4838 ce=1.4158 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 39/60 train=0.4863 ce=1.0035 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 40/60 train=0.5238 ce=0.9360 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 41/60 train=0.5225 ce=0.8017 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 42/60 train=0.5250 ce=0.8095 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 43/60 train=0.5125 ce=0.8127 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 44/60 train=0.4975 ce=0.8300 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 45/60 train=0.4825 ce=0.8430 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 46/60 train=0.4850 ce=0.8880 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 47/60 train=0.4925 ce=0.9268 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 48/60 train=0.4800 ce=1.1575 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 49/60 train=0.4900 ce=1.1972 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 50/60 train=0.5075 ce=1.2439 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 51/60 train=0.4963 ce=1.1987 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 52/60 train=0.4825 ce=0.9249 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 53/60 train=0.5250 ce=1.1824 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 54/60 train=0.5225 ce=0.9871 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 55/60 train=0.4963 ce=0.9257 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 56/60 train=0.5012 ce=0.9298 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 57/60 train=0.4988 ce=1.4177 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 58/60 train=0.4950 ce=1.1841 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 59/60 train=0.4913 ce=1.1887 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[ste-no-aux seed=0] ep 60/60 train=0.5038 ce=1.0692 recon_telemetry=nan val=0.5000 best=0.5075@ep1
+[neutral-ood] T=6 acc=0.2646 hard_neg=0.5292 FPR=0.4708 FNR=1.0000 K16=0.0
+[neutral-ood] T=8 acc=0.5375 hard_neg=0.3875 FPR=0.6125 FNR=0.3125 K16=0.425
+[neutral-ood] T=12 acc=0.3354 hard_neg=0.3542 FPR=0.6458 FNR=0.6833 K16=0.2875
+[neutral-ood] T=16 acc=0.5375 hard_neg=0.5167 FPR=0.4833 FNR=0.4417 K16=0.4125
+[ste-no-aux seed=1] ep 1/60 train=0.5025 ce=88.6190 recon_telemetry=nan val=0.5050 best=0.5050@ep1
+[ste-no-aux seed=1] ep 2/60 train=0.5075 ce=40.9667 recon_telemetry=nan val=0.5000 best=0.5050@ep1
+[ste-no-aux seed=1] ep 3/60 train=0.4963 ce=9.4907 recon_telemetry=nan val=0.5575 best=0.5575@ep3
+[ste-no-aux seed=1] ep 4/60 train=0.4994 ce=2.0520 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 5/60 train=0.4938 ce=1.1298 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 6/60 train=0.5100 ce=1.4030 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 7/60 train=0.4788 ce=0.8166 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 8/60 train=0.4963 ce=0.9056 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 9/60 train=0.5088 ce=1.0040 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 10/60 train=0.5125 ce=0.9779 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 11/60 train=0.5200 ce=1.0467 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 12/60 train=0.5000 ce=1.1449 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 13/60 train=0.5112 ce=1.2710 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 14/60 train=0.4900 ce=0.9368 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 15/60 train=0.4988 ce=0.9688 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 16/60 train=0.4938 ce=1.0386 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 17/60 train=0.5175 ce=1.0057 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 18/60 train=0.5062 ce=1.4503 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 19/60 train=0.5025 ce=1.0160 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 20/60 train=0.4838 ce=1.0796 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 21/60 train=0.4950 ce=1.0150 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 22/60 train=0.4988 ce=1.0253 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 23/60 train=0.5062 ce=0.9954 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 24/60 train=0.5125 ce=0.8927 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 25/60 train=0.4963 ce=1.0540 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 26/60 train=0.5075 ce=1.3699 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 27/60 train=0.4913 ce=0.9084 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 28/60 train=0.4750 ce=1.2149 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 29/60 train=0.5175 ce=1.1794 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 30/60 train=0.5112 ce=1.0637 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 31/60 train=0.5025 ce=1.1860 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 32/60 train=0.4863 ce=1.0242 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 33/60 train=0.5200 ce=1.5106 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 34/60 train=0.5075 ce=1.0719 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 35/60 train=0.5012 ce=0.8525 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 36/60 train=0.5100 ce=1.3085 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 37/60 train=0.5000 ce=0.8659 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 38/60 train=0.5262 ce=0.9228 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 39/60 train=0.5225 ce=1.0324 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 40/60 train=0.5200 ce=1.2044 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 41/60 train=0.4925 ce=0.9537 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 42/60 train=0.4838 ce=0.7983 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 43/60 train=0.5000 ce=0.9088 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 44/60 train=0.4938 ce=1.1176 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 45/60 train=0.4838 ce=0.8802 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 46/60 train=0.4988 ce=1.1144 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 47/60 train=0.4850 ce=0.9701 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 48/60 train=0.5025 ce=0.9425 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 49/60 train=0.4913 ce=0.9883 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 50/60 train=0.4888 ce=0.9948 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 51/60 train=0.5000 ce=0.9628 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 52/60 train=0.5050 ce=0.9307 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 53/60 train=0.4938 ce=0.8971 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 54/60 train=0.5038 ce=1.3068 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 55/60 train=0.5188 ce=0.8811 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 56/60 train=0.5112 ce=1.0120 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 57/60 train=0.4988 ce=1.0718 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 58/60 train=0.4950 ce=1.0001 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 59/60 train=0.5175 ce=0.8581 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[ste-no-aux seed=1] ep 60/60 train=0.5100 ce=1.0440 recon_telemetry=nan val=0.5000 best=0.5575@ep3
+[neutral-ood] T=6 acc=0.6583 hard_neg=0.3167 FPR=0.6833 FNR=0.0000 K16=1.0
+[neutral-ood] T=8 acc=0.7042 hard_neg=0.4083 FPR=0.5917 FNR=0.0000 K16=1.0
+[neutral-ood] T=12 acc=0.7604 hard_neg=0.5208 FPR=0.4792 FNR=0.0000 K16=1.0
+[neutral-ood] T=16 acc=0.7604 hard_neg=0.5208 FPR=0.4792 FNR=0.0000 K16=1.0
+[ste-no-aux seed=2] ep 1/60 train=0.8381 ce=0.8342 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 2/60 train=1.0000 ce=0.3331 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 3/60 train=1.0000 ce=0.3261 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 4/60 train=1.0000 ce=0.3186 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 5/60 train=1.0000 ce=0.3102 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 6/60 train=1.0000 ce=0.3007 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 7/60 train=1.0000 ce=0.2901 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 8/60 train=1.0000 ce=0.2789 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 9/60 train=1.0000 ce=0.2666 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 10/60 train=1.0000 ce=0.2540 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 11/60 train=1.0000 ce=0.2413 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 12/60 train=1.0000 ce=0.2281 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 13/60 train=1.0000 ce=0.2145 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 14/60 train=1.0000 ce=0.2003 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 15/60 train=1.0000 ce=0.1861 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 16/60 train=1.0000 ce=0.1727 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 17/60 train=1.0000 ce=0.1590 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 18/60 train=1.0000 ce=0.1451 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 19/60 train=1.0000 ce=0.1301 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 20/60 train=1.0000 ce=0.1177 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 21/60 train=1.0000 ce=0.1047 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 22/60 train=1.0000 ce=0.0929 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 23/60 train=1.0000 ce=0.0814 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 24/60 train=1.0000 ce=0.0705 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 25/60 train=1.0000 ce=0.0611 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 26/60 train=1.0000 ce=0.0529 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 27/60 train=1.0000 ce=0.0455 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 28/60 train=1.0000 ce=0.0389 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 29/60 train=1.0000 ce=0.0329 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 30/60 train=1.0000 ce=0.0275 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 31/60 train=1.0000 ce=0.0230 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 32/60 train=1.0000 ce=0.0191 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 33/60 train=1.0000 ce=0.0157 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 34/60 train=1.0000 ce=0.0128 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 35/60 train=1.0000 ce=0.0104 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 36/60 train=1.0000 ce=0.0085 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 37/60 train=1.0000 ce=0.0068 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 38/60 train=1.0000 ce=0.0056 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 39/60 train=1.0000 ce=0.0046 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 40/60 train=1.0000 ce=0.0038 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 41/60 train=1.0000 ce=0.0032 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 42/60 train=1.0000 ce=0.0028 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 43/60 train=1.0000 ce=0.0024 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 44/60 train=1.0000 ce=0.0021 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 45/60 train=1.0000 ce=0.0019 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 46/60 train=1.0000 ce=0.0017 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 47/60 train=1.0000 ce=0.0016 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 48/60 train=1.0000 ce=0.0015 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 49/60 train=1.0000 ce=0.0014 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 50/60 train=1.0000 ce=0.0013 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 51/60 train=1.0000 ce=0.0012 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 52/60 train=1.0000 ce=0.0011 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 53/60 train=1.0000 ce=0.0010 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 54/60 train=1.0000 ce=0.0010 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 55/60 train=1.0000 ce=0.0009 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 56/60 train=1.0000 ce=0.0009 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 57/60 train=1.0000 ce=0.0008 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 58/60 train=1.0000 ce=0.0008 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 59/60 train=1.0000 ce=0.0007 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[ste-no-aux seed=2] ep 60/60 train=1.0000 ce=0.0007 recon_telemetry=nan val=1.0000 best=1.0000@ep1
+[neutral-ood] T=6 acc=0.5000 hard_neg=1.0000 FPR=0.0000 FNR=1.0000 K16=0.0
+[neutral-ood] T=8 acc=0.6667 hard_neg=1.0000 FPR=0.0000 FNR=0.6667 K16=0.0
+[neutral-ood] T=12 acc=0.8333 hard_neg=1.0000 FPR=0.0000 FNR=0.3333 K16=0.0
+[neutral-ood] T=16 acc=1.0000 hard_neg=1.0000 FPR=0.0000 FNR=0.0000 K16=1.0
+[ste-no-aux] verdict=STOP_LEARNING_FAIL wrote artifacts/sheaf_ste_no_aux.json elapsed=501.0s
+{
+  "verdict": "STOP_LEARNING_FAIL",
+  "science_open": false,
+  "edge_recon_weight": 0.0,
+  "gate_detach_diffusion": false,
+  "gate_mode": "ste",
+  "pr8_merge_sha": "e0877ebf52a16efd81df1c80ca6fb3f1c3289a31",
+  "pr9_merge_sha": "2834256a12a7a1d9ff826738cd860051f71e19ac",
+  "gates_passed": {
+    "A": true,
+    "B": true,
+    "C": true,
+    "D": true
+  },
+  "mean_std": {
+    "val_acc": {
+      "mean": 0.6883333333333334,
+      "std": 0.2710665662403487,
+      "n": 3,
+      "values": [
+        0.5075,
+        0.5575,
+        1.0
+      ]
+    },
+    "untrained_val_acc": {
+      "mean": 0.6033333333333334,
+      "std": 0.0621154838452808,
+      "n": 3,
+      "values": [
+        0.57,
+        0.675,
+        0.565
+      ]
+    },
+    "T16_overall": {
+      "mean": 0.7659722222222222,
+      "std": 0.23130004463498954,
+      "n": 3,
+      "values": [
+        0.5375,
+        0.7604166666666666,
+        1.0
+      ]
+    },
+    "T16_hard_neg": {
+      "mean": 0.6791666666666667,
+      "std": 0.2778576274121535,
+      "n": 3,
+      "values": [
+        0.5166666666666667,
+        0.5208333333333334,
+        1.0
+      ]
+    },
+    "T16_K16": {
+      "mean": 0.8041666666666667,
+      "std": 0.3391932831489051,
+      "n": 3,
+      "values": [
+        0.4125,
+        1.0,
+        1.0
+      ]
+    },
+    "T16_K12": {
+      "mean": 0.85,
+      "std": 0.25980762113533157,
+      "n": 3,
+      "values": [
+        0.55,
+        1.0,
+        1.0
+      ]
+    },
+    "T16_K8": {
+      "mean": 0.9041666666666667,
+      "std": 0.1659882023920174,
+      "n": 3,
+      "values": [
+        0.7125,
+        1.0,
+        1.0
+      ]
+    },
+    "T16_fpr": {
+      "mean": 0.32083332538604736,
+      "std": 0.27785762051489854,
+      "n": 3,
+      "values": [
+        0.4833333194255829,
+        0.4791666567325592,
+        0.0
+      ]
+    },
+    "T16_fnr": {
+      "mean": 0.14722222089767456,
+      "std": 0.25499636659790087,
+      "n": 3,
+      "values": [
+        0.4416666626930237,
+        0.0,
+        0.0
+      ]
+    },
+    "degbal_T16_overall": {
+      "mean": 0.7945492662473793,
+      "std": 0.2191151803849714,
+      "n": 3,
+      "values": [
+        0.5639412997903563,
+        0.8197064989517819,
+        1.0
+      ]
+    },
+    "degbal_T16_hard_neg": {
+      "mean": 0.7355836849507735,
+      "std": 0.23146578427196293,
+      "n": 3,
+      "values": [
+        0.569620253164557,
+        0.6371308016877637,
+        1.0
+      ]
+    },
+    "ahat_fpr": {
+      "mean": 0.6666666666666666,
+      "std": 0.5773502691896258,
+      "n": 3,
+      "values": [
+        1.0,
+        1.0,
+        0.0
+      ]
+    },
+    "ahat_fnr": {
+      "mean": 0.38117898775269293,
+      "std": 0.4337873032328205,
+      "n": 3,
+      "values": [
+        0.28950863213811423,
+        0.8534749889331562,
+        0.0005533421868083222
+      ]
+    },
+    "ahat_edge_acc": {
+      "mean": 0.35315892753756845,
+      "std": 0.5604897059840527,
+      "n": 3,
+      "values": [
+        0.04933983000046112,
+        0.010175379271123134,
+        0.9999615733411211
+      ]
+    }
+  },
+  "comparison_to_pr8_with_aux": {
+    "available": true,
+    "pr8_merge_sha": "e0877ebf52a16efd81df1c80ca6fb3f1c3289a31",
+    "with_aux_verdict": "MEASURE_CANDIDATE_PASS_FLOORS",
+    "deltas": {
+      "T16_overall": {
+        "no_aux_mean": 0.7659722222222222,
+        "with_aux_mean": 1.0,
+        "delta_no_aux_minus_with_aux": -0.23402777777777783
+      },
+      "T16_hard_neg": {
+        "no_aux_mean": 0.6791666666666667,
+        "with_aux_mean": 1.0,
+        "delta_no_aux_minus_with_aux": -0.3208333333333333
+      },
+      "T16_K16": {
+        "no_aux_mean": 0.8041666666666667,
+        "with_aux_mean": 1.0,
+        "delta_no_aux_minus_with_aux": -0.1958333333333333
+      },
+      "T16_K8": {
+        "no_aux_mean": 0.9041666666666667,
+        "with_aux_mean": 1.0,
+        "delta_no_aux_minus_with_aux": -0.09583333333333333
+      },
+      "T16_fpr": {
+        "no_aux_mean": 0.32083332538604736,
+        "with_aux_mean": 0.0,
+        "delta_no_aux_minus_with_aux": 0.32083332538604736
+      },
+      "T16_fnr": {
+        "no_aux_mean": 0.14722222089767456,
+        "with_aux_mean": 0.0,
+        "delta_no_aux_minus_with_aux": 0.14722222089767456
+      },
+      "ahat_fpr": {
+        "no_aux_mean": 0.6666666666666666,
+        "with_aux_mean": 0.0,
+        "delta_no_aux_minus_with_aux": 0.6666666666666666
+      },
+      "ahat_fnr": {
+        "no_aux_mean": 0.38117898775269293,
+        "with_aux_mean": 0.0,
+        "delta_no_aux_minus_with_aux": 0.38117898775269293
+      },
+      "val_acc": {
+        "no_aux_mean": 0.6883333333333334,
+        "with_aux_mean": 1.0,
+        "delta_no_aux_minus_with_aux": -0.31166666666666665
+      }
+    },
+    "science_open": false
+  },
+  "stalk_untrained_control": {
+    "report_only": true,
+    "arm": "fractal-stalk-untrained",
+    "param_count": 117506,
+    "matched_ood_T16": {
+      "overall_acc": 0.6333333333333333,
+      "hard_neg_acc": 0.6
+    },
+    "matched_ood_T6": {
+      "overall_acc": 0.6333333333333333,
+      "hard_neg_acc": 0.6
+    },
+    "note": "Cheap untrained FractalCore stalk control for context only \u2014 not a sheaf Gate. science_open=false.",
+    "science_open": false
+  },
+  "out": "artifacts/sheaf_ste_no_aux.json"
+}
