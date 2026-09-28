@@ -1,0 +1,157 @@
+{
+  "T": 6,
+  "arm": "sheaf_infer_core",
+  "aux_edge_recon_train_only": true,
+  "balanced": true,
+  "baseline_stalk_seal": "b144dac",
+  "broadcast_c": false,
+  "cycle": "CYCLE_SHEAF_INFERENCE",
+  "disconnect_leak_atol": 0.001,
+  "disconnect_stalk_ablation": {
+    "T_values": [
+      6,
+      8,
+      12,
+      16
+    ],
+    "atol": 0.001,
+    "by_T": {
+      "12": {
+        "max_l2": 0.0,
+        "mean_l2": 0.0,
+        "n": 16,
+        "ok": true
+      },
+      "16": {
+        "max_l2": 0.0,
+        "mean_l2": 0.0,
+        "n": 16,
+        "ok": true
+      },
+      "6": {
+        "max_l2": 0.0,
+        "mean_l2": 0.0,
+        "n": 16,
+        "ok": true
+      },
+      "8": {
+        "max_l2": 0.0,
+        "mean_l2": 0.0,
+        "n": 16,
+        "ok": true
+      }
+    },
+    "n_neg": 16,
+    "note": "Stalk-ablation L2 at target for disconnected pairs under A_hat; expect max_l2 <= 0.001.",
+    "ok": true,
+    "science_open": false
+  },
+  "disconnect_target_norm": {
+    "T_values": [
+      6,
+      8,
+      12,
+      16
+    ],
+    "atol": 0.001,
+    "by_T": {
+      "12": {
+        "edge_recon_acc": 1.0,
+        "edge_recon_offdiag_acc": 1.0,
+        "max_l2": 0.0,
+        "mean_l2": 0.0,
+        "n": 16,
+        "ok": true
+      },
+      "16": {
+        "edge_recon_acc": 1.0,
+        "edge_recon_offdiag_acc": 1.0,
+        "max_l2": 0.0,
+        "mean_l2": 0.0,
+        "n": 16,
+        "ok": true
+      },
+      "6": {
+        "edge_recon_acc": 1.0,
+        "edge_recon_offdiag_acc": 1.0,
+        "max_l2": 0.0,
+        "mean_l2": 0.0,
+        "n": 16,
+        "ok": true
+      },
+      "8": {
+        "edge_recon_acc": 1.0,
+        "edge_recon_offdiag_acc": 1.0,
+        "max_l2": 0.0,
+        "mean_l2": 0.0,
+        "n": 16,
+        "ok": true
+      }
+    },
+    "gate_detach_diffusion": true,
+    "gate_mode": "ste",
+    "gate_theta": 0.5,
+    "n_neg": 16,
+    "note": "\u2016h_t\u2016 under inferred A_hat/gate (eval hard) for disconnected pairs; expect max_l2 <= 0.001. If miss: STE/Gumbel softening or phantom edges from encoder \u2014 document, fail-closed.",
+    "ok": true,
+    "science_open": false
+  },
+  "edge_recon_acc_threshold": 0.99,
+  "final_acc": 1.0,
+  "final_edge_recon_acc": 1.0,
+  "final_loss": 2.2828056899015792e-05,
+  "gate": "gate0",
+  "gate_mode": "ste",
+  "gate_theta": 0.5,
+  "halt_diagnostics": {
+    "T": 6.0,
+    "adaptive_halt": false,
+    "gate_mode": "ste",
+    "gate_theta": 0.5,
+    "hard_A_oracle": false,
+    "mean_halt_step": 6.0,
+    "mean_ponder": 6.0
+  },
+  "hard_A_oracle_eval": false,
+  "label_counts": {
+    "y0": 16,
+    "y1": 16
+  },
+  "local_potential": true,
+  "loss_threshold": 0.001,
+  "n_examples": 32,
+  "ok": true,
+  "param_count": 123206,
+  "param_parity": {
+    "ff_baseline_params": 121218,
+    "fractal_over_ff_ratio": 1.0164002045900773,
+    "fractal_param_count": 123206,
+    "notes": "Param parity is MEASURE accounting hygiene \u2014 never stamps science OPEN.",
+    "science_open": false,
+    "tolerance": 0.05,
+    "window": [
+      115157,
+      127279
+    ],
+    "within_5pct": true
+  },
+  "passed_at": 1,
+  "per_class": {
+    "y0_acc": 1.0,
+    "y0_correct": 16.0,
+    "y0_n": 16.0,
+    "y1_acc": 1.0,
+    "y1_correct": 16.0,
+    "y1_n": 16.0
+  },
+  "reject_reasons": {
+    "both_deg0": 1,
+    "deg_s0": 2,
+    "deg_t0": 3,
+    "ok": 66,
+    "skipped_not_y0": 72
+  },
+  "science_open": false,
+  "ste_softening_note": null,
+  "steps": 150
+}
