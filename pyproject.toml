@@ -42,6 +42,7 @@ reachability-stalk-stabilize-v2 = "reachability_gen.run_stalk_stabilize_v2:main"
 reachability-stalk-stabilize-v3 = "reachability_gen.run_stalk_stabilize_v3:main"
 reachability-stalk-objective-v1 = "reachability_gen.run_stalk_objective_v1:main"
 reachability-stalk-seed-stability = "reachability_gen.run_stalk_seed_stability:main"
+reachability-stalk-seed-ensemble = "reachability_gen.run_stalk_seed_ensemble:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

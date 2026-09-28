@@ -415,6 +415,23 @@ Select / curriculum / seed-panel chase **CLOSED**. `science_open=false`.
 See `docs/CYCLE_STALK_PARK_ACCEPT_MEASURE.md` / seal §19 / ledger priority 5 done.
 Next active = orthogonal aux ablation (ledger priority 6) — not V4 select.
 
+## Cycle: STALK_SEED_ENSEMBLE (MEASURE — inference overlay)
+
+Do **not** assume #14 tops out. Seed-fragile singles (#14 2/5; #18 3/10) leave
+an isomorphic opportunity: **ensemble** frozen #14/#18 hard-Â stalk ckpts at
+eval (primary **`prob_mean`**; secondary logit_mean / majority_vote). **No** new
+select/upsample train unless a seed ckpt is missing. Matched-OOD T16 floors;
+compare ensemble vs mean of singles; optional LOO. Verdict
+`MEASURE_LIFT` / `STOP_NO_LIFT` / `PASS_CANDIDATE`. `science_open=false`.
+
+```bash
+python -m reachability_gen.run_stalk_seed_ensemble
+# or: reachability-stalk-seed-ensemble
+```
+
+Artifact: `artifacts/stalk_seed_ensemble.json`. See `docs/CYCLE_STALK_SEED_ENSEMBLE.md`.
+
+
 ## Cycle: STALK_SEED_STABILITY (MEASURE → MEASURE_ENVELOPE)
 
 Freeze PR #14 recipe exactly (0.5/0.5 select, 60ep, hard-Â, uniform ID). **NO**
