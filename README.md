@@ -403,6 +403,20 @@ python -m reachability_gen.run_stalk_stabilize_v2
 
 Artifact: `artifacts/stalk_stabilize_v2.json`. See `docs/CYCLE_STALK_STABILIZE_V2.md`.
 
+
+## Cycle: STALK_OBJECTIVE_V1 (MEASURE → STOP_FRAGILE)
+
+Easy $ after select-weight chase closed (V2/V3 STOP). Kept **#14 0.5/0.5**
+ID-val select; moved HN + hop≥5 into training (upsample×2 + weighted CE).
+Result: seed **0/5**, HN mean **0.927** FAIL / K16 **0.845** PASS →
+**`STOP_FRAGILE`**. Prefer #14 MEASURE_STILL. `science_open=false`.
+
+```bash
+python -m reachability_gen.run_stalk_objective_v1
+```
+
+Artifact: `artifacts/stalk_objective_v1.json`. See `docs/CYCLE_STALK_OBJECTIVE_V1.md`.
+
 ## Cycle: STALK_STABILIZE_V3 (MEASURE → STOP_FRAGILE)
 
 Continue from PR #15 STOP_FRAGILE / prefer #14 corridor. Knobs: 60 ep, cosine

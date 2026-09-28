@@ -333,3 +333,35 @@ K16 select-aux rescued mean K16 (0.423→0.968) but traded HN (0.957→0.838). I
 
 Prior seal body + §13 DEMOTION + §14 MEASURE_STILL + §15 STOP_FRAGILE are **not** rewritten. This §16 is append-only STOP_FRAGILE.
 
+---
+
+## 17. Objective V1 — STOP_FRAGILE (append-only; 2026-09-27 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_OBJECTIVE_V1` |
+| **Artifact** | `artifacts/stalk_objective_v1.json` |
+| **Harness** | `python -m reachability_gen.run_stalk_objective_v1` |
+| **Base** | `main` `8866414` (PR #16 merge) + prereg `68a147a` |
+| **Verdict** | **`STOP_FRAGILE`** |
+| **science_open** | **false** (not widened) |
+| **Objective V1** | 5 seeds; 60 ep (#14 corridor); cosine 1.5e-3→1.5e-4; **#14 select locked** (0.5·HN+0.5·ov; NO K16); train multinomial HN×2 + hop≥5×2 + weighted CE |
+| **Prereg mean** | hard-neg≥0.95 **FAIL** (0.927±0.048); K16≥0.75 **PASS** (0.845±0.166) |
+| **Seed-wise** | **0/5** PASS (goal ≥4/5 **FAIL**; ≤1/5 → STOP_FRAGILE) |
+
+### 17.1 Matched-OOD T16 mean±std
+
+| Arm | overall | hard-neg | K16 |
+|-----|---------|----------|-----|
+| PR #14 stabilize (n=5) | **0.929±0.035** | **0.957±0.061** | **0.863±0.143** |
+| PR #15 V2 (n=5) | 0.813±0.157 | 0.955±0.101 | 0.423±0.477 |
+| PR #16 V3 (n=5) | 0.890±0.067 | 0.838±0.142 | 0.968±0.046 |
+| **This Obj V1 (n=5)** | **0.899±0.046** | **0.927±0.048** | **0.845±0.166** |
+| Untrained mean | 0.488±0.194 | 0.577±0.235 | — |
+
+ID train curriculum (HN+longhop upsample) missed mean HN floor and collapsed seed PASS to 0/5. Prefer honesty: **STOP** this objective line; retain #14 MEASURE_STILL as best stabilize evidence. Cite `docs/CYCLE_STALK_OBJECTIVE_V1.md`.
+
+### 17.2 Non-rewrite rule
+
+Prior seal body + §13 DEMOTION + §14 MEASURE_STILL + §15/§16 STOP_FRAGILE are **not** rewritten. This §17 is append-only STOP_FRAGILE.
+

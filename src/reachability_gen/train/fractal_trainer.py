@@ -54,8 +54,13 @@ class FractalTrainer:
         labels: torch.Tensor,
         *,
         T: Optional[int] = None,
+        sample_weights: Optional[torch.Tensor] = None,
     ) -> tuple[float, float]:
-        """One AdamW step. Returns ``(loss, accuracy)``."""
+        """One AdamW step. Returns ``(loss, accuracy)``.
+
+        Optional ``sample_weights`` (shape ``[B]``) applies mean-normalized
+        per-example CE weighting without changing the shared default path.
+        """
         self.model.train()
         node_ids = node_ids.to(self.device)
         node_mask = node_mask.to(self.device)
@@ -76,7 +81,13 @@ class FractalTrainer:
             adaptive_halt=False,
         )
         self.last_halt_info = halt or {}
-        loss = self.loss_fn(logits, labels)
+        if sample_weights is None:
+            loss = self.loss_fn(logits, labels)
+        else:
+            w = sample_weights.to(self.device).float()
+            w = w / w.mean().clamp_min(1e-8)
+            per = nn.functional.cross_entropy(logits, labels, reduction="none")
+            loss = (per * w).mean()
         loss.backward()
         pre_clip = clip_grad_norm_(self.model.parameters(), self.grad_clip)
         self.last_pre_clip_grad_norm = float(

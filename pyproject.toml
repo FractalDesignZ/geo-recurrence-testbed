@@ -40,6 +40,7 @@ reachability-stalk-multi-seed-reconfirm = "reachability_gen.run_stalk_multi_seed
 reachability-stalk-stabilize-multi-seed = "reachability_gen.run_stalk_stabilize_multi_seed:main"
 reachability-stalk-stabilize-v2 = "reachability_gen.run_stalk_stabilize_v2:main"
 reachability-stalk-stabilize-v3 = "reachability_gen.run_stalk_stabilize_v3:main"
+reachability-stalk-objective-v1 = "reachability_gen.run_stalk_objective_v1:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
