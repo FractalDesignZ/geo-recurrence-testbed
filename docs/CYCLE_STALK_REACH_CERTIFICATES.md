@@ -153,4 +153,53 @@ Priority: if collateral harm fires → verdict **`COLLATERAL_HARM`**. Still **ME
 
 ## Results (this run — cite artifact)
 
-_Pending harness + run. Fill after MEASURE execution._
+| Field | Value |
+|-------|-------|
+| **Artifact** | `artifacts/stalk_reach_certificates.json` |
+| **Log** | `artifacts/stalk_reach_certificates_run.log` |
+| **Prereg SHA** | `759357f` |
+| **Harness SHA** | `b856104` |
+| **Results SHA** | _(stamped after results commit)_ |
+| **Cycle verdict** | **`CERT_FO_CATCH`** |
+| **science_open** | **false** (not widened; §22 unchanged) |
+| **Tropical Phase 2** | **not started** |
+| **Residue update** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL/LOCAL_SOUND_WALL/CERT_FO_CATCH`** |
+| **Elapsed** | ~12.9 s CDT |
+| **Cite #30 replicate** | **exact** (FO=45 / FC=190 / ens HN=0.067); rem22=22 exact |
+| **Decision arm** | **cert** (outdeg0+cert identical FO/rem catch) |
+
+### Table (baseline vs arms)
+
+| Arm | HN | K16 | overall | FO | FC | FO killed /45 | rem22 killed /22 | dirty rate |
+|-----|----|-----|---------|----|----|---------------|------------------|------------|
+| (0) baseline #22 | **0.067** | **0.988** | **0.510** | **45** | **190** | — | — | — |
+| (1) outdeg0 | **0.304** | **0.988** | **0.629** | **22** | **156** | **23**/45 | **0**/22 | — |
+| (2) cert | **1.000** | **0.988** | **0.977** | **0** | **11** | **45**/45 | **22**/22 | **0.490** |
+| (3) outdeg0+cert | **1.000** | **0.988** | **0.977** | **0** | **11** | **45**/45 | **22**/22 | **0.371** |
+
+### Clean / dirty + concentration (cert arm, ood_hops T16)
+
+| Metric | Value |
+|--------|-------|
+| clean / dirty | **245** / **235** (clean_rate **0.510**) |
+| dirty YES / dirty NO | **224** / **11** |
+| P(correct\|clean) | **1.000** (post-policy; n_clean=245) |
+| FO∩dirty / FO | **45/45 = 1.000** (≥0.80 → conc OK) |
+| dirty∩FO / dirty | **45/235 = 0.191** (&lt;0.50; OR still passes) |
+| rem22∩dirty | **22/22** |
+
+### Matched-OOD collateral (T16)
+
+| Slice | baseline | cert | Δ |
+|-------|----------|------|---|
+| overall | 0.996 | 0.996 | **0.000** |
+| HN | 1.000 | 1.000 | **0.000** |
+| K16 | 1.000 | 1.000 | **0.000** |
+
+Matched-OOD dirty_rate **0.004** (2 dirty_no only; 0 dirty_yes). OK_HN index-set Δ=0. Positives Δ=0. **No COLLATERAL_HARM.**
+
+### Reading (fail-closed)
+
+1. **CERT_FO_CATCH:** post-hoc path-witness / checker-BFS certificates force-close dirty YES → eliminate **45/45** FO and **22/22** rem-22. HN 0.067→1.000; K16 holds; overall 0.510→0.977. Dirty mass on ood_hops is large (all false YES, including FC_HN), but **FO∩dirty/FO=1** and matched-OOD dirty≈0 — same hygiene shape as #32 (matched Δ=0).
+2. Checker BFS is **post-hoc only** (never train/init/model feature). Dirty NO kept fail-closed (no oracle open; 11 remain).
+3. Prefer #14+#22 on matched-OOD only. Do **not** widen §22. Do **not** claim hop-OOD OPEN. Tropical Phase 2 **not** started. Still **MEASURE**.
