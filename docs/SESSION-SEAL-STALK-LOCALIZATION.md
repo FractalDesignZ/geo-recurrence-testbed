@@ -244,3 +244,31 @@ OPEN is not robust enough to remain a live science_open claim.
 
 Prior seal body (§1–§12) is **not** rewritten. This §13 is append-only DEMOTION.
 Ledger: `docs/LEDGER-OPEN-MEASURE-STOP.md`. Cycle note: `docs/CYCLE_STALK_MULTI_SEED_RECONFIRM.md`.
+
+---
+
+## 14. Stabilize multi-seed — MEASURE_STILL (append-only; 2026-09-27 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_STABILIZE_MULTI_SEED` |
+| **Artifact** | `artifacts/stalk_stabilize_multi_seed.json` |
+| **Harness** | `python -m reachability_gen.run_stalk_stabilize_multi_seed` |
+| **Base** | `main` `12cb455` (after PR #12/#13) |
+| **Verdict** | **`MEASURE_STILL`** |
+| **science_open** | **false** (not widened; no PASS_CANDIDATE) |
+| **Harden** | 5 seeds; 60 ep; cosine LR 1.5e-3→1.5e-4; joint 0.5·HN+0.5·overall @ T16 ID-val select |
+| **Prereg mean** | hard-neg≥0.95 **PASS** (0.957±0.061); K16≥0.75 **PASS** (0.863±0.143) |
+| **Seed-wise** | **2/5** PASS (goal ≥4/5 **FAIL**) |
+
+### 14.1 Matched-OOD T16 mean±std
+
+| Arm | overall | hard-neg | K16 |
+|-----|---------|----------|-----|
+| Sealed OPEN (hist. seed0) | 0.977 | 1.000 | 0.925 |
+| PR #12 reconfirm (n=3) | 0.803±0.202 | 0.918±0.142 | 0.654±0.524 |
+| **This stabilize (n=5)** | **0.929±0.035** | **0.957±0.061** | **0.863±0.143** |
+| Untrained mean | 0.488±0.194 | 0.577±0.235 | — |
+
+Seed1 K16 collapse **0.05 → 0.875** under harden. Means clear PR #12 floors; seed fraction does not. Stay MEASURE. Cite `docs/CYCLE_STALK_STABILIZE_MULTI_SEED.md`.
+

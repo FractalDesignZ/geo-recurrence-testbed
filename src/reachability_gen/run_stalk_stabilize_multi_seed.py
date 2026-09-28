@@ -585,13 +585,25 @@ def run_cycle(
         open_status = "MEASURE_STOP_FRAGILE"
     else:
         verdict = "MEASURE_STILL"
-        residue = (
-            f"Stabilize MEASURE_STILL: hard-neg={hard_mean:.4f} (need ≥{PREREG_HARD_NEG}), "
-            f"K16={k16_mean:.4f} (need ≥{PREREG_K16}); "
-            f"{n_pass}/{len(per_seed)} seeds pass (goal ≥{SEED_PASS_GOAL}). "
-            "Harden did not clear prereg. science_open=false; claim not widened."
+        means_note = (
+            "mean floors PASS"
+            if floors_mean_pass
+            else (
+                f"mean floors MISS (HN={hard_mean:.4f} need ≥{PREREG_HARD_NEG}, "
+                f"K16={k16_mean:.4f} need ≥{PREREG_K16})"
+            )
         )
-        open_status = "MEASURE_STILL"
+        residue = (
+            f"Stabilize MEASURE_STILL: {means_note}; "
+            f"{n_pass}/{len(per_seed)} seeds pass (goal ≥{SEED_PASS_GOAL}). "
+            "Harden did not clear full prereg (means AND seed goal). "
+            "science_open=false; claim not widened."
+        )
+        open_status = (
+            "MEASURE_STILL_MEANS_PASS_SEED_GOAL_MISS"
+            if floors_mean_pass
+            else "MEASURE_STILL"
+        )
 
     # Override: floors miss with moderate pass count stays MEASURE_STILL
     # (STOP only when ≤1/5 or deep collapse). Already handled above.
