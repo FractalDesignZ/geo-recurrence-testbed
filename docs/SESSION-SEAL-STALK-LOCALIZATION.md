@@ -696,7 +696,7 @@ Prior seal body + §13–§27 are **not** rewritten. This §28 is append-only ME
 | **Cycle note** | `docs/CYCLE_STALK_HN_FAIL_OPEN_AUTOPSY.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_hn_fail_open_autopsy` |
 | **Base** | `main` `dd18ff8` (after PR #30) |
-| **Prereg / harness / results** | `931bd78` / `3980451` / _(results SHA)_ |
+| **Prereg / harness / results** | `931bd78` / `3980451` / `81d7911be8ad9507385bee63e3187bf0441b4fbe` |
 | **Cycle verdict** | **`STRUCTURAL_CLUSTER`** |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
 | **Recipe** | Eval-only structural autopsy of #30 FO=45 @ T=16; FO vs FC_HN vs OK_HN; member logits; **no** train |

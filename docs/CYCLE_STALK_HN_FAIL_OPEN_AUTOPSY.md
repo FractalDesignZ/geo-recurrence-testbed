@@ -168,7 +168,7 @@ Cycle composite: `{autopsy_verdict}` e.g. `STRUCTURAL_CLUSTER`. Residue update m
 | **Log** | `artifacts/stalk_hn_fail_open_autopsy_run.log` |
 | **Prereg SHA** | `931bd78` |
 | **Harness SHA** | `3980451` |
-| **Results SHA** | _(this commit)_ |
+| **Results SHA** | `81d7911be8ad9507385bee63e3187bf0441b4fbe` |
 | **Cycle verdict** | **`STRUCTURAL_CLUSTER`** |
 | **science_open** | **false** (not widened; §22 unchanged) |
 | **Residue update** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`** — isolated-source / hub-target false-reachability |
