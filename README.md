@@ -415,7 +415,7 @@ Select / curriculum / seed-panel chase **CLOSED**. `science_open=false`.
 See `docs/CYCLE_STALK_PARK_ACCEPT_MEASURE.md` / seal §19 / ledger priority 5 done.
 Next active = orthogonal aux ablation (ledger priority 6) — not V4 select.
 
-## Cycle: STALK_SEED_ENSEMBLE (MEASURE → PASS_CANDIDATE)
+## Cycle: STALK_SEED_ENSEMBLE (PASS_CANDIDATE → scoped science_open)
 
 Do **not** assume #14 tops out. Seed-fragile singles (#14 2/5; #18 3/10) leave
 an isomorphic opportunity: **ensemble** frozen #14/#18 hard-Â stalk ckpts at
@@ -423,14 +423,17 @@ eval (primary **`prob_mean`**; secondary logit_mean / majority_vote). **No** new
 select/upsample (0 fill-trains). Matched-OOD T16: ens overall **0.996**, HN
 **1.000**, K16 **1.000** vs singles mean 0.903 / 0.935 / 0.792 (ΔHN **+0.065**,
 ΔK16 **+0.208**). LOO HN 1.000±0 / K16 0.991±0.008. Verdict
-**`PASS_CANDIDATE`**. `science_open=false` (human seal only).
+**`PASS_CANDIDATE`**. Human seal: **scoped `science_open=true`** — ensemble-at-eval
+only (singles remain MEASURE_STILL/fragile; distill STOP; select/curriculum CLOSED;
+sheaf unsupervised NOT opened).
 
 ```bash
 python -m reachability_gen.run_stalk_seed_ensemble
 # or: reachability-stalk-seed-ensemble
 ```
 
-Artifact: `artifacts/stalk_seed_ensemble.json`. See `docs/CYCLE_STALK_SEED_ENSEMBLE.md`.
+Artifact: `artifacts/stalk_seed_ensemble.json`. See `docs/CYCLE_STALK_SEED_ENSEMBLE.md` /
+`docs/CYCLE_STALK_SEED_ENSEMBLE_SEAL.md` / seal §22.
 
 ## Cycle: STALK_ENSEMBLE_DISTILL (MEASURE → STOP)
 

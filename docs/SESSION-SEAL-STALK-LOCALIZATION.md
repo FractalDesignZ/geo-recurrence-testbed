@@ -5,16 +5,16 @@
 | **Date** | 2026-09-27 |
 | **Mode** | MEASURE / FREEZE |
 | **Cycle** | `CYCLE_STALK_LOCALIZATION` |
-| **science_open** | **true** (scoped claim only — §6) |
+| **science_open** | **true** (scoped claim only — **§22** ensemble-at-eval; hist. §6 demoted) |
 | **Repo** | https://github.com/FractalDesignZ/geo-recurrence-testbed |
 | **Branch** | `cycle/stalk-localization` |
 | **MEASURE SHA** | `1d6c3da` (`1d6c3da87a8387bf83813620f079fc0844fd1c06`) |
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-28 CDT):** live claim = **`MEASURE` / demoted** (see **§13**); best corridor = **PR #14 MEASURE_STILL** accepted (**§19 PARK_ACCEPT_MEASURE**). Header/`§6` `science_open=true` is **historical** single-seed seal only — not a live OPEN. Select/curriculum chase **CLOSED**. **Not INVALID** (PR #11 untrained mid). `science_open=false`.
+**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
 
-Fail-closed outside the single claim in §6. Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
+Fail-closed outside the live scoped claim in **§22** (hist. §6 demoted). Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
 ---
 
@@ -481,3 +481,43 @@ inference overlay; distill **STOP**. Cite `docs/CYCLE_STALK_ENSEMBLE_DISTILL.md`
 Prior seal body + §13–§20 are **not** rewritten. This §21 is append-only STOP
 (science_open=false).
 
+## 22. Seed ensemble — scoped science_open (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_SEED_ENSEMBLE` |
+| **Artifact** | `artifacts/stalk_seed_ensemble.json` |
+| **Seal note** | `docs/CYCLE_STALK_SEED_ENSEMBLE_SEAL.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_seed_ensemble` |
+| **Base** | `main` `16e97fc` (after PR #23) + MEASURE merge PR #22 `3972756` |
+| **Prereg / results** | `e040270` / `f774c69` |
+| **Harness verdict** | **`PASS_CANDIDATE`** (harness kept `science_open=false`) |
+| **science_open** | **true** (human seal; scoped claim only) |
+| **Recipe** | Inference ensemble of **frozen #14/#18** hard-Â stalk singles (seeds 0..9). Primary **`prob_mean`**. **No** new select/upsample; **0** fill-trains. |
+| **Prereg ensemble floors** | hard-neg≥0.95 **PASS** (1.000); K16≥0.75 **PASS** (1.000) |
+| **Lift vs singles mean** | Δoverall **+0.093**; ΔHN **+0.065**; ΔK16 **+0.208** |
+| **LOO** | HN **1.000±0.000**; K16 **0.991±0.008**; overall 0.995±0.004 |
+
+### 22.1 Exact claim (narrow)
+
+| Field | Value |
+|-------|-------|
+| **science_open** | **true** |
+| **Claim** | Inference-time `prob_mean` ensemble of frozen hard-Â stalk checkpoints from PR #14 (seeds 0..4) and PR #18 (seeds 5..9) clears matched-OOD T16 hard-neg (≥0.95) and K16 (≥0.75) floors with positive lift vs the mean of those singles on `covariate_matched_ood` + hard `A_ij` — **ensemble-at-eval only**. |
+| **Substrate** | `covariate_matched_ood` + **hard** `A_ij` mask; stalk-local FractalCore (no `c` broadcast, no soft ACT); discrete T∈{6,8,12,16}; floors gate **T16** |
+| **Evidence** | Artifact `stalk_seed_ensemble.json`; seal note; §20 PASS_CANDIDATE table |
+| **SHAs** | MEASURE merge PR #22 `3972756`; this seal on `main` after PR #23 `16e97fc` |
+
+### 22.2 Explicit NON-claims
+
+| NON-claim | Status |
+|-----------|--------|
+| Singles / one stalk location OPEN | **NO** — remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10) |
+| Distill / student compression | **STOP** (§21 / PR #23) — map≠location |
+| Select / curriculum reopen | **CLOSED** (§19) |
+| Sheaf unsupervised | **NOT opened** |
+| Hist. §6 single-seed OPEN revive | **NO** — stays demoted (§13) |
+
+### 22.3 Non-rewrite rule
+
+Prior seal body + §13 DEMOTION + §14–§21 are **not** rewritten. This §22 is append-only scoped science_open (ensemble-at-eval only).

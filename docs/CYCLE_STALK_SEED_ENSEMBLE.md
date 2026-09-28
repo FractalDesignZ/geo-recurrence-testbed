@@ -1,9 +1,9 @@
-# CYCLE_STALK_SEED_ENSEMBLE — MEASURE (science_open=false)
+# CYCLE_STALK_SEED_ENSEMBLE — PASS_CANDIDATE → scoped science_open (human seal)
 
 | Field | Value |
 |-------|-------|
 | **Mode** | MEASURE only — inference-time ensemble of frozen #14/#18 hard-Â stalk singles |
-| **science_open** | **false** (always in harness; **not widened**; human seal only) |
+| **science_open** | harness **false**; human seal **true** (scoped — `docs/CYCLE_STALK_SEED_ENSEMBLE_SEAL.md` / seal §22) |
 | **Trigger** | Park accepted #14 MEASURE corridor (PR #20) but **do not assume tops out**. Seed-fragile singles (#14 2/5; #18 3/10) leave an **isomorphic** opportunity: ensemble the same frozen seeds at eval — **no** new select/upsample train. |
 | **Base** | `main` tip after PR #21 (`00b844b`) |
 | **Prior** | #14 MEASURE_STILL; #18 MEASURE_ENVELOPE; #20 PARK_ACCEPT_MEASURE (select/curriculum **CLOSED**) |
@@ -100,7 +100,7 @@ Select / curriculum remain **CLOSED** — ensemble does not reopen them.
 | **Log** | `artifacts/stalk_seed_ensemble_run.log` |
 | **Ckpts** | #14 `stabilize_seed{0..4}_best.pt` + #18 `seed_stability_seed{5..9}_best.pt` (**all present**; **0** fill-trains) |
 | **Verdict** | **`PASS_CANDIDATE`** |
-| **science_open** | **false** (not widened; FLAG human) |
+| **science_open** | harness **false**; **human seal true** (scoped ensemble-at-eval — see seal note / §22) |
 | **Primary** | `prob_mean` |
 | **Elapsed** | ~77 s (~1.3 min CDT) — eval-only |
 | **Prereg SHA** | `e040270` (committed before runs) |
@@ -168,3 +168,12 @@ Frozen #14/#18 singles remain seed-fragile (3/10 PASS; mean HN 0.935 FAIL). **In
 (ΔHN **+0.065**, ΔK16 **+0.208**). Secondary aggregators and LOO agree. This is an
 **inference overlay**, not a new select/train recipe — select/curriculum stay **CLOSED**.
 Verdict **`PASS_CANDIDATE`**; harness keeps **`science_open=false`** (human seal only).
+
+## Human seal (2026-09-28 CDT)
+
+Harness correctly left `PASS_CANDIDATE` / `science_open=false`. Human seal opens **only**:
+
+> Inference-time `prob_mean` ensemble of frozen hard-Â stalk checkpoints from PR #14 (seeds 0..4) and PR #18 (seeds 5..9) clears matched-OOD T16 hard-neg (≥0.95) and K16 (≥0.75) floors with positive lift vs the mean of those singles on `covariate_matched_ood` + hard `A_ij` — **ensemble-at-eval only**.
+
+Singles remain MEASURE_STILL/fragile. Distill STOP. Select/curriculum CLOSED. Sheaf unsupervised NOT opened.
+See `docs/CYCLE_STALK_SEED_ENSEMBLE_SEAL.md` / seal §22.
