@@ -449,3 +449,35 @@ Select/curriculum remain **CLOSED**. Cite `docs/CYCLE_STALK_SEED_ENSEMBLE.md`.
 ### 20.2 Non-rewrite rule
 
 Prior seal body + §13 DEMOTION + §14 MEASURE_STILL + §15/§16/§17 STOP_FRAGILE + §18 MEASURE_ENVELOPE + §19 PARK_ACCEPT_MEASURE are **not** rewritten. This §20 is append-only PASS_CANDIDATE (science_open=false).
+
+## 21. Ensemble distill — STOP (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_ENSEMBLE_DISTILL` |
+| **Artifact** | `artifacts/stalk_ensemble_distill.json` |
+| **Harness** | `python -m reachability_gen.run_stalk_ensemble_distill` |
+| **Base** | `main` `3972756` (PR #22) + prereg `6117eb3` |
+| **Verdict** | **`STOP`** |
+| **science_open** | **false** (not widened) |
+| **Recipe** | Distill frozen #14/#18 **`prob_mean`** teacher → one hard-Â stalk student; α=0.5 τ=2.0; #14 select freeze; seeds **0,1,2** |
+| **Prereg student mean** | hard-neg≥0.95 **FAIL** (0.843±0.146); K16≥0.75 **FAIL** (0.575±0.447); seed **0/3** |
+| **Compare T16** | ens HN/K16 **1.000/1.000**; #14 seed0 **1.000/0.863**; student **0.843/0.575** |
+
+### 21.1 Matched-OOD T16
+
+| Arm | overall | hard-neg | K16 |
+|-----|---------|----------|-----|
+| Student mean±std (n=3) | 0.810±0.050 | 0.843±0.146 | 0.575±0.447 |
+| Ensemble `prob_mean` | **0.996** | **1.000** | **1.000** |
+| #14 seed0 | **0.975** | **1.000** | **0.863** |
+
+Map≠location: ensemble map did **not** compress into one student under this
+prereg. Negatives=mirror: HN floor fails mean. Prefer #14 MEASURE_STILL + #22
+inference overlay; distill **STOP**. Cite `docs/CYCLE_STALK_ENSEMBLE_DISTILL.md`.
+
+### 21.2 Non-rewrite rule
+
+Prior seal body + §13–§20 are **not** rewritten. This §21 is append-only STOP
+(science_open=false).
+

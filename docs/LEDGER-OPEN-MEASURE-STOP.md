@@ -4,8 +4,8 @@
 |-------|-------|
 | **Date** | 2026-09-28 (CDT) |
 | **Repo** | https://github.com/FractalDesignZ/geo-recurrence-testbed |
-| **Base after PR #21** | `00b844b` (ledger SHA stamp) + branch `cycle/stalk-seed-ensemble` |
-| **Hygiene** | PR #12 demotes stalk §6 OPEN → **MEASURE**; PR #14 MEASURE_STILL 2/5; PR #15/#16/#17 STOP_FRAGILE; PR #18 envelope 3/10; PR #19/#20 park select/curriculum; **CYCLE_STALK_SEED_ENSEMBLE** inference `prob_mean` → **PASS_CANDIDATE** (HN/K16=1.000; Δ vs singles +0.065/+0.208); `science_open=false` |
+| **Base after PR #22** | `3972756` (ensemble PASS_CANDIDATE merge) + branch `cycle/stalk-ensemble-distill` |
+| **Hygiene** | PR #12 demotes stalk §6 OPEN → **MEASURE**; PR #14 MEASURE_STILL 2/5; PR #15/#16/#17 STOP_FRAGILE; PR #18 envelope 3/10; PR #19/#20 park select/curriculum; **#22** ensemble `prob_mean` → **PASS_CANDIDATE**; **#23 pending** distill ensemble→student → **STOP** (HN 0.843 / K16 0.575); `science_open=false` |
 | **science_open policy** | Fail-closed. Harness never self-stamps `true`. Human seal only. |
 | **Purpose** | Single dimensional table of seals/PRs and **clear next cells**. |
 
@@ -38,7 +38,8 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | **PR #18** `8850590` | `CYCLE_STALK_SEED_STABILITY` | **MEASURE** | **false** (not widened) | hard-A stalk #14 freeze | n/a | n/a | matched-OOD T∈{6,8,12,16}; **10 seeds** (0..4 reconfirm + 5..9 new); 60ep; #14 select **frozen** (NO upsample) | `MEASURE_ENVELOPE` (seed **3/10**; HN mean **0.935** FAIL; K16 **0.792** PASS) | `artifacts/stalk_seed_stability.json` / seal §18 / `docs/CYCLE_STALK_SEED_STABILITY.md` |
 | **PR #19** `0a69b3f` | `AUDIT-STALK-STABILIZE-V3` | **MEASURE** audit | **false** | — | — | — | cite #14/#16/#18 | `PARK_SELECT_LINE` pointer — prefer #14; no V4 select | `docs/AUDIT-STALK-STABILIZE-V3.md` |
 | **PR #20** `faed05f` | `CYCLE_STALK_PARK_ACCEPT_MEASURE` | **MEASURE** park close | **false** (not widened) | hard-A stalk #14 accept | n/a | n/a | cite #14/#15/#16/#17/#18/#19 | `PARK_ACCEPT_MEASURE` — accept #14 0.5/0.5 MEASURE_STILL; select/curriculum **CLOSED** | `docs/CYCLE_STALK_PARK_ACCEPT_MEASURE.md` / seal §19 |
-| **(this)** pending | `CYCLE_STALK_SEED_ENSEMBLE` | **MEASURE** inference ensemble | **false** (not widened) | hard-A stalk #14/#18 freeze | n/a | n/a | matched-OOD T∈{6,8,12,16}; **10 members**; primary **prob_mean**; LOO on | `PASS_CANDIDATE` (ens HN **1.000** / K16 **1.000**; Δ vs singles mean HN **+0.065** / K16 **+0.208**) | `artifacts/stalk_seed_ensemble.json` / seal §20 / `docs/CYCLE_STALK_SEED_ENSEMBLE.md` |
+| **PR #22** `3972756` | `CYCLE_STALK_SEED_ENSEMBLE` | **MEASURE** inference ensemble | **false** (not widened) | hard-A stalk #14/#18 freeze | n/a | n/a | matched-OOD T∈{6,8,12,16}; **10 members**; primary **prob_mean**; LOO on | `PASS_CANDIDATE` (ens HN **1.000** / K16 **1.000**; Δ vs singles mean HN **+0.065** / K16 **+0.208**) | `artifacts/stalk_seed_ensemble.json` / seal §20 / `docs/CYCLE_STALK_SEED_ENSEMBLE.md` |
+| **(this)** pending | `CYCLE_STALK_ENSEMBLE_DISTILL` | **MEASURE** distill ensemble→student | **false** (not widened) | hard-A stalk student; teacher=#14/#18 freeze | n/a | n/a | matched-OOD T∈{6,8,12,16}; student seeds **0,1,2**; α=0.5 τ=2.0; floors HN≥0.95 K16≥0.75 | **`STOP`** (student mean HN **0.843** / K16 **0.575**; 0/3; < #14 seed0) | `artifacts/stalk_ensemble_distill.json` / seal §21 / `docs/CYCLE_STALK_ENSEMBLE_DISTILL.md` |
 
 ### 1.1 Status legend
 
@@ -57,7 +58,7 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 |-------|--------|
 | Sheaf §6 sparse [45,70] K≤16 "**learned** Â" | **INVALID** (PR #7 / seal §16) |
 | Dense-context §6 "**learned**" dense band | **INVALIDATED** (dense seal §8) |
-| Stalk §6 hard-A locality | **MEASURE** (**demoted**; PR #14 corridor + **SEED_ENSEMBLE PASS_CANDIDATE** inference overlay HN/K16=1.000; select/curriculum still **CLOSED**; **not INVALID**; science_open false — FLAG human) |
+| Stalk §6 hard-A locality | **MEASURE** (**demoted**; PR #14 corridor + **#22 SEED_ENSEMBLE PASS_CANDIDATE** inference overlay; **#23 distill STOP** — map≠location; select/curriculum **CLOSED**; **not INVALID**; science_open false — FLAG human) |
 | Feasibility true p=0.15 under [45,70] | **INVALID** (PR #5) |
 | With-aux neutral retrain floors (PR #8) | **MEASURE** candidate only (`science_open=false`) |
 | No-aux detach (PR #9) | **STOP** residue |
@@ -80,7 +81,8 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | **4c (done)** | `CYCLE_STALK_SEED_STABILITY` (PR #18) | freeze #14; seeds **0..9**; NO new select/upsample | — | **MEASURE_ENVELOPE** 3/10 | HN mean 0.935 FAIL; K16 0.792 PASS; rate 0.30. Prefer #14 unchanged. |
 | **5 (done)** | `CYCLE_STALK_PARK_ACCEPT_MEASURE` (PR #20 `faed05f`) | accept **#14 0.5/0.5 MEASURE_STILL**; park select/curriculum/seed-panel | — | **PARK_ACCEPT_MEASURE** | Seal note + §19; seed-fragile (#14 2/5, #18 3/10); V2/V3/Obj STOP; no new train; `science_open=false`. |
 | **5b (done)** | `CYCLE_STALK_SEED_ENSEMBLE` | freeze #14/#18 singles; primary **prob_mean**; LOO; floors + lift vs singles mean | **PASS_CANDIDATE** (science_open=false) | STOP_NO_LIFT | Ens T16 HN **1.000** / K16 **1.000**; ΔHN +0.065 / ΔK16 +0.208; 0 fill-trains; select/curriculum stay CLOSED. |
-| **6 (active)** | Aux ablation attribution (orthogonal) **or** human review of ensemble PASS_CANDIDATE | with-aux vs STE-no-aux; **no** stalk select re-chase | document necessity / seal | STOP | Human review before any OPEN revive; `science_open=false` |
+| **5c (done)** | `CYCLE_STALK_ENSEMBLE_DISTILL` | frozen #14/#18 `prob_mean` teacher → one hard-Â student; α=0.5 τ=2.0; seeds 0,1,2; #14 select freeze | — | **STOP** | Student mean HN 0.843 / K16 0.575 FAIL; 0/3; both < #14 seed0. Map did not compress. Prefer #14 + #22 ens overlay. |
+| **6 (active)** | Aux ablation attribution (orthogonal) **or** human review of ensemble PASS_CANDIDATE | with-aux vs STE-no-aux; **no** stalk select re-chase | document necessity / seal | STOP | Human review before any OPEN revive; `science_open=false`. Distill STOP — do not chase distill knobs as select-substitute. |
 | 8 | Neutral-init RED_TEST / dense re-eval | frozen or retrained neutral ckpt | MEASURE | STOP | Do not revive bake-in OPEN |
 | 9 | Depth×Density frontier | longer K **and** dense ER under admissible band | MEASURE plan | — | Orthogonal envelopes; `science_open=false` until seal |
 | — | Revive sheaf learned OPEN | — | **blocked** | — | Requires human seal after clean attribution |
@@ -115,6 +117,7 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | Stalk V3 audit / PARK pointer | `docs/AUDIT-STALK-STABILIZE-V3.md` |
 | Stalk PARK accept MEASURE | `docs/CYCLE_STALK_PARK_ACCEPT_MEASURE.md` / seal §19 |
 | Stalk seed ensemble | `docs/CYCLE_STALK_SEED_ENSEMBLE.md` / `artifacts/stalk_seed_ensemble.json` / seal §20 |
+| Stalk ensemble distill | `docs/CYCLE_STALK_ENSEMBLE_DISTILL.md` / `artifacts/stalk_ensemble_distill.json` / seal §21 |
 | This ledger | `docs/LEDGER-OPEN-MEASURE-STOP.md` |
 
 ---
