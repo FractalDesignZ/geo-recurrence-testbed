@@ -12,7 +12,7 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair. HN FAIL_OPEN autopsy **STRUCTURAL_CLUSTER** (§29) — isolated-source / hub-target; residue **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`**. Sound outdeg gate **FO_PARTIAL** (§30) — **23/45** FO killed; HN **0.067→0.304**; matched-OOD Δ=0; residue **`…/OUTDEG0_PARTIAL`**. FO remainder autopsy **LOCAL_SOUND_WALL** (§31) — best local cut **5/22**; stop overlay chase; residue **`…/LOCAL_SOUND_WALL`**. Hop-OOD overlay **PARK** (§32). Reach certificates **CERT_FO_CATCH** (§33) — **45/45** FO + **22/22** rem-22; HN **0.067→1.000**; matched-OOD Δ=0; checker BFS post-hoc only. Tropical ens probe **COLLATERAL_HARM** (§34) — FO **0**/45 + rem22 **0**/22; matched K16 **1.000→0.512**; ens-layer max-plus falsified as FO repair; tropical ≢ cert; §22 **not** widened. Orientation collapse probe **INCONCLUSIVE_ARCH** (§35) — OK_HN cos nan_rate **1.0** (empty_in_t); cos AUROC undefined; (−l2) confounded; §22 **not** widened. Energy selector **COLLATERAL_HARM** (§36) — E_free FO **0**/45 + rem22 **0**/22; matched K16 **1.000→0.062**; oracle FO **0**/45 HARD_UNANIMOUS; cert_refuse tracks #35; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
+**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair. HN FAIL_OPEN autopsy **STRUCTURAL_CLUSTER** (§29) — isolated-source / hub-target; residue **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`**. Sound outdeg gate **FO_PARTIAL** (§30) — **23/45** FO killed; HN **0.067→0.304**; matched-OOD Δ=0; residue **`…/OUTDEG0_PARTIAL`**. FO remainder autopsy **LOCAL_SOUND_WALL** (§31) — best local cut **5/22**; stop overlay chase; residue **`…/LOCAL_SOUND_WALL`**. Hop-OOD overlay **PARK** (§32). Reach certificates **CERT_FO_CATCH** (§33) — **45/45** FO + **22/22** rem-22; HN **0.067→1.000**; matched-OOD Δ=0; checker BFS post-hoc only. Tropical ens probe **COLLATERAL_HARM** (§34) — FO **0**/45 + rem22 **0**/22; matched K16 **1.000→0.512**; ens-layer max-plus falsified as FO repair; tropical ≢ cert; §22 **not** widened. Orientation collapse probe **INCONCLUSIVE_ARCH** (§35) — OK_HN cos nan_rate **1.0** (empty_in_t); cos AUROC undefined; (−l2) confounded; §22 **not** widened. Energy selector **COLLATERAL_HARM** (§36) — E_free FO **0**/45 + rem22 **0**/22; matched K16 **1.000→0.062**; oracle FO **0**/45 HARD_UNANIMOUS; cert_refuse tracks #35; §22 **not** widened. FO/cert regression **PASS_REGRESSION** (§37) — CI lock #30/#31/#35/#38. Sheaf energy FO probe **ENERGY_NULL** (§38) — Id coboundary AUROC FO vs OK∪FC **0.317**; refuse **0**/45; ≢ #35 cert; §22 **not** widened; sheaf unsupervised **NOT** opened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
 
 Fail-closed outside the live scoped claim in **§22** (hist. §6 demoted). Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
@@ -910,3 +910,52 @@ Cert-free energy member selection does **not** repair the hop-OOD FAIL_OPEN core
 
 Prior seal body + §13–§35 are **not** rewritten. This §36 is append-only MEASURE
 (`science_open=false`).
+
+## 37. FO/cert regression — PASS_REGRESSION (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_FO_CERT_REGRESSION` |
+| **Artifact** | `artifacts/stalk_fo_cert_regression.json` |
+| **Cycle note** | `docs/CYCLE_STALK_FO_CERT_REGRESSION.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_fo_cert_regression` |
+| **Base** | `main` after PR #38 (`a8b8a68`) |
+| **Cycle verdict** | **`PASS_REGRESSION`** |
+| **science_open** | **false** (not widened; §22 unchanged) |
+| **Gates** | A+B+C PASS (HARD_UNANIMOUS≥30/45; oracle FO=0; cert 45/45; P(correct|clean)≥0.99; matched Δ≈0; #30 FO=45) |
+| **Residue** | storyline CI lock — not a science cell reopen |
+
+### 37.1 Non-rewrite rule
+
+Prior seal body + §13–§36 are **not** rewritten. This §37 is append-only MEASURE / CI hygiene (`science_open=false`).
+
+## 38. Sheaf energy FO probe — ENERGY_NULL (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_SHEAF_ENERGY_FO_PROBE` |
+| **Artifact** | `artifacts/stalk_sheaf_energy_fo_probe.json` |
+| **Log** | `artifacts/stalk_sheaf_energy_fo_probe_run.log` |
+| **Cycle note** | `docs/CYCLE_STALK_SHEAF_ENERGY_FO_PROBE.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_sheaf_energy_fo_probe` |
+| **Base** | `main` `73a458a` (after PR #39) |
+| **Prereg / results** | `3dd450a7592c6e5296e0eaca45fe1b3e6386685b` / `fcc16218622cab32ca26cccad3bb89dc2e17457e` |
+| **Cycle verdict** | **`ENERGY_NULL`** |
+| **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
+| **Exact E_cob** | `mean_m sum_(u->v) ||H_m[u]-H_m[v]||_2^2 / max(|E|,1)` — Id restriction; A2; **no** learned rho |
+| **Secondary** | E_dir mass Dirichlet; E_align target-cos Dirichlet (A4) |
+| **Recipe** | Eval-only on frozen #14/#18/#22 ens; ood_hops@T16 strata + matched-OOD tau=q90 refuse; **no** sheaf train / restriction-map learning |
+| **AUROC E_cob->FO vs OK U FC** | **0.3173** (below chance; FC median > FO) |
+| **AUROC FO vs OK alone** | **0.7958** (secondary; does not override primary) |
+| **energy_refuse** | FO **0/45** + rem22 **0/22**; n_refused=1; tau~57.0 |
+| **Matched-OOD Delta** | overall **-0.0062**; K16 **+0.0000** (vacuous sparse refuse) |
+| **vs #35 cert** | dirty FO_cap=1.0 / 45/45; energy != cert |
+| **Residue** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL/LOCAL_SOUND_WALL/CERT_FO_CATCH/COLLATERAL_HARM/INCONCLUSIVE_ARCH/COLLATERAL_HARM/PASS_REGRESSION/ENERGY_NULL`** |
+
+### 38.1 Reading
+
+Identity-restriction coboundary energy does **not** track #35 dirty-certificate FO concentration. High E_cob is more associated with FAIL_CLOSED mass than FAIL_OPEN; matched-OOD q90 refuse is nearly silent on the FO core. Do **not** open sheaf unsupervised or restriction-map learning from this null. Prefer #14 + #22 `prob_mean` on matched-OOD; keep #35 post-hoc certificates for FO catch. Do **not** widen §22. Do **not** claim hop-OOD OPEN. Still **MEASURE**.
+
+### 38.2 Non-rewrite rule
+
+Prior seal body + §13–§37 are **not** rewritten. This §38 is append-only MEASURE (`science_open=false`).
