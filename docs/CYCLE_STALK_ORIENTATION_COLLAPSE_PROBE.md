@@ -157,7 +157,7 @@ Still **MEASURE**, never OPEN. Even `ORIENT_SEPARATES_FO` does **not** widen `sc
 | **Log** | `artifacts/stalk_orientation_collapse_probe_run.log` |
 | **Prereg SHA** | `a422eef` |
 | **Harness SHA** | `5d6c1a8` |
-| **Results SHA** | _(stamp after results commit)_ |
+| **Results SHA** | `de5d1f5f4b7468960fa241274f1523e935708179` |
 | **Cycle verdict** | **`INCONCLUSIVE_ARCH`** |
 | **science_open** | **false** (not widened; §22 unchanged) |
 | **Proxy used** | directed incidence × final hidden (no explicit in/out channels) |

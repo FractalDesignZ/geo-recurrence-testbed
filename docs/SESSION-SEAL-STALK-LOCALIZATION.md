@@ -861,7 +861,7 @@ Prior seal body + §13–§33 are **not** rewritten. This §34 is append-only ME
 | **Cycle note** | `docs/CYCLE_STALK_ORIENTATION_COLLAPSE_PROBE.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_orientation_collapse_probe` |
 | **Base** | `main` `3198371` (after PR #36) |
-| **Prereg / harness / results** | `a422eef` / `5d6c1a8` / _(stamp)_ |
+| **Prereg / harness / results** | `a422eef` / `5d6c1a8` / `de5d1f5f4b7468960fa241274f1523e935708179` |
 | **Cycle verdict** | **`INCONCLUSIVE_ARCH`** |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
 | **Proxy** | directed incidence × final hidden; **no** explicit Dir-GNN in/out channels; attn weights unused |
