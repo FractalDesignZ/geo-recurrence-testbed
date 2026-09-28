@@ -769,3 +769,26 @@ Prior seal body + §13–§29 are **not** rewritten. This §30 is append-only ME
 
 Prior seal body + §13–§30 are **not** rewritten. This §31 is append-only MEASURE
 (`science_open=false`).
+
+## 32. Hop-OOD overlay chase — PARK (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_HOP_OOD_OVERLAY_PARK` |
+| **Cycle note** | `docs/CYCLE_STALK_HOP_OOD_OVERLAY_PARK.md` |
+| **PR** | **#34** |
+| **Base** | `main` `a50894d` (after PR #33) |
+| **Verdict** | **`PARK_HOP_OOD_OVERLAY`** after `LOCAL_SOUND_WALL` |
+| **science_open** | **false** for this cycle; no widening; existing scoped §22 ensemble OPEN unchanged |
+| **Scope** | Park the hop-OOD **overlay chase only**; do not park the whole stalk corridor or §22 |
+| **Facts** | #30 HN_SHATTER_CONFIRMED + FAIL_CLOSED_DOMINANT (45 FAIL_OPEN); #31 STRUCTURAL_CLUSTER (isolated-s / hub-t); #32 FO_PARTIAL (23/45 killed by sound outdeg0; HN 0.067→0.304; matched Δ=0); #33 remainder 22 `DIFFUSE_MULTI_HOP_LIKE_OK_FC`, `LOCAL_SOUND_WALL`, best sound cut 5/22 |
+| **Residue** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL/LOCAL_SOUND_WALL`** |
+| **Hygiene** | `outdeg(s)==0` remains optional sound **MEASURE** hygiene only; not `science_open` |
+
+### 32.1 Reading
+
+The #30–#33 hop-OOD overlay chase is frozen at `LOCAL_SOUND_WALL`. Stop further local-sound gates for this FO core; do not BFS-gate, train, re-run evals, or widen §22. The matched-OOD ensemble OPEN is unchanged. Named forks outside this chase are multi-hop competence / path reasoning and a separately attributed train/retrain experiment; neither started here.
+
+### 32.2 Non-rewrite rule
+
+Prior seal body + §13–§31 are **not** rewritten. This §32 is append-only documentation PARK (`science_open=false` for this cycle).
