@@ -10,7 +10,7 @@
 | **Branch** | `cycle/sheaf-inference` |
 | **MEASURE SHA (pre-merge tip)** | `f374e7c` (`f374e7c2414e70345bbb6fe9a68dafb1dc95f77f`) |
 | **Merge target** | PR #3 → `main` |
-| **Merge SHA (post-merge)** | _pending — filled after `gh pr merge 3 --merge`_ |
+| **Merge SHA (post-merge)** | `af8e49f` (`af8e49fc026349d01efa4fda1f151c67cd453a04`) |
 | **Prior stalk seal** | `docs/SESSION-SEAL-STALK-LOCALIZATION.md` @ `b144dac` (append-only; not rewritten) |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
@@ -106,7 +106,7 @@ Cite: same artifact `ood_eval.fixed.fixed_T6_unroll` + `ood_eval.dynamic.dynamic
 | **Claim** | Learned directed restriction maps (edge-token → Ê → hard-gated Â) + stalk-local discrete cycle diffusion resolve zero-shot path-length generalization up to K=16 on directed graphs without an external adjacency oracle at eval (covariate-matched OOD, this substrate). |
 | **Substrate** | `covariate_matched_ood` (synthetic ER digraphs, token_len band [45,70]); SheafInferCore with train-only aux edge recon + default `gate_detach_diffusion`; **no** hard A at eval |
 | **Evidence** | Prereg PASS (§4); causal horizon table (§5); Gate0 disconnect ‖h_t‖=0 + edge recon 1.0 (§2) |
-| **SHAs** | MEASURE pre-merge tip `f374e7c`; merge via PR #3 → `main` (post-merge SHA recorded in header when known) |
+| **SHAs** | MEASURE pre-merge tip `f374e7c`; merge commit `af8e49f` via PR #3 → `main` |
 
 Do **not** generalize this OPEN beyond the cited substrate, K≤16, and architecture.
 
@@ -152,6 +152,6 @@ Stub: `docs/CYCLE_SHEAF_STRESS_TEST.md`.
 - Artifact harness never self-stamps `science_open=true` (`science_open: false` in JSON).
 - `_verify_param_parity` ±5% of FF 121218; hard-fail outside window.
 - No A oracle at eval; gold edges for aux recon in training only.
-- Evidence = cited artifact paths above; SHAs `f374e7c` / PR #3 → `main`.
+- Evidence = cited artifact paths above; SHAs `f374e7c` / merge `af8e49f` / PR #3 → `main`.
 - Outside §6 claim: **fail-closed**.
 - Do not rewrite `docs/SESSION-SEAL-STALK-LOCALIZATION.md`.
