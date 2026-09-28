@@ -1,0 +1,874 @@
+{
+  "CD_pr22": 0.8111400496856206,
+  "CD_pr27": 0.6583333333333334,
+  "architecture": {
+    "aggregator_cite": "prob_mean",
+    "bag_noise_trained": false,
+    "broadcast_c": false,
+    "d": 64,
+    "hard_A": true,
+    "kind": "eval_only_competent_dissonance_audit",
+    "train": false
+  },
+  "audit": {
+    "matched_ood_T16": {
+      "pr22_ens": {
+        "D_hard": 0.2245370379752583,
+        "T": 16,
+        "agree_set": {
+          "ens_prob_mean": {
+            "K16": 1.0,
+            "hard_neg_acc": 1.0,
+            "n": 226,
+            "overall_acc": 1.0
+          },
+          "member_mean": {
+            "K16": 1.0,
+            "hard_neg_acc": 1.0,
+            "n": 226,
+            "overall_acc": 1.0
+          },
+          "n": 226
+        },
+        "bins_summary": {
+          "any_disagreement_n": 254,
+          "high_disagreement_n": 254,
+          "low_disagreement_n": 226,
+          "no_disagreement_n": 226
+        },
+        "competent_dissonance": {
+          "CD": 0.8111400496856206,
+          "CD_raw": 0.20278501242140515,
+          "D_SAT": 0.25,
+          "D_clip": 0.8981481519010333,
+          "D_hard": 0.2245370379752583,
+          "mu_acc": 0.903125
+        },
+        "deltas_ens_minus_singles_mean": {
+          "K16": 0.20750000000000002,
+          "hard_neg": 0.06500000000000006,
+          "overall": 0.09270833333333339
+        },
+        "disagree_set": {
+          "ens_prob_mean": {
+            "K16": 1.0,
+            "hard_neg_acc": 1.0,
+            "n": 254,
+            "overall_acc": 0.9921259842519685
+          },
+          "member_mean": {
+            "K16": 0.7786666666666667,
+            "hard_neg_acc": 0.8357894736842105,
+            "n": 254,
+            "overall_acc": 0.8169291338582678
+          },
+          "n": 254
+        },
+        "ensemble_prob_mean": {
+          "K12": 1.0,
+          "K16": 1.0,
+          "K8": 0.975,
+          "hard_neg_acc": 1.0,
+          "overall_acc": 0.9958333333333333
+        },
+        "formula": {
+          "ACC_FLOOR": 0.85,
+          "AUDIT_DELTA_EPS": 0.02,
+          "CD": "mu_acc * min(D_hard, D_SAT) / D_SAT",
+          "CD_raw": "mu_acc * D_hard",
+          "DIS_SET_ACC_MIN": 0.65,
+          "D_HARD_MIN": 0.05,
+          "D_SAT": 0.25,
+          "D_hard": "0.5 * (D_HN + D_K16)",
+          "easy_hop": 8
+        },
+        "fraction_examples_any_disagreement": 0.5291666388511658,
+        "global_pairwise_disagreement": 0.1623611107468605,
+        "lift_gap_any_minus_none": {
+          "K16": 0.22133333333333327,
+          "hard_neg": 0.16421052631578947,
+          "overall": 0.1751968503937007
+        },
+        "lift_gap_high_minus_low": {
+          "K16": 0.22133333333333327,
+          "hard_neg": 0.16421052631578947,
+          "overall": 0.1751968503937007
+        },
+        "n_examples": 480,
+        "n_members": 10,
+        "name": "pr14_pr18_ens_pr22",
+        "rides_on_disagreement": true,
+        "rides_split": "median_high_vs_low",
+        "seeds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "singles": [
+          {
+            "K16": 0.8625,
+            "hard_neg_acc": 1.0,
+            "overall_acc": 0.975,
+            "seed": 0
+          },
+          {
+            "K16": 0.875,
+            "hard_neg_acc": 1.0,
+            "overall_acc": 0.91875,
+            "seed": 1
+          },
+          {
+            "K16": 0.975,
+            "hard_neg_acc": 0.8708333333333333,
+            "overall_acc": 0.9145833333333333,
+            "seed": 2
+          },
+          {
+            "K16": 0.625,
+            "hard_neg_acc": 1.0,
+            "overall_acc": 0.8854166666666666,
+            "seed": 3
+          },
+          {
+            "K16": 0.975,
+            "hard_neg_acc": 0.9125,
+            "overall_acc": 0.9520833333333333,
+            "seed": 4
+          },
+          {
+            "K16": 0.5375,
+            "hard_neg_acc": 0.9125,
+            "overall_acc": 0.8645833333333334,
+            "seed": 5
+          },
+          {
+            "K16": 0.1125,
+            "hard_neg_acc": 0.9916666666666667,
+            "overall_acc": 0.8125,
+            "seed": 6
+          },
+          {
+            "K16": 1.0,
+            "hard_neg_acc": 0.9458333333333333,
+            "overall_acc": 0.8833333333333333,
+            "seed": 7
+          },
+          {
+            "K16": 0.975,
+            "hard_neg_acc": 0.7166666666666667,
+            "overall_acc": 0.8541666666666666,
+            "seed": 8
+          },
+          {
+            "K16": 0.9875,
+            "hard_neg_acc": 1.0,
+            "overall_acc": 0.9708333333333333,
+            "seed": 9
+          }
+        ],
+        "singles_mean": {
+          "K16": 0.7925,
+          "hard_neg_acc": 0.9349999999999999,
+          "overall_acc": 0.903125,
+          "std_K16": 0.28832610780927287,
+          "std_hard_neg": 0.09007884063898801,
+          "std_overall": 0.053044374185355875
+        },
+        "skipped": false,
+        "slice_pairwise_disagreement": {
+          "K12": 0.07638888930281003,
+          "K16": 0.3372222240600321,
+          "easy_K8": 0.2250000022765663,
+          "hard_neg": 0.1118518518904845
+        },
+        "uncertainty": {
+          "aleatoric_entropy_mean": 0.07997128367424011,
+          "epistemic_entropy_mean": 0.19168883562088013,
+          "n": 480,
+          "total_entropy_mean": 0.27166005969047546
+        },
+        "verdict": "COMPETENT"
+      },
+      "pr27_bag": {
+        "D_hard": 0.4662500022444874,
+        "T": 16,
+        "agree_set": {
+          "ens_prob_mean": {
+            "K16": NaN,
+            "hard_neg_acc": 1.0,
+            "n": 87,
+            "overall_acc": 0.9885057471264368
+          },
+          "member_mean": {
+            "K16": NaN,
+            "hard_neg_acc": 1.0,
+            "n": 87,
+            "overall_acc": 0.9885057471264368
+          },
+          "n": 87
+        },
+        "bins_summary": {
+          "any_disagreement_n": 393,
+          "high_disagreement_n": 249,
+          "low_disagreement_n": 231,
+          "no_disagreement_n": 87
+        },
+        "competent_dissonance": {
+          "CD": 0.6583333333333334,
+          "CD_raw": 0.3069479181442876,
+          "D_SAT": 0.25,
+          "D_clip": 1.0,
+          "D_hard": 0.4662500022444874,
+          "mu_acc": 0.6583333333333334
+        },
+        "deltas_ens_minus_singles_mean": {
+          "K16": 0.25,
+          "hard_neg": 0.10083333333333333,
+          "overall": 0.10208333333333319
+        },
+        "disagree_set": {
+          "ens_prob_mean": {
+            "K16": 0.7875,
+            "hard_neg_acc": 0.7207792207792207,
+            "n": 393,
+            "overall_acc": 0.7099236641221374
+          },
+          "member_mean": {
+            "K16": 0.5375,
+            "hard_neg_acc": 0.5636363636363637,
+            "n": 393,
+            "overall_acc": 0.5852417302798982
+          },
+          "n": 393
+        },
+        "ensemble_prob_mean": {
+          "K12": 0.9375,
+          "K16": 0.7875,
+          "K8": 0.375,
+          "hard_neg_acc": 0.8208333333333333,
+          "overall_acc": 0.7604166666666666
+        },
+        "formula": {
+          "ACC_FLOOR": 0.85,
+          "AUDIT_DELTA_EPS": 0.02,
+          "CD": "mu_acc * min(D_hard, D_SAT) / D_SAT",
+          "CD_raw": "mu_acc * D_hard",
+          "DIS_SET_ACC_MIN": 0.65,
+          "D_HARD_MIN": 0.05,
+          "D_SAT": 0.25,
+          "D_hard": "0.5 * (D_HN + D_K16)",
+          "easy_hop": 8
+        },
+        "fraction_examples_any_disagreement": 0.8187500238418579,
+        "global_pairwise_disagreement": 0.43125000298023225,
+        "lift_gap_any_minus_none": {
+          "K16": NaN,
+          "hard_neg": 0.15714285714285703,
+          "overall": 0.12468193384223913
+        },
+        "lift_gap_high_minus_low": {
+          "K16": 0.45696400625978084,
+          "hard_neg": 0.17174215059738818,
+          "overall": 0.08997027069316221
+        },
+        "n_examples": 480,
+        "n_members": 5,
+        "name": "pr27_bag",
+        "rides_on_disagreement": true,
+        "rides_split": "median_high_vs_low",
+        "seeds": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "singles": [
+          {
+            "K16": 0.0125,
+            "hard_neg_acc": 0.575,
+            "overall_acc": 0.55,
+            "seed": 0
+          },
+          {
+            "K16": 0.0,
+            "hard_neg_acc": 1.0,
+            "overall_acc": 0.50625,
+            "seed": 1
+          },
+          {
+            "K16": 0.8875,
+            "hard_neg_acc": 0.7416666666666667,
+            "overall_acc": 0.7166666666666667,
+            "seed": 2
+          },
+          {
+            "K16": 0.85,
+            "hard_neg_acc": 0.775,
+            "overall_acc": 0.7791666666666667,
+            "seed": 3
+          },
+          {
+            "K16": 0.9375,
+            "hard_neg_acc": 0.5083333333333333,
+            "overall_acc": 0.7395833333333334,
+            "seed": 4
+          }
+        ],
+        "singles_mean": {
+          "K16": 0.5375,
+          "hard_neg_acc": 0.72,
+          "overall_acc": 0.6583333333333334,
+          "std_K16": 0.4859751794073438,
+          "std_hard_neg": 0.19217324359950727,
+          "std_overall": 0.12193285663748626
+        },
+        "skipped": false,
+        "slice_pairwise_disagreement": {
+          "K12": 0.42750000320374965,
+          "K16": 0.5775000003166497,
+          "easy_K8": 0.5174999982118607,
+          "hard_neg": 0.35500000417232513
+        },
+        "uncertainty": {
+          "aleatoric_entropy_mean": 0.27638086676597595,
+          "epistemic_entropy_mean": 0.2893187701702118,
+          "n": 480,
+          "total_entropy_mean": 0.5656996369361877
+        },
+        "verdict": "CHAOS"
+      }
+    },
+    "ood_hops_T16_stress": {
+      "pr22_ens": {
+        "D_hard": 0.28472222063897384,
+        "T": 16,
+        "agree_set": {
+          "ens_prob_mean": {
+            "K16": 1.0,
+            "hard_neg_acc": 0.0,
+            "n": 134,
+            "overall_acc": 0.664179104477612
+          },
+          "member_mean": {
+            "K16": 1.0,
+            "hard_neg_acc": 0.0,
+            "n": 134,
+            "overall_acc": 0.664179104477612
+          },
+          "n": 134
+        },
+        "bins_summary": {
+          "any_disagreement_n": 346,
+          "high_disagreement_n": 247,
+          "low_disagreement_n": 233,
+          "no_disagreement_n": 134
+        },
+        "competent_dissonance": {
+          "CD": 0.553125,
+          "CD_raw": 0.1574869782909324,
+          "D_SAT": 0.25,
+          "D_clip": 1.0,
+          "D_hard": 0.28472222063897384,
+          "mu_acc": 0.553125
+        },
+        "deltas_ens_minus_singles_mean": {
+          "K16": 0.12750000000000006,
+          "hard_neg": -0.185,
+          "overall": -0.04270833333333335
+        },
+        "disagree_set": {
+          "ens_prob_mean": {
+            "K16": 0.9777777777777777,
+            "hard_neg_acc": 0.08205128205128205,
+            "n": 346,
+            "overall_acc": 0.4508670520231214
+          },
+          "member_mean": {
+            "K16": 0.7511111111111111,
+            "hard_neg_acc": 0.30974358974358973,
+            "n": 346,
+            "overall_acc": 0.5101156069364162
+          },
+          "n": 346
+        },
+        "ensemble_prob_mean": {
+          "K12": 0.975,
+          "K16": 0.9875,
+          "K8": 0.9,
+          "hard_neg_acc": 0.06666666666666667,
+          "overall_acc": 0.5104166666666666
+        },
+        "formula": {
+          "ACC_FLOOR": 0.85,
+          "AUDIT_DELTA_EPS": 0.02,
+          "CD": "mu_acc * min(D_hard, D_SAT) / D_SAT",
+          "CD_raw": "mu_acc * D_hard",
+          "DIS_SET_ACC_MIN": 0.65,
+          "D_HARD_MIN": 0.05,
+          "D_SAT": 0.25,
+          "D_hard": "0.5 * (D_HN + D_K16)",
+          "easy_hop": 8
+        },
+        "fraction_examples_any_disagreement": 0.7208333611488342,
+        "global_pairwise_disagreement": 0.2860648151901033,
+        "lift_gap_any_minus_none": {
+          "K16": 0.22666666666666668,
+          "hard_neg": -0.2276923076923077,
+          "overall": -0.05924855491329484
+        },
+        "lift_gap_high_minus_low": {
+          "K16": 0.26,
+          "hard_neg": -0.21081081081081077,
+          "overall": -0.11719170822400993
+        },
+        "n_examples": 480,
+        "n_members": 10,
+        "name": "pr14_pr18_ens_pr22_ood_hops",
+        "rides_on_disagreement": true,
+        "rides_split": "median_high_vs_low",
+        "seeds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "singles": [
+          {
+            "K16": 1.0,
+            "hard_neg_acc": 0.08333333333333333,
+            "overall_acc": 0.5416666666666666,
+            "seed": 0
+          },
+          {
+            "K16": 0.675,
+            "hard_neg_acc": 0.6958333333333333,
+            "overall_acc": 0.6833333333333333,
+            "seed": 1
+          },
+          {
+            "K16": 0.9375,
+            "hard_neg_acc": 0.15,
+            "overall_acc": 0.5416666666666666,
+            "seed": 2
+          },
+          {
+            "K16": 0.6625,
+            "hard_neg_acc": 0.0,
+            "overall_acc": 0.38333333333333336,
+            "seed": 3
+          },
+          {
+            "K16": 0.9875,
+            "hard_neg_acc": 0.06666666666666667,
+            "overall_acc": 0.5104166666666666,
+            "seed": 4
+          },
+          {
+            "K16": 0.825,
+            "hard_neg_acc": 0.15,
+            "overall_acc": 0.5166666666666667,
+            "seed": 5
+          },
+          {
+            "K16": 0.8375,
+            "hard_neg_acc": 0.5416666666666666,
+            "overall_acc": 0.6395833333333333,
+            "seed": 6
+          },
+          {
+            "K16": 0.9,
+            "hard_neg_acc": 0.1625,
+            "overall_acc": 0.50625,
+            "seed": 7
+          },
+          {
+            "K16": 1.0,
+            "hard_neg_acc": 0.43333333333333335,
+            "overall_acc": 0.7104166666666667,
+            "seed": 8
+          },
+          {
+            "K16": 0.775,
+            "hard_neg_acc": 0.23333333333333334,
+            "overall_acc": 0.4979166666666667,
+            "seed": 9
+          }
+        ],
+        "singles_mean": {
+          "K16": 0.86,
+          "hard_neg_acc": 0.25166666666666665,
+          "overall_acc": 0.553125,
+          "std_K16": 0.12703892666773003,
+          "std_hard_neg": 0.22833772637028382,
+          "std_overall": 0.09812699042567238
+        },
+        "skipped": false,
+        "slice_pairwise_disagreement": {
+          "K12": 0.24138888905031813,
+          "K16": 0.21111110933125019,
+          "easy_K8": 0.18888888851635985,
+          "hard_neg": 0.3583333319466975
+        },
+        "uncertainty": {
+          "aleatoric_entropy_mean": 0.134206622838974,
+          "epistemic_entropy_mean": 0.2973574101924896,
+          "n": 480,
+          "total_entropy_mean": 0.4315640330314636
+        },
+        "verdict": "CHAOS"
+      },
+      "pr27_bag": {
+        "D_hard": 0.44375000046566127,
+        "T": 16,
+        "agree_set": {
+          "ens_prob_mean": {
+            "K16": NaN,
+            "hard_neg_acc": 0.9230769230769231,
+            "n": 43,
+            "overall_acc": 0.9302325581395349
+          },
+          "member_mean": {
+            "K16": NaN,
+            "hard_neg_acc": 0.9230769230769231,
+            "n": 43,
+            "overall_acc": 0.930232558139535
+          },
+          "n": 43
+        },
+        "bins_summary": {
+          "any_disagreement_n": 437,
+          "high_disagreement_n": 437,
+          "low_disagreement_n": 43,
+          "no_disagreement_n": 43
+        },
+        "competent_dissonance": {
+          "CD": 0.49874999999999997,
+          "CD_raw": 0.22132031273224853,
+          "D_SAT": 0.25,
+          "D_clip": 1.0,
+          "D_hard": 0.44375000046566127,
+          "mu_acc": 0.49874999999999997
+        },
+        "deltas_ens_minus_singles_mean": {
+          "K16": 0.07750000000000012,
+          "hard_neg": -0.1708333333333333,
+          "overall": -0.00708333333333333
+        },
+        "disagree_set": {
+          "ens_prob_mean": {
+            "K16": 0.675,
+            "hard_neg_acc": 0.03980099502487562,
+            "n": 437,
+            "overall_acc": 0.448512585812357
+          },
+          "member_mean": {
+            "K16": 0.5974999999999999,
+            "hard_neg_acc": 0.24378109452736316,
+            "n": 437,
+            "overall_acc": 0.45629290617848967
+          },
+          "n": 437
+        },
+        "ensemble_prob_mean": {
+          "K12": 0.85,
+          "K16": 0.675,
+          "K8": 0.875,
+          "hard_neg_acc": 0.18333333333333332,
+          "overall_acc": 0.49166666666666664
+        },
+        "formula": {
+          "ACC_FLOOR": 0.85,
+          "AUDIT_DELTA_EPS": 0.02,
+          "CD": "mu_acc * min(D_hard, D_SAT) / D_SAT",
+          "CD_raw": "mu_acc * D_hard",
+          "DIS_SET_ACC_MIN": 0.65,
+          "D_HARD_MIN": 0.05,
+          "D_SAT": 0.25,
+          "D_hard": "0.5 * (D_HN + D_K16)",
+          "easy_hop": 8
+        },
+        "fraction_examples_any_disagreement": 0.9104166626930237,
+        "global_pairwise_disagreement": 0.4266666680574417,
+        "lift_gap_any_minus_none": {
+          "K16": NaN,
+          "hard_neg": -0.20398009950248752,
+          "overall": -0.007780320366132576
+        },
+        "lift_gap_high_minus_low": {
+          "K16": NaN,
+          "hard_neg": -0.20398009950248752,
+          "overall": -0.007780320366132576
+        },
+        "n_examples": 480,
+        "n_members": 5,
+        "name": "pr27_bag_ood_hops",
+        "rides_on_disagreement": false,
+        "rides_split": "median_high_vs_low",
+        "seeds": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "singles": [
+          {
+            "K16": 0.6625,
+            "hard_neg_acc": 0.25416666666666665,
+            "overall_acc": 0.5270833333333333,
+            "seed": 0
+          },
+          {
+            "K16": 0.0375,
+            "hard_neg_acc": 0.9875,
+            "overall_acc": 0.5125,
+            "seed": 1
+          },
+          {
+            "K16": 0.675,
+            "hard_neg_acc": 0.20416666666666666,
+            "overall_acc": 0.4625,
+            "seed": 2
+          },
+          {
+            "K16": 0.6625,
+            "hard_neg_acc": 0.175,
+            "overall_acc": 0.43125,
+            "seed": 3
+          },
+          {
+            "K16": 0.95,
+            "hard_neg_acc": 0.15,
+            "overall_acc": 0.5604166666666667,
+            "seed": 4
+          }
+        ],
+        "singles_mean": {
+          "K16": 0.5974999999999999,
+          "hard_neg_acc": 0.35416666666666663,
+          "overall_acc": 0.49874999999999997,
+          "std_K16": 0.33627091013050775,
+          "std_hard_neg": 0.3561586140097321,
+          "std_overall": 0.05163557532253212
+        },
+        "skipped": false,
+        "slice_pairwise_disagreement": {
+          "K12": 0.4649999991059303,
+          "K16": 0.5224999994039535,
+          "easy_K8": 0.47750000059604647,
+          "hard_neg": 0.365000001527369
+        },
+        "uncertainty": {
+          "aleatoric_entropy_mean": 0.28801122307777405,
+          "epistemic_entropy_mean": 0.29731643199920654,
+          "n": 480,
+          "total_entropy_mean": 0.585327684879303
+        },
+        "verdict": "CHAOS"
+      },
+      "shatter_pr22": {
+        "CD_drop": 0.2580150496856206,
+        "CD_matched": 0.8111400496856206,
+        "CD_stress": 0.553125,
+        "drops_matched_minus_stress": {
+          "K16": 0.012499999999999956,
+          "hard_neg": 0.9333333333333333,
+          "overall": 0.4854166666666667
+        },
+        "note": "ens HN or K16 dropped \u2265 threshold on ood_hops vs matched-OOD",
+        "shattered": true,
+        "threshold": 0.1
+      }
+    },
+    "pairwise_disagreement_by_T": {
+      "pr22_ens": {
+        "12": 0.2436574066678683,
+        "16": 0.1623611107468605,
+        "6": 0.3047685177789794,
+        "8": 0.27787037193775177
+      },
+      "pr27_bag": {
+        "12": 0.4595833420753479,
+        "16": 0.43125000298023225,
+        "6": 0.40375000089406965,
+        "8": 0.4050000041723251
+      }
+    }
+  },
+  "base_sha": "3e20a4d87455e503c2503aaa67dceaa7d6ed4de3",
+  "cycle": "CYCLE_STALK_COMPETENT_DISSONANCE",
+  "cycle_verdict": "COMPETENT_vs_CHAOS",
+  "datasets": {
+    "id_cited": "data/id_2k.jsonl",
+    "n_ood": 480,
+    "n_stress": 480,
+    "ood_primary": "data/covariate_matched_ood.jsonl",
+    "ood_stress": "data/ood_hops.jsonl"
+  },
+  "degree_balanced_construction": {
+    "n": 477,
+    "note": "secondary cite only; primary=full matched-OOD"
+  },
+  "elapsed_sec": 61.683,
+  "mandelbrot_analogy": "competent dissonance = accurate members that usefully disagree on hard slices; chaos = over-dispersed weak bag; echo \u2260 low global rate when disagreement-localized lift holds",
+  "members_pr22": [
+    {
+      "best_epoch": 58,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed0_best.pt",
+      "seed": 0,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 25,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed1_best.pt",
+      "seed": 1,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 26,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed2_best.pt",
+      "seed": 2,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 43,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed3_best.pt",
+      "seed": 3,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 37,
+      "checkpoint_path": "artifacts/fractal_core_stalk_stabilize_seed4_best.pt",
+      "seed": 4,
+      "source": "pr14"
+    },
+    {
+      "best_epoch": 51,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed5_best.pt",
+      "seed": 5,
+      "source": "pr18"
+    },
+    {
+      "best_epoch": 31,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed6_best.pt",
+      "seed": 6,
+      "source": "pr18"
+    },
+    {
+      "best_epoch": 2,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed7_best.pt",
+      "seed": 7,
+      "source": "pr18"
+    },
+    {
+      "best_epoch": 28,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed8_best.pt",
+      "seed": 8,
+      "source": "pr18"
+    },
+    {
+      "best_epoch": 50,
+      "checkpoint_path": "artifacts/fractal_core_stalk_seed_stability_seed9_best.pt",
+      "seed": 9,
+      "source": "pr18"
+    }
+  ],
+  "members_pr27": [
+    {
+      "best_epoch": 5,
+      "checkpoint_path": "artifacts/fractal_core_stalk_bag_diversity_seed0_best.pt",
+      "seed": 0,
+      "source": "pr27_bag"
+    },
+    {
+      "best_epoch": 26,
+      "checkpoint_path": "artifacts/fractal_core_stalk_bag_diversity_seed1_best.pt",
+      "seed": 1,
+      "source": "pr27_bag"
+    },
+    {
+      "best_epoch": 20,
+      "checkpoint_path": "artifacts/fractal_core_stalk_bag_diversity_seed2_best.pt",
+      "seed": 2,
+      "source": "pr27_bag"
+    },
+    {
+      "best_epoch": 16,
+      "checkpoint_path": "artifacts/fractal_core_stalk_bag_diversity_seed3_best.pt",
+      "seed": 3,
+      "source": "pr27_bag"
+    },
+    {
+      "best_epoch": 15,
+      "checkpoint_path": "artifacts/fractal_core_stalk_bag_diversity_seed4_best.pt",
+      "seed": 4,
+      "source": "pr27_bag"
+    }
+  ],
+  "mode": "MEASURE",
+  "open_status": "science_open_false_not_widened",
+  "policy": {
+    "narrative_lock": "#22 low global disagree \u2260 echo chamber when rides_on_disagreement (\u00a724 / #26); COMPETENT requires competence + hard-slice/localized disagree geometry. #27 high disagree with weak members \u2192 CHAOS risk.",
+    "no_bag_noise": true,
+    "no_train": true,
+    "science_open_not_widened": true,
+    "select_curriculum_closed": true
+  },
+  "prefer_arm": "pr22_ens",
+  "prefer_corridor": "Prefer #14 MEASURE_STILL + #22 ens overlay when COMPETENT; do not chase #27 bag noise. science_open=false; \u00a722 unchanged.",
+  "prereg": {
+    "formula": {
+      "CD": "mu_acc * min(D_hard, D_SAT) / D_SAT",
+      "CD_raw": "mu_acc * D_hard",
+      "D_SAT": 0.25,
+      "D_hard": "0.5 * (D_HN + D_K16)",
+      "easy_hop": 8
+    },
+    "labels": [
+      "COMPETENT",
+      "ECHO_RISK",
+      "CHAOS"
+    ],
+    "metrics": [
+      "global_pairwise_disagreement",
+      "slice_disagree_hard_neg_K16_easyK8",
+      "member_acc_agree_vs_disagree_set",
+      "competent_dissonance_CD",
+      "optional_ood_hops_shatter"
+    ],
+    "science_open_widened": false,
+    "train": false,
+    "verdict_thresholds": {
+      "ACC_FLOOR": 0.85,
+      "AUDIT_DELTA_EPS": 0.02,
+      "DIS_SET_ACC_MIN": 0.65,
+      "D_HARD_MIN": 0.05,
+      "SHATTER_DROP": 0.1
+    }
+  },
+  "residue": {
+    "bag_diversity": "MEASURE_LIFT",
+    "distill": "STOP",
+    "multi_hyp": "STOP",
+    "section_22_widened": false,
+    "select_curriculum": "CLOSED",
+    "swa": "MEASURE"
+  },
+  "science_open": false,
+  "verdict_pr22": "COMPETENT",
+  "verdict_pr27": "CHAOS"
+}

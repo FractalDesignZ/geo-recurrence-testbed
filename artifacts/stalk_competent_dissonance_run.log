@@ -1,0 +1,21 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[stalk-cd] loading #14/#18/#22 ens n=10
+[stalk-cd] loading #27 bag n=5
+[stalk-cd] AUDIT matched-OOD T16 #22 ens
+[stalk-cd] AUDIT matched-OOD T16 #27 bag
+[stalk-cd] pair-disagree by T (matched-OOD)
+[stalk-cd] AUDIT ood_hops T16 #22 ens (shatter probe)
+[stalk-cd] AUDIT ood_hops T16 #27 bag
+[stalk-cd] wrote artifacts/stalk_competent_dissonance.json cycle_verdict=COMPETENT_vs_CHAOS pr22=COMPETENT pr27=CHAOS CD22=0.8111400496856206 CD27=0.6583333333333334 science_open=false elapsed=61.683s
+{
+  "cycle": "CYCLE_STALK_COMPETENT_DISSONANCE",
+  "cycle_verdict": "COMPETENT_vs_CHAOS",
+  "verdict_pr22": "COMPETENT",
+  "verdict_pr27": "CHAOS",
+  "CD_pr22": 0.8111400496856206,
+  "CD_pr27": 0.6583333333333334,
+  "prefer_arm": "pr22_ens",
+  "science_open": false,
+  "elapsed_sec": 61.683
+}

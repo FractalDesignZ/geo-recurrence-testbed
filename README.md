@@ -454,7 +454,7 @@ python -m reachability_gen.run_stalk_swa_persist
 Artifact: `artifacts/stalk_swa_persist.json`. See `docs/CYCLE_STALK_SWA_PERSIST.md`.
 
 
-## Cycle: STALK_COMPETENT_DISSONANCE (MEASURE audit)
+## Cycle: STALK_COMPETENT_DISSONANCE (COMPETENT_vs_CHAOS)
 
 Eval-only audit: frozen **#14/#18/#22** ens vs **#27** bag — global/slice pairwise
 disagree, member acc on agree vs disagree sets, competent-dissonance

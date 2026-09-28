@@ -132,8 +132,59 @@ Thresholds locked:
 |-------|-------|
 | **Artifact** | `artifacts/stalk_competent_dissonance.json` |
 | **Log** | `artifacts/stalk_competent_dissonance_run.log` |
-| **Verdict (#22 / #27)** | *(filled after run)* |
-| **science_open** | **false** (not widened) |
-| **Prereg SHA** | *(this commit, before run)* |
+| **Verdict (#22)** | **`COMPETENT`** |
+| **Verdict (#27)** | **`CHAOS`** |
+| **Cycle verdict** | **`COMPETENT_vs_CHAOS`** (prefer **#22 ens**) |
+| **science_open** | **false** (not widened; §22 ensemble scope unchanged) |
+| **Elapsed** | ~62 s (~1.0 min CDT) |
+| **Prereg SHA** | `3e20a4d` (committed before runs) |
+| **CD (#22 / #27)** | **0.811** / **0.658** |
 
-*(tables filled after MEASURE run)*
+### Matched-OOD T16 — (a)(b)(d) disagree + CD
+
+| Arm | global pair | D_HN | D_K16 | D_easy(K8) | D_hard | μ_acc | CD | CD_raw | verdict |
+|-----|-------------|------|-------|------------|--------|-------|-----|--------|---------|
+| **#22 ens (n=10)** | **0.162** | 0.112 | **0.337** | 0.225 | **0.225** | **0.903** | **0.811** | 0.203 | **COMPETENT** |
+| **#27 bag (n=5)** | **0.431** | 0.355 | **0.578** | 0.518 | **0.466** | **0.658** | **0.658** | 0.307 | **CHAOS** |
+
+`D_hard = 0.5·(D_HN+D_K16)`; `CD = μ_acc · min(D_hard, 0.25)/0.25`. Excess bag disagree is clipped — does not beat #22 on CD.
+
+### (c) Member accuracy — agree-set vs disagree-set @ T16
+
+| Arm | agree n | member ov (agree) | disagree n | member ov (disagree) | ens ov (disagree) |
+|-----|---------|-------------------|------------|----------------------|-------------------|
+| **#22** | 226 | **1.000** | 254 | **0.817** | **0.992** |
+| **#27** | 87 | 0.989 | 393 | **0.585** | 0.710 |
+
+#22 members stay competent on the disagree-set (0.817); ens recovers to 0.992. #27 members collapse on disagree-set (0.585) — diversity without competence.
+
+### Ens vs singles + rides (#26 pattern) @ T16
+
+| Arm | ens ov/HN/K16 | singles mean ov/HN/K16 | lift_gap high−low (ov/HN/K16) | rides? |
+|-----|---------------|------------------------|-------------------------------|--------|
+| **#22** | **0.996 / 1.000 / 1.000** | 0.903 / 0.935 / 0.792 | **+0.175 / +0.164 / +0.221** | **YES** |
+| **#27** | 0.760 / 0.821 / 0.788 | 0.658 / 0.720 / 0.538 | +0.090 / +0.172 / +0.457 | YES (weak base) |
+
+### Pair-disagree by T (matched-OOD)
+
+| T | #22 | #27 |
+|---|-----|-----|
+| 6 | 0.305 | 0.404 |
+| 8 | 0.278 | 0.405 |
+| 12 | 0.244 | 0.460 |
+| **16** | **0.162** | **0.431** |
+
+### (e) Optional OOD stress — `ood_hops` @ T16 (#22 shatter probe)
+
+| Arm | global pair | D_hard | μ_acc | CD | ens HN / K16 | verdict |
+|-----|-------------|--------|-------|-----|--------------|---------|
+| #22 | 0.286 | 0.285 | 0.553 | 0.553 | **0.067 / 0.988** | CHAOS (stress) |
+| #27 | 0.427 | 0.444 | 0.499 | 0.499 | 0.183 / 0.675 | CHAOS |
+
+**Shatter note (#22):** ens HN drops **1.000 → 0.067** (Δ≥0.10) on `ood_hops` vs matched-OOD; K16 holds (1.000 → 0.988). Substrate-scoped §22 claim is **matched-OOD**; alternate OOD HN shatter is residue — do **not** widen §22. CD drops 0.811 → 0.553.
+
+### Reading (fail-closed)
+
+1. **#22 = COMPETENT dissonance** on sealed matched-OOD: high member μ_acc (0.903), hard-slice disagree D_hard **0.225** (K16-driven **0.337**), disagree-set members still accurate (0.817), ens recovers (0.992), lift **rides on disagreement** (§24). **Low global pair 0.162 ≠ echo chamber.**
+2. **#27 = CHAOS**: higher global/hard disagree (0.431 / 0.466) but weak members (μ_acc 0.658 < 0.85; disagree-set 0.585). CD clipped at 0.658 < #22 0.811. Diversity without competence — do **not** train more bag noise.
+3. Prefer #14 MEASURE_STILL + #22 ens overlay. Distill STOP; SWA MEASURE; multi-hyp STOP; bag MEASURE_LIFT; select/curriculum CLOSED; **§22 not widened**. `science_open=false`.

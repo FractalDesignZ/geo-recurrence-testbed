@@ -4,8 +4,8 @@
 |-------|-------|
 | **Date** | 2026-09-28 (CDT) |
 | **Repo** | https://github.com/FractalDesignZ/geo-recurrence-testbed |
-| **Base after PR #26** | `f210d0c` (epistemic disagreement) |
-| **Hygiene** | PR #12 demotes stalk §6 OPEN → **MEASURE**; PR #14 MEASURE_STILL 2/5; PR #15/#16/#17 STOP_FRAGILE; PR #18 envelope 3/10; PR #19/#20 park select/curriculum; **#22/#24** ensemble `prob_mean` → **scoped science_open §22** (ensemble-at-eval only); **#23** distill → **STOP**; **#25** SWA → **MEASURE**; **#26** audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP**; **bag diversity** → **MEASURE_LIFT** (HN 0.821 FAIL / K16 0.788 PASS; pair disagree 0.431 ≥ #22 0.162); singles MEASURE_STILL/fragile; select/curriculum CLOSED; sheaf unsupervised NOT opened; §22 scope **not** widened |
+| **Base after PR #27** | `07401f0` (bag diversity) |
+| **Hygiene** | PR #12 demotes stalk §6 OPEN → **MEASURE**; PR #14 MEASURE_STILL 2/5; PR #15/#16/#17 STOP_FRAGILE; PR #18 envelope 3/10; PR #19/#20 park select/curriculum; **#22/#24** ensemble `prob_mean` → **scoped science_open §22** (ensemble-at-eval only); **#23** distill → **STOP**; **#25** SWA → **MEASURE**; **#26** audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP**; **#27** bag → **MEASURE_LIFT**; **competent dissonance** → **COMPETENT_vs_CHAOS** (#22 COMPETENT CD 0.811; #27 CHAOS CD 0.658; #22 low global disagree ≠ echo); singles MEASURE_STILL/fragile; select/curriculum CLOSED; sheaf unsupervised NOT opened; §22 scope **not** widened |
 | **science_open policy** | Fail-closed. Harness never self-stamps `true`. Human seal only. |
 | **Purpose** | Single dimensional table of seals/PRs and **clear next cells**. |
 
@@ -43,6 +43,7 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | **PR #25** | `CYCLE_STALK_SWA_PERSIST` | **MEASURE** SWA single-model persist | **false** (not widened; §22 unchanged) | hard-A stalk #14 freeze + Polyak SWA ep≥31 | n/a | n/a | matched-OOD T∈{6,8,12,16}; seeds **0..4**; floors on SWA mean HN≥0.95 K16≥0.75 | **`MEASURE`** (SWA mean HN **0.867** FAIL / K16 **0.910** PASS; 2/5; ΔK16 vs select **+0.047**, ΔHN **−0.090**) | `artifacts/stalk_swa_persist.json` / seal §23 / `docs/CYCLE_STALK_SWA_PERSIST.md` |
 | **PR #26** | `CYCLE_STALK_EPISTEMIC_DISAGREEMENT` | **MEASURE** audit + multi-hyp diversity | **false** (not widened; §22 unchanged) | hard-A stalk #14 freeze + H=3 heads; CE−λ·JS (not soft distill) | n/a | n/a | matched-OOD T16 audit + seeds **0,1,2**; floors on multi-hyp mean HN≥0.95 K16≥0.75 | **Audit `LIFTS_ON_DISAGREEMENT`** + train **`STOP`** (mean HN **0.942** FAIL / K16 **0.712** FAIL; 0/3; within-head disagree ~0.009) | `artifacts/stalk_epistemic_disagreement.json` / seal §24 / `docs/CYCLE_STALK_EPISTEMIC_DISAGREEMENT.md` |
 | **PR #27** | `CYCLE_STALK_BAG_DIVERSITY` | **MEASURE** DGE-style independent bag | **false** (not widened; §22 unchanged) | hard-A stalk #14 freeze; bootstrap + EDGE_KEEP_P=0.75 subspace; separate params | n/a | n/a | matched-OOD T∈{6,8,12,16}; members **0..4**; floors on bag ens HN≥0.95 K16≥0.75 | **`MEASURE_LIFT`** (ens HN **0.821** FAIL / K16 **0.788** PASS; ΔHN/K16 vs singles **+0.101 / +0.250**; pair disagree **0.431** ≥ #22 **0.162**) | `artifacts/stalk_bag_diversity.json` / seal §25 / `docs/CYCLE_STALK_BAG_DIVERSITY.md` |
+| **PR #28** | `CYCLE_STALK_COMPETENT_DISSONANCE` | **MEASURE** eval-only competent-dissonance audit | **false** (not widened; §22 unchanged) | frozen #14/#18/#22 ens vs #27 bag; no train | n/a | n/a | matched-OOD T16 + ood_hops stress; CD=μ·min(D_hard,0.25)/0.25 | **`COMPETENT_vs_CHAOS`** (#22 **COMPETENT** CD **0.811**; #27 **CHAOS** CD **0.658**; D_hard 0.225 vs 0.466) | `artifacts/stalk_competent_dissonance.json` / seal §26 / `docs/CYCLE_STALK_COMPETENT_DISSONANCE.md` |
 
 ### 1.1 Status legend
 
@@ -61,7 +62,7 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 |-------|--------|
 | Sheaf §6 sparse [45,70] K≤16 "**learned** Â" | **INVALID** (PR #7 / seal §16) |
 | Dense-context §6 "**learned**" dense band | **INVALIDATED** (dense seal §8) |
-| Stalk §6 hard-A locality | **MEASURE** (demoted singles) + **OPEN** scoped **§22** ensemble-at-eval `prob_mean` on frozen #14/#18 (PR #22/#24); singles remain MEASURE_STILL/fragile; **#23 distill STOP**; **#25 SWA MEASURE**; **§24 audit LIFTS_ON_DISAGREEMENT + multi-hyp STOP**; **§25 bag diversity MEASURE_LIFT** (disagree↑ but HN miss); select/curriculum **CLOSED**; sheaf unsupervised **NOT** opened; hist. §6 demoted; **not INVALID** |
+| Stalk §6 hard-A locality | **MEASURE** (demoted singles) + **OPEN** scoped **§22** ensemble-at-eval `prob_mean` on frozen #14/#18 (PR #22/#24); singles remain MEASURE_STILL/fragile; **#23 distill STOP**; **#25 SWA MEASURE**; **§24 audit LIFTS_ON_DISAGREEMENT + multi-hyp STOP**; **§25 bag MEASURE_LIFT**; **§26 competent dissonance COMPETENT_vs_CHAOS** (#22 COMPETENT ≠ echo; #27 CHAOS); select/curriculum **CLOSED**; sheaf unsupervised **NOT** opened; hist. §6 demoted; **not INVALID** |
 | Feasibility true p=0.15 under [45,70] | **INVALID** (PR #5) |
 | With-aux neutral retrain floors (PR #8) | **MEASURE** candidate only (`science_open=false`) |
 | No-aux detach (PR #9) | **STOP** residue |
@@ -89,7 +90,8 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | **5d (done)** | `CYCLE_STALK_SWA_PERSIST` | #14 freeze + Polyak SWA ep≥31; seeds 0..4; floors on SWA mean; paired select | — | **MEASURE** | SWA HN 0.867 FAIL / K16 0.910 PASS; ΔK16 vs select +0.047 / ΔHN −0.090; 2/5. Not single-model substitute for ens. §22 not widened. |
 | **5e (done)** | `CYCLE_STALK_EPISTEMIC_DISAGREEMENT` | audit #14/#18 vs SWA disagreement; multi-hyp H=3 CE−λ·JS; seeds 0,1,2; floors on multi-hyp mean | — | **STOP** (train) + **AUDIT_LIFTS_ON_DISAGREEMENT** | #22 lift rides on disagreement (lift_gap +0.16–0.22); multi-hyp heads collapsed; HN 0.942 / K16 0.712 FAIL; 0/3. §22 not widened. |
 | **5f (done)** | `CYCLE_STALK_BAG_DIVERSITY` | DGE bag: separate params + bootstrap + EDGE_KEEP_P=0.75; members 0..4; ens `prob_mean`; pairwise vs #22 | — | **MEASURE_LIFT** | Ens HN 0.821 FAIL / K16 0.788 PASS; Δ vs singles +0.10/+0.25; pair disagree 0.431 ≥ #22 0.162 but far below #22/#14 accuracy. §22 not widened. |
-| **6 (active)** | Aux ablation attribution (orthogonal) | with-aux vs STE-no-aux; **no** stalk select re-chase | document necessity / seal | STOP | Ensemble OPEN sealed (§22); lift rides on disagreement (§24). Distill/SWA/multi-hyp/bag STOP/MEASURE — do not chase as select-substitute. |
+| **5g (done)** | `CYCLE_STALK_COMPETENT_DISSONANCE` | eval-only #22 vs #27: global/slice disagree; agree vs disagree member acc; CD formula; ood_hops shatter | — | **COMPETENT_vs_CHAOS** | #22 COMPETENT CD 0.811 (D_hard 0.225; rides YES); #27 CHAOS CD 0.658; low global ≠ echo. No train. §22 not widened. |
+| **6 (active)** | Aux ablation attribution (orthogonal) | with-aux vs STE-no-aux; **no** stalk select re-chase | document necessity / seal | STOP | Ensemble OPEN sealed (§22); COMPETENT dissonance (§26). Distill/SWA/multi-hyp/bag STOP/MEASURE — do not chase bag noise. |
 | 8 | Neutral-init RED_TEST / dense re-eval | frozen or retrained neutral ckpt | MEASURE | STOP | Do not revive bake-in OPEN |
 | 9 | Depth×Density frontier | longer K **and** dense ER under admissible band | MEASURE plan | — | Orthogonal envelopes; `science_open=false` until seal |
 | — | Revive sheaf learned OPEN | — | **blocked** | — | Requires human seal after clean attribution |
@@ -129,6 +131,7 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | Stalk SWA persist | `docs/CYCLE_STALK_SWA_PERSIST.md` / `artifacts/stalk_swa_persist.json` / seal §23 |
 | Stalk epistemic disagreement | `docs/CYCLE_STALK_EPISTEMIC_DISAGREEMENT.md` / `artifacts/stalk_epistemic_disagreement.json` / seal §24 |
 | Stalk bag diversity | `docs/CYCLE_STALK_BAG_DIVERSITY.md` / `artifacts/stalk_bag_diversity.json` / seal §25 |
+| Stalk competent dissonance | `docs/CYCLE_STALK_COMPETENT_DISSONANCE.md` / `artifacts/stalk_competent_dissonance.json` / seal §26 |
 | This ledger | `docs/LEDGER-OPEN-MEASURE-STOP.md` |
 
 ---
