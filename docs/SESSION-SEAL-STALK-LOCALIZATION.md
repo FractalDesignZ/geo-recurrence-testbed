@@ -12,7 +12,7 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair. HN FAIL_OPEN autopsy **STRUCTURAL_CLUSTER** (§29) — isolated-source / hub-target; residue **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`**; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
+**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair. HN FAIL_OPEN autopsy **STRUCTURAL_CLUSTER** (§29) — isolated-source / hub-target; residue **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`**. Sound outdeg gate **FO_PARTIAL** (§30) — **23/45** FO killed; HN **0.067→0.304**; matched-OOD Δ=0; residue **`…/OUTDEG0_PARTIAL`**; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
 
 Fail-closed outside the live scoped claim in **§22** (hist. §6 demoted). Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
@@ -713,3 +713,32 @@ Prior seal body + §13–§27 are **not** rewritten. This §28 is append-only ME
 
 Prior seal body + §13–§28 are **not** rewritten. This §29 is append-only MEASURE
 (`science_open=false`).
+
+## 30. Sound outdeg gate — MEASURE (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_SOUND_OUTDEG_GATE` |
+| **Artifact** | `artifacts/stalk_sound_outdeg_gate.json` |
+| **Log** | `artifacts/stalk_sound_outdeg_gate_run.log` |
+| **Cycle note** | `docs/CYCLE_STALK_SOUND_OUTDEG_GATE.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_sound_outdeg_gate` |
+| **Base** | `main` `c909d1b` (after PR #31) |
+| **Prereg / harness / results** | `3f4d791` / `6a75b1f` / _(stamp after results commit)_ |
+| **Cycle verdict** | **`FO_PARTIAL`** |
+| **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
+| **Recipe** | Eval-only sound local `outdeg(s)==0 ∧ t≠s` → force ens pred=0 on #22 `prob_mean` @ T=16; matched-OOD collateral; **no** train; **no** BFS oracle |
+| **Cite #30 replicate** | exact (FO **45** / FC **190** / ens HN **0.067**) |
+| **ood_hops gated** | HN **0.304** / K16 **0.988** / ov **0.629**; FO **22** / FC **156**; **FO killed 23/45** |
+| **Matched-OOD collateral** | overall/HN/K16 Δ=**0.000** (97 triggers already pred=0) |
+| **Residue** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL`** |
+
+### 30.1 Reading
+
+Local incidence outdeg(s)==0 kills the outdeg0 half of the isolated-source FO cluster (**23/45**). Remaining 22 FO have outdeg>0 — outside this sound local gate (BFS out-closure prohibited). Matched-OOD competence untouched. Prefer #14 + #22 on matched-OOD only. Do **not** widen §22. Do **not** claim hop-OOD OPEN. Corridor not parked.
+
+### 30.2 Non-rewrite rule
+
+Prior seal body + §13–§29 are **not** rewritten. This §30 is append-only MEASURE
+(`science_open=false`).
+

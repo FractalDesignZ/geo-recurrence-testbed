@@ -142,29 +142,35 @@ Priority: if collateral harm fires → verdict **`COLLATERAL_HARM`** (still MEAS
 |-------|-------|
 | **Artifact** | `artifacts/stalk_sound_outdeg_gate.json` |
 | **Log** | `artifacts/stalk_sound_outdeg_gate_run.log` |
-| **Prereg SHA** | _(stamp after commit)_ |
-| **Harness SHA** | _(stamp after commit)_ |
-| **Results SHA** | _(stamp after commit)_ |
-| **Cycle verdict** | _(fill after run)_ |
+| **Prereg SHA** | `3f4d791` |
+| **Harness SHA** | `6a75b1f` |
+| **Results SHA** | _(stamp after results commit)_ |
+| **Cycle verdict** | **`FO_PARTIAL`** |
 | **science_open** | **false** (not widened; §22 unchanged) |
-| **Residue update** | _(fill after run)_ |
-| **Elapsed** | _(fill after run)_ |
+| **Residue update** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL`** |
+| **Elapsed** | ~16.3 s (~0.3 min CDT) |
+| **Cite #30 replicate** | **exact** (FO=45 / FC=190 / ens HN=0.067) |
+| **Soundness** | 59 triggers; **0** y≠0 violations; out-neighborhood ≡ outdeg on simple digraphs |
 
-### Table (baseline vs gate) — fill after run
+### Table (baseline vs gate)
 
 | Arm | HN | K16 | overall | FO | FC | FO killed /45 |
 |-----|----|-----|---------|----|----|---------------|
-| (0) baseline #22 | | | | | | — |
-| (1) outdeg(s)==0 force-unreach | | | | | | |
+| (0) baseline #22 | **0.067** | **0.988** | **0.510** | **45** | **190** | — |
+| (1) outdeg(s)==0 force-unreach | **0.304** | **0.988** | **0.629** | **22** | **156** | **23**/45 |
 
-### Matched-OOD collateral — fill after run
+### Matched-OOD collateral (T16)
 
 | Slice | baseline | gated | Δ |
 |-------|----------|-------|---|
-| overall | | | |
-| HN | | | |
-| K16 | | | |
+| overall | 0.996 | 0.996 | **0.000** |
+| HN | 1.000 | 1.000 | **0.000** |
+| K16 | 1.000 | 1.000 | **0.000** |
+
+OK_HN index-set: 16/16 stay correct (Δ=0). Positives: Δ=0. Matched-OOD gate triggers=97 (already pred=0). **No COLLATERAL_HARM.**
 
 ### Reading (fail-closed)
 
-_(fill after run)_
+1. **FO_PARTIAL:** local `outdeg(s)==0` kills **23/45** of the FO core (exactly the outdeg0 subset of the isolated-source cluster). Remaining **22** FO have outdeg(s)>0 but still trivial/small out-closure by autopsy — **not** reachable by local-incidence gate alone (BFS out-closure prohibited).
+2. HN rises 0.067→0.304 (also absorbs some FC_HN with outdeg0); K16 holds; overall +0.119. CD unchanged (member geometry).
+3. Matched-OOD competence **untouched** (Δ=0). Prefer #14+#22 on matched-OOD only. Do **not** widen §22. Do **not** claim hop-OOD OPEN. Corridor not parked — overlay MEASURE only; residue unpaid.
