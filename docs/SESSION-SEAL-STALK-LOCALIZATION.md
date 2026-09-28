@@ -12,7 +12,7 @@
 | **Merge target** | PR #2 → `main` |
 | **Verdict class** | OPEN (scoped science) + FAIL-CLOSED elsewhere |
 
-**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair. HN FAIL_OPEN autopsy **STRUCTURAL_CLUSTER** (§29) — isolated-source / hub-target; residue **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`**. Sound outdeg gate **FO_PARTIAL** (§30) — **23/45** FO killed; HN **0.067→0.304**; matched-OOD Δ=0; residue **`…/OUTDEG0_PARTIAL`**; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
+**Current status (2026-09-28 CDT):** live scoped OPEN = **§22** `CYCLE_STALK_SEED_ENSEMBLE` inference **`prob_mean`** overlay (PR #22/#24) — **ensemble-at-eval only**. Singles remain **MEASURE_STILL**/fragile (#14 2/5; #18 3/10). Distill **STOP** (§21 / PR #23). SWA persist **MEASURE** (§23 / PR #25). Epistemic disagreement audit **LIFTS_ON_DISAGREEMENT** + multi-hyp **STOP** (§24). Bag diversity **MEASURE_LIFT** (§25). Competent dissonance **COMPETENT_vs_CHAOS** (§26) — #22 **COMPETENT** (CD **0.811**; low global disagree ≠ echo); #27 **CHAOS** (CD **0.658**). RED competent dissonance **FAIL_CLOSED_DOMINANT** (§27) — 0 FAIL_OPEN / 61 FAIL_CLOSED on denser-K16+K20 RED. Hop-OOD HN **FAIL_CLOSED_DOMINANT+HN_SHATTER_CONFIRMED** (§28) — ens HN **0.067**; **45** FAIL_OPEN HN core; gate/vote no repair. HN FAIL_OPEN autopsy **STRUCTURAL_CLUSTER** (§29) — isolated-source / hub-target; residue **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER`**. Sound outdeg gate **FO_PARTIAL** (§30) — **23/45** FO killed; HN **0.067→0.304**; matched-OOD Δ=0; residue **`…/OUTDEG0_PARTIAL`**. FO remainder autopsy **LOCAL_SOUND_WALL** (§31) — best local cut **5/22**; stop overlay chase; residue **`…/LOCAL_SOUND_WALL`**; §22 **not** widened. Select/curriculum **CLOSED**. Sheaf unsupervised **NOT** opened. Hist. §6 single-seed OPEN remains **demoted** (§13). Fail-closed outside §22 claim.
 
 Fail-closed outside the live scoped claim in **§22** (hist. §6 demoted). Append-only. Mandelbrot / sheaf metaphor remains aspirational except where metrics are cited.
 
@@ -742,3 +742,30 @@ Local incidence outdeg(s)==0 kills the outdeg0 half of the isolated-source FO cl
 Prior seal body + §13–§29 are **not** rewritten. This §30 is append-only MEASURE
 (`science_open=false`).
 
+## 31. HN FO remainder autopsy — MEASURE (append-only; 2026-09-28 CDT)
+
+| Field | Value |
+|-------|-------|
+| **Cycle** | `CYCLE_STALK_HN_FO_REMAINDER_AUTOPSY` |
+| **Artifact** | `artifacts/stalk_hn_fo_remainder_autopsy.json` |
+| **Log** | `artifacts/stalk_hn_fo_remainder_autopsy_run.log` |
+| **Cycle note** | `docs/CYCLE_STALK_HN_FO_REMAINDER_AUTOPSY.md` |
+| **Harness** | `python -m reachability_gen.run_stalk_hn_fo_remainder_autopsy` |
+| **Base** | `main` `db8c2b1` (after PR #32) |
+| **Prereg / harness / results** | `bd7e440` / `a098584` / `c8b034631c31d86daf4a575c88b40a7f0a14e3b0` |
+| **Cycle verdict** | **`LOCAL_SOUND_WALL`** |
+| **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
+| **Recipe** | Offline autopsy of **22** FO remainder (outdeg>0) vs killed/OK/FC; local-sound cut hunt (indeg_t0 / deadend-nbrs); coverage ≥8/22 required for overlay; **no** train; **no** BFS gate |
+| **Cite #32** | rem **22** / kil **23** / union **45** exact |
+| **Best sound coverage** | **5/22** (`C_deadend_nbrs`); indeg_t0 **0/22** |
+| **Gate overlay** | **not run** |
+| **Residue** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL/LOCAL_SOUND_WALL`** |
+
+### 31.1 Reading
+
+#32 outdeg0 extracted the local-incidence half of the isolated-source FO cluster. Remaining **22** have outdeg>0 and median `|R_out(s)|=19` / `max_dist=6` — overlap OK_HN/FC_HN multi-hop geometry. No sound local cut covers ≥8/22. **Stop overlay chase** for this FO core. Prefer #14 + #22 on matched-OOD only. Do **not** widen §22. Do **not** claim hop-OOD OPEN. Do **not** BFS-gate.
+
+### 31.2 Non-rewrite rule
+
+Prior seal body + §13–§30 are **not** rewritten. This §31 is append-only MEASURE
+(`science_open=false`).
