@@ -454,6 +454,20 @@ python -m reachability_gen.run_stalk_swa_persist
 Artifact: `artifacts/stalk_swa_persist.json`. See `docs/CYCLE_STALK_SWA_PERSIST.md`.
 
 
+## Cycle: STALK_COMPETENT_DISSONANCE (MEASURE audit)
+
+Eval-only audit: frozen **#14/#18/#22** ens vs **#27** bag — global/slice pairwise
+disagree, member acc on agree vs disagree sets, competent-dissonance
+`CD = μ_acc · min(D_hard, 0.25)/0.25`, optional `ood_hops` shatter probe.
+Verdicts: **COMPETENT** / **ECHO_RISK** / **CHAOS**. **No train.** `science_open=false`.
+
+```bash
+python -m reachability_gen.run_stalk_competent_dissonance
+# or: reachability-stalk-competent-dissonance
+```
+
+Artifact: `artifacts/stalk_competent_dissonance.json`. See `docs/CYCLE_STALK_COMPETENT_DISSONANCE.md`.
+
 ## Cycle: STALK_BAG_DIVERSITY (MEASURE_LIFT)
 
 After #26 multi-hyp STOP (heads collapsed) and audit showing #22 lift rides on
