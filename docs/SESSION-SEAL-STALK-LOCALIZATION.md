@@ -939,7 +939,7 @@ Prior seal body + §13–§36 are **not** rewritten. This §37 is append-only ME
 | **Cycle note** | `docs/CYCLE_STALK_SHEAF_ENERGY_FO_PROBE.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_sheaf_energy_fo_probe` |
 | **Base** | `main` `73a458a` (after PR #39) |
-| **Prereg / results** | `3dd450a7592c6e5296e0eaca45fe1b3e6386685b` / *(results commit)* |
+| **Prereg / results** | `3dd450a7592c6e5296e0eaca45fe1b3e6386685b` / `fcc16218622cab32ca26cccad3bb89dc2e17457e` |
 | **Cycle verdict** | **`ENERGY_NULL`** |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
 | **Exact E_cob** | `mean_m sum_(u->v) ||H_m[u]-H_m[v]||_2^2 / max(|E|,1)` — Id restriction; A2; **no** learned rho |
