@@ -1,0 +1,140 @@
+{
+  "T": 16,
+  "cert_status": {
+    "force_closed_dirty_yes": true,
+    "force_open_dirty_no": false,
+    "n_clean": 245,
+    "n_dirty_no": 11,
+    "n_dirty_yes": 224,
+    "n_refuse": 224
+  },
+  "ckpt_layout": [
+    {
+      "exists": true,
+      "mtime_ns": 1790566040037922098,
+      "path": "artifacts/fractal_core_stalk_stabilize_seed0_best.pt",
+      "seed": 0,
+      "size_bytes": 479957,
+      "source": "pr14"
+    },
+    {
+      "exists": true,
+      "mtime_ns": 1790566040037922098,
+      "path": "artifacts/fractal_core_stalk_stabilize_seed1_best.pt",
+      "seed": 1,
+      "size_bytes": 479957,
+      "source": "pr14"
+    },
+    {
+      "exists": true,
+      "mtime_ns": 1790566040041922086,
+      "path": "artifacts/fractal_core_stalk_stabilize_seed2_best.pt",
+      "seed": 2,
+      "size_bytes": 479957,
+      "source": "pr14"
+    },
+    {
+      "exists": true,
+      "mtime_ns": 1790566040045922073,
+      "path": "artifacts/fractal_core_stalk_stabilize_seed3_best.pt",
+      "seed": 3,
+      "size_bytes": 479957,
+      "source": "pr14"
+    },
+    {
+      "exists": true,
+      "mtime_ns": 1790566040049922061,
+      "path": "artifacts/fractal_core_stalk_stabilize_seed4_best.pt",
+      "seed": 4,
+      "size_bytes": 479957,
+      "source": "pr14"
+    },
+    {
+      "exists": true,
+      "mtime_ns": 1790575872667521122,
+      "path": "artifacts/fractal_core_stalk_seed_stability_seed5_best.pt",
+      "seed": 5,
+      "size_bytes": 480117,
+      "source": "pr18"
+    },
+    {
+      "exists": true,
+      "mtime_ns": 1790575872671521203,
+      "path": "artifacts/fractal_core_stalk_seed_stability_seed6_best.pt",
+      "seed": 6,
+      "size_bytes": 480117,
+      "source": "pr18"
+    },
+    {
+      "exists": true,
+      "mtime_ns": 1790575872671521203,
+      "path": "artifacts/fractal_core_stalk_seed_stability_seed7_best.pt",
+      "seed": 7,
+      "size_bytes": 480117,
+      "source": "pr18"
+    },
+    {
+      "exists": true,
+      "mtime_ns": 1790575872675521284,
+      "path": "artifacts/fractal_core_stalk_seed_stability_seed8_best.pt",
+      "seed": 8,
+      "size_bytes": 480117,
+      "source": "pr18"
+    },
+    {
+      "exists": true,
+      "mtime_ns": 1790575872679521366,
+      "path": "artifacts/fractal_core_stalk_seed_stability_seed9_best.pt",
+      "seed": 9,
+      "size_bytes": 480117,
+      "source": "pr18"
+    }
+  ],
+  "dataset": "data/ood_hops.jsonl",
+  "ens_agg": "prob_mean",
+  "ens_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "extra": {
+    "fo_killed_contract": 45,
+    "mode": "live"
+  },
+  "format": "geo-recurrence-run-receipt/v1",
+  "hard_unanimous": {
+    "conf_thresh": 0.8,
+    "n": 94
+  },
+  "layout_hash": "dbfeb6046849f8594e77d3bc0a7d05d4847b7e97ea3db79c5432f37bcfc51a2c",
+  "matched_floors": {
+    "baseline": {
+      "K16": 1.0,
+      "hard_neg_acc": 1.0,
+      "overall_acc": 0.9958333333333333
+    },
+    "cert_on": {
+      "K16": 1.0,
+      "hard_neg_acc": 1.0,
+      "overall_acc": 0.9958333333333333
+    },
+    "delta_cert_minus_baseline": {
+      "K16": 0.0,
+      "hard_neg_acc": 0.0,
+      "overall_acc": 0.0
+    },
+    "floor_abs_max": 0.01,
+    "floor_ok": true,
+    "skipped": false
+  },
+  "n": 480,
+  "note": "Audit receipt for frozen-forward inference contract; not a science_open claim; certificates are post-hoc witnesses.",
+  "science_open": false
+}
