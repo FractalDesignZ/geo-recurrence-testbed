@@ -1,0 +1,6 @@
+/workspace/geo-recurrence-testbed/.venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[stalk-tropical] loading #14/#18/#22 ens n=10
+[stalk-tropical] infer ood_hops T16 (baseline + tropical)
+[stalk-tropical] infer matched-OOD T16 collateral
+[stalk-tropical] wrote artifacts/stalk_tropical_attention_probe.json verdict=COLLATERAL_HARM FO_killed=0/45 rem22=0/22 HN=0.067→0.150 elapsed=16.4s

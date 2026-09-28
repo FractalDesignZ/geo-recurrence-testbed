@@ -135,32 +135,43 @@ Priority: if collateral harm fires → verdict **`COLLATERAL_HARM`**. Still **ME
 - No claim that hop-OOD metrics extend §22 OPEN
 - No replacing #35 certificates
 
-## Results (filled after run)
+## Results (this run — cite artifact)
 
 | Field | Value |
 |-------|-------|
 | **Artifact** | `artifacts/stalk_tropical_attention_probe.json` |
 | **Log** | `artifacts/stalk_tropical_attention_probe_run.log` |
-| **Prereg SHA** | _(stamp on commit)_ |
-| **Harness SHA** | _(stamp)_ |
-| **Results SHA** | _(stamp)_ |
-| **Cycle verdict** | _(stamp)_ |
+| **Prereg SHA** | `30f57de` |
+| **Harness SHA** | `ffd1990` |
+| **Results SHA** | _(stamp on results commit)_ |
+| **Cycle verdict** | **`COLLATERAL_HARM`** |
 | **science_open** | **false** (not widened; §22 unchanged) |
-| **Tropical definition used** | scoped ens `logit_max` + `beta_inf_member` (not in-attn rewrite) |
+| **Tropical definition used** | scoped ens **`logit_max`** (primary) + **`beta_inf_member`** (secondary); **not** in-attn rewrite |
+| **Cite #30 replicate** | **exact** (FO=45 / ens HN=0.067) |
+| **Residue update** | **`HN_FAIL_OPEN_CORE/STRUCTURAL_CLUSTER/OUTDEG0_PARTIAL/LOCAL_SOUND_WALL/CERT_FO_CATCH/COLLATERAL_HARM`** |
+| **Elapsed** | ~16.4 s CDT |
 
-### Table (baseline vs tropical — filled after run)
+### Table (baseline vs tropical)
 
 | Arm | HN | K16 | overall | FO | rem22 FO | FO killed/45 | rem22 killed/22 |
 |-----|----|-----|---------|----|----------|--------------|-----------------|
-| (0) baseline #22 | | | | | | — | — |
-| (1) logit_max | | | | | | | |
-| (2) beta_inf_member | | | | | | | |
-| (3) cert ref #35 | 1.000 | 0.988 | 0.977 | 0 | 0 | 45/45 | 22/22 |
+| (0) baseline #22 | **0.067** | **0.988** | **0.510** | **45** | **22** | — | — |
+| (1) logit_max | **0.150** | **0.850** | **0.510** | **45** | — | **0**/45 | **0**/22 |
+| (2) beta_inf_member | **0.150** | **0.887** | **0.521** | **45** | — | **0**/45 | **0**/22 |
+| (3) cert ref #35 | **1.000** | **0.988** | **0.977** | **0** | **0** | **45**/45 | **22**/22 |
 
-### Matched-OOD collateral (T16 — filled after run)
+### Matched-OOD collateral (T16)
 
-| Slice | baseline | tropical | Δ |
-|-------|----------|----------|---|
-| overall | | | |
-| HN | | | |
-| K16 | | | |
+| Slice | baseline | logit_max | Δ | beta_inf | Δ |
+|-------|----------|-----------|---|----------|---|
+| overall | 0.996 | 0.892 | **-0.104** | 0.892 | **-0.104** |
+| HN | 1.000 | 0.992 | **-0.008** | 0.983 | **-0.017** |
+| K16 | 1.000 | 0.512 | **-0.488** | 0.538 | **-0.462** |
+
+**COLLATERAL_HARM** fires (matched K16 drop ≈0.49; overall drop ≈0.10). Primary FO catch null (0/45; 0/22 rem). Tropical ≢ certificate.
+
+### Reading (fail-closed)
+
+1. **COLLATERAL_HARM:** tropical ens aggregation (`logit_max` / `beta_inf_member`) does **not** eliminate baseline FO (0/45) or rem-22 (0/22). Hop-OOD HN inches 0.067→0.150 without touching the FO core; K16 on hop-OOD drops (0.988→0.850).
+2. Matched-OOD competence collapses under hard max routing (K16 1.000→0.512) — `prob_mean` soft averaging is load-bearing for §22 competence.
+3. Falsifies the ens-layer "sum-product bleed → rem-22 FO" hypothesis as a repair lever: FO unchanged **and** collateral harm. Prefer #14+#22 `prob_mean` on matched-OOD; keep #35 certificates as the FO catch (post-hoc). Do **not** widen §22. Do **not** claim hop-OOD OPEN. Do **not** equate tropical with certificates. Still **MEASURE**.
