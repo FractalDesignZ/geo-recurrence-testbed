@@ -41,7 +41,7 @@ python -m reachability_gen.run_stalk_multi_seed_reconfirm
 | **Artifact** | `artifacts/stalk_multi_seed_reconfirm.json` |
 | **Log** | `artifacts/stalk_multi_seed_reconfirm_run.log` |
 | **Ckpts** | `artifacts/fractal_core_stalk_reconfirm_seed{0,1,2}_best.pt` |
-| **Verdict** | **`OPEN_CONTINGENT_AT_RISK`** |
+| **Verdict** | **`OPEN_CONTINGENT_AT_RISK` → DEMOTION `MEASURE`** |
 | **science_open** | **false** |
 | **Elapsed** | ~213 s (CDT) |
 | **Individual prereg** | **1/3** seeds pass |
@@ -98,9 +98,12 @@ Seed 0 reproduces the sealed run; seeds 1–2 do **not**. Single-seed OPEN is **
 
 ## Verdict
 
-**`OPEN_CONTINGENT_AT_RISK`** — prereg mean floors miss; only **1/3** seeds pass.
-Stalk §6 OPEN remains **standing but contingent at risk**. Append-only note on seal.
-**Do not** silently widen `science_open`. Prefer truth over prior OPEN. Human review
-required before any claim update or revoke.
+**`OPEN_CONTINGENT_AT_RISK`** (measurement) → **human DEMOTION to `MEASURE`** (seal §13).
+
+Prereg mean floors miss; only **1/3** seeds pass. Prefer honesty over lonely OPEN:
+stalk §6 live `science_open=true` claim is **demoted to MEASURE** (append-only).
+Prior single-seed seal remains **historical**; **not INVALID** (untrained control mid ≈0.63;
+bake-in not proven). **Do not** silently widen `science_open`. Claim not widened;
+human-only widen later.
 
 Param count **117506** within ±5% of FF 121218 (parity ok all seeds).

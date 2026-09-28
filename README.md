@@ -374,8 +374,9 @@ Prereg (mean): hard-neg≥0.95 and K16@T16≥0.75. `science_open=false` always.
 python -m reachability_gen.run_stalk_multi_seed_reconfirm
 ```
 
-Verdict this run: **`OPEN_CONTINGENT_AT_RISK`** (1/3 seeds; means miss floors).
-Do not silently widen §6. See `docs/CYCLE_STALK_MULTI_SEED_RECONFIRM.md`.
+Verdict this run: **`OPEN_CONTINGENT_AT_RISK` → DEMOTION `MEASURE`** (1/3 seeds; means miss floors).
+Stalk §6 live OPEN demoted to MEASURE (seal §13); not INVALID. Do not silently widen.
+See `docs/CYCLE_STALK_MULTI_SEED_RECONFIRM.md`.
 
 ## Cycle: STALK_LOCALIZATION (MEASURE)
 

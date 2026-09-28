@@ -5,6 +5,7 @@
 | **Date** | 2026-09-27 (CDT) |
 | **Repo** | https://github.com/FractalDesignZ/geo-recurrence-testbed |
 | **Base after PR #11** | `7f1037a750cb078d66521dd2ca867010f0d85f7e` |
+| **Hygiene** | PR #12 demotes stalk §6 OPEN → **MEASURE** (multi-seed fragility; not INVALID) |
 | **science_open policy** | Fail-closed. Harness never self-stamps `true`. Human seal only. |
 | **Purpose** | Single dimensional table of seals/PRs and **clear next cells**. |
 
@@ -19,7 +20,7 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | Cell / PR | Cycle | Attr | science_open | Init | Aux | Gate detach | Band / K | Verdict | Artifact / seal |
 |-----------|-------|------|--------------|------|-----|-------------|----------|---------|-----------------|
 | **PR #1** `8f0b482` | `CYCLE_FRACTAL_CORE_GENESIS` | engineering | **false** | n/a (FractalCore) | n/a | n/a | ID + OOD early | OPEN-candidate eng. only | `docs/SESSION-SEAL-FRACTAL-CORE.md` |
-| **PR #2** `b144dac` | `CYCLE_STALK_LOCALIZATION` | **OPEN** (scoped) | **true** §6 | hard-A oracle stalk | n/a | n/a | matched-OOD [45,70] K≤16 | **OPEN** stalk locality | `docs/SESSION-SEAL-STALK-LOCALIZATION.md` / `artifacts/fractal_core_stalk_*` |
+| **PR #2** `b144dac` | `CYCLE_STALK_LOCALIZATION` | was **OPEN** → **MEASURE** (demoted) | was true §6 → **demoted false** | hard-A oracle stalk | n/a | n/a | matched-OOD [45,70] K≤16 | **MEASURE** (hist. single-seed; see PR #12 §13) | `docs/SESSION-SEAL-STALK-LOCALIZATION.md` §6+§13 / `artifacts/fractal_core_stalk_*` |
 | **PR #3** `af8e49f` | `CYCLE_SHEAF_INFERENCE` | was OPEN → **INVALID** | was true §6 → **INVALIDATED** | **bake-in** (edge+4 / energy±5) | ON (train) | **True** | [45,70] K≤16 | **INVALID** (learned claim) | `docs/SESSION-SEAL-SHEAF-INFERENCE.md` §6 + §16 |
 | **PR #4** `7a02dea` | `CYCLE_SHEAF_RED_TEST` | MEASURE | **false** | bake-in (frozen Gate1) | ON | True | K=20 sparse | MEASURE residue (not OPEN) | sheaf seal §12 / red-test artifacts |
 | **PR #5** `a6665bc` | `CYCLE_SHEAF_DENSITY_STRESS` | **INVALID** | **false** | bake-in frozen | ON | True | true ER p=0.15 vs [45,70] | **INVALID** feasibility wall | `docs/SESSION-SEAL-SHEAF-DENSITY-FEASIBILITY.md` |
@@ -28,8 +29,8 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | **PR #8** `e0877eb` | `CYCLE_SHEAF_NEUTRAL_INIT_RETRAIN` | **MEASURE** | **false** | **neutral** | **ON** | **True** | [45,70] T16 | `MEASURE_CANDIDATE_PASS_FLOORS` | `artifacts/sheaf_neutral_init_retrain.json` |
 | **PR #9** `2834256` | `CYCLE_SHEAF_NO_AUX_EDGE_RECON` | **STOP** residue | **false** | **neutral** | **OFF** (w=0) | **True** | [45,70] T16 | `STOP_LEARNING_FAIL` | `artifacts/sheaf_no_aux_edge_recon.json` |
 | **PR #10** `af152bd` | `CYCLE_SHEAF_STE_NO_AUX` | **STOP** residue | **false** | **neutral** | **OFF** | **False** (STE) | [45,70] T16; 60 ep | `STOP_LEARNING_FAIL` (unstable **1/3** seeds) | `artifacts/sheaf_ste_no_aux.json` |
-| **PR #11** `7f1037a` | Stalk untrained control | **OPEN contingent** | **true** §6 standing | sealed stalk | n/a | n/a | matched-OOD T∈{6,8,12,16} | `OPEN_STILL_CONTINGENT_NEEDS_MULTI_SEED` (u≈0.63) | `artifacts/stalk_untrained_control_audit.json` |
-| **Stalk multi-seed** (→PR) | `CYCLE_STALK_MULTI_SEED_RECONFIRM` | **OPEN contingent AT RISK** | **true** §6 standing (not widened) | hard-A stalk | n/a | n/a | matched-OOD T∈{6,8,12,16}; ≥3 seeds | `OPEN_CONTINGENT_AT_RISK` (1/3; mean HN 0.918 / K16 0.654) | `artifacts/stalk_multi_seed_reconfirm.json` |
+| **PR #11** `7f1037a` | Stalk untrained control | was OPEN contingent → superseded | was true §6 → demoted via PR #12 | sealed stalk | n/a | n/a | matched-OOD T∈{6,8,12,16} | `OPEN_STILL_CONTINGENT_NEEDS_MULTI_SEED` (u≈0.63; **not** bake-in) | `artifacts/stalk_untrained_control_audit.json` |
+| **PR #12** (→merge) | `CYCLE_STALK_MULTI_SEED_RECONFIRM` | **MEASURE** (demoted from OPEN) | **false** (demoted; not widened) | hard-A stalk | n/a | n/a | matched-OOD T∈{6,8,12,16}; ≥3 seeds | `OPEN_CONTINGENT_AT_RISK` → **DEMOTION MEASURE** (1/3; mean HN 0.918 / K16 0.654) | `artifacts/stalk_multi_seed_reconfirm.json` / seal §13 |
 
 ### 1.1 Status legend
 
@@ -39,7 +40,8 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 | **INVALID / INVALIDATED** | Prior OPEN revoked or cell never admissible (feasibility / bake-in) |
 | **MEASURE** | Numeric floors may pass; no science_open stamp |
 | **STOP** | Prereg / learning floors failed; residue documented |
-| **Stalk OPEN** | Orthogonal hard-A stalk claim (PR #2) — **not** auto-invalidated by sheaf bake-in audit |
+| **DEMOTION** | Prior OPEN no longer live; append-only status → MEASURE (not bake-in INVALID) |
+| **Stalk MEASURE (demoted)** | Former hard-A stalk OPEN (PR #2) — **not INVALID** (untrained mid); **demoted** to MEASURE on multi-seed fragility (PR #12 / seal §13) |
 
 ### 1.2 Sheaf learned OPEN status
 
@@ -47,7 +49,7 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 |-------|--------|
 | Sheaf §6 sparse [45,70] K≤16 "**learned** Â" | **INVALID** (PR #7 / seal §16) |
 | Dense-context §6 "**learned**" dense band | **INVALIDATED** (dense seal §8) |
-| Stalk §6 hard-A locality | **OPEN** (standing; **contingent AT RISK** — multi-seed FAIL 1/3; mean hard-neg 0.918 / K16 0.654) |
+| Stalk §6 hard-A locality | **MEASURE** (**demoted** from OPEN — multi-seed FAIL 1/3; mean HN 0.918 / K16 0.654; **not INVALID**) |
 | Feasibility true p=0.15 under [45,70] | **INVALID** (PR #5) |
 | With-aux neutral retrain floors (PR #8) | **MEASURE** candidate only (`science_open=false`) |
 | No-aux detach (PR #9) | **STOP** residue |
@@ -61,7 +63,7 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 |----------|------|-------|--------|--------|-------|
 | **1 (done)** | `CYCLE_SHEAF_STE_NO_AUX` (PR #10 `af152bd`) | STE + detach=False + no-aux + 60 ep | — | **STOP** (unstable **1/3**) | Artifact `sheaf_ste_no_aux.json`; mean T16 overall 0.766±0.231, hard-neg 0.679±0.278, K16 0.804±0.339 |
 | **2 (done)** | Stalk untrained control (PR #11 `7f1037a`) | FractalCore/stalk = sealed OPEN; matched-OOD T∈{6,8,12,16} | — | bake-in would INVALIDATE | **Verdict:** OPEN still contingent (u T16 overall 0.633 / hard-neg 0.600 vs sealed 0.977 / 1.000; agree 0.610). No revoke. |
-| **3 (done)** | `CYCLE_STALK_MULTI_SEED_RECONFIRM` | ≥3 seeds; hard-A stalk; T∈{6,8,12,16}; prereg mean HN≥0.95 & K16≥0.75 | MEASURE reconfirm | **AT RISK** | **Verdict:** `OPEN_CONTINGENT_AT_RISK` (1/3); mean HN 0.918±0.142 / K16 0.654±0.524. science_open not widened. |
+| **3 (done)** | `CYCLE_STALK_MULTI_SEED_RECONFIRM` (PR #12) | ≥3 seeds; hard-A stalk; T∈{6,8,12,16}; prereg mean HN≥0.95 & K16≥0.75 | — | **DEMOTION MEASURE** | Measurement `OPEN_CONTINGENT_AT_RISK` (1/3); mean HN 0.918±0.142 / K16 0.654±0.524 → **demote** live §6 OPEN to MEASURE (seal §13). Not INVALID. |
 | **4 (active)** | Gumbel-Sigmoid sweep | same as STE but `gate_mode=gumbel`, temp grid; no-aux | MEASURE | STOP | STE STOP unstable 1/3; optional next |
 | 5 | Aux ablation attribution | with-aux vs STE-no-aux under matched seeds | document necessity | — | Human review before any OPEN revive |
 | 6 | Neutral-init RED_TEST / dense re-eval | frozen or retrained neutral ckpt | MEASURE | STOP | Do not revive bake-in OPEN |
@@ -81,7 +83,7 @@ Axes abbreviated: **Attr** = attribution class; **Band** = seq_len / substrate; 
 
 | Need | Path |
 |------|------|
-| Stalk OPEN | `docs/SESSION-SEAL-STALK-LOCALIZATION.md` |
+| Stalk MEASURE (demoted) | `docs/SESSION-SEAL-STALK-LOCALIZATION.md` §6 hist. + §13 DEMOTION |
 | Sheaf INVALIDATION | `docs/SESSION-SEAL-SHEAF-INFERENCE.md` §16 |
 | Dense INVALIDATED | `docs/SESSION-SEAL-SHEAF-DENSE-CONTEXT.md` §8 |
 | Feasibility INVALID | `docs/SESSION-SEAL-SHEAF-DENSITY-FEASIBILITY.md` |
