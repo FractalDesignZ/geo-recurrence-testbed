@@ -889,7 +889,7 @@ Prior seal body + §13–§34 are **not** rewritten. This §35 is append-only ME
 | **Cycle note** | `docs/CYCLE_STALK_ENERGY_SELECTOR.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_energy_selector` |
 | **Base** | `main` `39e3aa7` (after PR #37) |
-| **Prereg / harness / results** | `eecc4b7` / `79f7196` / *(results SHA stamped on merge)* |
+| **Prereg / harness / results** | `eecc4b7` / `79f7196` / `bbae5a757674b2c4a593a94d1b32ea410fbe92a7` |
 | **Cycle verdict** | **`COLLATERAL_HARM`** |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
 | **Exact E_free** | `10·E_sound + 1·E_cone + 0.1·(−log(p+1e-8))` (cert-free; no BFS; no orientation) |

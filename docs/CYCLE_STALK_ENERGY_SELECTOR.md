@@ -204,7 +204,7 @@ Still **MEASURE**, never OPEN. Even `ENERGY_BEATS_MEAN` does **not** widen `scie
 | **Log** | `artifacts/stalk_energy_selector_run.log` |
 | **Prereg SHA** | `eecc4b7` |
 | **Harness SHA** | `79f7196` |
-| **Results SHA** | *(stamp after results commit)* |
+| **Results SHA** | `bbae5a757674b2c4a593a94d1b32ea410fbe92a7` |
 | **Cycle verdict** | **`COLLATERAL_HARM`** |
 | **science_open** | **false** (not widened; §22 unchanged) |
 | **Exact E_free** | `10·E_sound + 1·E_cone + 0.1·(−log(p+1e-8))` |
