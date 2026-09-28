@@ -643,7 +643,7 @@ Prior seal body + §13–§25 are **not** rewritten. This §26 is append-only ME
 | **Cycle note** | `docs/CYCLE_STALK_RED_COMPETENT_DISSONANCE.md` |
 | **Harness** | `python -m reachability_gen.run_stalk_red_competent_dissonance` |
 | **Base** | `main` `0a5890a` (after PR #28) |
-| **Prereg / results** | `8d83560` / _(results SHA)_ |
+| **Prereg / results** | `8d83560` / `e4f9b365d859b079802ccf5749e7df36cb149a42` |
 | **Cycle verdict** | **`FAIL_CLOSED_DOMINANT`** |
 | **science_open** | **false** (not widened; §22 ensemble-at-eval scope **unchanged**) |
 | **Recipe** | Eval-only #22 ens; cite#28 strip-easy boundary + refresh; RED denser-K16 (p_emp≫ood_hops) + LONG_K20; FAIL_OPEN vs FAIL_CLOSED; **no** #27 bag train |

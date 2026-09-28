@@ -136,7 +136,7 @@ Cycle RED verdict:
 | **Data** | `data/stalk_red_competent_dissonance.jsonl` (n=256; K16=64, K20=64, HN=128) |
 | **Log** | `artifacts/stalk_red_competent_dissonance_run.log` |
 | **Prereg SHA** | `8d83560` (committed before runs) |
-| **Results SHA** | _(this commit)_ |
+| **Results SHA** | `e4f9b365d859b079802ccf5749e7df36cb149a42` |
 | **Boundary refresh** | **exact match** to #28 (Δ=0 within float) |
 | **RED verdict** | **`FAIL_CLOSED_DOMINANT`** (61/61 ens-wrong = FAIL_CLOSED; 0 FAIL_OPEN) |
 | **CD arm on RED** | **CHAOS** (μ_acc 0.774 < 0.85 — expected under RED; not COMPETENT claim) |
